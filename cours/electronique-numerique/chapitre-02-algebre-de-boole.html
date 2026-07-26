@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Électronique Numérique — Chapitre 2: Algèbre de Boole — BIT Study HUB">
+  <title>Électronique Numérique — Chapitre 2: Algèbre de Boole</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #7E57C2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #7E57C2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #7E57C2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #7E57C2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #7E57C2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #7E57C2; background: color-mix(in srgb, #7E57C2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #7E57C2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #7E57C2 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Électronique Numérique</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 2</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">CS107 · Chapitre 2 / 6</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">Algèbre de Boole</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Variables booléennes, théorèmes de De Morgan, forme canonique, simplification algébrique, tableaux de Karnaugh.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #7E57C2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-systemes-de-numeration.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">Systèmes de numération</div></a>
+                <a href="chapitre-02-algebre-de-boole.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">Algèbre de Boole</div></a>
+                <a href="chapitre-03-portes-logiques.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">Portes logiques</div></a>
+                <a href="chapitre-04-logique-combinatoire.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">Logique combinatoire</div></a>
+                <a href="chapitre-05-logique-sequentielle.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">Logique séquentielle</div></a>
+                <a href="chapitre-06-compteurs-registres.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">Compteurs et registres</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            <div class="container" id="top">
+              <h1>Chapitre 2 — Algèbre de Boole</h1>
+              <p>L'algèbre de Boole, conçue par le mathématicien britannique George Boole au XIXᵉ siècle, est l'outil mathématique fondamental de l'électronique numérique. Elle définit un ensemble de règles de calcul sur des variables qui ne prennent que deux valeurs : 0 (faux) et 1 (vrai). Cette algèbre permet de décrire, d'analyser et de simplifier les fonctions logiques réalisées par les circuits.</p>
+
+              <div class="toc">
+                <a href="#sec1">1. Variables et opérations booléennes</a>
+                <a href="#sec2">2. Propriétés et théorèmes</a>
+                <a href="#sec3">3. Théorèmes de De Morgan</a>
+                <a href="#sec4">4. Formes canoniques</a>
+                <a href="#sec5">5. Simplification algébrique</a>
+                <a href="#sec6">6. Tableaux de Karnaugh</a>
+              </div>
+
+              <h2 id="sec1">1. Variables et opérations booléennes</h2>
+              <div class="definition">
+                <strong>Définition — Variable booléenne :</strong> Une variable booléenne est une grandeur notée A, B, C... qui ne peut prendre que deux valeurs : 0 ou 1. On l'appelle aussi variable logique.
+              </div>
+
+              <p>L'algèbre de Boole définit trois opérations fondamentales :</p>
+              <ul>
+                <li><strong>Le OU logique (+)</strong> : somme logique. <code>A + B = 1</code> si A=1 <strong>ou</strong> B=1 (ou les deux).</li>
+                <li><strong>Le ET logique (·)</strong> : produit logique. <code>A · B = 1</code> si A=1 <strong>et</strong> B=1 simultanément.</li>
+                <li><strong>Le NON (barre ou apostrophe)</strong> : complément logique. <code>Ā = 1</code> si A=0, et inversement.</li>
+              </ul>
+
+              <table>
+                <thead>
+                  <tr><th>A</th><th>B</th><th>A + B (OU)</th><th>A · B (ET)</th><th>Ā (NON)</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+                  <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+                  <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+                  <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+                </tbody>
+              </table>
+
+              <h2 id="sec2">2. Propriétés et théorèmes de base</h2>
+              <p>Comme l'algèbre classique, l'algèbre de Boole possède des propriétés remarquables :</p>
+              <ul>
+                <li><strong>Commutativité :</strong> A + B = B + A ; A · B = B · A</li>
+                <li><strong>Associativité :</strong> (A + B) + C = A + (B + C) ; (A · B) · C = A · (B · C)</li>
+                <li><strong>Distributivité :</strong> A · (B + C) = A·B + A·C ; A + (B · C) = (A+B) · (A+C)</li>
+                <li><strong>Élément neutre :</strong> A + 0 = A ; A · 1 = A</li>
+                <li><strong>Absorption :</strong> A + 0 = A ; A · 1 = A ; A + 1 = 1 ; A · 0 = 0</li>
+                <li><strong>Idempotence :</strong> A + A = A ; A · A = A</li>
+                <li><strong>Complément :</strong> A + Ā = 1 ; A · Ā = 0</li>
+                <li><strong>Involution :</strong> <code>¬(¬A) = A</code></li>
+              </ul>
+
+              <div class="exemple">
+                <strong>Exemple — Appliquer l'absorption :</strong>
+                <pre><code>F = A + A·B
+  = A·1 + A·B       (car A = A·1)
+  = A·(1 + B)       (factorisation)
+  = A·1             (car 1 + B = 1)
+  = A</code></pre>
+                L'expression se simplifie en simplement <strong>F = A</strong>.
+              </div>
+
+              <h2 id="sec3">3. Théorèmes de De Morgan</h2>
+              <p>Les théorèmes de De Morgan sont fondamentaux pour transformer et simplifier les expressions logiques. Ils permettent notamment de passer d'une forme "somme de produits" à une "produit de sommes", et de réaliser n'importe quelle fonction avec uniquement des portes NAND ou NOR.</p>
+
+              <div class="definition">
+                <strong>Théorèmes de De Morgan :</strong>
+                <ul>
+                  <li>Premier théorème : <code>¬(A · B) = Ā + B̄</code> (le NON d'un ET = OU des NON)</li>
+                  <li>Deuxième théorème : <code>¬(A + B) = Ā · B̄</code> (le NON d'un OU = ET des NON)</li>
+                </ul>
+                Généralisation à n variables : <code>¬(A · B · C · ...) = Ā + B̄ + C̄ + ...</code>
+              </div>
+
+              <div class="exemple">
+                <strong>Exemple — Appliquer De Morgan :</strong><br>
+                Soit <code>F = ¬(A · B · C)</code>. D'après De Morgan :<br>
+                <code>F = Ā + B̄ + C̄</code><br>
+                Cette transformation est essentielle pour le câblage avec portes NAND.
+              </div>
+
+              <h2 id="sec4">4. Formes canoniques</h2>
+              <p>Toute fonction logique peut être écrite sous deux formes canoniques :</p>
+
+              <h3>4.1 Première forme canonique (somme de mintermes)</h3>
+              <p>On exprime la fonction comme une somme (OU) de produits (ET) appelés <strong>mintermes</strong>. Chaque minterme correspond à une combinaison des variables pour laquelle la fonction vaut 1.</p>
+              <p>Pour F(A,B,C) = 1 si et seulement si exactement deux variables valent 1, on obtient :</p>
+              <pre><code>F = Ā·B·C + A·B̄·C + A·B·C̄
+  = Σm(3, 5, 6)</code></pre>
+
+              <h3>4.2 Deuxième forme canonique (produit de maxtermes)</h3>
+              <p>On exprime la fonction comme un produit (ET) de sommes (OU) appelés <strong>maxtermes</strong>. Chaque maxterm correspond à une combinaison pour laquelle la fonction vaut 0.</p>
+
+              <div class="remarque">
+                <strong>Remarque :</strong> Les deux formes sont équivalentes et représentent la même fonction. Le choix dépend du contexte (synthèse avec portes AND-OR ou OR-AND).
+              </div>
+
+              <h2 id="sec5">5. Simplification algébrique</h2>
+              <p>La simplification algébrique consiste à appliquer les théorèmes pour réduire l'expression à sa forme minimale, ce qui se traduit par un circuit moins coûteux (moins de portes, moins d'interconnexions).</p>
+
+              <div class="exemple">
+                <strong>Exemple — Simplifier :</strong>
+                <pre><code>F = A·B + A·B·C + Ā·B
+  = A·B·(1 + C) + Ā·B     (factorisation)
+  = A·B + Ā·B             (car 1 + C = 1)
+  = B·(A + Ā)             (factorisation)
+  = B·1                   (A + Ā = 1)
+  = B</code></pre>
+                Résultat : <strong>F = B</strong> — bien plus simple !
+              </div>
+
+              <h2 id="sec6">6. Tableaux de Karnaugh</h2>
+              <p>La méthode algébrique devient rapidement fastidieuse pour les fonctions à 3, 4 voire 5 variables. Le <strong>tableau de Karnaugh</strong> offre une méthode graphique de simplification basée sur le regroupement de cases adjacentes.</p>
+
+              <h3>6.1 Construction</h3>
+              <p>Pour une fonction à 2 variables (A, B), on construit un tableau 2×2. Pour 3 variables, 2×4. Pour 4 variables, 4×4. L'ordre des colonnes et lignes suit le <strong>code Gray</strong> afin que deux cases adjacentes ne diffèrent que d'une seule variable.</p>
+
+              <h3>6.2 Méthode de regroupement</h3>
+              <ul>
+                <li>Identifier les cases contenant un 1.</li>
+                <li>Former des groupes de 1, 2, 4, 8 ou 16 cases adjacentes (puissances de 2).</li>
+                <li>Les groupes peuvent chevaucher la frontière (bouclage cyclique).</li>
+                <li>Chaque groupe donne un terme : on conserve les variables qui ne changent pas.</li>
+              </ul>
+
+              <div class="exemple">
+                <strong>Exemple — F(A,B,C) = Σm(1, 3, 5, 7)</strong>
+                <pre><code>        BC
+       00  01  11  10
+   A0   0   1   1   0
+   A1   0   1   1   0</code></pre>
+                Toute la colonne "1" centrale forme un bloc de 4 cases : seule la variable <code>C</code> est constante (=1).<br>
+                <strong>F = C</strong>
+              </div>
+
+              <div class="remarque">
+                <strong>Remarque — Indifférences :</strong> Les conditions "don't care" (X) sont notées pour les combinaisons impossibles ou sans importance. Elles peuvent être incluses dans un groupe pour atteindre une taille supérieure et donc une simplification plus poussée.
+              </div>
+
+              <h3>6.3 Méthode pratique : étapes de simplification par Karnaugh</h3>
+              <p>Pour utiliser efficacement un tableau de Karnaugh, il convient de suivre une démarche rigoureuse :</p>
+              <ol>
+                <li><strong>Identifier les variables</strong> de la fonction et le nombre de cases (2ⁿ pour n variables).</li>
+                <li><strong>Reporter les 1</strong> dans les cases correspondant aux mintermes de la fonction.</li>
+                <li><strong>Marquer les X</strong> (don't care) si certaines combinaisons sont impossibles.</li>
+                <li><strong>Former les plus grands groupes possibles</strong> de 1 adjacents (1, 2, 4, 8, 16...). Plus le groupe est grand, plus le terme final est simple.</li>
+                <li><strong>Toujours inclure les X</strong> dans un groupe si cela permet d'agrandir ce dernier.</li>
+                <li><strong>Pour chaque groupe</strong>, identifier les variables qui ne changent pas : elles constituent le terme.</li>
+                <li><strong>Combiner tous les termes</strong> par OU pour obtenir l'expression simplifiée.</li>
+              </ol>
+
+              <div class="remarque">
+                <strong>Remarque — Adjacence dans Karnaugh :</strong> Deux cases sont adjacentes si elles diffèrent d'exactement une variable. Cela inclut les cases situées sur les bords opposés du tableau (bouclage cyclique) ainsi que les quatre coins d'un tableau 4×4, qui forment un groupe de 4 cases valides.
+              </div>
+
+              <p>La méthode de Karnaugh reste limitée à 4 voire 5 variables au-delà desquelles la lecture devient fastidieuse. Pour des fonctions plus complexes, on recourt à la méthode algorithmique de Quine-McCluskey, qui automatise la simplification par ordinateur.</p>
+
+              <h3>6.4 Exemple complet de synthèse</h3>
+              <p>Considérons la fonction F(A,B,C) définie par la table de vérité suivante, qui détecte si la majorité des trois variables est à 1 (fonction "vote majoritaire") :</p>
+              <table>
+                <thead><tr><th>A</th><th>B</th><th>C</th><th>F</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                  <tr><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+                  <tr><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+                  <tr><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+                  <tr><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+                  <tr><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+                  <tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+                  <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+                </tbody>
+              </table>
+              <p>Le Karnaugh fait apparaître trois blocs de 2 cases, donnant l'expression simplifiée : <code>F = A·B + A·C + B·C</code>. On remarque que cette forme, bien que simple, ne peut pas être réduite davantage sans perdre de l'information.</p>
+
+              <div class="exercice">
+                <strong>Exercice 1 :</strong> Démontrer que <code>(A + B)·(A + C) = A + B·C</code> (distributivité du OU sur le ET).<br>
+                <strong>Exercice 2 :</strong> Simplifier algébriquement <code>F = A·B + Ā·C + B·C</code> et donner le résultat minimal. (Indice : utiliser le théorème de consensus.)<br>
+                <strong>Exercice 3 :</strong> Construire le tableau de Karnaugh de <code>F(A,B,C,D) = Σm(0, 2, 5, 7, 8, 10, 13, 15)</code> et donner l'expression simplifiée.<br>
+                <strong>Exercice 4 :</strong> Donner la table de vérité d'une fonction qui détecte si un nombre binaire A₃A₂A₁A₀ est supérieur ou égal à 7, puis la simplifier par Karnaugh.
+              </div>
+
+              <div class="definition">
+                <strong>En résumé —</strong> L'algèbre de Boole fournit les outils mathématiques pour manipuler les fonctions logiques. Les théorèmes de De Morgan, les formes canoniques et les tableaux de Karnaugh sont les méthodes essentielles pour passer d'une spécification à un circuit optimal. Le chapitre suivant aborde les portes logiques qui constituent les briques physiques de mise en œuvre de ces fonctions.
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-01-systemes-de-numeration.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> Systèmes de numération</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 2 / 6</div>
+          <div><a href="chapitre-03-portes-logiques.html" class="btn btn-secondary btn-sm">Portes logiques <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

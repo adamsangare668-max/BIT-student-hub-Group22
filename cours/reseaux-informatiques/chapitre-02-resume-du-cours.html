@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Réseaux Informatiques — Chapitre 2: 📘 Résumé du cours — BIT Study HUB">
+  <title>Réseaux Informatiques — Chapitre 2: 📘 Résumé du cours</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #26A69A; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #26A69A; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #26A69A; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #26A69A; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #26A69A; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #26A69A; background: color-mix(in srgb, #26A69A 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #26A69A; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #26A69A 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Réseaux Informatiques</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 2</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">CS105 · Chapitre 2 / 3</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">📘 Résumé du cours</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Réseaux Informatiques — Fondamentaux des réseaux: modèle OSI, TCP/IP, adressage, routage, protocoles.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #26A69A" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-introduction.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">Introduction</div></a><a href="chapitre-02-resume-du-cours.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">📘 Résumé du cours</div></a><a href="chapitre-03-exercices-corriges.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">📝 Exercices corrigés</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            <h2 style="font-size:2rem; color:#dacbb8; border-bottom:2px solid #2e2e2e; padding-bottom:0.3rem;">📘 Résumé du cours</h2>
+
+        <div class="carte">
+            <h3>🔹 I. Généralités</h3>
+            <p><strong>Réseau informatique :</strong> infrastructure matérielle, logicielle et protocoles pour l'échange de données, le partage de services et l'interconnexion.</p>
+            <p><strong>Objectifs :</strong> partage de ressources, communication, accès à l'information, fiabilité.</p>
+            <p><strong>Composants :</strong> équipements terminaux, supports de transmission, équipements d'interconnexion, protocoles.</p>
+            <p><strong>Types :</strong> PAN, LAN, MAN (étendue) ; client-serveur, poste à poste (architecture).</p>
+        </div>
+
+        <div class="carte">
+            <h3>🔹 Supports de transmission</h3>
+            <p><strong>Filaires :</strong> paire torsadée (Cat 5e à 8, UTP/STP), câble coaxial (RG-58, RG-59, RG-6), fibre optique (monomode SMF, multimode MMF).</p>
+            <p><strong>Sans fil :</strong> ondes radio, micro-ondes, infrarouges.</p>
+        </div>
+
+        <div class="carte">
+            <h3>🔹 Ethernet &amp; topologies</h3>
+            <p><strong>Trame Ethernet :</strong> Préambule (7), SFD (1), MAC dest/source (6+6), Type/Longueur (2), Données (46–1500), FCS (4).</p>
+            <p><strong>Topologies physiques :</strong> Bus, Étoile, Anneau. <strong>Méthodes d'accès :</strong> CSMA/CD (Ethernet), CSMA/CA (Wi-Fi), Token Ring.</p>
+            <p><strong>Équipements :</strong> répéteur, hub, switch, routeur, point d'accès, modem.</p>
+        </div>
+
+        <div class="carte">
+            <h3>🔹 II. Architecture en couches</h3>
+            <p><strong>Modèle OSI (7 couches) :</strong> Application, Présentation, Session, Transport, Réseau, Liaison, Physique.</p>
+            <p><strong>Modèle TCP/IP (4 couches) :</strong> Application, Transport (TCP/UDP), Internet (IP), Accès réseau.</p>
+            <p><strong>Ports :</strong> identifiants logiques (0–65535) pour diriger les données vers les applications. Ex. HTTP:80, HTTPS:443, FTP:21, SSH:22.</p>
+        </div>
+
+        <div class="carte">
+            <h3>🔹 III. Adressage IP</h3>
+            <p><strong>IPv4 :</strong> 32 bits, notation décimale pointée (ex. 192.168.1.1). Deux parties : Network ID + Host ID.</p>
+            <p><strong>Classes :</strong> A (0–126), B (128–191), C (192–223), D (multicast), E (expérimentale).</p>
+            <p><strong>Masque :</strong> identifie la partie réseau (bits à 1) et la partie hôte (bits à 0). Notation CIDR : /n.</p>
+            <p><strong>Adresses spéciales :</strong> réseau (host bits à 0), broadcast (host bits à 1).</p>
+            <p><strong>Sous-réseaux (subnetting) :</strong> emprunt de bits à la partie hôte pour créer plusieurs réseaux.</p>
+            <p><strong>Nombre d'hôtes :</strong> \(2^n - 2\) où \(n\) = nombre de bits hôtes.</p>
+        </div>
+    </section>
+
+    <!-- ===================== EXERCICES ===================== -->
+    
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-01-introduction.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> Introduction</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 2 / 3</div>
+          <div><a href="chapitre-03-exercices-corriges.html" class="btn btn-secondary btn-sm">📝 Exercices corrigés <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

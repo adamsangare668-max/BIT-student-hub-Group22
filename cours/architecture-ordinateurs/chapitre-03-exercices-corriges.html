@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Architecture des Ordinateurs — Chapitre 3: 📝 Exercices corrigés — BIT Study HUB">
+  <title>Architecture des Ordinateurs — Chapitre 3: 📝 Exercices corrigés</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #FF7043; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #FF7043; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #FF7043; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #FF7043; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #FF7043; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #FF7043; background: color-mix(in srgb, #FF7043 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #FF7043; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #FF7043 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Architecture des Ordinateurs</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 3</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">CS104 · Chapitre 3 / 3</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">📝 Exercices corrigés</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Architecture des Ordinateurs — Architecture matérielle: processeur, mémoire, bus, jeux d&#x27;instructions, pipeline.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #FF7043" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-introduction.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">Introduction</div></a><a href="chapitre-02-resume-du-cours.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">📘 Résumé du cours</div></a><a href="chapitre-03-exercices-corriges.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">📝 Exercices corrigés</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            <h2 style="font-size: 2rem; color: #dacbb8; border-bottom: 2px solid #2e2e2e; padding-bottom: 0.3rem;">📝 Exercices corrigés</h2>
+
+    <!-- EXERCICE 1 -->
+    <div class="exercice" id="exercice1">
+      <div class="exercice-titre">
+        <span>Exercice 1 – Architecture &amp; bus système</span>
+        <button class="btn-toggle" onclick="toggleEx(this)">▾</button>
+      </div>
+      <div class="exercice-contenu visible">
+        <p><strong>Énoncé :</strong> « Écrivez une note sur l’architecture d’un ordinateur. Qu’est-ce qu’un bus système ? Nommez les différentes unités du bus système. »</p>
+
+        <h4>Correction</h4>
+        <p><strong>Architecture d’un ordinateur</strong> : c’est la structure visible et l’organisation des composants matériels (UC, mémoire, entrées/sorties) interconnectés pour atteindre des objectifs de performance, fonctionnalité et coût. Elle inclut le jeu d’instructions, les modes d’adressage, les registres et les mécanismes d’interruption.</p>
+
+        <p><strong>Bus système</strong> : ensemble de lignes de transmission (fils) qui interconnectent les unités fonctionnelles (processeur, mémoire, périphériques). Il est divisé en trois sous-ensembles logiques :</p>
+        <ul>
+          <li><strong>Bus de données</strong> : transporte les données, instructions ou codes entre les unités.</li>
+          <li><strong>Bus d’adresses</strong> : véhicule l’adresse mémoire (ou périphérique) ; la communication est unidirectionnelle du processeur vers la mémoire.</li>
+          <li><strong>Bus de commande</strong> : signaux de contrôle (lecture/écriture, acquittement, état) qui synchronisent les opérations.</li>
+        </ul>
+        <div class="resultat">✔ Réponse finale : l’architecture est la structure matérielle, le bus système est l’interconnexion avec ses trois bus (données, adresses, commande).</div>
+      </div>
+    </div>
+
+    <!-- EXERCICE 2 -->
+    <div class="exercice" id="exercice2">
+      <div class="exercice-titre">
+        <span>Exercice 2 – Cycle d’instruction &amp; CPU</span>
+        <button class="btn-toggle" onclick="toggleEx(this)">▾</button>
+      </div>
+      <div class="exercice-contenu visible">
+        <p><strong>Énoncé :</strong> « Qu’est-ce qu’un cycle d’instruction ? Décrivez en détail les différentes étapes. Que comprend l’unité centrale de traitement ? »</p>
+
+        <h4>Correction</h4>
+        <p><strong>Cycle d’instruction</strong> : séquence complète des opérations nécessaires pour extraire une instruction de la mémoire, la décoder, exécuter l’opération et stocker le résultat. Il se répète pour chaque instruction du programme.</p>
+        <ul>
+          <li><strong>1. Fetch (chargement)</strong> : l’UC place l’adresse de l’instruction dans le MAR, effectue une lecture mémoire et récupère l’instruction dans le registre d’instruction (IR).</li>
+          <li><strong>2. Décodage</strong> : l’UC analyse l’opcode pour déterminer le type d’instruction et active les circuits appropriés.</li>
+          <li><strong>3. Calcul des adresses des opérandes</strong> : l’UC détermine où se trouvent les opérandes (mémoire ou registres).</li>
+          <li><strong>4. Fetch des opérandes</strong> : l’UC lit les opérandes depuis la mémoire ou les registres et les fournit à l’UAL.</li>
+          <li><strong>5. Exécution</strong> : l’UAL réalise l’opération (arithmétique ou logique).</li>
+          <li><strong>6. Stockage du résultat</strong> : le résultat est sauvegardé en mémoire ou dans un registre.</li>
+        </ul>
+        <p><strong>Unité centrale (CPU)</strong> : comprend l’<strong>unité de contrôle</strong> (séquençage et signaux), l’<strong>UAL</strong> (opérations arithmétiques/logiques) et les <strong>registres</strong> (mémoire rapide interne).</p>
+        <div class="resultat">✔ Cycle en 6 étapes : fetch, decode, adresse opérandes, fetch opérandes, execute, store. CPU = UC + UAL + registres.</div>
+      </div>
+    </div>
+
+    <!-- EXERCICE 3 -->
+    <div class="exercice" id="exercice3">
+      <div class="exercice-titre">
+        <span>Exercice 3 – Communication processeur &amp; périphériques</span>
+        <button class="btn-toggle" onclick="toggleEx(this)">▾</button>
+      </div>
+      <div class="exercice-contenu visible">
+        <p><strong>Énoncé :</strong> « Décrivez en détail : a) communication processeur – mémoire ; b) communication processeur – périphériques d’entrée/sortie. »</p>
+
+        <h4>Correction</h4>
+        <p><strong>a) Processeur ↔ Mémoire</strong><br>
+        Le processeur place une adresse sur le <strong>bus d’adresses</strong> (unidirectionnel) pour indiquer la position mémoire. Le <strong>bus de commande</strong> émet un signal de lecture ou d’écriture. En lecture, la mémoire place les données sur le <strong>bus de données</strong> (bidirectionnel) vers le processeur. En écriture, le processeur place les données sur le bus de données et la mémoire les enregistre. La synchronisation est assurée par les signaux de contrôle.</p>
+
+        <p><strong>b) Processeur ↔ Périphériques (E/S)</strong><br>
+        La communication utilise également les trois bus. Les périphériques sont connectés via des contrôleurs (interfaces). Le processeur peut accéder aux registres des contrôleurs par des adresses réservées (E/S mappées en mémoire ou E/S dédiées). L’UC utilise le bus de commande pour indiquer une opération d’E/S (lecture/écriture). Les données transitent par le bus de données. Les périphériques peuvent aussi signaler leur état (prêt/busy) via le bus de commande. Les interruptions permettent au périphérique d’attirer l’attention du processeur.</p>
+        <div class="remarque"><strong>Remarque :</strong> Le bus d’adresses est unidirectionnel du processeur vers la mémoire et les E/S ; les bus de données et de commande sont bidirectionnels.</div>
+        <div class="resultat">✔ Communication mémoire : adresse + commande + données. Communication E/S : même principe avec gestion des statuts et interruptions.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== FIGURES (reproduites) =========== -->
+  <div style="margin-top: 3rem; border-top: 1px solid #2a2a2a; padding-top: 2rem;">
+    <h3 style="color: #dacbb8;">Illustrations – interconnexion via bus</h3>
+    <div class="figure-placeholder">
+      <svg width="300" height="140" viewBox="0 0 300 140" style="background:#161616; border-radius:20px;">
+        <rect x="10" y="10" width="70" height="50" fill="#2a3a3a" stroke="#b89b7b" stroke-width="2" rx="6" />
+        <text x="20" y="40" fill="#e0d6c0" font-size="10" font-family="Trebuchet MS">CPU</text>
+        <rect x="10" y="80" width="70" height="50" fill="#2a3a3a" stroke="#b89b7b" stroke-width="2" rx="6" />
+        <text x="15" y="110" fill="#e0d6c0" font-size="10" font-family="Trebuchet MS">Mémoire</text>
+        <rect x="210" y="80" width="70" height="50" fill="#2a3a3a" stroke="#b89b7b" stroke-width="2" rx="6" />
+        <text x="218" y="110" fill="#e0d6c0" font-size="10" font-family="Trebuchet MS">I/O</text>
+        <line x1="80" y1="35" x2="210" y2="35" stroke="#8a7a6a" stroke-width="2" stroke-dasharray="4 4" />
+        <line x1="80" y1="105" x2="210" y2="105" stroke="#8a7a6a" stroke-width="2" stroke-dasharray="4 4" />
+        <line x1="80" y1="70" x2="210" y2="70" stroke="#8a7a6a" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="100" y="25" fill="#b89b7b" font-size="8" font-family="Trebuchet MS">Bus adresses</text>
+        <text x="100" y="65" fill="#b89b7b" font-size="8" font-family="Trebuchet MS">Bus données</text>
+        <text x="100" y="135" fill="#b89b7b" font-size="8" font-family="Trebuchet MS">Bus commande</text>
+      </svg>
+      <span style="color:#999; font-size:0.9rem;">Fig. Interconnexion CPU, mémoire et E/S via le bus système.</span>
+    </div>
+  </div>
+
+  <a href="#top" class="back-top">⬆ Retour en haut</a>
+</div>
+
+
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-02-resume-du-cours.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> 📘 Résumé du cours</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 3 / 3</div>
+          <div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

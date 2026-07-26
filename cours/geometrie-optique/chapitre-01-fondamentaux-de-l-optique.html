@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Géométrie Optique — Chapitre 1: 🔬 Fondamentaux de l&#x27;Optique — BIT Study HUB">
+  <title>Géométrie Optique — Chapitre 1: 🔬 Fondamentaux de l&#x27;Optique</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #F4511E; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #F4511E; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #F4511E; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #F4511E; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #F4511E; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #F4511E; background: color-mix(in srgb, #F4511E 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #F4511E; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']] }, svg: { fontCache: 'global' } };</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #F4511E 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Géométrie Optique</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 1</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">PH101 · Chapitre 1 / 4</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">🔬 Fondamentaux de l&#x27;Optique</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Géométrie Optique — Optique géométrique: réflexion, réfraction, lentilles, miroirs, instruments d&#x27;optique.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #F4511E" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-fondamentaux-de-l-optique.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">🔬 Fondamentaux de l&#x27;Optique</div></a><a href="chapitre-02-miroir-et-dioptre-plan.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">🪞 Miroir et Dioptre Plan</div></a><a href="chapitre-03-miroirs-spheriques.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">🔦 Miroirs Sphériques</div></a><a href="chapitre-04-optique-geometrique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">🔬 Optique Géométrique</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            
+    <div class="container" id="top">
+
+        <!-- ===== EN-TÊTE ===== -->
+        <h1>🔬 Fondamentaux de l'Optique</h1>
+        <p class="subtitle">Résumé détaillé du cours · Systèmes optiques · Physique L1</p>
+
+        <!-- ===== TABLE DES MATIÈRES ===== -->
+        <div class="toc">
+            <h2>📑 Table des matières</h2>
+            <ul>
+                <li><a href="#s1">1. Propagation de la lumière</a></li>
+                <li><a href="#s2">2. Rayon, faisceau et pinceau lumineux</a></li>
+                <li><a href="#s3">3. Phénomènes lumineux</a></li>
+                <li><a href="#s4">4. Lois de Snell-Descartes</a></li>
+                <li><a href="#s5">5. Systèmes optiques</a></li>
+                <li><a href="#s6">6. Conjugaison objet-image</a></li>
+                <li><a href="#s7">7. Stigmatisme</a></li>
+                <li><a href="#s8">8. Aplanétisme</a></li>
+            </ul>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 1 -->
+        <h2 id="s1">1. Propagation de la lumière</h2>
+
+        <div class="card">
+            <h3>Définition</h3>
+            <p>La <strong>lumière</strong> est une onde qui se propage dans le vide et dans les milieux transparents.</p>
+        </div>
+
+        <div class="card">
+            <h3>Principe de propagation rectiligne</h3>
+            <div class="definition">
+                <strong>Énoncé :</strong> Dans tout milieu homogène et transparent, la lumière se propage en ligne droite.
+            </div>
+            <p>La direction de propagation est représentée par une flèche sur le rayon lumineux.</p>
+        </div>
+
+        <div class="card">
+            <h3>Vitesse de la lumière</h3>
+            <ul>
+                <li><strong>Dans le vide :</strong></li>
+            </ul>
+            <div class="formule">
+                \( c = 300\,000 \, \text{km} \cdot \text{s}^{-1} = 3 \times 10^{8} \, \text{m} \cdot \text{s}^{-1} \)
+            </div>
+            <ul>
+                <li><strong>Dans un milieu transparent homogène :</strong></li>
+            </ul>
+            <p>La vitesse de propagation \( v \) de la lumière dans un milieu est liée à son <strong>indice de réfraction</strong> \( n \) par la relation :</p>
+            <div class="formule">
+                \( n = \dfrac{c}{v} \)
+            </div>
+            <div class="remarque">
+                💡 L'indice de réfraction \( n \) est toujours supérieur ou égal à 1. Plus l'indice est grand, plus la lumière se propage lentement dans le milieu.
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 2 -->
+        <h2 id="s2">2. Rayon, faisceau et pinceau lumineux</h2>
+
+        <div class="card">
+            <h3>2.1 Rayon lumineux</h3>
+            <p>Un <strong>rayon lumineux</strong> représente le chemin suivi par la lumière depuis un point d'une source lumineuse jusqu'à un objet éclairé. Il est modélisé par des demi-droites avec une flèche indiquant le sens de propagation.</p>
+        </div>
+
+        <div class="card">
+            <h3>2.2 Faisceau lumineux</h3>
+            <p>Un <strong>faisceau lumineux</strong> est constitué d'une infinité de rayons lumineux issus d'une même source. Il peut être représenté par les rayons qui délimitent ses contours.</p>
+            <p><strong>Types de faisceaux :</strong></p>
+            <ul>
+                <li><strong>Faisceau divergent</strong> : les rayons s'écartent les uns des autres.</li>
+                <li><strong>Faisceau convergent</strong> : les rayons se rapprochent pour se rencontrer en un point.</li>
+                <li><strong>Faisceau parallèle</strong> : les rayons sont tous parallèles entre eux.</li>
+            </ul>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 3 -->
+        <h2 id="s3">3. Phénomènes lumineux</h2>
+
+        <div class="card">
+            <h3>3.1 Diffusion de la lumière</h3>
+            <div class="definition">
+                <strong>Définition :</strong> Diffuser la lumière signifie réfléchir la lumière reçue dans toutes les directions.
+            </div>
+            <p><strong>Exemple :</strong> La lumière du soleil diffusée par les particules dans l'atmosphère donne la couleur bleue du ciel.</p>
+        </div>
+
+        <div class="card">
+            <h3>3.2 Réflexion de la lumière</h3>
+            <div class="definition">
+                <strong>Définition :</strong> Une surface réfléchit la lumière lorsqu'elle la renvoie dans une direction spécifique.
+            </div>
+            <div class="remarque">
+                La réflexion suit des lois précises (voir section 4).
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>3.3 Réfraction de la lumière</h3>
+            <div class="definition">
+                <strong>Définition :</strong> La réfraction est le phénomène lumineux au cours duquel la lumière dévie de sa trajectoire rectiligne en changeant de vitesse lorsqu'elle passe d'un milieu transparent à un autre.
+            </div>
+            <div class="remarque">
+                Le changement de vitesse provoque un changement de direction (sauf si l'incidence est nulle).
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 4 -->
+        <h2 id="s4">4. Lois de Snell-Descartes</h2>
+
+        <div class="card">
+            <h3>Vocabulaire commun</h3>
+            <ul>
+                <li><strong>[IS]</strong> : rayon incident</li>
+                <li><strong>I</strong> : point d'incidence</li>
+                <li><strong>[IR]</strong> : rayon réfléchi</li>
+                <li><strong>[IN]</strong> : normale à la surface réfléchissante au point I</li>
+                <li><strong>\( i_1 \)</strong> : angle d'incidence (angle entre le rayon incident et la normale)</li>
+                <li><strong>\( i'_1 \)</strong> : angle de réflexion (angle entre le rayon réfléchi et la normale)</li>
+                <li><strong>[IT]</strong> : rayon réfracté</li>
+                <li><strong>[IN']</strong> : normale à la surface de séparation au point I</li>
+                <li><strong>\( i_2 \)</strong> : angle de réfraction</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Première loi : Loi du plan d'incidence</h3>
+            <div class="definition">
+                <strong>Énoncé :</strong> Le rayon incident, le rayon réfléchi, le rayon réfracté et la normale au point d'incidence sont tous dans un même plan : le <strong>plan d'incidence</strong>, défini par le rayon incident et la normale à l'interface.
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Deuxième loi : Loi de la réflexion</h3>
+            <div class="definition">
+                <strong>Énoncé :</strong>
+                <ol>
+                    <li>Le rayon réfléchi est dans le plan d'incidence.</li>
+                    <li>L'angle de réflexion est égal à l'angle d'incidence :</li>
+                </ol>
+            </div>
+            <div class="formule">
+                \( i_1 = i'_1 \)
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Troisième loi : Loi de la réfraction</h3>
+            <div class="definition">
+                <strong>Énoncé :</strong>
+                <ol>
+                    <li>Le rayon réfracté est dans le plan d'incidence.</li>
+                    <li>Les angles d'incidence et de réfraction sont reliés par la relation :</li>
+                </ol>
+            </div>
+            <div class="formule">
+                \( n_1 \sin i_1 = n_2 \sin i_2 \)
+            </div>
+            <p>où :</p>
+            <ul>
+                <li>\( n_1 \) est l'indice de réfraction du milieu 1 (milieu d'où provient la lumière),</li>
+                <li>\( n_2 \) est l'indice de réfraction du milieu 2 (milieu dans lequel pénètre la lumière).</li>
+            </ul>
+            <div class="remarque">
+                💡 Cette loi est aussi connue sous le nom de <strong>loi de Snell-Descartes</strong> ou <strong>loi des sinus</strong>.
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 5 -->
+        <h2 id="s5">5. Systèmes optiques</h2>
+
+        <div class="card">
+            <h3>Définition</h3>
+            <div class="definition">
+                Un <strong>système optique</strong> est un ensemble de surfaces qui réfléchissent (<strong>miroirs</strong>) ou réfractent (<strong>dioptres</strong>) les rayons lumineux.
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Classification</h3>
+            <ul>
+                <li><strong>Système centré</strong> : possède un axe de symétrie (axe optique).</li>
+                <li><strong>Système dioptrique</strong> : composé uniquement de dioptres (exemples : lentilles, objectifs, télescopes, microscopes).</li>
+                <li><strong>Système catadioptrique</strong> : composé à la fois de dioptres et de miroirs (exemples : télescopes).</li>
+            </ul>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 6 -->
+        <h2 id="s6">6. Conjugaison objet-image</h2>
+
+        <div class="card">
+            <h3>Définitions fondamentales</h3>
+            <ul>
+                <li><strong>Objet réel</strong> : point d'intersection des rayons lumineux entrant dans un système optique.</li>
+                <li><strong>Image réelle</strong> : point d'intersection des rayons lumineux sortant d'un système optique.</li>
+                <li><strong>Objet virtuel</strong> : point d'intersection du prolongement des rayons lumineux entrant dans un système optique.</li>
+                <li><strong>Image virtuelle</strong> : point d'intersection du prolongement des rayons lumineux sortant d'un système optique.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Espaces objet et image</h3>
+            <p>Quatre espaces sont organisés autour d'un système optique :</p>
+            <ol>
+                <li><strong>Espace objet réel</strong> : espace où se trouve l'objet réel.</li>
+                <li><strong>Espace objet virtuel</strong> : espace où se trouverait l'objet virtuel.</li>
+                <li><strong>Espace image réel</strong> : espace où se trouve l'image réelle.</li>
+                <li><strong>Espace image virtuel</strong> : espace où se trouverait l'image virtuelle.</li>
+            </ol>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 7 -->
+        <h2 id="s7">7. Stigmatisme</h2>
+
+        <div class="card">
+            <h3>Définition</h3>
+            <div class="definition">
+                Un système optique est de bonne qualité s'il produit une <strong>image ponctuelle</strong> à partir d'une source ponctuelle : c'est la condition de <strong>stigmatisme</strong>.
+            </div>
+            <div class="definition">
+                <strong>Définition rigoureuse :</strong> Un système optique est <strong>stigmatique</strong> pour un couple de points \( A \) et \( A' \) si tous les rayons lumineux émis par \( A \) émergent du système en passant exactement par \( A' \).
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>7.1 Stigmatisme rigoureux</h3>
+            <p>Un système optique est dit <strong>stigmatique</strong> si les rayons émergents (ou leurs prolongements) concourent tous en un seul point, appelé <strong>image</strong>.</p>
+            <div class="remarque">
+                On note \( A' \) l'image de \( A \) à travers le système. On dit que \( A' \) est le <strong>conjugué</strong> de \( A \). Le système est stigmatique pour la conjugaison \( AA' \).
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>7.2 Stigmatisme approché – Approximation de Gauss</h3>
+            <p><strong>Conditions de Gauss (ou approximation paraxiale) :</strong></p>
+            <ul>
+                <li>Les rayons lumineux ont un angle d'incidence très petit par rapport à l'axe optique.</li>
+                <li>Les rayons sont proches de l'axe optique.</li>
+            </ul>
+            <div class="definition">
+                Dans ces conditions, les rayons convergent suffisamment près d'un point pour que l'image soit considérée comme nette à l'œil nu.
+            </div>
+            <p><strong>Rayons paraxiaux :</strong> rayons faisant un petit angle avec l'axe optique.</p>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 8 -->
+        <h2 id="s8">8. Aplanétisme</h2>
+
+        <div class="card">
+            <h3>Définition</h3>
+            <div class="definition">
+                L'<strong>aplanétisme</strong> est une propriété des systèmes optiques (dioptriques, catoptriques ou catadioptriques) qui, pour un objet étendu perpendiculaire à l'axe optique, forment une image également perpendiculaire à l'axe optique.
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Schéma explicatif</h3>
+            <ul>
+                <li><strong>Cas (a) – Système aplanétique</strong> : l'objet \( AB \) est perpendiculaire à l'axe optique ; son image \( A'B' \) est également perpendiculaire à l'axe optique.</li>
+                <li><strong>Cas (b) – Système non aplanétique</strong> : l'objet \( AB \) est perpendiculaire à l'axe optique ; son image \( A'B' \) n'est pas perpendiculaire à l'axe optique (image déformée, distorsion).</li>
+            </ul>
+            <div class="resultat">
+                ✅ Un système aplanétique préserve la perpendicularité de l'image par rapport à l'axe optique, évitant ainsi les distorsions géométriques.
+            </div>
+        </div>
+
+        <!-- ===== CONCLUSION ===== -->
+        <h2 style="margin-top:60px; border-bottom:2px solid #7ab8d4;">Conclusion du résumé</h2>
+
+        <div class="card" style="border-left-color: #5ab8a0;">
+            <p>Ce cours introduit les bases fondamentales de l'optique géométrique :</p>
+            <ol>
+                <li>La lumière se propage en ligne droite dans un milieu homogène et transparent.</li>
+                <li>Sa vitesse dépend du milieu (via l'indice de réfraction).</li>
+                <li>Trois phénomènes principaux se produisent à l'interface entre deux milieux : la <strong>réflexion</strong>, la <strong>réfraction</strong> et la <strong>diffusion</strong>.</li>
+                <li>Les lois de <strong>Snell-Descartes</strong> régissent la réflexion et la réfraction.</li>
+                <li>Les <strong>systèmes optiques</strong> transforment un objet en une image.</li>
+                <li>La qualité d'un système optique est évaluée par son <strong>stigmatisme</strong> (ponctualité de l'image) et son <strong>aplanétisme</strong> (absence de distorsion).</li>
+            </ol>
+        </div>
+
+        <!-- ===== FIN ===== -->
+        <p style="text-align:center; color:#6a6a7a; margin-top:60px; border-top:1px solid #2a2a3a; padding-top:30px;">
+            Résumé du cours – Fondamentaux de l'Optique et des Systèmes Optiques
+        </p>
+
+    </div>
+
+    <!-- ===== BOUTON RETOUR EN HAUT ===== -->
+    <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});" title="Retour en haut">↑</button>
+
+    
+
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 1 / 4</div>
+          <div><a href="chapitre-02-miroir-et-dioptre-plan.html" class="btn btn-secondary btn-sm">🪞 Miroir et Dioptre Plan <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

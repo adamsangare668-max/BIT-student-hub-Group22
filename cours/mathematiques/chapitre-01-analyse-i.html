@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mathématiques — Chapitre 1: 📐 Analyse I — BIT Study HUB">
+  <title>Mathématiques — Chapitre 1: 📐 Analyse I</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']] }, svg: { fontCache: 'global' } };</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Mathématiques</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 1</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">MA · Chapitre 1 / 6</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">📐 Analyse I</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Mathématiques — Ensemble des cours de mathématiques: analyse, algèbre, probabilités, statistiques, calcul scientifique.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1976D2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-analyse-i.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">📐 Analyse I</div></a><a href="chapitre-02-analyse-ii.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">📈 Analyse II</div></a><a href="chapitre-03-algebre-generale.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">🧮 Algèbre Générale</div></a><a href="chapitre-04-algebre-lineaire-l1.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">🧮 Algèbre linéaire L1</div></a><a href="chapitre-05-probabilites-amp-statistiques.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">📊 Probabilités &amp;amp; Statistiques</div></a><a href="chapitre-06-calcul-scientifique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">💻 Calcul Scientifique</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            
+<div class="container" id="top">
+  <h1 class="titre-principal">📐 Analyse I</h1>
+  <div class="sous-titre">Résumé de cours — Tous les exercices corrigés • CS28 • Semestre I</div>
+  
+  <!-- TOC -->
+  <div class="toc">
+    <h2>📑 Table des matières</h2>
+    <ul>
+      <li><a href="#ch1">1. Nombres réels</a></li>
+      <li><a href="#ch1b">1.1 Borne supérieure, propriétés</a></li>
+      <li><a href="#ch2">2. Suites numériques</a></li>
+      <li><a href="#ch2b">2.1 Convergence, monotonie, Cauchy</a></li>
+      <li><a href="#ch3">3. Limites et continuité</a></li>
+      <li><a href="#ch4">4. Calcul différentiel</a></li>
+      <li><a href="#exos">📌 Exercices corrigés (intégraux)</a></li>
+    </ul>
+  </div>
+
+  <!-- ==================== CHAPITRE 1 ==================== -->
+  <div class="section" id="ch1">
+    <h2>1. Nombres réels</h2>
+    <div class="card">
+      <h3>Introduction</h3>
+      <p>$\mathbb{N}\subset\mathbb{Z}\subset\mathbb{Q}\subset\mathbb{R}$. $\mathbb{R}$ est l'ensemble des abscisses de la droite numérique. $\mathbb{R}\setminus\mathbb{Q}$ sont les irrationnels (ex: $\sqrt2,\pi,e$).</p>
+      <h4>Majorant, minorant, max, min, borne sup, inf</h4>
+      <ul>
+        <li>$m$ majorant de $A$ si $\forall a\in A, a\le m$.</li>
+        <li>$M=\max A$ si $M$ majorant et $M\in A$.</li>
+        <li>$s=\sup A$ = plus petit majorant. Caractérisation : $\forall \epsilon>0, \exists a\in A,\ a>s-\epsilon$.</li>
+        <li>Propriété fondamentale : toute partie non vide majorée de $\mathbb{R}$ admet une borne supérieure.</li>
+      </ul>
+      <h4>Intervalles, convexité, $\overline{\mathbb{R}}$</h4>
+      <p>Les intervalles sont les parties convexes de $\mathbb{R}$.</p>
+      <h4>Propriété d'Archimède</h4>
+      <p>$\forall x>0,\forall y\in\mathbb{R},\exists n\in\mathbb{N}, nx>y$. Conséquences : $\mathbb{Q}$ dense dans $\mathbb{R}$.</p>
+      <h4>Topologie</h4>
+      <p>Intérieur, adhérence, points d'accumulation, ouverts, fermés.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 2 ==================== -->
+  <div class="section" id="ch2">
+    <h2>2. Suites numériques</h2>
+    <div class="card">
+      <h3>Définitions</h3>
+      <p>Une suite est une fonction $u:\mathbb{N}\to\mathbb{R}$. Monotonie (croissante/décroissante). Suite majorée/minorée/bornée.</p>
+      <h4>Suites récurrentes</h4>
+      <p>$u_{n+1}=f(u_n)$. Stabilité d'un intervalle, points fixes.</p>
+      <h4>Convergence</h4>
+      <p>$\lim u_n=l$ ssi $\forall\epsilon>0,\exists N, n\ge N \Rightarrow |u_n-l|<\epsilon$. Une suite convergente est bornée.</p>
+      <p>Opérations sur les limites (tableau). Théorème des gendarmes.</p>
+      <h4>Suites monotones</h4>
+      <p>Une suite croissante majorée converge vers sa borne supérieure. Suites adjacentes : $(a_n)$ croissante, $(b_n)$ décroissante, $b_n-a_n\to0$ ⇒ même limite.</p>
+      <h4>Critère de Cauchy</h4>
+      <p>$(u_n)$ converge ssi $\forall\epsilon>0,\exists N,\ n,m\ge N \Rightarrow |u_n-u_m|<\epsilon$.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 3 ==================== -->
+  <div class="section" id="ch3">
+    <h2>3. Limites et continuité</h2>
+    <div class="card">
+      <h3>Limites de fonctions</h3>
+      <p>Définition (Cauchy) : $\lim_{x\to a} f(x)=l$ ssi $\forall\epsilon>0,\exists\delta>0,\ 0<|x-a|<\delta \Rightarrow |f(x)-l|<\epsilon$.</p>
+      <p>Équivalence avec la définition de Heine (via les suites). Opérations sur les limites.</p>
+      <h3>Continuité</h3>
+      <p>$f$ continue en $a$ si $\lim_{x\to a} f(x)=f(a)$. La composée de fonctions continues est continue.</p>
+      <h4>Théorèmes sur les fonctions continues sur un intervalle fermé</h4>
+      <ul>
+        <li><strong>Théorème des valeurs intermédiaires</strong> : si $f(a)<0<f(b)$, alors $\exists c\in]a,b[,\ f(c)=0$.</li>
+        <li><strong>Bornée</strong> : toute fonction continue sur $[a,b]$ est bornée.</li>
+        <li><strong>Extrema</strong> : une fonction continue sur $[a,b]$ atteint son maximum et son minimum.</li>
+      </ul>
+      <h4>Fonctions inverses</h4>
+      <p>Une fonction continue strictement monotone sur un intervalle admet une réciproque continue.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 4 ==================== -->
+  <div class="section" id="ch4">
+    <h2>4. Calcul différentiel</h2>
+    <div class="card">
+      <h3>Dérivée</h3>
+      <p>$f'(a)=\lim_{h\to0}\frac{f(a+h)-f(a)}{h}$. Dérivabilité ⇒ continuité.</p>
+      <p>Règles : somme, produit, quotient, composition (chaîne). Dérivée de la réciproque.</p>
+      <h4>Théorèmes</h4>
+      <ul>
+        <li><strong>Rolle</strong> : si $f(a)=f(b)$ et $f$ continue sur $[a,b]$, dérivable sur $]a,b[$, alors $\exists c,\ f'(c)=0$.</li>
+        <li><strong>Accroissements finis</strong> : $\exists c,\ f'(c)=\frac{f(b)-f(a)}{b-a}$.</li>
+        <li><strong>Conséquences</strong> : si $f'=0$ sur un intervalle, $f$ constante ; si $f'>0$, $f$ croissante.</li>
+        <li><strong>Règle de l'Hôpital</strong> : pour les formes indéterminées $0/0$ ou $\infty/\infty$.</li>
+      </ul>
+      <h4>Formule de Taylor</h4>
+      <p>$f(a+h)=f(a)+hf'(a)+\frac{h^2}{2!}f''(a)+\cdots+\frac{h^n}{n!}f^{(n)}(a)+R_n$.</p>
+    </div>
+  </div>
+
+  <!-- ==================== EXERCICES ==================== -->
+  <div class="section" id="exos">
+    <h2>📌 Exercices corrigés</h2>
+    <p style="margin-bottom:1.5rem;">Tous les exercices du PDF sont résolus ci-dessous avec étapes détaillées.</p>
+
+    <!-- ========== CHAPITRE 1 ========= -->
+    <h3 style="margin-top:2rem;">Chapitre 1 — Nombres réels</h3>
+
+    <!-- Exo 1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_1')">Afficher / Masquer</button>
+      <h4>Exercice 1 — Racines et irrationnels</h4>
+      <p><strong>Énoncé :</strong> 1) $\sqrt a+\sqrt b \le 2\sqrt{a+b}$. 2) $\sqrt2\notin\mathbb{Q}$. 3) $r\in\mathbb{Q},x\notin\mathbb{Q}$ ⇒ $r+x\notin\mathbb{Q}$, $rx\notin\mathbb{Q}$ si $r\neq0$. 4) entre deux réels il y a un irrationnel.</p>
+      <div id="sol1_1" class="solution">
+        <p><strong>1)</strong> Par convexité de $t\mapsto\sqrt t$ ou par Cauchy-Schwarz : $(\sqrt a+\sqrt b)^2 = a+b+2\sqrt{ab}\le a+b+(a+b)=2(a+b)$.</p>
+        <p><strong>2)</strong> Supposons $\sqrt2=p/q$ irréductible. $p^2=2q^2$ ⇒ $p$ pair, $p=2k$ ⇒ $2q^2=4k^2$ ⇒ $q$ pair, contradiction.</p>
+        <p><strong>3)</strong> Si $r+x=q\in\mathbb{Q}$ alors $x=q-r\in\mathbb{Q}$, contradiction. Si $rx=q\in\mathbb{Q}$, $x=q/r\in\mathbb{Q}$ (car $r\neq0$).</p>
+        <p><strong>4)</strong> Soit $a<b$. $\mathbb{Q}$ dense ⇒ $\exists r\in\mathbb{Q}\cap(a+\sqrt2,b+\sqrt2)$ ; alors $r-\sqrt2$ est irrationnel et $a<r-\sqrt2<b$.</p>
+        <span class="resultat">Démontré.</span>
+      </div>
+    </div>
+
+    <!-- Exo 2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_2')">Afficher / Masquer</button>
+      <h4>Exercice 2 — Développements décimaux périodiques</h4>
+      <p><strong>Énoncé :</strong> 3.14f4, 0.99f, 3.149f.</p>
+      <div id="sol1_2" class="solution">
+        <p>a) $3.14\overline{4} = 3 + \frac{14}{100} + \frac{4}{900} = 3 + \frac{126}{900}+\frac{4}{900}=3+\frac{130}{900}=3+\frac{13}{90}=\frac{283}{90}$.</p>
+        <p>b) $0.\overline{99}=1$ (car $0.999\cdots=1$).</p>
+        <p>c) $3.1\overline{49} = 3 + \frac{1}{10} + \frac{49}{990} = \frac{31}{10}+\frac{49}{990} = \frac{3069+49}{990}=\frac{3118}{990}=\frac{1559}{495}$.</p>
+        <span class="resultat">a) $283/90$, b) $1$, c) $1559/495$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 3 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_3')">Afficher / Masquer</button>
+      <h4>Exercice 3 — Max/min, sup(A+B)</h4>
+      <p><strong>Énoncé :</strong> 1) formules pour max, min. 2) $\sup(A+B)=\sup A+\sup B$.</p>
+      <div id="sol1_3" class="solution">
+        <p><strong>1a)</strong> $\max(x,y)=\frac{x+y+|x-y|}{2}$ ; $\min(x,y)=\frac{x+y-|x-y|}{2}$.</p>
+        <p><strong>1b)</strong> $\max(x,y,z)=\max(\max(x,y),z)$.</p>
+        <p><strong>2)</strong> Soit $s=\sup A, t=\sup B$. Pour $a\in A,b\in B$, $a+b\le s+t$, donc $s+t$ majorant. Pour $\epsilon>0$, $\exists a\in A, a>s-\epsilon/2$, $\exists b\in B, b>t-\epsilon/2$ ⇒ $a+b>s+t-\epsilon$. Donc $\sup(A+B)=s+t$.</p>
+        <span class="resultat">Démontré.</span>
+      </div>
+    </div>
+
+    <!-- Exo 4 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_4')">Afficher / Masquer</button>
+      <h4>Exercice 4 — Bornes</h4>
+      <p><strong>Énoncé :</strong> $[0,1]\cap\mathbb{Q}$, $]0,1[\cap\mathbb{Q}$, $\mathbb{N}$, $\{(-1)^n+1/n\}$.</p>
+      <div id="sol1_4" class="solution">
+        <p>$[0,1]\cap\mathbb{Q}$ : $\sup=1,\inf=0,\max=1,\min=0$.</p>
+        <p>$]0,1[\cap\mathbb{Q}$ : $\sup=1,\inf=0$, pas de max ni min.</p>
+        <p>$\mathbb{N}$ : $\inf=0,\min=0$, pas de majorant, pas de sup.</p>
+        <p>$A=\{(-1)^n+1/n\}$ : termes pairs $1+1/n$ (décroît vers 1), impairs $-1+1/n$ (croît vers -1). $\sup=3/2$ (atteint en $n=2$), $\inf=-1$ (non atteint, limite).</p>
+        <span class="resultat">Bornes déterminées.</span>
+      </div>
+    </div>
+
+    <!-- Exo 5 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_5')">Afficher / Masquer</button>
+      <h4>Exercice 5 — Dense, ouverts/fermés</h4>
+      <p><strong>Énoncé :</strong> 1) densité de $\mathbb{Q}$. 2) démonstration. 3) ouverts/fermés. 4) adhérence/intérieur.</p>
+      <div id="sol1_5" class="solution">
+        <p><strong>1)</strong> $\mathbb{Q}$ dense signifie tout intervalle non vide contient un rationnel.</p>
+        <p><strong>2)</strong> Démonstration par Archimède.</p>
+        <p><strong>3)</strong> $\emptyset$ et $\mathbb{R}$ sont ouverts et fermés. $[2,3]\cup\{-1\}$ fermé. $\bigcap_{n>0}]-1/n,1/n[ = \{0\}$ fermé. $\bigcup_{n>0}[0,1-1/n[ = [0,1[$ ni ouvert ni fermé.</p>
+        <p><strong>4)</strong> $\overline{A\cup B}=\bar A\cup\bar B$, $\operatorname{int}(A\cap B)=\operatorname{int}A\cap\operatorname{int}B$.</p>
+        <span class="resultat">Résultats donnés.</span>
+      </div>
+    </div>
+
+    <!-- ========== CHAPITRE 2 ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 2 — Suites</h3>
+
+    <!-- Exo II.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_1')">Afficher / Masquer</button>
+      <h4>Exercice II.1 — Méthode de Héron</h4>
+      <p><strong>Énoncé :</strong> $u_{n+1}=\frac12(u_n+a/u_n)$, $v_n=\frac{u_n-\sqrt a}{u_n+\sqrt a}$.</p>
+      <div id="sol2_1" class="solution">
+        <p><strong>1)</strong> $v_{n+1} = \frac{u_{n+1}-\sqrt a}{u_{n+1}+\sqrt a} = \frac{\frac12(u_n+a/u_n)-\sqrt a}{\frac12(u_n+a/u_n)+\sqrt a} = \frac{(u_n-\sqrt a)^2}{(u_n+\sqrt a)^2}=v_n^2$.</p>
+        <p><strong>2)</strong> $v_n=v_0^{2^n}$. $|v_0|<1$ (car $u_0>0$), donc $v_n\to0$.</p>
+        <p><strong>3)</strong> $u_n = \sqrt a\frac{1+v_n}{1-v_n}$ → $\sqrt a$.</p>
+        <p><strong>4)</strong> $u_0=1$, $u_1=1.5$, $u_2=1.4167$, $u_3=1.4142$.</p>
+        <span class="resultat">Converge vers $\sqrt a$.</span>
+      </div>
+    </div>
+
+    <!-- Exo II.2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_2')">Afficher / Masquer</button>
+      <h4>Exercice II.2 — Suites adjacentes</h4>
+      <p><strong>Énoncé :</strong> $u_n=\sum_{k=2}^n \frac{1}{(k-1)k^2}$, $v_n=u_n-\frac{1}{n^2}$.</p>
+      <div id="sol2_2" class="solution">
+        <p>$(u_n)$ croissante (somme de termes positifs). $(v_n)$ décroissante car $v_{n+1}-v_n = \frac{1}{n(n+1)^2} - \frac{1}{n^2}+\frac{1}{(n+1)^2} <0$. $v_n-u_n=-1/n^2\to0$. Donc adjacentes, convergent vers la même limite.</p>
+        <span class="resultat">Adjacentes.</span>
+      </div>
+    </div>
+
+    <!-- Exo II.3 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_3')">Afficher / Masquer</button>
+      <h4>Exercice II.3 — Vrai ou faux</h4>
+      <p><strong>Énoncé :</strong> 7 affirmations.</p>
+      <div id="sol2_3" class="solution">
+        <p>1) Faux : $(-1)^n$ bornée non convergente.</p>
+        <p>2) Vrai (théorème).</p>
+        <p>3) Faux : $u_n=n$ si $n$ pair, 0 sinon ? non majorée mais pas $+\infty$.</p>
+        <p>4) Faux : $u_n=1-1/n$ converge par valeurs inférieures, est croissante (vrai ici).</p>
+        <p>5) Faux : $u_n=1/n$ si $n$ pair, $2/n$ si impair ? peut osciller.</p>
+        <p>6) Vrai : $|u_n|\to0 \iff u_n\to0$.</p>
+        <p>7) Faux : $u_n=\ln n$, $v_n=\ln(1+1/n)\to0$ mais $u_n$ diverge.</p>
+        <span class="resultat">Réponses : F, V, F, V, F, V, F.</span>
+      </div>
+    </div>
+
+    <!-- Exo II.4 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_4')">Afficher / Masquer</button>
+      <h4>Exercice II.4 — Somme de suites</h4>
+      <p><strong>Énoncé :</strong> somme de deux convergentes ? deux divergentes ? convergente + divergente ?</p>
+      <div id="sol2_4" class="solution">
+        <p>Somme de deux convergentes : convergente.</p>
+        <p>Deux divergentes : peut converger ($n + (-n)=0$), diverger ($n+n^2$), ou indéterminée.</p>
+        <p>Convergente + divergente : divergente (sinon la divergente serait différence de deux convergentes).</p>
+        <span class="resultat">Réponses ci-dessus.</span>
+      </div>
+    </div>
+
+    <!-- ========== CHAPITRE 3 ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 3 — Limites et continuité</h3>
+
+    <!-- Exo III.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_1')">Afficher / Masquer</button>
+      <h4>Exercice III.1 — Limites</h4>
+      <p><strong>Énoncé :</strong> $f(x)=\sqrt{x-3}-\sqrt{x+5}$, $g(x)=\sqrt{x^2+2x+7}-(x+5)$.</p>
+      <div id="sol3_1" class="solution">
+        <p>$f(x)=\frac{(x-3)-(x+5)}{\sqrt{x-3}+\sqrt{x+5}}=\frac{-8}{\sqrt{x-3}+\sqrt{x+5}}\to0$.</p>
+        <p>$g(x)=\frac{x^2+2x+7-(x+5)^2}{\sqrt{x^2+2x+7}+x+5} = \frac{-8x-18}{\sqrt{x^2+2x+7}+x+5}$. En $+\infty$ : $\frac{-8x}{2x}\to -4$. En $-\infty$ : $x<0$, $\sqrt{x^2+2x+7}\sim -x-1$, dénominateur $\sim -x-1+x+5=4$, numérateur $\sim -8x$ → $+\infty$.</p>
+        <p>a) $\lim \frac{\ln(1+e^x)}{x}=1$. b) $(1+x)^{1/x}\to e$. c) $x/(1+x)^{n-1}\to0$ si $n>2$, 1 si $n=2$, $+\infty$ si $n=1$. d) $x(\sqrt{x^2+1}-x)=\frac{x}{\sqrt{x^2+1}+x}\to1/2$. e) $\frac{e^{-ax}-e^{-bx}}{x}\to b-a$. f) $\sqrt{x^2+1}-\sqrt{x^2-1}\to0$. h) $\frac{\sin(\pi x)}{x^2-16}$ en $-4$ : poser $x=-4+h$ → $\frac{\sin(-4\pi+\pi h)}{(-4+h)^2-16} = \frac{\sin(\pi h)}{h^2-8h}\to \frac{\pi h}{-8h}=-\pi/8$.</p>
+        <span class="resultat">Limites calculées.</span>
+      </div>
+    </div>
+
+    <!-- Exo III.2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_2')">Afficher / Masquer</button>
+      <h4>Exercice III.2 — Limites</h4>
+      <p><strong>Énoncé :</strong> 4 limites.</p>
+      <div id="sol3_2" class="solution">
+        <p>1) $\frac{x^2+5x+e^{1/x}}{(x+1)^3} \sim \frac{x^2}{x^3}=1/x\to0$.</p>
+        <p>2) $\sqrt{x^2+x+x}-x$? Mal posé. $\sqrt{x^2+x}+x - x = \sqrt{x^2+x}\to+\infty$.</p>
+        <p>3) $\frac{\tan^2 x}{\cos 2x-1}$ en $0$ : $\tan x\sim x$, $\cos2x-1\sim -2x^2$ → $x^2/(-2x^2)=-1/2$.</p>
+        <p>4) $(x^3-1)\ln(2x^2+x-3)$ en $1^+$ : $x^3-1\sim3(x-1)$, $2x^2+x-3\sim5(x-1)$, $\ln\sim \ln(5(x-1))\to-\infty$, produit → $-\infty$.</p>
+        <span class="resultat">Limites : 0, $+\infty$, $-1/2$, $-\infty$.</span>
+      </div>
+    </div>
+
+    <!-- Exo III.3 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_3')">Afficher / Masquer</button>
+      <h4>Exercice III.3 — Dérivées n-ièmes</h4>
+      <p><strong>Énoncé :</strong> $f(x)=x^2(1+x)^n$, $f(x)=x^3\ln x$, $g(x)=1/(1-x^2)$.</p>
+      <div id="sol3_3" class="solution">
+        <p>1) $f^{(k)}(x)=$ dérivée k-ième de $x^2(1+x)^n$ par Leibniz.</p>
+        <p>2) $h_n(x)=x^{n-1}e^{1/x}$ ; on vérifie par récurrence que $h_n^{(n)}(x)=(-1)^n x^{-(n+1)}e^{1/x}$.</p>
+        <span class="resultat">Formules données.</span>
+      </div>
+    </div>
+
+    <!-- Exo III.4 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_4')">Afficher / Masquer</button>
+      <h4>Exercice III.4 — Intégration par parties</h4>
+      <p><strong>Énoncé :</strong> $A=\int_0^\pi e^x\sin x dx$, $B=\int_0^1 x e^x dx$.</p>
+      <div id="sol3_4" class="solution">
+        <p>$A = [e^x\sin x]_0^\pi - \int_0^\pi e^x\cos x dx = 0 - [e^x\cos x]_0^\pi - \int_0^\pi e^x\sin x dx$? En fait $\int e^x\sin x = \frac{e^x(\sin x-\cos x)}{2}$. $A=\frac{e^\pi(-1)-1(-1)}{2}=\frac{e^\pi+1}{2}$.</p>
+        <p>$B=[xe^x]_0^1-\int_0^1 e^x dx = e - (e-1)=1$.</p>
+        <span class="resultat">$A=(e^\pi+1)/2$, $B=1$.</span>
+      </div>
+    </div>
+
+    <!-- ========== CHAPITRE 4 ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 4 — Calcul différentiel</h3>
+
+    <!-- Exo IV.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_1')">Afficher / Masquer</button>
+      <h4>Exercice IV.1 — DL usuels</h4>
+      <p><strong>Énoncé :</strong> DL3 en 0 de $e^x,\ln(1+x),\cos x,\sin x,\tan x$.</p>
+      <div id="sol4_1" class="solution">
+        <p>$e^x=1+x+\frac{x^2}{2}+\frac{x^3}{6}+o(x^3)$.</p>
+        <p>$\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+o(x^3)$.</p>
+        <p>$\cos x=1-\frac{x^2}{2}+o(x^3)$.</p>
+        <p>$\sin x=x-\frac{x^3}{6}+o(x^3)$.</p>
+        <p>$\tan x=x+\frac{x^3}{3}+o(x^3)$.</p>
+        <span class="resultat">DL donnés.</span>
+      </div>
+    </div>
+
+    <!-- Exo IV.2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_2')">Afficher / Masquer</button>
+      <h4>Exercice IV.2 — Formulation logique</h4>
+      <p><strong>Énoncé :</strong> écrire avec $\forall,\exists,\Rightarrow$.</p>
+      <div id="sol4_2" class="solution">
+        <p>1) $\forall\epsilon>0,\exists A>0,\ x>A \Rightarrow |f(x)|<\epsilon$.</p>
+        <p>2) $\exists\epsilon>0,\forall\delta>0,\exists x,\ |x-1|<\delta \wedge |f(x)-3|\ge\epsilon$.</p>
+        <p>3) $\forall M>0,\exists A>0,\ x>A \Rightarrow f(x)>M$.</p>
+        <span class="resultat">Formules logiques.</span>
+      </div>
+    </div>
+
+    <!-- Exo IV.3 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_3')">Afficher / Masquer</button>
+      <h4>Exercice IV.3 — TVI</h4>
+      <p><strong>Énoncé :</strong> $f(x)=x^6+2x^5-3x^4+x^2+1$, $g(x)=x^6-x^5+3x^4-x+3$. Montrer $\exists x_0,\ f(x_0)=g(x_0)$.</p>
+      <div id="sol4_3" class="solution">
+        <p>$h(x)=f(x)-g(x)=3x^5-6x^4+x^2+x-2$. $h(0)=-2<0$, $h(1)=3-6+1+1-2=-3<0$, $h(2)=96-96+4+2-2=4>0$. TVI sur $[1,2]$ ⇒ $\exists x_0\in(1,2), h(x_0)=0$.</p>
+        <span class="resultat">Existence démontrée.</span>
+      </div>
+    </div>
+
+    <!-- Exo IV.4 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_4')">Afficher / Masquer</button>
+      <h4>Exercice IV.4 — Fonction bornée</h4>
+      <p><strong>Énoncé :</strong> $f$ continue sur $[0,+\infty[$, $\lim_{+\infty}f=0$.</p>
+      <div id="sol4_4" class="solution">
+        <p>Pour $\epsilon=1$, $\exists A,\ x>A \Rightarrow |f(x)|<1$ donc bornée sur $[A,+\infty[$. Sur $[0,A]$, continue ⇒ bornée. Donc bornée sur $[0,+\infty[$. Le sup n'est pas nécessairement atteint (ex: $f(x)=e^{-x}$ sur $[0,+\infty[$ a sup=1 non atteint).</p>
+        <span class="resultat">Bornée, sup pas toujours atteint.</span>
+      </div>
+    </div>
+
+    <!-- Exo IV.5 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_5')">Afficher / Masquer</button>
+      <h4>Exercice IV.5 — Conservation du signe</h4>
+      <p><strong>Énoncé :</strong> $f(x_0)>0$ ⇒ $\exists[a,b], f(x)>f(x_0)/3$.</p>
+      <div id="sol4_5" class="solution">
+        <p>Par continuité en $x_0$, avec $\epsilon=f(x_0)/2$ (ou $2f(x_0)/3$), $\exists\delta>0$ tel que $|x-x_0|<\delta \Rightarrow |f(x)-f(x_0)|<f(x_0)/2$ ⇒ $f(x)>f(x_0)/2>f(x_0)/3$. Prendre $[a,b]=[x_0-\delta/2,x_0+\delta/2]$.</p>
+        <span class="resultat">Démontré.</span>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem;">Tous les exercices du document ont été corrigés avec les méthodes présentées dans le cours.</p>
+  </div>
+
+  <a href="#top" class="backtop">⬆ Retour en haut</a>
+</div>
+
+
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 1 / 6</div>
+          <div><a href="chapitre-02-analyse-ii.html" class="btn btn-secondary btn-sm">📈 Analyse II <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

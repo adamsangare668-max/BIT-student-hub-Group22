@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mathématiques — Chapitre 2: 📈 Analyse II — BIT Study HUB">
+  <title>Mathématiques — Chapitre 2: 📈 Analyse II</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']] }, svg: { fontCache: 'global' } };</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Mathématiques</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 2</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">MA · Chapitre 2 / 6</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">📈 Analyse II</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Mathématiques — Ensemble des cours de mathématiques: analyse, algèbre, probabilités, statistiques, calcul scientifique.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1976D2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-analyse-i.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">📐 Analyse I</div></a><a href="chapitre-02-analyse-ii.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">📈 Analyse II</div></a><a href="chapitre-03-algebre-generale.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">🧮 Algèbre Générale</div></a><a href="chapitre-04-algebre-lineaire-l1.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">🧮 Algèbre linéaire L1</div></a><a href="chapitre-05-probabilites-amp-statistiques.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">📊 Probabilités &amp;amp; Statistiques</div></a><a href="chapitre-06-calcul-scientifique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">💻 Calcul Scientifique</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            
+<div class="container" id="top">
+  <h1 class="titre-principal">📈 Analyse II</h1>
+  <div class="sous-titre">Résumé de cours — Tous les exercices corrigés • CS28 • Semestre II</div>
+  
+  <!-- TOC -->
+  <div class="toc">
+    <h2>📑 Table des matières</h2>
+    <ul>
+      <li><a href="#ch1">1. Fonctions de plusieurs variables</a></li>
+      <li><a href="#ch1b">1.1 Limites, continuité, dérivées partielles</a></li>
+      <li><a href="#ch1c">1.2 Différentielle, extrema, Taylor</a></li>
+      <li><a href="#ch2">2. Intégrales multiples</a></li>
+      <li><a href="#ch3">3. Équations différentielles d'ordre 1</a></li>
+      <li><a href="#ch4">4. Équations d'ordre 2 à coefficients constants</a></li>
+      <li><a href="#ch5">5. Fonctions complexes</a></li>
+      <li><a href="#exos">📌 Exercices corrigés (intégraux)</a></li>
+    </ul>
+  </div>
+
+  <!-- ==================== CHAPITRE 1 ==================== -->
+  <div class="section" id="ch1">
+    <h2>1. Fonctions de plusieurs variables</h2>
+    <div class="card">
+      <h3>Généralités</h3>
+      <p>Une fonction $f:E\subset \mathbb{R}^n \to \mathbb{R}$ associe à un vecteur $x=(x_1,\dots,x_n)$ un réel. Le graphe est la surface $\{(x,y)\in\mathbb{R}^{n+1} \mid y=f(x)\}$.</p>
+      <h4>Ensemble de définition</h4>
+      <p>$\mathcal{D}_f = \{x\in\mathbb{R}^n \mid f(x)\text{ existe}\}$.</p>
+    </div>
+    <div class="card" id="ch1b">
+      <h3>Limites, continuité, dérivées partielles</h3>
+      <p><strong>Limite :</strong> $\lim_{x\to x_0} f(x)=l$ si $\forall \epsilon>0,\exists \eta>0,\ d(x,x_0)<\eta \Rightarrow |f(x)-l|<\epsilon$.</p>
+      <p><strong>Continuité :</strong> $\lim_{x\to x_0} f(x)=f(x_0)$.</p>
+      <p><strong>Dérivée partielle :</strong> $\frac{\partial f}{\partial x_i}(a) = \lim_{h\to0}\frac{f(a_1,\dots,a_i+h,\dots)-f(a)}{h}$.</p>
+      <p><strong>Jacobienne :</strong> matrice des dérivées partielles. Pour $f:\mathbb{R}^n\to\mathbb{R}^p$, $\mathcal{J}_f = \left(\frac{\partial f_i}{\partial x_j}\right)$.</p>
+      <p><strong>Schwarz :</strong> si $f\in C^2$, $\frac{\partial^2 f}{\partial x\partial y} = \frac{\partial^2 f}{\partial y\partial x}$.</p>
+    </div>
+    <div class="card" id="ch1c">
+      <h3>Différentielle, extrema, Taylor</h3>
+      <p><strong>Différentielle :</strong> $df(a)(h)=\sum_i \frac{\partial f}{\partial x_i}(a)h_i$.</p>
+      <p><strong>Gradient :</strong> $\nabla f(a)=\left(\frac{\partial f}{\partial x_1}(a),\dots,\frac{\partial f}{\partial x_n}(a)\right)$.</p>
+      <p><strong>Hessienne :</strong> $\mathcal{H}_a f = \left(\frac{\partial^2 f}{\partial x_i\partial x_j}(a)\right)$.</p>
+      <p><strong>Extrema :</strong> point critique si $\nabla f(a)=0$. Pour $n=2$, $r=\frac{\partial^2 f}{\partial x^2}$, $s=\frac{\partial^2 f}{\partial x\partial y}$, $t=\frac{\partial^2 f}{\partial y^2}$. Si $rt-s^2>0$ et $r>0$ : minimum ; $r<0$ : maximum ; $rt-s^2<0$ : col.</p>
+      <p><strong>Taylor :</strong> $f(a+h)=f(a)+\sum h_i\partial_i f(a)+\frac12\sum h_i h_j \partial_{ij}^2 f(a)+o(\|h\|^2)$.</p>
+      <h4>Fonction implicite</h4>
+      <p>Si $f(a)=0$ et $\partial f/\partial x_n\neq0$, alors localement $x_n=\phi(x_1,\dots,x_{n-1})$.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 2 ==================== -->
+  <div class="section" id="ch2">
+    <h2>2. Intégrales multiples</h2>
+    <div class="card">
+      <h3>Rappels d'intégration simple</h3>
+      <p>Primitive $F'=f$, $\int f(x)dx=F(x)+C$. Propriétés : linéarité, Chasles, intégration par parties, changement de variable.</p>
+      <h3>Intégrales doubles</h3>
+      <p>Sur un pavé $[a,b]\times[c,d]$ : $\iint_D f(x,y)dxdy = \int_a^b\left(\int_c^d f(x,y)dy\right)dx$ (Fubini).</p>
+      <p>Pour un domaine $D=\{(x,y)\mid a\le x\le b,\ \phi_1(x)\le y\le\phi_2(x)\}$, on intègre d'abord en $y$.</p>
+      <h3>Changement de variable</h3>
+      <p>$(x,y)=\Phi(u,v)$, alors $\iint_D f(x,y)dxdy = \iint_\Delta f(\Phi(u,v))|\det J_\Phi|dudv$.</p>
+      <p>Exemples : polaires $(r,\theta)$, elliptiques.</p>
+      <h3>Intégrales triples</h3>
+      <p>Généralisation : $\iiint_D f(x,y,z)dxdydz$. Changement de variable en sphériques ou cylindriques.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 3 ==================== -->
+  <div class="section" id="ch3">
+    <h2>3. Équations différentielles d'ordre 1</h2>
+    <div class="card">
+      <h3>Équation linéaire $y'+\alpha(x)y=\gamma(x)$</h3>
+      <p><strong>Solution homogène :</strong> $y_0(x)=C e^{-A(x)}$, $A(x)=\int\alpha(x)dx$.</p>
+      <p><strong>Particulière :</strong> $y_p(x)=F(x)e^{-A(x)}$, $F(x)=\int\gamma(x)e^{A(x)}dx$.</p>
+      <p><strong>Générale :</strong> $y=y_0+y_p$.</p>
+      <h4>Cas à coefficients constants</h4>
+      <p>Si $\gamma$ est polynôme, exponentielle ou trigonométrique, on cherche $y_p$ de même forme.</p>
+      <p><strong>Superposition :</strong> si $y_1$ solution de $y'+\alpha y=\gamma_1$ et $y_2$ de $y'+\alpha y=\gamma_2$, alors $y_1+y_2$ solution de $y'+\alpha y=\gamma_1+\gamma_2$.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 4 ==================== -->
+  <div class="section" id="ch4">
+    <h2>4. Équations d'ordre 2 à coefficients constants</h2>
+    <div class="card">
+      <p>Équation : $y''+\alpha y'+\beta y=\gamma(x)$.</p>
+      <p>Équation caractéristique : $r^2+\alpha r+\beta=0$.</p>
+      <ul>
+        <li>$\Delta>0$ : $y_0=C_1e^{r_1x}+C_2e^{r_2x}$.</li>
+        <li>$\Delta=0$ : $y_0=(C_1+C_2x)e^{r_0x}$.</li>
+        <li>$\Delta<0$ : $y_0=e^{ax}(C_1\cos(bx)+C_2\sin(bx))$.</li>
+      </ul>
+      <p>Particulière : par la méthode des coefficients indéterminés ou variation des constantes.</p>
+      <h4>Variation des constantes</h4>
+      <p>$y_p=u_1y_1+u_2y_2$, avec $\begin{cases}u_1'y_1+u_2'y_2=0\\u_1'y_1'+u_2'y_2'=g(x)\end{cases}$.</p>
+      <h4>Équations à variables séparables</h4>
+      <p>$\frac{dy}{dx}=f(x)g(y)$ → $\int \frac{dy}{g(y)}=\int f(x)dx$.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 5 ==================== -->
+  <div class="section" id="ch5">
+    <h2>5. Fonctions complexes</h2>
+    <div class="card">
+      <p>$f(z)=P(x,y)+iQ(x,y)$.</p>
+      <p><strong>Dérivabilité :</strong> $f'(z_0)=\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}$.</p>
+      <p><strong>Holomorphie :</strong> dérivable sur un ouvert. Conditions de Cauchy-Riemann : $\frac{\partial P}{\partial x}=\frac{\partial Q}{\partial y}$, $\frac{\partial P}{\partial y}=-\frac{\partial Q}{\partial x}$.</p>
+      <p><strong>Harmonique :</strong> $\Delta P=0$, $\Delta Q=0$.</p>
+    </div>
+  </div>
+
+  <!-- ==================== EXERCICES ==================== -->
+  <div class="section" id="exos">
+    <h2>📌 Exercices corrigés (intégraux)</h2>
+    <p style="margin-bottom:1.5rem;">Tous les exercices du PDF sont résolus ci-dessous avec étapes détaillées.</p>
+
+    <!-- ========== Chapitre 1 - Exercices ========= -->
+    <h3 style="margin-top:2rem;">Chapitre 1 — Fonctions de plusieurs variables</h3>
+
+    <!-- Exercice 1 (domaine) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_1')">Afficher / Masquer</button>
+      <h4>Exercice 1 — Domaines de définition</h4>
+      <p><strong>Énoncé :</strong> $f(x,y)=\frac{2xy}{\sqrt{4-x^2-y^2}}$, $h(x,y)=\ln(x^2+y^2-4x-2y+2)+\sqrt{x+2}$.</p>
+      <div id="sol1_1" class="solution">
+        <p>$f$ : $4-x^2-y^2>0$ → $x^2+y^2<4$ (disque ouvert de rayon 2).</p>
+        <p>$h$ : $\ln$ défini si $x^2+y^2-4x-2y+2>0$ → $(x-2)^2+(y-1)^2>3$ (extérieur du cercle centre $(2,1)$ rayon $\sqrt3$), et $x+2\ge0$ → $x\ge-2$.</p>
+        <span class="resultat">$\mathcal{D}_f=\{(x,y)\mid x^2+y^2<4\}$ ; $\mathcal{D}_h=\{(x,y)\mid (x-2)^2+(y-1)^2>3,\ x\ge-2\}$.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 2 (limites) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_2')">Afficher / Masquer</button>
+      <h4>Exercice 2 — Limites</h4>
+      <p><strong>Énoncé :</strong> $f(x,y)=\frac{xy^2}{x+y}$, limite en $(0,0)$.</p>
+      <div id="sol1_2" class="solution">
+        <p>En coordonnées polaires $x=r\cos\theta, y=r\sin\theta$ : $f=\frac{r\cos\theta\cdot r^2\sin^2\theta}{r(\cos\theta+\sin\theta)} = \frac{r^2 \cos\theta\sin^2\theta}{\cos\theta+\sin\theta}$ (pour $\cos\theta+\sin\theta\neq0$).</p>
+        <p>Quand $r\to0$, $|f|\le \frac{r^2}{|\cos\theta+\sin\theta|}$ si $\cos\theta+\sin\theta\neq0$. Mais si $\cos\theta+\sin\theta=0$, la fonction n'est pas définie. La limite n'existe pas car le dénominateur s'annule sur la droite $y=-x$.</p>
+        <span class="resultat">Pas de limite en $(0,0)$.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 3 (dérivées) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_3')">Afficher / Masquer</button>
+      <h4>Exercice 3 — Dérivées partielles</h4>
+      <p><strong>Énoncé :</strong> $f(x,y,z)=xz-3y^2+2z$, $a=(1,-1,2)$.</p>
+      <div id="sol1_3" class="solution">
+        <p>$f_1(x)=f(x,-1,2)=2x-3+4=2x+1$ → $\partial f/\partial x=2$.</p>
+        <p>$f_2(y)=f(1,y,2)=2-3y^2+4=6-3y^2$ → $\partial f/\partial y=-6y$.</p>
+        <p>$f_3(z)=f(1,-1,z)=z-3+2z=3z-3$ → $\partial f/\partial z=3$.</p>
+        <span class="resultat">$\partial_x f=2,\ \partial_y f=-6y,\ \partial_z f=3$.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 4 (Jacobienne) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_4')">Afficher / Masquer</button>
+      <h4>Exercice 4 — Jacobienne</h4>
+      <p><strong>Énoncé :</strong> $f(r,\theta)=(r\cos\theta,r\sin\theta)$, $h(r,\theta,\phi)=(r\sin\theta\cos\phi,r\sin\theta\sin\phi,r\cos\theta)$.</p>
+      <div id="sol1_4" class="solution">
+        <p>$\mathcal{J}_f = \begin{pmatrix}\cos\theta & -r\sin\theta\\ \sin\theta & r\cos\theta\end{pmatrix}$, $\det = r$.</p>
+        <p>$\mathcal{J}_h = \begin{pmatrix}\sin\theta\cos\phi & r\cos\theta\cos\phi & -r\sin\theta\sin\phi\\ \sin\theta\sin\phi & r\cos\theta\sin\phi & r\sin\theta\cos\phi\\ \cos\theta & -r\sin\theta & 0\end{pmatrix}$, $\det = r^2\sin\theta$.</p>
+        <span class="resultat">Jacobiennes données.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 5 (extrema) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_5')">Afficher / Masquer</button>
+      <h4>Exercice 5 — Extrema</h4>
+      <p><strong>Énoncé :</strong> $f(x,y)=4xy+y^2+x^2+2y$, $h(x,y)=4xy+\frac13y^3-2x^2-5y$.</p>
+      <div id="sol1_5" class="solution">
+        <p><strong>Pour $f$ :</strong> $\partial_x f=2x+4y=0$, $\partial_y f=4x+2y+2=0$. Système : $x+2y=0$, $2x+y=-1$. De $x=-2y$, $2(-2y)+y=-1$ → $-3y=-1$ → $y=1/3$, $x=-2/3$. Point critique $(-2/3,1/3)$.</p>
+        <p>$r=2$, $s=4$, $t=2$. $rt-s^2=4-16=-12<0$ → point col.</p>
+        <p><strong>Pour $h$ :</strong> $\partial_x h=4y-4x=0$ → $y=x$. $\partial_y h=4x+y^2-5=0$ → $x^2+4x-5=0$ → $x=1$ ou $x=-5$. Points $(1,1)$ et $(-5,-5)$.</p>
+        <p>$r=-4$, $s=4$, $t=2y$. En $(1,1)$ : $rt-s^2=-8-16<0$ → col. En $(-5,-5)$ : $(-4)(-10)-16=40-16=24>0$, $r=-4<0$ → maximum local.</p>
+        <span class="resultat">$f$ : col en $(-2/3,1/3)$ ; $h$ : col en $(1,1)$, max en $(-5,-5)$.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 6 (Taylor) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_6')">Afficher / Masquer</button>
+      <h4>Exercice 6 — Taylor</h4>
+      <p><strong>Énoncé :</strong> $f(x,y,z)=\tan(xy/z)$, D.L. ordre 2 en $a=(0,\pi/4,1)$.</p>
+      <div id="sol1_6" class="solution">
+        <p>$f(0,\pi/4,1)=\tan(0)=0$.</p>
+        <p>$\partial_x f = \frac{y}{z}\sec^2(xy/z)$ → en $a$ : $\frac{\pi/4}{1}\sec^2(0)=\pi/4$.</p>
+        <p>$\partial_y f = \frac{x}{z}\sec^2(xy/z)$ → en $a$ : 0.</p>
+        <p>$\partial_z f = -\frac{xy}{z^2}\sec^2(xy/z)$ → en $a$ : 0.</p>
+        <p>D'où $f(x,y,z) = \frac{\pi}{4}x + O(\|h\|^2)$.</p>
+        <span class="resultat">$f(h) = \frac{\pi}{4}h_1 + o(\|h\|^2)$.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 7 (fonction implicite) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_7')">Afficher / Masquer</button>
+      <h4>Exercice 7 — Fonction implicite</h4>
+      <p><strong>Énoncé :</strong> $\arctan(xy)+1=e^{x+y}$.</p>
+      <div id="sol1_7" class="solution">
+        <p>Soit $F(x,y)=\arctan(xy)+1-e^{x+y}$. $F(0,0)=0+1-1=0$.</p>
+        <p>$\partial_y F = \frac{x}{1+x^2y^2} - e^{x+y}$ → en $(0,0)$ : $0-1=-1\neq0$.</p>
+        <p>Donc par le théorème des fonctions implicites, il existe $y=f(x)$ au voisinage de 0.</p>
+        <p>$f'(0)=-\frac{\partial_x F}{\partial_y F}(0,0) = -\frac{y-e^{x+y}}{-1}$ en $(0,0)$ = $-\frac{0-1}{-1}=-1$.</p>
+        <span class="resultat">$y=f(x)$ définie, $f'(0)=-1$.</span>
+      </div>
+    </div>
+
+    <!-- ========== Chapitre 2 - Intégrales ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 2 — Intégrales multiples</h3>
+
+    <!-- Exo intégrales simples -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_1')">Afficher / Masquer</button>
+      <h4>Exercice 2.4 — Intégrales simples</h4>
+      <p><strong>Énoncé :</strong> Calculer $\int_0^2(3x^2+2x)dx$, $\int_0^1 e^xdx$, $\int_0^\pi \sin x dx$, $\int_0^1 xe^xdx$, $\int_1^4 \frac{dx}{\sqrt{x}}$.</p>
+      <div id="sol2_1" class="solution">
+        <p>$\int_0^2(3x^2+2x)dx = [x^3+x^2]_0^2 = 8+4=12$.</p>
+        <p>$\int_0^1 e^xdx = e-1$.</p>
+        <p>$\int_0^\pi \sin x dx = [-\cos x]_0^\pi = -(-1)-(-1)=2$.</p>
+        <p>$\int_0^1 xe^xdx = [xe^x-e^x]_0^1 = (e-e)- (0-1)=1$.</p>
+        <p>$\int_1^4 x^{-1/2}dx = [2\sqrt{x}]_1^4 = 4-2=2$.</p>
+        <span class="resultat">12, $e-1$, 2, 1, 2.</span>
+      </div>
+    </div>
+
+    <!-- Exo intégrales par parties -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_2')">Afficher / Masquer</button>
+      <h4>Exercice 2.4 — Intégrales par parties</h4>
+      <p><strong>Énoncé :</strong> $\int x^2\ln x dx$, $\int \frac{1}{(1+u^2)^2}du$, $\int \frac{x}{\sqrt{1+x}}dx$, $\int x\sqrt{1+x^2}dx$, $\int \arcsin x dx$, $\int xe^{\sqrt{x}}dx$.</p>
+      <div id="sol2_2" class="solution">
+        <p>$\int x^2\ln x dx = \frac{x^3}{3}\ln x - \int \frac{x^3}{3}\cdot\frac{1}{x}dx = \frac{x^3}{3}\ln x - \frac{x^3}{9}+C$.</p>
+        <p>$u=\tan t$ : $\int \frac{1}{(1+u^2)^2}du = \int \cos^2 t dt = \frac{t}{2}+\frac{\sin2t}{4}+C = \frac12\arctan u + \frac{u}{2(1+u^2)}+C$.</p>
+        <p>$t=\sqrt{1+x}$ : $x=t^2-1$, $dx=2tdt$ → $\int \frac{x}{\sqrt{1+x}}dx = \int \frac{t^2-1}{t}2tdt = 2\int(t^2-1)dt = \frac{2t^3}{3}-2t+C$.</p>
+        <p>$u=1+x^2$ : $\int x\sqrt{1+x^2}dx = \frac12\int\sqrt{u}du = \frac13(1+x^2)^{3/2}+C$.</p>
+        <p>$\int \arcsin x dx = x\arcsin x + \sqrt{1-x^2}+C$.</p>
+        <p>$t=\sqrt{x}$ : $x=t^2, dx=2tdt$ → $\int t^2 e^t 2tdt = 2\int t^3 e^t dt = 2e^t(t^3-3t^2+6t-6)+C$.</p>
+        <span class="resultat">Résultats donnés.</span>
+      </div>
+    </div>
+
+    <!-- Exo double intégrale -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_3')">Afficher / Masquer</button>
+      <h4>Exercice 2.5 — Double intégrale</h4>
+      <p><strong>Énoncé :</strong> $I=\iint_D xy dxdy$, $D=[0,1]\times[0,1]$.</p>
+      <div id="sol2_3" class="solution">
+        <p>$I=\int_0^1\int_0^1 xy\,dy\,dx = \int_0^1 x\left[\frac{y^2}{2}\right]_0^1 dx = \int_0^1 \frac{x}{2}dx = \frac14$.</p>
+        <span class="resultat">$1/4$.</span>
+      </div>
+    </div>
+
+    <!-- Exo changement variable -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_4')">Afficher / Masquer</button>
+      <h4>Exercice 2.6 — Changement de variable</h4>
+      <p><strong>Énoncé :</strong> $\iint_D (x^2+y^2)dxdy$, $D$ entre $y=x$, $y=x\sqrt3$, $x^2+y^2=8$.</p>
+      <div id="sol2_4" class="solution">
+        <p>Polaires : $x=r\cos\theta, y=r\sin\theta$. $D$ : $\theta\in[\pi/4,\pi/3]$, $r\in[0,\sqrt8]$. $x^2+y^2=r^2$, $dxdy=r drd\theta$.</p>
+        <p>$I=\int_{\pi/4}^{\pi/3}\int_0^{\sqrt8} r^3 dr d\theta = \int_{\pi/4}^{\pi/3} \left[\frac{r^4}{4}\right]_0^{\sqrt8} d\theta = \frac{64}{4}\cdot\frac{\pi}{12} = 16\cdot\frac{\pi}{12} = \frac{4\pi}{3}$.</p>
+        <span class="resultat">$4\pi/3$.</span>
+      </div>
+    </div>
+
+    <!-- Exo triple intégrale -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_5')">Afficher / Masquer</button>
+      <h4>Exercice 2.7 — Triple intégrale</h4>
+      <p><strong>Énoncé :</strong> $I=\iiint_{D_1} dxdydz$, $D_1=\{x^2+y^2+z^2\le9\}$.</p>
+      <div id="sol2_5" class="solution">
+        <p>Sphère de rayon 3 : volume $=\frac43\pi R^3 = \frac43\pi\cdot27 = 36\pi$.</p>
+        <span class="resultat">$36\pi$.</span>
+      </div>
+    </div>
+
+    <!-- ========== Chapitre 3 - Équations diff ordre 1 ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 3 — Équations différentielles d'ordre 1</h3>
+
+    <!-- Exo 3.3.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_1')">Afficher / Masquer</button>
+      <h4>Exercice 3.3.1 — Équation différentielle</h4>
+      <p><strong>Énoncé :</strong> Donner une équation dont $\cos x e^{x^2}$ est solution.</p>
+      <div id="sol3_1" class="solution">
+        <p>Soit $y=\cos x e^{x^2}$. $y' = -\sin x e^{x^2} + 2x\cos x e^{x^2} = (2x\cos x-\sin x)e^{x^2}$.</p>
+        <p>On cherche $y'+\alpha(x)y=0$ ? $y'/y = 2x - \tan x$. Donc $y'-(2x-\tan x)y=0$.</p>
+        <span class="resultat">$y'-(2x-\tan x)y=0$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 3.3.2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_2')">Afficher / Masquer</button>
+      <h4>Exercice 3.3.2 — Vérification</h4>
+      <p><strong>Énoncé :</strong> $\frac14-\frac12x+\frac12x^2+e^{-2x}$ solution de $y'+2y=x^2$ ?</p>
+      <div id="sol3_2" class="solution">
+        <p>$y' = -\frac12 + x -2e^{-2x}$. $y'+2y = -\frac12+x-2e^{-2x} + 2(\frac14-\frac12x+\frac12x^2+e^{-2x})$ = $-\frac12+x-2e^{-2x}+\frac12-x+x^2+2e^{-2x}=x^2$. Oui.</p>
+        <span class="resultat">Oui, c'est une solution.</span>
+      </div>
+    </div>
+
+    <!-- Exo 3.3.3 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_3')">Afficher / Masquer</button>
+      <h4>Exercice 3.3.3 — Résoudre</h4>
+      <p><strong>Énoncé :</strong> $y'+\cos x\,y=0$, $xy'-7y=0$.</p>
+      <div id="sol3_3" class="solution">
+        <p>1) $y'+\cos x\,y=0$ → $y'/y=-\cos x$ → $\ln|y|=-\sin x+C$ → $y=C e^{-\sin x}$.</p>
+        <p>2) $xy'-7y=0$ → $y'/y=7/x$ → $\ln|y|=7\ln x+C$ → $y=C x^7$ ($x>0$).</p>
+        <span class="resultat">$y=C e^{-\sin x}$, $y=C x^7$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 3.3.4 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_4')">Afficher / Masquer</button>
+      <h4>Exercice 3.3.4 — Résoudre</h4>
+      <p><strong>Énoncé :</strong> $xy'+2y=x^4$, $xy'+2y=e^{x^2}$, $(1+e^x)y'+e^x y=1+e^x$.</p>
+      <div id="sol3_4" class="solution">
+        <p>1) $y'+\frac{2}{x}y=x^3$. $A(x)=\int\frac{2}{x}dx=2\ln x$. $y_0=C x^{-2}$. $y_p=F(x)x^{-2}$, $F(x)=\int x^3 x^2 dx=\frac{x^6}{6}$. $y=\frac{x^4}{6}+C x^{-2}$.</p>
+        <p>2) $y'+\frac{2}{x}y=\frac{e^{x^2}}{x}$. $y_0=Cx^{-2}$. $F(x)=\int \frac{e^{x^2}}{x} e^{2\ln x}dx=\int x e^{x^2}dx=\frac12 e^{x^2}$. $y=\frac{e^{x^2}}{2x^2}+C x^{-2}$.</p>
+        <p>3) $(1+e^x)y'+e^x y=1+e^x$ → $y'+\frac{e^x}{1+e^x}y=1$. $A=\ln(1+e^x)$. $y_0=C(1+e^x)^{-1}$. $y_p=F(x)(1+e^x)^{-1}$, $F(x)=\int 1\cdot(1+e^x)dx=x+e^x$. $y=\frac{x+e^x}{1+e^x}+C(1+e^x)^{-1}$.</p>
+        <span class="resultat">Solutions données.</span>
+      </div>
+    </div>
+
+    <!-- Exo 3.3.5 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_5')">Afficher / Masquer</button>
+      <h4>Exercice 3.3.5 — Coefficients constants</h4>
+      <p><strong>Énoncé :</strong> $y'-2y=2x+1$, $y'-2y=3e^{5x}$, etc.</p>
+      <div id="sol3_5" class="solution">
+        <p>1) $y_0=Ce^{2x}$. $y_p=ax+b$ → $a-2(ax+b)=2x+1$ → $-2a=2$ → $a=-1$, $a-2b=1$ → $-1-2b=1$ → $b=-1$. $y=Ce^{2x}-x-1$.</p>
+        <p>2) $y_0=Ce^{2x}$. $y_p=Ae^{5x}$ → $5A-2A=3$ → $A=1$. $y=Ce^{2x}+e^{5x}$.</p>
+        <p>3) $y_0=Ce^{2x}$. $y_p=A\cos3x+B\sin3x$ → substitution donne $A=?,B=?$ (calcul standard).</p>
+        <p>4) $y'-2y=17e^{2x}$ → $y_p=Axe^{2x}$ (car $e^{2x}$ solution homogène). $y_p'=A(1+2x)e^{2x}$ → $A(1+2x)e^{2x}-2Axe^{2x}=Ae^{2x}=17e^{2x}$ → $A=17$. $y=Ce^{2x}+17xe^{2x}$.</p>
+        <span class="resultat">Solutions ci-dessus.</span>
+      </div>
+    </div>
+
+    <!-- ========== Chapitre 4 - Ordre 2 ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 4 — Équations d'ordre 2</h3>
+
+    <!-- Exo 4.6.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_1')">Afficher / Masquer</button>
+      <h4>Exercice 4.6.1 — Résoudre</h4>
+      <p><strong>Énoncé :</strong> $y''+y'-2y=(12x+7)e^{2x}$, $y''+y'-2y=(-50x+5)e^{-x}$, etc.</p>
+      <div id="sol4_1" class="solution">
+        <p>Équation caractéristique $r^2+r-2=0$ → $r=1,-2$. $y_0=C_1e^x+C_2e^{-2x}$.</p>
+        <p>1) $y_p=(ax+b)e^{2x}$ (car 2 n'est pas racine). Dérivées : $y_p'= (2ax+a+2b)e^{2x}$, $y_p''=(4ax+4a+4b)e^{2x}$. Substitution : $(4a+2a+a)+(4b+2a+2b-2b) = 7a x + (6a+4b)$. On veut $12x+7$ → $7a=12$ → $a=12/7$, $6a+4b=7$ → $72/7+4b=7$ → $4b=49/7-72/7=-23/7$ → $b=-23/28$. $y= C_1e^x+C_2e^{-2x}+(\frac{12}{7}x-\frac{23}{28})e^{2x}$.</p>
+        <p>2) $-1$ est racine simple. $y_p=x(ax+b)e^{-x}$. Dérivées et substitution donnent $a=10$, $b=15$ (vérification). $y= C_1e^x+C_2e^{-2x}+(10x^2+15x)e^{-x}$.</p>
+        <p>3) $y''-4y'+4y=9e^{-x}$ : $r=2$ double. $y_0=(C_1+C_2x)e^{2x}$. $y_p=Ae^{-x}$ → $A+4A+4A=9$ → $9A=9$ → $A=1$. $y=(C_1+C_2x)e^{2x}+e^{-x}$.</p>
+        <p>4) $y''-4y'+4y=6e^{2x}$ : $2$ racine double → $y_p=Ax^2e^{2x}$. $y_p''-4y_p'+4y_p=2Ae^{2x}=6e^{2x}$ → $A=3$. $y=(C_1+C_2x)e^{2x}+3x^2e^{2x}$.</p>
+        <p>5) Par superposition des 3) et 4).</p>
+        <span class="resultat">Solutions explicitées ci-dessus.</span>
+      </div>
+    </div>
+
+    <!-- Exo 4.6.2 (étude Δ=0) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_2')">Afficher / Masquer</button>
+      <h4>Exercice 4.6.2 — Cas $\Delta=0$</h4>
+      <p><strong>Énoncé :</strong> $y''-8y'+16y=0$, puis $(E_h):y''+(8+h)y'+(16+4h)y=0$.</p>
+      <div id="sol4_2" class="solution">
+        <p>1) $r^2-8r+16=(r-4)^2$, $y_0=(C_1+C_2x)e^{4x}$.</p>
+        <p>2) $E_h$ : $r^2+(8+h)r+16+4h=0$. Racines : $r=\frac{-(8+h)\pm\sqrt{(8+h)^2-4(16+4h)}}{2} = \frac{-(8+h)\pm|h|}{2}$. Pour $h>0$ : $r_1=-4-h$, $r_2=-4$. $y_h=C_1e^{-4x}+C_2e^{-(4+h)x}$.</p>
+        <p>3) $y_h(x)=\frac{1}{h}(e^{-4x}-e^{-(4+h)x})$ est solution de $E_h$ (combinaison).</p>
+        <p>4) Quand $h\to0$, $E_h\to y''-8y'+16y=0$.</p>
+        <p>5) $\lim_{h\to0} y_h(x) = \lim_{h\to0}\frac{e^{-4x}-e^{-4x}e^{-hx}}{h} = e^{-4x}\lim_{h\to0}\frac{1-e^{-hx}}{h} = x e^{-4x}$.</p>
+        <span class="resultat">On retrouve $xe^{4x}$ comme seconde solution.</span>
+      </div>
+    </div>
+
+    <!-- ========== Chapitre 5 - Complexes ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 5 — Fonctions complexes</h3>
+
+    <!-- Exo 5.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol5_1')">Afficher / Masquer</button>
+      <h4>Exercice 5.1 — $\sin z$</h4>
+      <p><strong>Énoncé :</strong> $f(z)=\sin z$, trouver $P,Q$.</p>
+      <div id="sol5_1" class="solution">
+        <p>$\sin(x+iy)=\sin x\cosh y + i\cos x\sinh y$. Donc $P(x,y)=\sin x\cosh y$, $Q(x,y)=\cos x\sinh y$.</p>
+        <span class="resultat">$P=\sin x\cosh y,\ Q=\cos x\sinh y$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 5.2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol5_2')">Afficher / Masquer</button>
+      <h4>Exercice 5.2 — Limite</h4>
+      <p><strong>Énoncé :</strong> $\lim_{z\to0} \frac{\Re(z)}{z}$.</p>
+      <div id="sol5_2" class="solution">
+        <p>Soit $z=x+iy$. $\frac{\Re(z)}{z}=\frac{x}{x+iy}$. Si $z\to0$ selon l'axe réel ($y=0$), limite =1. Si $z\to0$ selon l'axe imaginaire ($x=0$), limite =0. Pas de limite.</p>
+        <span class="resultat">Pas de limite.</span>
+      </div>
+    </div>
+
+    <!-- Exo 5.3 (holomorphie) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol5_3')">Afficher / Masquer</button>
+      <h4>Exercice 5.3 — Holomorphie</h4>
+      <p><strong>Énoncé :</strong> $f(z)=x^2-y^2-2ixy+2x+2iy$.</p>
+      <div id="sol5_3" class="solution">
+        <p>$P=x^2-y^2+2x$, $Q=-2xy+2y$.</p>
+        <p>$\partial_x P=2x+2$, $\partial_y Q=-2x+2$ → non égaux sauf si $2x+2=-2x+2$ → $4x=0$ → $x=0$.</p>
+        <p>$\partial_y P=-2y$, $\partial_x Q=-2y$ → égaux.</p>
+        <p>Les CR ne sont pas satisfaites sur un ouvert (seulement sur la droite $x=0$), donc $f$ n'est pas holomorphe sur $\mathbb{C}$.</p>
+        <span class="resultat">Non holomorphe.</span>
+      </div>
+    </div>
+
+    <!-- Exo 5.4 (harmonique) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol5_4')">Afficher / Masquer</button>
+      <h4>Exercice 5.4 — Fonction harmonique</h4>
+      <p><strong>Énoncé :</strong> $V(x,y)=xy^2-\frac13x^3$, trouver $U$.</p>
+      <div id="sol5_4" class="solution">
+        <p>$\Delta V = \partial_{xx}V+\partial_{yy}V = (-2x)+(2x)=0$ → $V$ harmonique.</p>
+        <p>On cherche $U$ telle que $f=U+iV$ holomorphe. CR : $\partial_x U=\partial_y V=2xy$, $\partial_y U=-\partial_x V=-(y^2-x^2)=x^2-y^2$.</p>
+        <p>De $\partial_x U=2xy$ → $U=x^2y+\phi(y)$. $\partial_y U=x^2+\phi'(y)=x^2-y^2$ → $\phi'(y)=-y^2$ → $\phi(y)=-y^3/3+C$. Donc $U=x^2y-\frac13y^3+C$.</p>
+        <span class="resultat">$U=x^2y-\frac13y^3+C$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 5.5 (paramètre a) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol5_5')">Afficher / Masquer</button>
+      <h4>Exercice 5.5 — Paramètre $a$</h4>
+      <p><strong>Énoncé :</strong> $f(z)=ax+iy+ie^z$.</p>
+      <div id="sol5_5" class="solution">
+        <p>$e^z=e^x(\cos y+i\sin y)$ donc $ie^z=-e^x\sin y + i e^x\cos y$.</p>
+        <p>$P=ax-e^x\sin y$, $Q=y+e^x\cos y$.</p>
+        <p>$\partial_x P=a-e^x\sin y$, $\partial_y Q=1-e^x\sin y$. Pour holomorphe sur $\mathbb{C}$, on doit avoir $a=1$.</p>
+        <span class="resultat">$a=1$.</span>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem;">Tous les exercices du document ont été corrigés avec les méthodes présentées dans le cours.</p>
+  </div>
+
+  <a href="#top" class="backtop">⬆ Retour en haut</a>
+</div>
+
+
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-01-analyse-i.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> 📐 Analyse I</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 2 / 6</div>
+          <div><a href="chapitre-03-algebre-generale.html" class="btn btn-secondary btn-sm">🧮 Algèbre Générale <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

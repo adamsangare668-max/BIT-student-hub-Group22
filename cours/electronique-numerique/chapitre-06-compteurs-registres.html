@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Électronique Numérique — Chapitre 6: Compteurs et registres — BIT Study HUB">
+  <title>Électronique Numérique — Chapitre 6: Compteurs et registres</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #7E57C2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #7E57C2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #7E57C2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #7E57C2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #7E57C2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #7E57C2; background: color-mix(in srgb, #7E57C2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #7E57C2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #7E57C2 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Électronique Numérique</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 6</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">CS107 · Chapitre 6 / 6</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">Compteurs et registres</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Compteurs synchrones/asynchrones, modulo N, registres à décalage, mémoires RAM/ROM.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #7E57C2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-systemes-de-numeration.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">Systèmes de numération</div></a>
+                <a href="chapitre-02-algebre-de-boole.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">Algèbre de Boole</div></a>
+                <a href="chapitre-03-portes-logiques.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">Portes logiques</div></a>
+                <a href="chapitre-04-logique-combinatoire.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">Logique combinatoire</div></a>
+                <a href="chapitre-05-logique-sequentielle.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">Logique séquentielle</div></a>
+                <a href="chapitre-06-compteurs-registres.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">Compteurs et registres</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            <div class="container" id="top">
+              <h1>Chapitre 6 — Compteurs et registres</h1>
+              <p>Les compteurs et les registres sont les circuits séquentiels les plus utilisés en électronique numérique. Ils trouvent leur place dans les horloges, les minuteries, les processeurs (compteur programme, registres), les convertisseurs, les afficheurs, etc. Ce dernier chapitre présente leur architecture, leurs modes de fonctionnement et introduit les mémoires RAM et ROM.</p>
+
+              <div class="toc">
+                <a href="#sec1">1. Compteurs asynchrones</a>
+                <a href="#sec2">2. Compteurs synchrones</a>
+                <a href="#sec3">3. Compteurs modulo N</a>
+                <a href="#sec4">4. Registres à décalage</a>
+                <a href="#sec5">5. Mémoires RAM et ROM</a>
+                <a href="#sec6">6. Synthèse et applications</a>
+              </div>
+
+              <div class="definition">
+                <strong>Définition — Compteur :</strong> Un compteur est un circuit séquentiel qui parcourt une séquence déterminée d'états binaires à chaque impulsion d'horloge. Un compteur à n bascules peut compter jusqu'à 2ⁿ états (modulo 2ⁿ). On distingue les compteurs <em>progressifs</em> (incrément), <em>déprogressifs</em> (décrément) et <em>réversibles</em> (les deux selon une commande).
+              </div>
+
+              <h2 id="sec1">1. Compteurs asynchrones</h2>
+              <p>Dans un <strong>compteur asynchrone</strong> (ou "à retenue propagée"), la sortie d'une bascule pilote l'horloge de la suivante. La transition se propage de proche en proche, comme dans un additionneur ripple-carry.</p>
+
+              <div class="exemple">
+                <strong>Exemple — Compteur asynchrone modulo 8 :</strong><br>
+                Trois bascules JK configurées en toggle (J = K = 1) sont cascadées : la sortie Q₀ pilote CLK₁, Q₁ pilote CLK₂. Sur front descendant de l'horloge, Q₀ bascule, et chaque Qᵢ bascule quand Qᵢ₋₁ descend.
+                <pre><code>CLK   ↓   ↓   ↓   ↓   ↓   ↓   ↓   ↓
+Q₀    0   1   0   1   0   1   0   1   0
+Q₁    0   0   1   1   0   0   1   1   0
+Q₂    0   0   0   0   1   1   1   1   0
+État  000 001 010 011 100 101 110 111 000</code></pre>
+                Le compteur parcourt les 8 états de 000 à 111, puis revient à 000.
+              </div>
+
+              <div class="remarque">
+                <strong>Remarque — Inconvénient :</strong> La propagation de la retenue provoque un retard cumulé : à chaque étage, le signal prend plus de temps à se stabiliser. Au-delà de quelques bits, la sortie peut momentanément afficher des valeurs fausses (aléas). C'est pourquoi on préfère souvent les compteurs synchrones.
+              </div>
+
+              <h2 id="sec2">2. Compteurs synchrones</h2>
+              <p>Dans un <strong>compteur synchrone</strong>, toutes les bascules reçoivent le même signal d'horloge. Une logique combinatoire détermine, en fonction de l'état courant, quelles bascules doivent basculer. Tous les changements sont simultanés, d'où un temps de propagation indépendant du nombre de bits.</p>
+
+              <p>Conception d'un compteur synchrone 3 bits en code binaire naturel :</p>
+              <ol>
+                <li>Lister les transitions (table d'excitation).</li>
+                <li>Pour chaque bascule, exprimer les entrées J et K en fonction de l'état présent.</li>
+                <li>Simplifier par Karnaugh.</li>
+                <li>Câbler.</li>
+              </ol>
+              <p>On obtient typiquement : J₀ = K₀ = 1 (bascule toujours), J₁ = K₁ = Q₀, J₂ = K₂ = Q₀·Q₁. La logique est un peu plus complexe mais la vitesse bien supérieure.</p>
+
+              <p>Exemples de compteurs synchrones intégrés : 74LS161 (4 bits, chargement parallèle, enable), 74LS160 (BCD 0 à 9), 74LS190 (réversible BCD).</p>
+
+              <h2 id="sec3">3. Compteurs modulo N</h2>
+              <p>Un compteur <strong>modulo N</strong> parcourt N états distincts puis revient à l'état initial. Avec n bascules, on peut réaliser tout modulo N tel que N ≤ 2ⁿ. La technique consiste à détecter l'état N (ou N−1) et à forcer la remise à zéro.</p>
+
+              <div class="exemple">
+                <strong>Exemple — Compteur modulo 6 :</strong><br>
+                Trois bascules suffisent (2³ = 8 ≥ 6). On déclenche un reset quand le compteur atteint <code>110</code> (6) grâce à une porte NAND : <code>RESET = ¬(Q₂ · Q₁)</code>. La séquence est : 000 → 001 → 010 → 011 → 100 → 101 → 000.<br>
+                Pour un compteur synchrone, on peut aussi utiliser une entrée LOAD parallèle qui recharge la valeur initiale à l'état désiré.
+              </div>
+
+              <p>Les compteurs modulo N trouvent des applications dans les horloges (modulo 60 pour les secondes/minutes, modulo 24 pour les heures), les minuteries, les diviseurs de fréquence, les compteurs d'événements, etc.</p>
+
+              <h2 id="sec4">4. Registres à décalage</h2>
+              <p>Un <strong>registre</strong> est un ensemble de bascules D placées en parallèle, qui permet de stocker un mot binaire de n bits. Un <strong>registre à décalage</strong> (shift register) interconnecte les bascules de façon à propager l'information bit par bit à chaque coup d'horloge.</p>
+
+              <p>Il existe quatre modes de fonctionnement principaux :</p>
+              <ul>
+                <li><strong>SISO</strong> (Serial In - Serial Out) : entrée et sortie série. Utilisé comme ligne à retard ou mémoire tampon.</li>
+                <li><strong>SIPO</strong> (Serial In - Parallel Out) : entrée série, sortie parallèle. Conversion série → parallèle.</li>
+                <li><strong>PISO</strong> (Parallel In - Serial Out) : conversion parallèle → série.</li>
+                <li><strong>PIPO</strong> (Parallel In - Parallel Out) : registre de stockage simple.</li>
+              </ul>
+
+              <div class="exemple">
+                <strong>Exemple — Registre à décalage 4 bits SIPO :</strong><br>
+                Sur chaque front montant d'horloge, le bit d'entrée série est recopié dans Q₀, et chaque Qᵢ prend la valeur de Qᵢ₋₁. Au bout de 4 coups d'horloge, le mot de 4 bits est entièrement disponible en parallèle.
+                <pre><code>Entrée série : 1 0 1 1
+CLK 0 : Q = 0000
+CLK 1 : Q = 0001
+CLK 2 : Q = 0010
+CLK 3 : Q = 0101
+CLK 4 : Q = 1011 ← mot reçu</code></pre>
+              </div>
+
+              <p>En refermant la sortie d'un registre à décalage sur son entrée, on obtient un <strong>compteur en anneau</strong> (un seul 1 circule) ou un <strong>compteur Johnson</strong> (en injectant le complément, on obtient 2N états avec N bascules). Ces structures sont utilisées pour générer des séquences pseudo-aléatoires, des chenillards, du codage Manchester, etc.</p>
+
+              <div class="definition">
+                <strong>Définition — Registre universel :</strong> Un registre universel combine les quatre modes (SISO, SIPO, PISO, PIPO) avec des entrées de sélection de mode et un sens de décalage programmable (gauche/droite). Le 74LS194 est un registre universel 4 bits très répandu.
+              </div>
+
+              <h2 id="sec5">5. Mémoires RAM et ROM</h2>
+
+              <h3>5.1 Mémoire ROM (Read-Only Memory)</h3>
+              <p>La <strong>ROM</strong> est une mémoire morte : son contenu est fixé à la fabrication (ou par programmation électrique une fois pour toutes en PROM, EPROM, EEPROM). Elle conserve les données sans alimentation (mémoire non volatile). On l'utilise pour stocker le firmware, les tables de constantes, les fonctions logiques combinatoires complexes.</p>
+              <p>Une ROM de 2ⁿ mots de m bits se comporte comme un grand décodeur suivi d'un réseau de connexions fixes : elle réalise n'importe quelle fonction combinatoire de n variables à m sorties. Idéale pour implémenter une UAL ou des tables de sinus.</p>
+
+              <h3>5.2 Mémoire RAM (Random Access Memory)</h3>
+              <p>La <strong>RAM</strong> est une mémoire vive accessible en lecture <em>et</em> en écriture, mais volatile (perte des données à l'extinction). On distingue :</p>
+              <ul>
+                <li><strong>SRAM</strong> (Static RAM) : chaque cellule est une bascule (typiquement 6 transistors). Très rapide mais encombrante. Utilisée pour les caches de processeurs.</li>
+                <li><strong>DRAM</strong> (Dynamic RAM) : chaque cellule est un transistor + un condensateur. Le condensateur se décharge progressivement, d'où la nécessité d'un <em>raffraîchissement</em> périodique. Très dense et bon marché, c'est la mémoire principale des ordinateurs (barrettes DIMM).</li>
+              </ul>
+
+              <div class="remarque">
+                <strong>Remarque — Mémoires modernes :</strong> Les mémoires flash (NAND, NOR) sont des mémoires non volatiles accessibles en écriture, qui ont remplacé les ROM dans la plupart des appareils modernes (clés USB, SSD, smartphones). Elles reposent sur des transistors à grille flottante.
+              </div>
+
+              <h2 id="sec6">6. Synthèse et applications</h2>
+              <p>Compteurs et registres sont à la base de tous les systèmes numériques :</p>
+              <ul>
+                <li><strong>Processeurs</strong> : compteur programme (PC), registres généraux, registre d'instruction, accumulateur.</li>
+                <li><strong>Horloges temps réel</strong> : diviseurs de fréquence par 2, 10, 60, etc.</li>
+                <li><strong>Communications série</strong> (UART, SPI, I²C) : registres à décalage pour la conversion série ↔ parallèle.</li>
+                <li><strong>Convertisseurs</strong> : CAN/CNA à approximations successives utilisant un registre et un compteur.</li>
+                <li><strong>Afficheurs</strong> : multiplexage temporel piloté par un compteur.</li>
+              </ul>
+
+              <div class="exercice">
+                <strong>Exercice 1 :</strong> Concevoir un compteur asynchrone modulo 16 (4 bits) avec des bascules JK. Donner le schéma bloc et le chronogramme sur 16 impulsions.<br>
+                <strong>Exercice 2 :</strong> Réaliser un compteur synchrone modulo 10 (BCD) en utilisant la détection de l'état 1001 (9) pour recharger 0000.<br>
+                <strong>Exercice 3 :</strong> Un registre à décalage PISO reçoit en parallèle le mot <code>1101</code>. Décrire les 4 premiers coups d'horloge en sortie série (en supposant un décalage vers la droite, bit LSB en premier).<br>
+                <strong>Exercice 4 :</strong> Une ROM de 1 K mots de 8 bits : quelles sont ses entrées d'adresse et ses sorties de données ? Combien de bits total peut-elle stocker ?
+              </div>
+
+              <div class="definition">
+                <strong>Conclusion du cours —</strong> Au terme de ces six chapitres, vous disposez des fondements complets de l'électronique numérique : systèmes de numération, algèbre de Boole et simplification, portes logiques, logique combinatoire (décodeurs, multiplexeurs, additionneurs, UAL), logique séquentielle (bascules RS, D, JK, T) et enfin compteurs, registres et mémoires. Ces briques de base, assemblées par millions dans les circuits intégrés modernes, sont à l'origine de toute l'informatique d'aujourd'hui. La suite du cursus (CS108 et suivants) abordera l'architecture des processeurs, les FPGA et la conception VLSI.
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-05-logique-sequentielle.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> Logique séquentielle</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 6 / 6</div>
+          <div><a href="index.html" class="btn btn-primary btn-sm">Vue d'ensemble <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

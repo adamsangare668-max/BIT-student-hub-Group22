@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Géométrie Optique — Chapitre 3: 🔦 Miroirs Sphériques — BIT Study HUB">
+  <title>Géométrie Optique — Chapitre 3: 🔦 Miroirs Sphériques</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #F4511E; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #F4511E; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #F4511E; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #F4511E; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #F4511E; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #F4511E; background: color-mix(in srgb, #F4511E 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #F4511E; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']] }, svg: { fontCache: 'global' } };</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #F4511E 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Géométrie Optique</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 3</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">PH101 · Chapitre 3 / 4</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">🔦 Miroirs Sphériques</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Géométrie Optique — Optique géométrique: réflexion, réfraction, lentilles, miroirs, instruments d&#x27;optique.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #F4511E" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-fondamentaux-de-l-optique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">🔬 Fondamentaux de l&#x27;Optique</div></a><a href="chapitre-02-miroir-et-dioptre-plan.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">🪞 Miroir et Dioptre Plan</div></a><a href="chapitre-03-miroirs-spheriques.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">🔦 Miroirs Sphériques</div></a><a href="chapitre-04-optique-geometrique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">🔬 Optique Géométrique</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            
+<div class="container" id="top">
+  <h1 class="titre-principal">🔦 Miroirs Sphériques</h1>
+  <div class="sous-titre">Optique Géométrique — Résumé de cours • CS28 • BIT</div>
+  
+  <!-- TOC -->
+  <div class="toc">
+    <h2>📑 Table des matières</h2>
+    <ul>
+      <li><a href="#sec1">1. Définition et types</a></li>
+      <li><a href="#sec2">2. Éléments caractéristiques</a></li>
+      <li><a href="#sec3">3. Foyer et distance focale</a></li>
+      <li><a href="#sec4">4. Relations de conjugaison</a></li>
+      <li><a href="#sec5">5. Grandissement</a></li>
+      <li><a href="#sec6">6. Rayons particuliers</a></li>
+      <li><a href="#sec7">7. Construction d'images</a></li>
+      <li><a href="#exos">📌 Exercices corrigés</a></li>
+    </ul>
+  </div>
+
+  <!-- ==================== SECTION 1 ==================== -->
+  <div class="section" id="sec1">
+    <h2>1. Définition et types de miroirs sphériques</h2>
+    <div class="card">
+      <h3>Définition</h3>
+      <p>Un miroir sphérique est une surface réfléchissante formée par une calotte sphérique. Il peut être obtenu à partir d'une sphère de centre C et de rayon R.</p>
+      <h4>Deux types de miroirs sphériques</h4>
+      <ul>
+        <li><strong>Miroir concave</strong> : la surface réfléchissante est la face interne de la calotte sphérique (face creuse). C'est un miroir <strong>convergent</strong>.</li>
+        <li><strong>Miroir convexe</strong> : la surface réfléchissante est la face externe de la calotte sphérique (face bombée). C'est un miroir <strong>divergent</strong>.</li>
+      </ul>
+      <div class="figure-placeholder">
+        <p style="color:#7fc9ff;">Figure 2 : Miroir concave et miroir convexe</p>
+        <p>(Schéma : calotte sphérique, face réfléchissante intérieure/extérieure)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 2 ==================== -->
+  <div class="section" id="sec2">
+    <h2>2. Éléments caractéristiques</h2>
+    <div class="card">
+      <ul>
+        <li><strong>Centre de courbure (C)</strong> : centre de la sphère dont est extrait le miroir.</li>
+        <li><strong>Sommet (S)</strong> : point central de la calotte sphérique (pôle du miroir).</li>
+        <li><strong>Axe principal (ou axe optique)</strong> : droite passant par C et S.</li>
+        <li><strong>Rayon de courbure (R)</strong> : distance $R = SC$ (rayon de la sphère).</li>
+        <li><strong>Ouverture du miroir</strong> : diamètre de la calotte sphérique.</li>
+      </ul>
+      <div class="figure-placeholder">
+        <p style="color:#7fc9ff;">Figure 1 : Éléments d'un miroir sphérique</p>
+        <p>(Schéma : C, S, axe principal, rayon R)</p>
+      </div>
+      <div class="card-remarque" style="border-left-color:#b8860b; background:#1f1a10; padding:1rem; margin:1rem 0;">
+        <p><strong>Remarque :</strong> Le miroir sphérique n'est rigoureusement stigmatique que pour les rayons paraxiaux (proches de l'axe). Pour les rayons éloignés, on observe de l'aberration sphérique.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 3 ==================== -->
+  <div class="section" id="sec3">
+    <h2>3. Foyer principal et distance focale</h2>
+    <div class="card">
+      <h3>Foyer principal image (F')</h3>
+      <p>Pour un miroir sphérique à stigmatisme approché, le foyer principal image F' est le point de l'axe principal où convergent les rayons incidents parallèles à l'axe après réflexion.</p>
+      <h4>Position du foyer</h4>
+      <p>Le foyer est situé au milieu du segment SC :</p>
+      <p>$$SF' = \frac{R}{2}$$</p>
+      <h3>Distance focale ($f$)</h3>
+      <p>La distance focale est la distance algébrique entre le sommet S et le foyer F' :</p>
+      <p>$$f = \overline{SF'}$$</p>
+      <ul>
+        <li>Pour un miroir <strong>concave</strong> : $f > 0$ (foyer réel).</li>
+        <li>Pour un miroir <strong>convexe</strong> : $f < 0$ (foyer virtuel).</li>
+      </ul>
+      <div class="figure-placeholder">
+        <p style="color:#7fc9ff;">Figure 3 : Foyer d'un miroir concave et d'un miroir convexe</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 4 ==================== -->
+  <div class="section" id="sec4">
+    <h2>4. Relations de conjugaison</h2>
+    <div class="card">
+      <h3>Formule de Descartes (origine au sommet)</h3>
+      <p>La relation de conjugaison pour les miroirs sphériques s'écrit :</p>
+      <p>$$\frac{1}{\overline{SA'}} + \frac{1}{\overline{SA}} = \frac{1}{f} = \frac{2}{R}$$</p>
+      <p>où :</p>
+      <ul>
+        <li>$\overline{SA}$ : distance algébrique de l'objet au sommet.</li>
+        <li>$\overline{SA'}$ : distance algébrique de l'image au sommet.</li>
+        <li>$f$ : distance focale (positive pour concave, négative pour convexe).</li>
+      </ul>
+      <h4>Convention de signes</h4>
+      <ul>
+        <li>Les distances sont comptées positivement dans le <strong>sens de propagation de la lumière</strong> (généralement de gauche à droite).</li>
+        <li>Un objet est réel si $\overline{SA} < 0$ (objet à gauche du miroir).</li>
+        <li>Une image est réelle si $\overline{SA'} > 0$ (image à gauche du miroir).</li>
+      </ul>
+      <h4>Autre formulation</h4>
+      <p>En posant $p = \overline{SA}$ et $p' = \overline{SA'}$ :</p>
+      <p>$$\frac{1}{p'} + \frac{1}{p} = \frac{1}{f}$$</p>
+      <div class="card-theoreme" style="border-left-color:#2e8b57; background:#11221a; padding:1rem; margin:1rem 0;">
+        <p><strong>Théorème :</strong> Pour un miroir sphérique, tout rayon passant par le centre de courbure C se réfléchit sur lui-même.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 5 ==================== -->
+  <div class="section" id="sec5">
+    <h2>5. Grandissement</h2>
+    <div class="card">
+      <h3>Définition</h3>
+      <p>Le grandissement $\gamma$ est le rapport entre la taille de l'image et celle de l'objet :</p>
+      <p>$$\gamma = \frac{\overline{A'B'}}{\overline{AB}} = -\frac{\overline{SA'}}{\overline{SA}}$$</p>
+      <h4>Interprétation</h4>
+      <ul>
+        <li>$\gamma < 0$ : image <strong>renversée</strong> (par rapport à l'objet).</li>
+        <li>$\gamma > 0$ : image <strong>droite</strong>.</li>
+        <li>$|\gamma| > 1$ : image <strong>plus grande</strong> que l'objet.</li>
+        <li>$|\gamma| < 1$ : image <strong>plus petite</strong> que l'objet.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 6 ==================== -->
+  <div class="section" id="sec6">
+    <h2>6. Rayons particuliers (rayons utiles)</h2>
+    <div class="card">
+      <p>Pour construire l'image d'un objet, on utilise trois rayons dont la marche est connue :</p>
+      <h4>Miroir concave</h4>
+      <ul>
+        <li><strong>Rayon 1 :</strong> incident parallèle à l'axe principal → se réfléchit en passant par le foyer F'.</li>
+        <li><strong>Rayon 2 :</strong> incident passant par le foyer F' → se réfléchit parallèlement à l'axe.</li>
+        <li><strong>Rayon 3 :</strong> incident passant par le centre C → se réfléchit sur lui-même.</li>
+        <li><strong>Rayon 4 :</strong> incident passant par le sommet S → se réfléchit symétriquement par rapport à l'axe.</li>
+      </ul>
+      <div class="figure-placeholder">
+        <p style="color:#7fc9ff;">Figure 4 : Rayons utiles pour un miroir concave</p>
+      </div>
+      <h4>Miroir convexe</h4>
+      <ul>
+        <li><strong>Rayon 1 :</strong> incident parallèle à l'axe → se réfléchit en semblant provenir du foyer F'.</li>
+        <li><strong>Rayon 2 :</strong> incident dirigé vers le foyer F' → se réfléchit parallèlement à l'axe.</li>
+        <li><strong>Rayon 3 :</strong> incident passant par le centre C → se réfléchit sur lui-même.</li>
+        <li><strong>Rayon 4 :</strong> incident passant par le sommet S → se réfléchit symétriquement.</li>
+      </ul>
+      <div class="figure-placeholder">
+        <p style="color:#7fc9ff;">Figure 5 : Rayons utiles pour un miroir convexe</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 7 ==================== -->
+  <div class="section" id="sec7">
+    <h2>7. Construction d'images</h2>
+    <div class="card">
+      <h3>Méthode générale</h3>
+      <p>Pour déterminer l'image A'B' d'un objet AB perpendiculaire à l'axe :</p>
+      <ol>
+        <li>Placer l'objet AB (A sur l'axe, B au-dessus).</li>
+        <li>Tracer deux rayons issus de B en utilisant les rayons utiles.</li>
+        <li>Le point B' est à l'intersection des rayons réfléchis (ou de leurs prolongements).</li>
+        <li>A' est la projection de B' sur l'axe optique.</li>
+      </ol>
+      <h4>Cas particuliers</h4>
+      <ul>
+        <li><strong>Objet à l'infini</strong> : image au foyer F'.</li>
+        <li><strong>Objet au foyer F</strong> : image à l'infini.</li>
+        <li><strong>Objet au centre C</strong> : image en C, renversée, même taille.</li>
+      </ul>
+      <div class="card-remarque" style="border-left-color:#b8860b; background:#1f1a10; padding:1rem; margin:1rem 0;">
+        <p><strong>Remarque :</strong> L'image est réelle lorsque les rayons réfléchis se coupent effectivement. Elle est virtuelle lorsque ce sont leurs prolongements qui se coupent.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== EXERCICES ==================== -->
+  <div class="section" id="exos">
+    <h2>📌 Exercices corrigés</h2>
+    <p style="margin-bottom:1.5rem;">Voici des exercices types sur les miroirs sphériques avec leurs corrections détaillées.</p>
+
+    <!-- Exercice 1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_exo1')">Afficher / Masquer</button>
+      <h4>Exercice 1 — Miroir concave</h4>
+      <p><strong>Énoncé :</strong> Un miroir concave a un rayon de courbure $R = 40$ cm. Un objet de hauteur 2 cm est placé à 30 cm du sommet.</p>
+      <p>1) Calculer la distance focale.</p>
+      <p>2) Déterminer la position de l'image.</p>
+      <p>3) Calculer le grandissement et la taille de l'image.</p>
+      <div id="sol_exo1" class="solution">
+        <p><strong>1) Distance focale :</strong></p>
+        <p>$$f = \frac{R}{2} = \frac{40}{2} = 20\ \text{cm}$$</p>
+        <p>Miroir concave : $f = +20$ cm.</p>
+        <p><strong>2) Position de l'image :</strong></p>
+        <p>Objet réel : $\overline{SA} = -30$ cm.</p>
+        <p>Formule de conjugaison :</p>
+        <p>$$\frac{1}{\overline{SA'}} + \frac{1}{\overline{SA}} = \frac{1}{f}$$</p>
+        <p>$$\frac{1}{\overline{SA'}} - \frac{1}{30} = \frac{1}{20}$$</p>
+        <p>$$\frac{1}{\overline{SA'}} = \frac{1}{20} + \frac{1}{30} = \frac{3}{60} + \frac{2}{60} = \frac{5}{60} = \frac{1}{12}$$</p>
+        <p>$$\overline{SA'} = 12\ \text{cm}$$</p>
+        <p>L'image est réelle (positive), située à 12 cm devant le miroir.</p>
+        <p><strong>3) Grandissement et taille :</strong></p>
+        <p>$$\gamma = -\frac{\overline{SA'}}{\overline{SA}} = -\frac{12}{-30} = 0,4$$</p>
+        <p>$$\overline{A'B'} = \gamma \times \overline{AB} = 0,4 \times 2 = 0,8\ \text{cm}$$</p>
+        <p>$\gamma > 0$ : image droite. $|\gamma| < 1$ : image plus petite.</p>
+        <span class="resultat">$f = 20$ cm ; image à 12 cm ; $\gamma = 0,4$ ; image de 0,8 cm, droite.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_exo2')">Afficher / Masquer</button>
+      <h4>Exercice 2 — Miroir convexe</h4>
+      <p><strong>Énoncé :</strong> Un miroir convexe a un rayon de courbure $R = -60$ cm. Un objet est placé à 40 cm du sommet.</p>
+      <p>1) Calculer la distance focale.</p>
+      <p>2) Déterminer la position de l'image.</p>
+      <p>3) Calculer le grandissement.</p>
+      <div id="sol_exo2" class="solution">
+        <p><strong>1) Distance focale :</strong></p>
+        <p>$$f = \frac{R}{2} = \frac{-60}{2} = -30\ \text{cm}$$</p>
+        <p><strong>2) Position de l'image :</strong></p>
+        <p>Objet réel : $\overline{SA} = -40$ cm.</p>
+        <p>$$\frac{1}{\overline{SA'}} - \frac{1}{40} = \frac{1}{-30} = -\frac{1}{30}$$</p>
+        <p>$$\frac{1}{\overline{SA'}} = -\frac{1}{30} + \frac{1}{40} = \frac{-4 + 3}{120} = -\frac{1}{120}$$</p>
+        <p>$$\overline{SA'} = -120\ \text{cm}$$</p>
+        <p>L'image est virtuelle (négative), située à 120 cm derrière le miroir.</p>
+        <p><strong>3) Grandissement :</strong></p>
+        <p>$$\gamma = -\frac{\overline{SA'}}{\overline{SA}} = -\frac{-120}{-40} = -3$$</p>
+        <p>$\gamma < 0$ : image renversée. $|\gamma| > 1$ : image agrandie.</p>
+        <span class="resultat">$f = -30$ cm ; image virtuelle à 120 cm ; $\gamma = -3$.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 3 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_exo3')">Afficher / Masquer</button>
+      <h4>Exercice 3 — Détermination du rayon</h4>
+      <p><strong>Énoncé :</strong> Un objet est placé à 25 cm devant un miroir concave. L'image se forme à 50 cm devant le miroir. Calculer le rayon de courbure du miroir.</p>
+      <div id="sol_exo3" class="solution">
+        <p>Données : $\overline{SA} = -25$ cm, $\overline{SA'} = +50$ cm.</p>
+        <p>$$\frac{1}{f} = \frac{1}{\overline{SA'}} + \frac{1}{\overline{SA}} = \frac{1}{50} + \frac{1}{-25} = \frac{1}{50} - \frac{2}{50} = -\frac{1}{50}$$</p>
+        <p>$$f = -50\ \text{cm}$$</p>
+        <p>Ce résultat est incohérent avec un miroir concave (qui a $f > 0$). Il y a une erreur dans les signes ou l'énoncé. Vérification :</p>
+        <p>$$\frac{1}{\overline{SA'}} + \frac{1}{\overline{SA}} = \frac{1}{50} - \frac{1}{25} = \frac{1}{50} - \frac{2}{50} = -\frac{1}{50}$$</p>
+        <p>$$R = 2f = -100\ \text{cm}$$</p>
+        <p>Cela correspondrait à un miroir convexe, pas concave. L'énoncé est donc incohérent ou l'image est virtuelle.</p>
+        <span class="resultat">Pas de solution cohérente avec un miroir concave.</span>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem;">Ces exercices couvrent les cas principaux des miroirs sphériques.</p>
+  </div>
+
+  <a href="#top" class="backtop">⬆ Retour en haut</a>
+</div>
+
+
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-02-miroir-et-dioptre-plan.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> 🪞 Miroir et Dioptre Plan</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 3 / 4</div>
+          <div><a href="chapitre-04-optique-geometrique.html" class="btn btn-secondary btn-sm">🔬 Optique Géométrique <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

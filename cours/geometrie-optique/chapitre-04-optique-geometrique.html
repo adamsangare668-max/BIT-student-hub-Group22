@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Géométrie Optique — Chapitre 4: 🔬 Optique Géométrique — BIT Study HUB">
+  <title>Géométrie Optique — Chapitre 4: 🔬 Optique Géométrique</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #F4511E; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #F4511E; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #F4511E; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #F4511E; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #F4511E; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #F4511E; background: color-mix(in srgb, #F4511E 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #F4511E; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']] }, svg: { fontCache: 'global' } };</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #F4511E 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Géométrie Optique</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 4</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">PH101 · Chapitre 4 / 4</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">🔬 Optique Géométrique</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Géométrie Optique — Optique géométrique: réflexion, réfraction, lentilles, miroirs, instruments d&#x27;optique.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #F4511E" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-fondamentaux-de-l-optique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">🔬 Fondamentaux de l&#x27;Optique</div></a><a href="chapitre-02-miroir-et-dioptre-plan.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">🪞 Miroir et Dioptre Plan</div></a><a href="chapitre-03-miroirs-spheriques.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">🔦 Miroirs Sphériques</div></a><a href="chapitre-04-optique-geometrique.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">🔬 Optique Géométrique</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            
+<div class="container" id="top">
+  <h1 class="titre-principal">🔬 Optique Géométrique</h1>
+  <div class="sous-titre">Chapitre 4 : Les lentilles minces — Résumé de cours • CS28 • BIT</div>
+  
+  <!-- TOC -->
+  <div class="toc">
+    <h2>📑 Table des matières</h2>
+    <ul>
+      <li><a href="#sec1">1. Définition et types</a></li>
+      <li><a href="#sec2">2. Points particuliers</a></li>
+      <li><a href="#sec3">3. Distance focale et vergence</a></li>
+      <li><a href="#sec4">4. Rayons principaux</a></li>
+      <li><a href="#sec5">5. Grandissement et conjugaison</a></li>
+    </ul>
+  </div>
+
+  <!-- ==================== SECTION 1 ==================== -->
+  <div class="section" id="sec1">
+    <h2>1. Définition et types de lentilles</h2>
+    <div class="card">
+      <h3>Définition</h3>
+      <p>Une lentille est un milieu transparent homogène (verre ou plastique) rigide, limitée par deux faces lisses sphériques (ou l'une sphérique et l'autre plane), dont l'épaisseur au centre est différente de celle aux bords.</p>
+      <p>Exemples d'appareils utilisant des lentilles : lunettes, microscopes, appareils photo, jumelles, loupes, télescopes.</p>
+      <h4>Deux familles de lentilles</h4>
+      <ul>
+        <li><strong>Lentilles convergentes</strong> : plus épaisses au centre, minces aux bords.</li>
+        <li><strong>Lentilles divergentes</strong> : plus minces au centre, épaisses aux bords.</li>
+      </ul>
+      <div class="figure-placeholder">
+        <p style="color:#7fc9ff;">Figure 2 : Différents types de lentilles minces</p>
+        <p>(Schéma : lentilles convergentes et divergentes)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 2 ==================== -->
+  <div class="section" id="sec2">
+    <h2>2. Points particuliers et grandeurs caractéristiques</h2>
+    <div class="card">
+      <h3>Centre optique (O)</h3>
+      <p>Point de l'axe optique par lequel passe le rayon réfracté correspondant à un rayon incident dont le rayon émergent lui est parallèle.</p>
+      <div class="figure-placeholder">
+        <p style="color:#7fc9ff;">Figure 3 : Centre optique</p>
+        <p>(Schéma : rayon passant par O sans déviation)</p>
+      </div>
+      <h3>Foyers</h3>
+      <h4>Lentille convergente</h4>
+      <ul>
+        <li><strong>Foyer principal objet (F)</strong> : tout rayon incident passant par F émerge parallèlement à l'axe optique.</li>
+        <li><strong>Foyer principal image (F')</strong> : tout rayon incident parallèle à l'axe optique émerge en passant par F'.</li>
+        <li>Les foyers sont symétriques par rapport au centre optique O.</li>
+      </ul>
+      <div class="figure-placeholder">
+        <p style="color:#7fc9ff;">Figure 4 : Foyers d'une lentille convergente</p>
+      </div>
+      <h4>Lentille divergente</h4>
+      <ul>
+        <li>Les positions des foyers sont inversées par rapport à la lentille convergente.</li>
+        <li>Tout rayon incident dont le prolongement passe par F émerge parallèlement à l'axe.</li>
+        <li>Tout rayon incident parallèle à l'axe optique émerge de façon que son prolongement passe par F'.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 3 ==================== -->
+  <div class="section" id="sec3">
+    <h2>3. Distance focale et vergence</h2>
+    <div class="card">
+      <h3>Distance focale image ($f'$)</h3>
+      <p>Distance séparant le centre O du foyer image F'. C'est une quantité algébrique :</p>
+      <ul>
+        <li>$f' > 0$ pour une lentille convergente.</li>
+        <li>$f' < 0$ pour une lentille divergente.</li>
+      </ul>
+      <div class="figure-placeholder">
+        <p style="color:#7fc9ff;">Figure 6 : Distance focale image</p>
+      </div>
+      <h3>Distance focale objet ($f$)</h3>
+      <p>Distance séparant O du foyer objet F. Les foyers étant symétriques :</p>
+      <p>$$f = -f'$$</p>
+      <ul>
+        <li>$f < 0$ pour une lentille convergente.</li>
+        <li>$f > 0$ pour une lentille divergente.</li>
+      </ul>
+      <div class="figure-placeholder">
+        <p style="color:#7fc9ff;">Figure 7 : Distance focale objet</p>
+      </div>
+      <h3>Vergence ($V$)</h3>
+      <p>Inverse de la distance focale image :</p>
+      <p>$$V = \frac{1}{f'} = -\frac{1}{f}$$</p>
+      <p>Unité : $\text{m}^{-1}$ ou dioptrie (δ).</p>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 4 ==================== -->
+  <div class="section" id="sec4">
+    <h2>4. Rayons principaux</h2>
+    <div class="card">
+      <h4>Lentille convergente</h4>
+      <ul>
+        <li>Un rayon parallèle à l'axe principal émerge en passant par F'.</li>
+        <li>Un rayon passant par le centre optique O n'est pas dévié.</li>
+        <li>Un rayon passant par le foyer objet F émerge parallèlement à l'axe principal.</li>
+      </ul>
+      <div class="figure-placeholder">
+        <p style="color:#7fc9ff;">Figure 8 : Rayons principaux – lentille convergente</p>
+      </div>
+      <h4>Lentille divergente</h4>
+      <ul>
+        <li>Un rayon parallèle à l'axe principal émerge en semblant provenir de F'.</li>
+        <li>Un rayon passant par le centre optique O n'est pas dévié.</li>
+        <li>Un rayon dirigé vers le foyer objet F émerge parallèlement à l'axe principal.</li>
+      </ul>
+      <div class="figure-placeholder">
+        <p style="color:#7fc9ff;">Figure 9 : Rayons principaux – lentille divergente</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SECTION 5 ==================== -->
+  <div class="section" id="sec5">
+    <h2>5. Grandissement et relations de conjugaison</h2>
+    <div class="card">
+      <h3>Grandissement ($\gamma$)</h3>
+      <p>Rapport algébrique entre la taille de l'image et celle de l'objet :</p>
+      <p>$$\gamma = \frac{\overline{A'B'}}{\overline{AB}} = \frac{\overline{OA'}}{\overline{OA}}$$</p>
+      <ul>
+        <li>$\gamma < 0$ : image renversée.</li>
+        <li>$\gamma > 0$ : image droite.</li>
+        <li>$|\gamma| > 1$ : image plus grande que l'objet.</li>
+        <li>$|\gamma| < 1$ : image plus petite que l'objet.</li>
+      </ul>
+      <h3>Relation de conjugaison (origine au centre)</h3>
+      <p>Formule de Descartes pour les lentilles minces :</p>
+      <p>$$\frac{1}{\overline{OA'}} - \frac{1}{\overline{OA}} = \frac{1}{f'}$$</p>
+      <p>Interprétation :</p>
+      <ul>
+        <li>$\overline{OA'} > 0$ : image réelle.</li>
+        <li>$\overline{OA'} < 0$ : image virtuelle.</li>
+      </ul>
+      <div class="card-remarque" style="border-left-color:#b8860b; background:#1f1a10; padding:1rem; margin:1rem 0;">
+        <p><strong>Remarque :</strong> Il est possible d'établir une relation équivalente en prenant les foyers comme origine (formules de Newton).</p>
+      </div>
+      <h3>Construction de l'image</h3>
+      <p>Pour déterminer l'image A'B' d'un objet AB perpendiculaire à l'axe optique, on utilise deux rayons connus :</p>
+      <ul>
+        <li>Le rayon (BO) passant par le centre optique (non dévié).</li>
+        <li>Le rayon parallèle à l'axe optique qui émerge en passant par F'.</li>
+      </ul>
+      <p>Le point B' est à l'intersection des rayons émergents. A' est la projection de B' sur l'axe optique.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CONCLUSION ==================== -->
+  <div class="section" id="conclusion">
+    <h2>Synthèse</h2>
+    <div class="card">
+      <h3>Points clés à retenir</h3>
+      <ul>
+        <li><strong>Convergente</strong> : $f' > 0$, $V > 0$, bords minces.</li>
+        <li><strong>Divergente</strong> : $f' < 0$, $V < 0$, bords épais.</li>
+        <li>Les foyers sont symétriques par rapport à O : $f = -f'$.</li>
+        <li>Relation de conjugaison : $\frac{1}{OA'} - \frac{1}{OA} = \frac{1}{f'}$.</li>
+        <li>Grandissement : $\gamma = \frac{\overline{OA'}}{\overline{OA}}$.</li>
+        <li>Trois rayons principaux pour la construction des images.</li>
+      </ul>
+    </div>
+  </div>
+
+  <a href="#top" class="backtop">⬆ Retour en haut</a>
+</div>
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-03-miroirs-spheriques.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> 🔦 Miroirs Sphériques</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 4 / 4</div>
+          <div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

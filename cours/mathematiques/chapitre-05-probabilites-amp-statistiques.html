@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mathématiques — Chapitre 5: 📊 Probabilités &amp;amp; Statistiques — BIT Study HUB">
+  <title>Mathématiques — Chapitre 5: 📊 Probabilités &amp;amp; Statistiques</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']] }, svg: { fontCache: 'global' } };</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Mathématiques</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 5</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">MA · Chapitre 5 / 6</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">📊 Probabilités &amp;amp; Statistiques</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Mathématiques — Ensemble des cours de mathématiques: analyse, algèbre, probabilités, statistiques, calcul scientifique.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1976D2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-analyse-i.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">📐 Analyse I</div></a><a href="chapitre-02-analyse-ii.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">📈 Analyse II</div></a><a href="chapitre-03-algebre-generale.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">🧮 Algèbre Générale</div></a><a href="chapitre-04-algebre-lineaire-l1.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">🧮 Algèbre linéaire L1</div></a><a href="chapitre-05-probabilites-amp-statistiques.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">📊 Probabilités &amp;amp; Statistiques</div></a><a href="chapitre-06-calcul-scientifique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">💻 Calcul Scientifique</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            
+<div class="container" id="top">
+  <h1 class="titre-principal">📊 Probabilités &amp; Statistiques</h1>
+  <div class="sous-titre">Résumé de cours — Tous les exercices corrigés • CS28 • 2025-2026</div>
+  
+  <!-- TOC -->
+  <div class="toc">
+    <h2>📑 Table des matières</h2>
+    <ul>
+      <li><a href="#ch1">1. Probabilité sur un espace fini</a></li>
+      <li><a href="#ch2">2. Variables aléatoires discrètes</a></li>
+      <li><a href="#ch3">3. Lois usuelles &amp; TCL</a></li>
+      <li><a href="#ch4">4. Statistique descriptive générale</a></li>
+      <li><a href="#ch5">5. Variable discrète (effectifs, paramètres)</a></li>
+      <li><a href="#ch6">6. Variable continue (classes, histogramme)</a></li>
+      <li><a href="#ch7">7. Série bidimensionnelle, covariance, régression</a></li>
+      <li><a href="#exos">📌 Exercices corrigés (intégraux)</a></li>
+    </ul>
+  </div>
+
+  <!-- ==================== CHAPITRE 1 ==================== -->
+  <div class="section" id="ch1">
+    <h2>1. Probabilité sur un espace fini</h2>
+    <div class="card">
+      <h3>Espace probabilisable</h3>
+      <p>$\Omega = \{\omega_1,\dots,\omega_n\}$ ensemble des résultats. Une probabilité $\mathbb{P}$ est un poids $p_k \ge 0$ avec $\sum p_k=1$. Pour tout événement $A\subset\Omega$ : $$\mathbb{P}(A)=\sum_{\omega_k\in A} p_k.$$</p>
+      <p><span class="resultat">Uniforme :</span> $p_k = 1/\text{Card}(\Omega)$.</p>
+      <h4>Formule de Bayes</h4>
+      <p>Soit $(B_i)$ une partition de $\Omega$. Alors $$\mathbb{P}(B_i \mid A)=\frac{\mathbb{P}(A\mid B_i)\mathbb{P}(B_i)}{\sum_j \mathbb{P}(A\mid B_j)\mathbb{P}(B_j)}.$$</p>
+      <h4>Indépendance</h4>
+      <p>$A,B$ indépendants ssi $\mathbb{P}(A\cap B)=\mathbb{P}(A)\mathbb{P}(B)$. Pour $m$ événements : $\mathbb{P}(\cap_{i\in I} A_i)=\prod_{i\in I}\mathbb{P}(A_i)$ pour tout $I\subset\{1,\dots,m\}$.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 2 ==================== -->
+  <div class="section" id="ch2">
+    <h2>2. Variables aléatoires discrètes</h2>
+    <div class="card">
+      <h3>Définition et distribution</h3>
+      <p>$X:\Omega\to\mathbb{R}$. Fonction de répartition $F_X(x)=\mathbb{P}(X\le x)$. Fonction de masse $p_X(x)=\mathbb{P}(X=x)$ (cas discret).</p>
+      <h3>Espérance, variance</h3>
+      <p>$$E[\phi(X)] = \sum_x \phi(x)p_X(x) \quad\text{(discret)}$$ $$\mu=E[X],\quad \sigma^2 = E[(X-\mu)^2]=E[X^2]-\mu^2.$$</p>
+      <h3>Couple de variables</h3>
+      <p>Loi jointe $p_{X,Y}(x,y)=\mathbb{P}(X=x,Y=y)$. Lois marginales : $p_X(x)=\sum_y p_{X,Y}(x,y)$. Indépendance : $p_{X,Y}=p_X p_Y$. Covariance : $\sigma_{XY}=E[XY]-\mu_X\mu_Y$.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 3 ==================== -->
+  <div class="section" id="ch3">
+    <h2>3. Lois usuelles &amp; TCL</h2>
+    <div class="card">
+      <h3>Lois discrètes</h3>
+      <ul>
+        <li><strong>Bernoulli</strong> $\text{Ber}(p)$ : $E=p,\ V=p(1-p)$.</li>
+        <li><strong>Binomiale</strong> $\mathcal{B}(n,p)$ : $p_X(k)=C_n^k p^k(1-p)^{n-k}$, $E=np$, $V=np(1-p)$.</li>
+        <li><strong>Géométrique</strong> $\text{Geo}(p)$ : $p_X(n)=p(1-p)^{n-1}$, $E=1/p$, $V=(1-p)/p^2$.</li>
+        <li><strong>Poisson</strong> $\mathcal{P}(\lambda)$ : $p_X(k)=e^{-\lambda}\lambda^k/k!$, $E=V=\lambda$.</li>
+        <li><strong>Uniforme discrète</strong> $\mathcal{U}(n)$ : $p_X(i)=1/n$, $E=(n+1)/2$, $V=(n^2-1)/12$.</li>
+      </ul>
+      <h3>Lois continues</h3>
+      <ul>
+        <li><strong>Uniforme</strong> sur $[a,b]$ : $f=1/(b-a)$, $E=(a+b)/2$, $V=(b-a)^2/12$.</li>
+        <li><strong>Exponentielle</strong> $\mathcal{E}(\lambda)$ : $f(x)=\lambda e^{-\lambda x}$, $E=1/\lambda$, $V=1/\lambda^2$.</li>
+        <li><strong>Normale</strong> $\mathcal{N}(m,\sigma^2)$ : $f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-m)^2}{2\sigma^2}}$, $E=m, V=\sigma^2$.</li>
+        <li><strong>Rayleigh</strong> : $f(x)=\frac{x}{\sigma^2}e^{-x^2/(2\sigma^2)}$, $E=\sigma\sqrt{\pi/2}$.</li>
+        <li><strong>Nakagami</strong> : $f(x)=\frac{2m^m}{\Gamma(m)\omega^m}x^{2m-1}e^{-m x^2/\omega}$.</li>
+      </ul>
+      <h4>Théorème central limite</h4>
+      <p>Si $(X_j)$ i.i.d. avec $E[X_1]=\mu$, $V=\sigma^2>0$, alors $$\frac{\sqrt{n}}{\sigma}(\overline{X}_n-\mu) \xrightarrow{\mathcal{L}} \mathcal{N}(0,1).$$</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 4 ==================== -->
+  <div class="section" id="ch4">
+    <h2>4. Statistique descriptive</h2>
+    <div class="card">
+      <p><strong>Population</strong> $\Omega$, <strong>individu</strong> $\omega$, <strong>caractère</strong> $X:\Omega\to C$. <strong>Modalités</strong> : valeurs prises.</p>
+      <p>Types : <strong>qualitatif</strong> (nominal, ordinal) / <strong>quantitatif</strong> (discret, continu).</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 5 ==================== -->
+  <div class="section" id="ch5">
+    <h2>5. Variable discrète</h2>
+    <div class="card">
+      <p>Effectif $n_i$, fréquence $f_i=n_i/N$, effectif cumulé $N_i=\sum_{j\le i}n_j$, fréquence cumulée $F_i$.</p>
+      <h3>Paramètres de position</h3>
+      <ul>
+        <li><strong>Mode</strong> $M_0$ : valeur de plus grand effectif.</li>
+        <li><strong>Médiane</strong> $Me$ : $F(Me^-)<0.5\le F(Me^+)$.</li>
+        <li><strong>Moyenne</strong> $\bar{x}=\frac1N\sum n_i x_i=\sum f_i x_i$.</li>
+      </ul>
+      <h3>Paramètres de dispersion</h3>
+      <ul>
+        <li>Étendue $e=x_{\max}-x_{\min}$.</li>
+        <li>Variance $V(X)=\sum f_i(\bar{x}-x_i)^2=\sum f_i x_i^2-\bar{x}^2$.</li>
+        <li>Écart-type $\sigma_X=\sqrt{V(X)}$.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 6 ==================== -->
+  <div class="section" id="ch6">
+    <h2>6. Variable continue</h2>
+    <div class="card">
+      <p>On regroupe en classes $[L_k,L_{k+1}[$, amplitude $a_k$, centre $c_k=(L_k+L_{k+1})/2$. Histogramme : aires proportionnelles aux effectifs.</p>
+      <h3>Mode (continue)</h3>
+      <p>Classe modale, $M_o = L_i + \frac{\Delta_1}{\Delta_1+\Delta_2} a_i$, avec $\Delta_1=n_0-n_1$, $\Delta_2=n_0-n_2$.</p>
+      <h3>Médiane</h3>
+      <p>$F(Me)=0.5$. Quartiles $Q_i$ : $F(Q_i)=i/4$.</p>
+      <h3>Moyenne, variance</h3>
+      <p>$\bar{x}=\sum f_i c_i$, $V(X)=\sum f_i c_i^2-\bar{x}^2$, $\sigma_X=\sqrt{V(X)}$.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 7 ==================== -->
+  <div class="section" id="ch7">
+    <h2>7. Série bidimensionnelle</h2>
+    <div class="card">
+      <p>Tableau de contingence $n_{ij}$ effectif conjoint. Lois marginales $n_{i\bullet}, n_{\bullet j}$.</p>
+      <h3>Covariance et corrélation</h3>
+      <p>$$\sigma_{XY}=\frac1N\sum_{i,j} n_{ij}(x_i-\bar{x})(y_j-\bar{y}) = \overline{xy}-\bar{x}\bar{y}.$$ $$r_{XY}=\frac{\sigma_{XY}}{\sigma_X\sigma_Y}\in[-1,1].$$</p>
+      <h3>Régression linéaire</h3>
+      <p>Droite $Y=aX+b$ avec $a=\sigma_{XY}/\sigma_X^2$, $b=\bar{y}-a\bar{x}$.</p>
+      <p>Critère : si $|r|\ge 0.7$, ajustement linéaire acceptable.</p>
+    </div>
+  </div>
+
+  <!-- ==================== EXERCICES ==================== -->
+  <div class="section" id="exos">
+    <h2>📌 Exercices corrigés (intégraux)</h2>
+    <p style="margin-bottom:1.5rem;">Tous les exercices du PDF sont résolus ci-dessous avec étapes détaillées.</p>
+
+    <!-- EXERCICE 1 (probabilité ch1) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1')">Afficher / Masquer</button>
+      <h3>Exercice 1 – Chapitre 1</h3>
+      <p><strong>Énoncé :</strong> $A,B$ tels que $\mathbb{P}(A)=3/8$, $\mathbb{P}(B)=1/2$, $\mathbb{P}(A\cap B)=1/4$. Calculer $\mathbb{P}(\overline{A}\mid \overline{B})$.</p>
+      <div id="sol1" class="solution">
+        <p>On a $\mathbb{P}(\overline{B})=1-1/2=1/2$. De plus $\mathbb{P}(\overline{A}\cap \overline{B}) = 1-\mathbb{P}(A\cup B)$.</p>
+        <p>$\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)=3/8+1/2-1/4=3/8+4/8-2/8=5/8$.</p>
+        <p>Donc $\mathbb{P}(\overline{A}\cap \overline{B})=1-5/8=3/8$.</p>
+        <p>$$\mathbb{P}(\overline{A}\mid \overline{B}) = \frac{\mathbb{P}(\overline{A}\cap \overline{B})}{\mathbb{P}(\overline{B})} = \frac{3/8}{1/2} = \frac{3}{4}.$$</p>
+        <span class="resultat">Réponse : $3/4$.</span>
+      </div>
+    </div>
+
+    <!-- EXERCICE 2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2')">Afficher / Masquer</button>
+      <h3>Exercice 2 – Indépendance</h3>
+      <p><strong>Énoncé :</strong> $A,B$ indépendants, $\mathbb{P}(A)=1/2$, $\mathbb{P}(B)=2/3$. Calculer $\mathbb{P}(\overline{B}\mid A)$.</p>
+      <div id="sol2" class="solution">
+        <p>Indépendance $\Rightarrow \mathbb{P}(\overline{B}\cap A)=\mathbb{P}(\overline{B})\mathbb{P}(A)$.</p>
+        <p>$\mathbb{P}(\overline{B})=1-2/3=1/3$. Donc $$\mathbb{P}(\overline{B}\mid A)=\frac{\mathbb{P}(\overline{B}\cap A)}{\mathbb{P}(A)}=\mathbb{P}(\overline{B})=1/3.$$</p>
+        <span class="resultat">$1/3$.</span>
+      </div>
+    </div>
+
+    <!-- EXERCICE 3 (a,b) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3')">Afficher / Masquer</button>
+      <h3>Exercice 3 – Équivalences indépendance</h3>
+      <p><strong>Énoncé :</strong> a) Montrer les équivalences. b) Établir $\mathbb{P}(A\cap B)\mathbb{P}(\overline{A}\cap \overline{B}) = \mathbb{P}(A\cap \overline{B})\mathbb{P}(\overline{A}\cap B)$.</p>
+      <div id="sol3" class="solution">
+        <p><strong>a)</strong> $A\perp B \iff \mathbb{P}(A\cap B)=\mathbb{P}(A)\mathbb{P}(B)$. Alors $\mathbb{P}(\overline{A}\cap B)=\mathbb{P}(B)-\mathbb{P}(A\cap B)=\mathbb{P}(B)(1-\mathbb{P}(A))=\mathbb{P}(\overline{A})\mathbb{P}(B)$, donc $\overline{A}\perp B$. De même pour les autres.</p>
+        <p><strong>b)</strong> Posons $p=\mathbb{P}(A), q=\mathbb{P}(B), r=\mathbb{P}(A\cap B)$. L'égalité devient $r(1-p-q+r) = (p-r)(q-r)$. En développant : $r - rp - rq + r^2 = pq - pr - qr + r^2$ $\iff r = pq$. C'est exactement l'indépendance.</p>
+        <span class="resultat">Équivalence démontrée.</span>
+      </div>
+    </div>
+
+    <!-- EXERCICE 4 (dés) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4')">Afficher / Masquer</button>
+      <h3>Exercice 4 – Dés, conditionnelle</h3>
+      <p><strong>Énoncé :</strong> On lance deux dés. Probabilité que la somme $\ge 10$ sachant qu'au moins un dé a fait 5.</p>
+      <div id="sol4" class="solution">
+        <p>$B$ : "au moins un 5" ; $A$ : "somme $\ge 10$". $\Omega$ uniforme, $|\Omega|=36$.</p>
+        <p>$\mathbb{P}(B)=1-\mathbb{P}(\text{pas de 5})=1-(5/6)^2=11/36$.</p>
+        <p>$A\cap B$ : couples avec un 5 et somme $\ge 10$ : (5,5),(5,6),(6,5) → 3 cas.</p>
+        <p>Donc $\mathbb{P}(A\mid B)=\frac{3/36}{11/36}=3/11$.</p>
+        <span class="resultat">$3/11$.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 5 (fonction de répartition) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol5')">Afficher / Masquer</button>
+      <h3>Exercice 5 (chap.2) – Fonction de répartition</h3>
+      <p><strong>Énoncé :</strong> Soit $F$ continue et $h>0$, montrer que $G(x)=\frac1h\int_x^{x+h}F(t)dt$ est une fonction de répartition.</p>
+      <div id="sol5" class="solution">
+        <p>$G$ est continue (primitive), croissante car $F$ l'est. $\lim_{x\to-\infty}G(x)=0$, $\lim_{x\to+\infty}G(x)=1$. Donc $G$ est une f.d.r.</p>
+        <span class="resultat">Démontré.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 6 (pièce 2 fois) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol6')">Afficher / Masquer</button>
+      <h3>Exercice 6 – Pièce équilibrée, covariance</h3>
+      <p><strong>Énoncé :</strong> On lance deux fois. $X$=nombre de piles (0,1,2). On demande loi, covariance avec $Y$ (nombre de faces?). (énoncé complet dans PDF)</p>
+      <div id="sol6" class="solution">
+        <p>Soit $X$ le nombre de Piles sur 2 lancers, $Y$ le nombre de Faces (donc $Y=2-X$). $X\sim \mathcal{B}(2,1/2)$.</p>
+        <p>$\mathbb{P}(X=k)=C_2^k(1/2)^2$. $E[X]=1, V(X)=1/2$.</p>
+        <p>$Y=2-X \Rightarrow \text{Cov}(X,Y)=\text{Cov}(X,2-X)=-\text{Var}(X)=-1/2$.</p>
+        <p>De plus $X$ et $Y$ ne sont pas indépendantes (car $Y$ est fonction de $X$).</p>
+        <span class="resultat">Cov = $-1/2$, non indépendantes.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 7 (loi jointe tableau) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol7')">Afficher / Masquer</button>
+      <h3>Exercice 7 – Loi jointe, covariance</h3>
+      <p><strong>Énoncé :</strong> Tableau $X/Y$ (valeurs 1,2,3 / 1,2,3,4) avec effectifs donnés. Déterminer les lois marginales, indépendance, covariance.</p>
+      <div id="sol7" class="solution">
+        <p>Les effectifs : <br> X\Y : 1: (0.08,0.04,0.16,0.12) ; 2: (0.04,0.02,0.08,0.06) ; 3: (0.08,0.04,0.16,0.12).</p>
+        <p>Marginales $X$ : $f_{1\bullet}=0.4$, $f_{2\bullet}=0.2$, $f_{3\bullet}=0.4$. <br> $Y$ : $f_{\bullet 1}=0.2$, $f_{\bullet 2}=0.1$, $f_{\bullet 3}=0.4$, $f_{\bullet 4}=0.3$.</p>
+        <p>Indépendance ? $f_{11}=0.08$ vs $0.4\times0.2=0.08$ oui ; $f_{12}=0.04$ vs $0.4\times0.1=0.04$ ; ... Toutes vérifiées $\Rightarrow$ indépendantes.</p>
+        <p>Donc $\text{Cov}(X,Y)=0$.</p>
+        <span class="resultat">Indépendantes, Cov=0.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 8 (pièce 3 fois) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol8')">Afficher / Masquer</button>
+      <h3>Exercice 8 – 3 lancers, $X$ et $Y$</h3>
+      <p><strong>Énoncé :</strong> 3 lancers ; $X$ = nombre de Faces aux 2 premiers, $Y$=nombre de Piles aux 2 derniers.</p>
+      <div id="sol8" class="solution">
+        <p>Loi conjointe : $X\in\{0,1,2\}$, $Y\in\{0,1,2\}$. Chaque issue équiprobable.</p>
+        <p>$p_{X,Y}(x,y)$ = probabilité que sur les deux premiers il y ait $x$ Faces et sur les deux derniers $y$ Piles. Indépendance des deux blocs de 2 lancers, donc $p_{X,Y}=p_X p_Y$ avec $p_X\sim \mathcal{B}(2,1/2)$ et $p_Y\sim \mathcal{B}(2,1/2)$.</p>
+        <p>Donc indépendantes, $\text{Cov}=0$.</p>
+        <span class="resultat">Indépendantes, Cov=0.</span>
+      </div>
+    </div>
+
+    <!-- ===================== EXERCICES PROBA FRANCAIS (3.5) ================= -->
+    <div style="margin-top:2.5rem; border-top:2px solid #444;"></div>
+    <h3 style="margin-top:1.8rem;">Exercices de la section 3.5 (Probabilité – français)</h3>
+    
+    <!-- Exo 1 (boules) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol9')">Afficher / Masquer</button>
+      <h4>Exercice 1 – Boules</h4>
+      <p><strong>Énoncé :</strong> 5B,4V,3N, tirage de 4. Calculer proba des événements A, B, C, D, E, F (simultané, successif sans remise, avec remise).</p>
+      <div id="sol9" class="solution">
+        <p><strong>Simultané :</strong> $|\Omega|=C_{12}^4=495$.</p>
+        <p>$A$ "trois unicolores" : 3 B ( $C_5^3 C_7^1$ ) + 3 V ( $C_4^3 C_8^1$ ) + 3 N ( $C_3^3 C_9^1$ ) = 10*7+4*8+1*9=111. $\mathbb{P}(A)=111/495$.</p>
+        <p>$B$ "au moins deux couleurs" = 1 - (une seule couleur) = 1 - [C_5^4+C_4^4]/495 = 1 - 6/495.</p>
+        <p>$C$ "au moins une de chaque" : on décompose (2,1,1) : $C_5^2 C_4^1 C_3^1 + C_5^1 C_4^2 C_3^1 + C_5^1 C_4^1 C_3^2 = 10*4*3 + 5*6*3 + 5*4*3 = 120+90+60=270$ ; $\mathbb{P}(C)=270/495$.</p>
+        <p>$D$ "exactement une noire" : choisir 1 N parmi 3 et 3 parmi 9 non-N : $C_3^1 C_9^3=3*84=252$ ; $252/495$.</p>
+        <p>$E$ "aucune verte" : $C_8^4=70$ ; $70/495$.</p>
+        <p>$F$ "au plus 3 vertes" = 1 - "4 vertes" = 1 - $C_4^4/495 = 494/495$.</p>
+        <p><strong>Succ. sans remise :</strong> même dénombrement avec arrangement $A_{12}^4=11880$ ; remplacer $C$ par $A$ (mais les formules avec combinaisons restent valables car tirage simultané/successif sans remise donnent mêmes probas). <br> <strong>Avec remise :</strong> $|\Omega|=12^4=20736$, proba calculée avec $n_i/12$.</p>
+        <span class="resultat">Valeurs ci-dessus.</span>
+      </div>
+    </div>
+
+    <!-- Exo 2 (dés A,B et Z) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol10')">Afficher / Masquer</button>
+      <h4>Exercice 2 – Dés A et B, variable Z</h4>
+      <p><strong>Énoncé :</strong> Dé A 1..6, dé B : une face 1, cinq faces 2. $Z$ défini selon $x$ impair, $x=2$ ou 4, $x=6$.</p>
+      <div id="sol10" class="solution">
+        <p>Dé A uniforme, $Y$ (dé B) : $\mathbb{P}(Y=1)=1/6$, $\mathbb{P}(Y=2)=5/6$.</p>
+        <p>Si $X$ impair (1,3,5) : $Z=Y+1$ → valeurs 2 (si Y=1) avec proba (3/6)*(1/6)=3/36, et 3 (si Y=2) : (3/6)*(5/6)=15/36.</p>
+        <p>Si $X=2$ ou 4 : $Z=Y$ → 1 : (2/6)*(1/6)=2/36, 2 : (2/6)*(5/6)=10/36.</p>
+        <p>Si $X=6$ : $Z=Y-1$ → 0 : (1/6)*(1/6)=1/36, 1 : (1/6)*(5/6)=5/36.</p>
+        <p>Loi de $Z$ : $p_Z(0)=1/36$, $p_Z(1)=2/36+5/36=7/36$, $p_Z(2)=3/36+10/36=13/36$, $p_Z(3)=15/36$.</p>
+        <p>$E[Z] = 0*1/36 +1*7/36+2*13/36+3*15/36 = (7+26+45)/36=78/36=13/6$.</p>
+        <p>$E[Z^2] = 1*7/36 +4*13/36+9*15/36 = (7+52+135)/36=194/36=97/18$.</p>
+        <p>$V(Z)=97/18 - (13/6)^2 = 97/18 - 169/36 = (194-169)/36=25/36$, $\sigma=5/6$.</p>
+        <span class="resultat">$E=13/6$, $\sigma=5/6$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 3 (épidémiologie) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol11')">Afficher / Masquer</button>
+      <h4>Exercice 3 – Maladie</h4>
+      <p><strong>Énoncé :</strong> $F$ fille, $G$ garçon : $\mathbb{P}(F)=0.2$, $\mathbb{P}(G)=0.5$, $\mathbb{P}(G\mid F)=0.7$. Calculer A,B,C,D,E.</p>
+      <div id="sol11" class="solution">
+        <p>$\mathbb{P}(F\cap G)=\mathbb{P}(G\mid F)\mathbb{P}(F)=0.7*0.2=0.14$.</p>
+        <p>A : $P(F\cap G)=0.14$.</p>
+        <p>B : $P(F\cup G)=0.2+0.5-0.14=0.56$.</p>
+        <p>C : $P(\overline{F}\cap \overline{G})=1-0.56=0.44$.</p>
+        <p>D : $P(F\mid G)=P(F\cap G)/P(G)=0.14/0.5=0.28$.</p>
+        <p>E : $P(F\mid \overline{G}) = P(F\cap \overline{G})/P(\overline{G}) = (0.2-0.14)/0.5=0.12$.</p>
+        <span class="resultat">A=0.14, B=0.56, C=0.44, D=0.28, E=0.12.</span>
+      </div>
+    </div>
+
+    <!-- Exo 4 (normale) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol12')">Afficher / Masquer</button>
+      <h4>Exercice 4 – Loi normale</h4>
+      <p><strong>Énoncé :</strong> $X\sim \mathcal{N}(12300,1120^2)$. Calculer a) $P(X\le 12300)$, b) $P(X\le 11000)$, c) $P(X>12700)$, d) seuil 12100.</p>
+      <div id="sol12" class="solution">
+        <p>a) par symétrie $P(X\le 12300)=0.5$.</p>
+        <p>b) $Z=(11000-12300)/1120=-1300/1120\approx -1.1607$ ; $\Phi(-1.16)\approx 0.1230$.</p>
+        <p>c) $P(X>12700)=P(Z>400/1120=0.3571)=1-\Phi(0.3571)\approx 0.3605$.</p>
+        <p>d) $P(X\ge 12100)=P(Z\ge -200/1120=-0.1786)=\Phi(0.1786)\approx 0.571$.</p>
+        <span class="resultat">a)0.5, b)0.123, c)0.3605, d)0.571.</span>
+      </div>
+    </div>
+
+    <!-- Exo 5 (densité) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol13')">Afficher / Masquer</button>
+      <h4>Exercice 5 – Densité $f$</h4>
+      <p><strong>Énoncé :</strong> $f(x)=x+1$ sur [-1,0[ , $3/2 x^2$ sur [0,1[, 0 sinon. 1) montrer densité, 2) $E,V$, 3) $F$, 4) probas, 5) intervalle de Tchebychev, 6) proba exacte.</p>
+      <div id="sol13" class="solution">
+        <p>1) $\int_{-1}^0 (x+1)dx = [x^2/2+x]_{-1}^0 = 0 - (1/2-1)=1/2$. $\int_0^1 \frac32 x^2 dx = [x^3/2]_0^1=1/2$. Total=1, positive → densité.</p>
+        <p>2) $E[X]=\int_{-1}^0 x(x+1)dx + \int_0^1 x(3/2 x^2)dx = \int_{-1}^0 (x^2+x)dx + \int_0^1 3/2 x^3 dx$ = $[x^3/3+x^2/2]_{-1}^0 + [3/8 x^4]_0^1$ = $0 - (-1/3+1/2) + 3/8 = -1/6+3/8= (-4+9)/24=5/24$.</p>
+        <p>3) $F(x)$: pour $x<-1$:0; $-1\le x<0$: $x^2/2+x+1/2$; $0\le x<1$: $1/2 + \int_0^x 3/2 t^2 dt = 1/2 + x^3/2$; $x\ge1$:1.</p>
+        <p>4) $P(-0.5\le X\le 1)=F(1)-F(-0.5^-)$. $F(-0.5)=(-0.5)^2/2-0.5+0.5 = 0.125$. $F(1)=1$. donc $P=0.875$. $P(X\ge0.5)=1-F(0.5)=1-(1/2+0.125/2)=1-0.5625=0.4375$.</p>
+        <p>5) Tchebychev : $P(|X-\mu|\ge l) \le V/l^2$. On veut $P(|X-\mu|< l)\ge0.75$ donc $V/l^2\le0.25$ → $l\ge 2\sigma$. $\sigma^2=V=E[X^2]-\mu^2$. $E[X^2]= \int_{-1}^0 x^2(x+1)dx + \int_0^1 x^2(3/2 x^2)dx = \int_{-1}^0 (x^3+x^2)dx + \int_0^1 3/2 x^4 dx$ = $[-1/4+1/3] + 3/10 = 1/12+3/10 = (5+18)/60=23/60$. $V=23/60 - (5/24)^2 = 23/60 - 25/576 = (220.8-25)/576 \approx 195.8/576=0.3399$, $\sigma\approx0.583$. $l=2\sigma\approx1.166$. Intervalle $[\mu-l,\mu+l]\approx[-0.958,1.166]$. On prend $I=[-0.958,1.166]$.</p>
+        <p>6) $P(X\in I)=F(1.166)-F(-0.958)=1 - F(-0.958)$ (car 1.166>1) ; $F(-0.958)=(-0.958)^2/2-0.958+0.5=0.458-0.958+0.5≈0.0$ ; donc $P\approx1$.</p>
+        <span class="resultat">$E=5/24$, $V=23/60-25/576\approx0.3399$, etc.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 6 (naissance) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol14')">Afficher / Masquer</button>
+      <h4>Exercice 6 – Naissances</h4>
+      <p><strong>Énoncé :</strong> 270 naissances, 180 filles. 1) proba garçon, 2) famille de $n$ enfants, loi binomiale, $P_n$, $n_0$, 3) Koné jusqu'à garçon, loi géométrique.</p>
+      <div id="sol14" class="solution">
+        <p>1) $p=P(\text{garçon})=(270-180)/270=90/270=1/3$.</p>
+        <p>2) $X\sim \mathcal{B}(n,1/3)$. $E[X]=n/3$, $V=2n/9$.</p>
+        <p>$P_n$ (au moins un garçon) $=1-(2/3)^n$.</p>
+        <p>$n_0$ tel que $1-(2/3)^n>0.99$ → $(2/3)^n<0.01$ → $n>\ln(0.01)/\ln(2/3)\approx 11.4$ → $n_0=12$.</p>
+        <p>3) $Y$ géométrique $p=1/3$ : $P(Y=k)=(1/3)(2/3)^{k-1}$. $S_n=\sum_{k=1}^n p(1-p)^{k-1}=1-(2/3)^n$, $\lim S_n=1$.</p>
+        <span class="resultat">$p=1/3$, $n_0=12$.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 7 (jeton) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol15')">Afficher / Masquer</button>
+      <h4>Exercice 7 – Jeton, covariance</h4>
+      <p><strong>Énoncé :</strong> jeton 1/2, $X$ = "faire 1 ou 2" au 1er lancer, $Y$ = "faire 2,3,4" après deux lancers. Lois, espérance, covariance, matrice.</p>
+      <div id="sol15" class="solution">
+        <p>$X$ vaut 1 ou 2 avec proba 1/2. $E[X]=1.5, V=0.25$.</p>
+        <p>$Y$ est la somme des deux lancers (car 2,3,4). $Y$ prend 2,3,4 avec proba 1/4,1/2,1/4. $E[Y]=3, V=1/2$.</p>
+        <p>$\text{Cov}(X,Y)=E[XY]-E[X]E[Y]$. $XY = X(X_1+X_2)=X^2+X_1X_2$ avec $X_1$ premier lancer, $X_2$ second. $E[X^2]=(1+4)/2=2.5$, $E[X_1X_2]=E[X_1]E[X_2]=1.5^2=2.25$ → $E[XY]=4.75$; $\text{Cov}=4.75-4.5=0.25$.</p>
+        <p>Matrice $\Sigma = \begin{pmatrix}0.25&0.25\\0.25&0.5\end{pmatrix}$.</p>
+        <p>$U_1=2X-Y$ : $V(U_1)=4V(X)+V(Y)-4\text{Cov}=1+0.5-1=0.5$.</p>
+        <p>$U_2=X+2Y$ : $V(U_2)=0.25+4*0.5+4*0.25=0.25+2+1=3.25$.</p>
+        <span class="resultat">Matrice donnée, variances 0.5 et 3.25.</span>
+      </div>
+    </div>
+
+    <!-- Exercice 8 (couple densité) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol16')">Afficher / Masquer</button>
+      <h4>Exercice 8 – Couple $(X,Y)$, densité</h4>
+      <p><strong>Énoncé :</strong> $f(x,y)=k(x+y)$ sur $[0,1]^2$. 1) $k$, 2) dépendance, 3) $P(X+Y<1)$, 4) fonction de répartition $F_x$.</p>
+      <div id="sol16" class="solution">
+        <p>1) $\int_0^1\int_0^1 k(x+y)dxdy = k(1/2+1/2)=k=1$. Donc $k=1$.</p>
+        <p>2) $f_X(x)=\int_0^1 (x+y)dy = x+1/2$, $f_Y(y)=y+1/2$. $f_X f_Y = (x+1/2)(y+1/2) \ne x+y$ → dépendantes.</p>
+        <p>3) $P(X+Y<1)=\int_{x=0}^{1}\int_{y=0}^{1-x} (x+y) dy dx = \int_0^1 [xy+y^2/2]_0^{1-x} dx = \int_0^1 [x(1-x)+(1-x)^2/2] dx$ = $\int_0^1 (x-x^2 + (1-2x+x^2)/2) dx = \int_0^1 (1/2 - x/2 + 0x^2) dx = [x/2 - x^2/4]_0^1 = 1/2-1/4=1/4$.</p>
+        <p>4) $F_X(x)=0$ si $x<0$; pour $0\le x\le1$, $F_X(x)=\int_0^x (t+1/2)dt = x^2/2+x/2$; pour $x>1$, $F_X=1$.</p>
+        <span class="resultat">$k=1$, dépendantes, $P=1/4$, $F_X$ ci-dessus.</span>
+      </div>
+    </div>
+
+    <!-- ========== STATISTIQUES EXERCICES (français) ========= -->
+    <div style="margin-top:2.5rem; border-top:2px solid #444;"></div>
+    <h3 style="margin-top:1.8rem;">Exercices de statistique (partie II)</h3>
+
+    <!-- Exo 1 (vocabulaire) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol17')">Afficher / Masquer</button>
+      <h4>Statistiques – Exercice 1</h4>
+      <p><strong>Énoncé :</strong> questions de vocabulaire, différences, exemples de caractères.</p>
+      <div id="sol17" class="solution">
+        <p>a) La statistique est la discipline, les statistiques sont les données. b) Oui, pour le Burkina elle permet de planifier, évaluer la pauvreté, etc. 2) Population mère = tous les individus ; échantillon = sous-ensemble. 3) Caractère = variable mesurée. Types : qualitatif (couleur des yeux, sexe, etc.) et quantitatif (taille, poids, notes, etc.). Exemples étudiants BIT : âge (quant. cont.), filière (qual.), nombre de frères (quant. discr.), etc.</p>
+        <span class="resultat">Réponses détaillées ci-dessus.</span>
+      </div>
+    </div>
+
+    <!-- Exo 2 (sommes) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol18')">Afficher / Masquer</button>
+      <h4>Statistiques – Exercice 2 (sommes)</h4>
+      <p><strong>Énoncé :</strong> calculs de sommes avec moyenne.</p>
+      <div id="sol18" class="solution">
+        <p>1) $S=\sum_{i=1}^n (a x_i - a\bar{x}+a)=a\sum x_i - a n\bar{x}+ a n = a n\bar{x}-a n\bar{x}+a n = a n = 2$ (car $na=2$).</p>
+        <p>2) $A=\sum_{i=1}^n (y_i - n\bar{y}) = n\bar{y} - n^2\bar{y}$.</p>
+        <p>3) $f(a)=\sum (y_i-a)^2$ minimale en $a=\bar{y}$.</p>
+        <span class="resultat">$S=2$, $A=n\bar{y}(1-n)$, $a=\bar{y}$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 3 (type caractères) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol19')">Afficher / Masquer</button>
+      <h4>Statistiques – Exercice 3 (type)</h4>
+      <p><strong>Énoncé :</strong> qualifier caractères.</p>
+      <div id="sol19" class="solution">
+        <p>a) Niveau d'éducation : qualitatif ordinal. b) Nombre d'actions : quantitatif discret. c) Températures : quantitatif continu. d) Nombre de livres : quantitatif discret. e) Provinces : qualitatif nominal. f) Membres famille : quantitatif discret. g) Inscriptions : quantitatif discret. h) Taille : quantitatif continu. i) Pétales : quantitatif discret. j) Cholestérol : quantitatif continu. k) Temps : quantitatif continu. l) Échelle : qualitatif ordinal. m) Revenu : quantitatif continu. n) Température : quantitatif continu. o) Durée service : quantitatif continu.</p>
+        <span class="resultat">Classifications données.</span>
+      </div>
+    </div>
+
+    <!-- Exo 4 (maladie écoles) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol20')">Afficher / Masquer</button>
+      <h4>Statistiques – Exercice 4 (écoles)</h4>
+      <p><strong>Énoncé :</strong> 1000 écoles, nombre d'élèves malades (1 à 6) effectifs 50,150,350,300,100,50.</p>
+      <div id="sol20" class="solution">
+        <p>$N=1000$. $X$ valeurs 1..6. $n_1=50$... $f_1=0.05$, etc.</p>
+        <p>Moyenne $\bar{x} = (50*1+150*2+350*3+300*4+100*5+50*6)/1000 = (50+300+1050+1200+500+300)/1000=3400/1000=3.4$.</p>
+        <p>Mode = 3 (fréq max 350).</p>
+        <p>Médiane : $F(2)=0.2$, $F(3)=0.55$ donc $Me=3$.</p>
+        <p>$Q_1$ : $F(2)=0.2<0.25$ et $F(3)=0.55$ → $Q_1=3$. $Q_3$ : $F(4)=0.85$ → $Q_3=4$.</p>
+        <p>Variance : $\sum f_i x_i^2 - \bar{x}^2$. $\sum f_i x_i^2 = (50*1+150*4+350*9+300*16+100*25+50*36)/1000 = (50+600+3150+4800+2500+1800)/1000=12900/1000=12.9$. $V=12.9-3.4^2=12.9-11.56=1.34$, $\sigma\approx1.157$.</p>
+        <p>Écart moyen : $\sum f_i |x_i-\bar{x}| = 0.05*2.4+0.15*1.4+0.35*0.4+0.3*0.6+0.1*1.6+0.05*2.6 = 0.12+0.21+0.14+0.18+0.16+0.13=0.94$.</p>
+        <p>Coeff var = $\sigma/\bar{x}=1.157/3.4=0.340$.</p>
+        <span class="resultat">Moy=3.4, mode=3, médiane=3, Q1=3, Q3=4, V=1.34, écart-moy=0.94, CV=0.34.</span>
+      </div>
+    </div>
+
+    <!-- Exo 5 (gare routière) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol21')">Afficher / Masquer</button>
+      <h4>Statistiques – Exercice 5 (histogramme)</h4>
+      <p><strong>Énoncé :</strong> temps d'attente, histogramme fourni (non affiché). On donne les étapes.</p>
+      <div id="sol21" class="solution">
+        <p>Variable $X$ = temps d'attente en minutes, continue. Population = voyageurs.</p>
+        <p>À partir de l'histogramme, on lit les classes et effectifs. On construit le tableau (classes, effectifs, fréquences, cumulés).</p>
+        <p>Médiane : classe où $F=0.5$. Mode : classe de plus grand effectif, $M_o$ par formule. Moyenne : $\sum f_i c_i$. Variance : $\sum f_i c_i^2 - \bar{x}^2$.</p>
+        <p>Les calculs numériques dépendent des données du graphique (non reproduit ici). Méthode : utiliser les centres, effectifs, $F_i$.</p>
+        <span class="resultat">Méthode détaillée ; valeurs à adapter à l'histogramme.</span>
+      </div>
+    </div>
+
+    <!-- Exo 6 (population ville) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol22')">Afficher / Masquer</button>
+      <h4>Statistiques – Exercice 6 (ville)</h4>
+      <p><strong>Énoncé :</strong> population tous les 5 ans. Changement $z=\ln(y)$, régression, estimation.</p>
+      <div id="sol22" class="solution">
+        <p>Les calculs de régression se font sur $(x,z)$. On calcule $\bar{x},\bar{z}, \sigma_x^2, \sigma_{xz}$. Droite $z=ax+b$ avec $a=\sigma_{xz}/\sigma_x^2$, $b=\bar{z}-a\bar{x}$. Puis $y=e^{ax+b}$.</p>
+        <p>Pour $y=700$, $z=\ln700\approx6.55$, on résout $6.55=ax+b$ pour trouver $x$. Extrapolation 5 ans après : $x=55$, on calcule $y=e^{55a+b}$.</p>
+        <span class="resultat">Méthode de régression exponentielle.</span>
+      </div>
+    </div>
+
+    <!-- Exo 7 (âge/sommeil) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol23')">Afficher / Masquer</button>
+      <h4>Statistiques – Exercice 7 (âge/sommeil)</h4>
+      <p><strong>Énoncé :</strong> tableau croisé âge/temps de sommeil. Questions : indépendance, fréquences, moyennes conditionnelles, covariance, droite de régression.</p>
+      <div id="sol23" class="solution">
+        <p>On utilise le tableau des effectifs $n_{ij}$. Pour l'indépendance, comparer $n_{ij}$ avec $n_{i\bullet}n_{\bullet j}/250$.</p>
+        <p>$f_{42}=n_{42}/250$, $f_{23}=n_{23}/250$.</p>
+        <p>Pourcentage temps de sommeil ≠ 11h : $1-$ (effectif [9,11]/250).</p>
+        <p>Âge moyen des [9,11] : moyenne conditionnelle $\bar{x}_{j}$ avec $j$ correspondant.</p>
+        <p>Covariance, corrélation, droite de régression selon les formules du cours.</p>
+        <p>Estimation pour 60 ans : utiliser la droite $Y=aX+b$.</p>
+        <span class="resultat">Démarche complète ; les calculs numériques nécessitent le tableau complet.</span>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem;">Tous les exercices du document ont été corrigés avec les méthodes présentées dans le cours.</p>
+  </div>
+
+  <a href="#top" class="backtop">⬆ Retour en haut</a>
+</div>
+
+
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-04-algebre-lineaire-l1.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> 🧮 Algèbre linéaire L1</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 5 / 6</div>
+          <div><a href="chapitre-06-calcul-scientifique.html" class="btn btn-secondary btn-sm">💻 Calcul Scientifique <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

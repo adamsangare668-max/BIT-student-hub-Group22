@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Électronique Numérique — Chapitre 4: Logique combinatoire — BIT Study HUB">
+  <title>Électronique Numérique — Chapitre 4: Logique combinatoire</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #7E57C2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #7E57C2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #7E57C2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #7E57C2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #7E57C2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #7E57C2; background: color-mix(in srgb, #7E57C2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #7E57C2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #7E57C2 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Électronique Numérique</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 4</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">CS107 · Chapitre 4 / 6</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">Logique combinatoire</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Décodeurs, encodeurs, multiplexeurs, démultiplexeurs, comparateurs, additionneurs, soustracteurs, UAL.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #7E57C2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-systemes-de-numeration.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">Systèmes de numération</div></a>
+                <a href="chapitre-02-algebre-de-boole.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">Algèbre de Boole</div></a>
+                <a href="chapitre-03-portes-logiques.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">Portes logiques</div></a>
+                <a href="chapitre-04-logique-combinatoire.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">Logique combinatoire</div></a>
+                <a href="chapitre-05-logique-sequentielle.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">Logique séquentielle</div></a>
+                <a href="chapitre-06-compteurs-registres.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">Compteurs et registres</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            <div class="container" id="top">
+              <h1>Chapitre 4 — Logique combinatoire</h1>
+              <p>Un circuit logique est dit <strong>combinatoire</strong> si sa sortie ne dépend que de l'état présent de ses entrées, à un instant donné. Il n'y a ni mémoire, ni retour en arrière : c'est l'opposé de la logique séquentielle. Ce chapitre présente les principaux circuits combinatoires intégrés que l'on retrouve dans tout système numérique : décodeurs, multiplexeurs, additionneurs, etc.</p>
+
+              <div class="toc">
+                <a href="#sec1">1. Décodeurs et encodeurs</a>
+                <a href="#sec2">2. Multiplexeurs et démultiplexeurs</a>
+                <a href="#sec3">3. Comparateurs de magnitude</a>
+                <a href="#sec4">4. Additionneurs</a>
+                <a href="#sec5">5. Soustracteurs</a>
+                <a href="#sec6">6. Unité arithmétique et logique (UAL)</a>
+              </div>
+
+              <div class="definition">
+                <strong>Définition — Circuit combinatoire :</strong> Un circuit combinatoire est un système dont les sorties Sᵢ = f(E₁, E₂, ..., Eₙ) sont des fonctions booléennes pures des entrées. Il n'intègre pas de mémoire et est entièrement défini par sa (ou ses) table(s) de vérité.
+              </div>
+
+              <h2 id="sec1">1. Décodeurs et encodeurs</h2>
+
+              <h3>1.1 Décodeur</h3>
+              <p>Un décodeur possède n entrées et 2ⁿ sorties. Pour chaque combinaison d'entrée, une et une seule sortie est activée (passe à 1 en logique positive, ou à 0 dans la version "active low"). Il convertit un code binaire en une représentation "1 parmi N".</p>
+              <p>Exemple : décodeur 2 vers 4 (entrée A,B ; sorties Y₀ à Y₃).</p>
+              <table>
+                <thead><tr><th>A</th><th>B</th><th>Y₃</th><th>Y₂</th><th>Y₁</th><th>Y₀</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+                  <tr><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+                  <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+                  <tr><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+                </tbody>
+              </table>
+              <p>Les décodeurs sont utilisés pour sélectionner une adresse mémoire parmi 2ⁿ (ex. 3 vers 8 : 74LS138) ou pour commander des afficheurs 7 segments (BCD → 7 segments).</p>
+
+              <h3>1.2 Encodeur (prioritaire)</h3>
+              <p>L'encodeur réalise l'opération inverse : il possède 2ⁿ entrées dont une seule est active, et produit un code binaire sur n sorties. L'<strong>encodeur prioritaire</strong> gère le cas où plusieurs entrées sont actives simultanément en sélectionnant celle de plus haute priorité.</p>
+
+              <div class="exemple">
+                <strong>Exemple :</strong> Un encodeur 8 vers 3 (8 entrées I₀..I₇, 3 sorties A,B,C). Si I₅ = 1 (et autres = 0), alors ABC = 101 (= 5).
+              </div>
+
+              <h2 id="sec2">2. Multiplexeurs et démultiplexeurs</h2>
+
+              <h3>2.1 Multiplexeur (MUX)</h3>
+              <p>Le multiplexeur est un <strong>sélecteur de données</strong> : il aiguille vers sa sortie une seule parmi 2ⁿ entrées de données, en fonction d'un code de sélection de n bits. C'est l'équivalent logique d'un commutateur rotatif.</p>
+              <pre><code>MUX 4 vers 1 :
+  Entrées : D₀, D₁, D₂, D₃
+  Sélection : S₁ S₀
+  Sortie : Y = D₀·S̄₁·S̄₀ + D₁·S̄₁·S₀ + D₂·S₁·S̄₀ + D₃·S₁·S₀</code></pre>
+
+              <div class="remarque">
+                <strong>Remarque — Utilisation comme LUT :</strong> Un multiplexeur à 2ⁿ entrées peut réaliser n'importe quelle fonction logique de n variables : il suffit de câbler les entrées de données selon la table de vérité. C'est le principe des LUT (Look-Up Tables) des FPGA modernes.
+              </div>
+
+              <h3>2.2 Démultiplexeur (DEMUX)</h3>
+              <p>Le démultiplexeur réalise l'opération inverse : il aiguille une entrée unique vers l'une de 2ⁿ sorties selon un code de sélection. Physiquement, un décodeur avec une entrée "Enable" sert souvent de DEMUX.</p>
+
+              <h2 id="sec3">3. Comparateurs de magnitude</h2>
+              <p>Un comparateur de magnitude prend deux nombres binaires A et B en entrée et indique leur relation : A &gt; B, A = B ou A &lt; B. Un comparateur 1 bit est défini par :</p>
+              <pre><code>A &gt; B = A · B̄
+A &lt; B = Ā · B
+A = B = A ⊙ B = A·B + Ā·B̄  (XNOR)</code></pre>
+              <p>Les comparateurs cascadables comme le 74LS85 permettent de comparer des mots de 4 bits, et de les chaîner pour comparer des mots de 8, 12, 16 bits en exploitant les entrées de cascade (A&gt;B, A=B, A&lt;B du niveau précédent).</p>
+
+              <h2 id="sec4">4. Additionneurs</h2>
+
+              <h3>4.1 Demi-additionneur</h3>
+                  <p>Additionne deux bits A et B et produit une somme S et une retenue C (carry).</p>
+                  <table>
+                    <thead><tr><th>A</th><th>B</th><th>S</th><th>C</th></tr></thead>
+                    <tbody>
+                      <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                      <tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+                      <tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+                      <tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+                    </tbody>
+                  </table>
+                  <pre><code>S = A ⊕ B
+C = A · B</code></pre>
+
+              <h3>4.2 Additionneur complet</h3>
+              <p>Pour additionner une colonne complète (avec retenue entrante Cᵢₙ), on utilise un additionneur complet qui prend 3 entrées (A, B, Cᵢₙ) et fournit 2 sorties (S, Cₒᵤₜ).</p>
+              <pre><code>S    = A ⊕ B ⊕ Cᵢₙ
+Cₒᵤₜ = A·B + Cᵢₙ·(A ⊕ B)</code></pre>
+
+              <h3>4.3 Additionneur à retenue propagée (Ripple Carry Adder)</h3>
+              <p>Pour additionner deux mots de n bits, on cascade n additionneurs complets : la sortie Cₒᵤₜ de l'étage i devient Cᵢₙ de l'étage i+1. Simple mais lent à cause de la propagation de la retenue.</p>
+
+              <div class="exemple">
+                <strong>Exemple — Addition de 4 bits :</strong><br>
+                Pour additionner A = A₃A₂A₁A₀ et B = B₃B₂B₁B₀, on utilise 4 additionneurs complets en cascade. Le temps total est 4 × t (t = temps d'un étage). Pour accélérer, on utilise des <em>additionneurs à anticipation de retenue</em> (Carry Look-Ahead Adder).
+              </div>
+
+              <h2 id="sec5">5. Soustracteurs</h2>
+              <p>La soustraction A − B peut se réaliser de deux façons :</p>
+              <ul>
+                <li><strong>Soustracteur direct</strong> : similaire à l'additionneur mais avec une logique d'emprunt.</li>
+                <li><strong>Via complément à 2</strong> : A − B = A + (complément à 2 de B). Cette méthode est privilégiée car elle réutilise directement un additionneur. Il suffit d'inverser les bits de B et d'ajouter 1 sur l'entrée Cᵢₙ du premier étage.</li>
+              </ul>
+
+              <p>On construit ainsi un <strong>circuit additif/soustractif</strong> commandé par un signal M : si M=0, addition ; si M=1, soustraction (B est inversé via des XOR en entrée et M est injecté comme Cᵢₙ).</p>
+
+              <h2 id="sec6">6. Unité arithmétique et logique (UAL / ALU)</h2>
+              <p>L'<strong>UAL</strong> (Unité Arithmétique et Logique) est le cœur de tout microprocesseur. Elle regroupe en un seul circuit :</p>
+              <ul>
+                <li>Des opérations logiques : ET, OU, XOR, NON sur les mots d'entrée.</li>
+                <li>Des opérations arithmétiques : addition, soustraction, incrémentation.</li>
+                <li>Des décalages et rotations (parfois externalisés dans un shifter séparé).</li>
+              </ul>
+              <p>Le choix de l'opération est fait par un <strong>code opératoire</strong> (opcode) sur plusieurs bits, qui pilote un réseau de multiplexeurs sélectionnant la sortie souhaitée. Le circuit intégré 74LS181 est un exemple historique d'UAL 4 bits, cascadable.</p>
+
+              <div class="definition">
+                <strong>Définition — UAL :</strong> Une Unité Arithmétique et Logique est un circuit combinatoire qui réalise, sous le contrôle d'un code de sélection, l'une parmi plusieurs opérations logiques ou arithmétiques sur deux opérandes binaires. Elle constitue la base du chemin de données de tout processeur.
+              </div>
+
+              <div class="remarque">
+                <strong>Remarque — Drapeaux (flags) :</strong> Une UAL produit en sortie des bits d'état utiles pour les instructions conditionnelles : Z (résultat nul), C (retenue), N (signe / bit de poids fort), V (overflow), P (parité).
+              </div>
+
+              <div class="exercice">
+                <strong>Exercice 1 :</strong> Donner l'équation logique et la table de vérité d'un décodeur 3 vers 8.<br>
+                <strong>Exercice 2 :</strong> Réaliser une fonction XOR à 3 entrées en n'utilisant qu'un multiplexeur 8 vers 1.<br>
+                <strong>Exercice 3 :</strong> En utilisant un additionneur 4 bits, montrer comment effectuer A − B en complément à 2. Application numérique : A = 0101 (5), B = 0011 (3) → vérifier le résultat.
+              </div>
+
+              <div class="definition">
+                <strong>En résumé —</strong> Les circuits combinatoires (décodeurs, multiplexeurs, additionneurs, UAL) réalisent des fonctions sans mémoire. Ils constituent le chemin de données des processeurs et la base de toutes les opérations arithmétiques et logiques. Le chapitre suivant introduit la logique séquentielle, où la notion de temps et d'état mémorisé devient essentielle.
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-03-portes-logiques.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> Portes logiques</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 4 / 6</div>
+          <div><a href="chapitre-05-logique-sequentielle.html" class="btn btn-secondary btn-sm">Logique séquentielle <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

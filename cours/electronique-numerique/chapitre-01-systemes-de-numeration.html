@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Électronique Numérique — Chapitre 1: Systèmes de numération — BIT Study HUB">
+  <title>Électronique Numérique — Chapitre 1: Systèmes de numération</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #7E57C2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #7E57C2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #7E57C2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #7E57C2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #7E57C2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #7E57C2; background: color-mix(in srgb, #7E57C2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #7E57C2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #7E57C2 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Électronique Numérique</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 1</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">CS107 · Chapitre 1 / 6</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">Systèmes de numération</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Binaire, octal, hexadécimal, conversions, opérations arithmétiques binaires, code DCB, code Gray, code ASCII.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #7E57C2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-systemes-de-numeration.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">Systèmes de numération</div></a>
+                <a href="chapitre-02-algebre-de-boole.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">Algèbre de Boole</div></a>
+                <a href="chapitre-03-portes-logiques.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">Portes logiques</div></a>
+                <a href="chapitre-04-logique-combinatoire.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">Logique combinatoire</div></a>
+                <a href="chapitre-05-logique-sequentielle.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">Logique séquentielle</div></a>
+                <a href="chapitre-06-compteurs-registres.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">Compteurs et registres</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            <div class="container" id="top">
+              <h1>Chapitre 1 — Systèmes de numération</h1>
+              <p>L'électronique numérique repose sur la manipulation d'informations codées sous forme binaire. Avant d'aborder les portes logiques ou les bascules, il est indispensable de maîtriser les différents systèmes de numération utilisés pour représenter, convertir et calculer des grandeurs numériques. Ce chapitre présente les bases nécessaires à la compréhension du fonctionnement interne des ordinateurs et circuits logiques.</p>
+
+              <div class="toc">
+                <a href="#sec1">1. Système décimal</a>
+                <a href="#sec2">2. Système binaire</a>
+                <a href="#sec3">3. Systèmes octal et hexadécimal</a>
+                <a href="#sec4">4. Conversions</a>
+                <a href="#sec5">5. Arithmétique binaire</a>
+                <a href="#sec6">6. Codes DCB, Gray et ASCII</a>
+              </div>
+
+              <h2 id="sec1">1. Le système décimal</h2>
+              <p>Le système décimal, dit "système à base 10", est celui que nous utilisons quotidiennement. Il utilise dix symboles (0, 1, 2, ..., 9) et chaque chiffre possède un poids dépendant de sa position. Le nombre <code>5247</code> se décompose ainsi :</p>
+              <pre><code>5247 = 5×10³ + 2×10² + 4×10¹ + 7×10⁰
+     = 5000 + 200 + 40 + 7
+     = 5247</code></pre>
+
+              <div class="definition">
+                <strong>Définition — Base d'un système de numération :</strong> La base <em>b</em> d'un système est le nombre de symboles distincts utilisés. Un nombre N en base b s'écrit sous la forme d'une somme pondérée :<br>
+                <code>N = aₙ·bⁿ + aₙ₋₁·bⁿ⁻¹ + ... + a₁·b¹ + a₀·b⁰</code><br>
+                où chaque coefficient aᵢ vérifie <code>0 ≤ aᵢ &lt; b</code>.
+              </div>
+
+              <h2 id="sec2">2. Le système binaire</h2>
+              <p>En électronique numérique, l'information est représentée par deux niveaux électriques : 0 (bas) et 1 (haut). C'est le <strong>système binaire</strong> (base 2), parfaitement adapté aux composants électroniques qui ne distinguent que deux états (passant/bloqué, chargé/déchargé). Un chiffre binaire est appelé <strong>bit</strong> (binary digit).</p>
+              <p>Le nombre binaire <code>(1011)₂</code> se décompose ainsi :</p>
+              <pre><code>(1011)₂ = 1×2³ + 0×2² + 1×2¹ + 1×2⁰
+        = 8 + 0 + 2 + 1
+        = (11)₁₀</code></pre>
+
+              <div class="remarque">
+                <strong>Remarque — Poids des bits :</strong> Le bit le plus à droite est appelé <em>bit de poids faible</em> (LSB, Least Significant Bit) ; celui le plus à gauche est le <em>bit de poids fort</em> (MSB, Most Significant Bit). Un groupe de 8 bits forme un <em>octet</em> (byte), pouvant représenter 256 valeurs distinctes (0 à 255).
+              </div>
+
+              <p>Les puissances successives de 2 sont à mémoriser : 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096...</p>
+
+              <h2 id="sec3">3. Les systèmes octal et hexadécimal</h2>
+              <p>L'écriture binaire étant rapidement illisible pour de grands nombres (ex. <code>1110100110</code>), on utilise deux notations compactes :</p>
+              <ul>
+                <li><strong>Octal (base 8)</strong> : utilise 8 symboles (0 à 7). Chaque chiffre octal représente 3 bits.</li>
+                <li><strong>Hexadécimal (base 16)</strong> : utilise 16 symboles (0 à 9 puis A, B, C, D, E, F). Chaque chiffre hexadécimal représente 4 bits. Très utilisé pour adresser la mémoire, les couleurs (#7E57C2), etc.</li>
+              </ul>
+
+              <table>
+                <thead>
+                  <tr><th>Décimal</th><th>Binaire (4 bits)</th><th>Octal</th><th>Hexadécimal</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>0</td><td>0000</td><td>0</td><td>0</td></tr>
+                  <tr><td>1</td><td>0001</td><td>1</td><td>1</td></tr>
+                  <tr><td>2</td><td>0010</td><td>2</td><td>2</td></tr>
+                  <tr><td>5</td><td>0101</td><td>5</td><td>5</td></tr>
+                  <tr><td>9</td><td>1001</td><td>11</td><td>9</td></tr>
+                  <tr><td>10</td><td>1010</td><td>12</td><td>A</td></tr>
+                  <tr><td>12</td><td>1100</td><td>14</td><td>C</td></tr>
+                  <tr><td>15</td><td>1111</td><td>17</td><td>F</td></tr>
+                </tbody>
+              </table>
+
+              <h2 id="sec4">4. Conversions entre bases</h2>
+
+              <h3>4.1 Conversion décimal → binaire</h3>
+              <p>Méthode des divisions successives par 2 : on divise le nombre par 2, on conserve les restes, et on les lit de bas en haut.</p>
+              <div class="exemple">
+                <strong>Exemple — Convertir (29)₁₀ en binaire :</strong>
+                <pre><code>29 ÷ 2 = 14  reste 1  (LSB)
+14 ÷ 2 = 7   reste 0
+7  ÷ 2 = 3   reste 1
+3  ÷ 2 = 1   reste 1
+1  ÷ 2 = 0   reste 1  (MSB)</code></pre>
+                Résultat : <strong>(29)₁₀ = (11101)₂</strong>
+              </div>
+
+              <h3>4.2 Conversion binaire → décimal</h3>
+              <p>On multiplie chaque bit par sa puissance de 2 correspondante et on additionne.</p>
+              <pre><code>(11010)₂ = 1×16 + 1×8 + 0×4 + 1×2 + 0×1
+         = 16 + 8 + 0 + 2 + 0
+         = (26)₁₀</code></pre>
+
+              <h3>4.3 Conversion binaire ↔ hexadécimal</h3>
+              <p>Méthode rapide : grouper les bits par 4 en partant de la droite, puis convertir chaque groupe.</p>
+              <div class="exemple">
+                <strong>Exemple :</strong> <code>(1011 0110 1110)₂</code> = <code>B 6 E</code> = <code>(B6E)₁₆</code>
+              </div>
+
+              <h2 id="sec5">5. Arithmétique binaire</h2>
+              <p>Les opérations arithmétiques s'effectuent comme en décimal, avec retenues. L'addition suit la table :</p>
+              <table>
+                <thead><tr><th>+</th><th>0</th><th>1</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>0</td><td>1</td></tr>
+                  <tr><td>1</td><td>1</td><td>10</td></tr>
+                </tbody>
+              </table>
+
+              <div class="exemple">
+                <strong>Exemple — Addition binaire avec retenue :</strong>
+                <pre><code>    1 0 1 1   (11)
+  + 1 1 1 0   (14)
+  ----------
+  1 1 0 0 1   (25)</code></pre>
+                Vérification : 11 + 14 = 25 ✓
+              </div>
+
+              <p>Pour la <strong>soustraction</strong>, on peut utiliser soit la méthode directe avec emprunt, soit la méthode du <em>complément à 2</em> qui transforme la soustraction en addition. Le complément à 2 d'un nombre binaire s'obtient en inversant tous les bits puis en ajoutant 1.</p>
+
+              <div class="remarque">
+                <strong>Remarque — Complément à 2 :</strong> Sur n bits, le complément à 2 de N vaut <code>2ⁿ − N</code>. Il permet de représenter des entiers signés : le bit de poids fort indique le signe (0 = positif, 1 = négatif).
+              </div>
+
+              <p>La <strong>multiplication</strong> binaire est simple : 0 × 0 = 0, 0 × 1 = 0, 1 × 0 = 0, 1 × 1 = 1. On procède comme en décimal, par décalages et additions successives.</p>
+
+              <h2 id="sec6">6. Codes spéciaux</h2>
+
+              <h3>6.1 Code DCB (Décimal Codé Binaire)</h3>
+              <p>Le code DCB (ou BCD en anglais) code chaque chiffre décimal séparément sur 4 bits. Il est utilisé dans les afficheurs numériques (montres, compteurs).</p>
+              <pre><code>(837)₁₀  →  1000 0011 0111  en DCB</code></pre>
+
+              <h3>6.2 Code Gray (code réfléchi)</h3>
+              <p>Dans le code Gray, deux valeurs successives ne diffèrent que d'<strong>un seul bit</strong>. Cela évite les aléas de transition dans les capteurs et compteurs mécaniques.</p>
+              <table>
+                <thead><tr><th>Décimal</th><th>Binaire</th><th>Gray</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>000</td><td>000</td></tr>
+                  <tr><td>1</td><td>001</td><td>001</td></tr>
+                  <tr><td>2</td><td>010</td><td>011</td></tr>
+                  <tr><td>3</td><td>011</td><td>010</td></tr>
+                  <tr><td>4</td><td>100</td><td>110</td></tr>
+                  <tr><td>5</td><td>101</td><td>111</td></tr>
+                  <tr><td>6</td><td>110</td><td>101</td></tr>
+                  <tr><td>7</td><td>111</td><td>100</td></tr>
+                </tbody>
+              </table>
+
+              <h3>6.3 Code ASCII</h3>
+              <p>Le code ASCII (American Standard Code for Information Interchange) associe à chaque caractère une valeur binaire sur 7 bits (étendu à 8 bits). Par exemple, la lettre 'A' vaut 65 (0x41), 'a' vaut 97 (0x61), le chiffre '0' vaut 48 (0x30).</p>
+
+              <div class="exercice">
+                <strong>Exercice 1 :</strong> Convertir <code>(156)₁₀</code> en binaire, en octal et en hexadécimal.<br>
+                <strong>Exercice 2 :</strong> Effectuer l'addition binaire <code>(10110)₂ + (1101)₂</code> et vérifier en décimal.<br>
+                <strong>Exercice 3 :</strong> Coder <code>(459)₁₀</code> en DCB et donner son équivalent en code Gray sur 4 bits pour chaque chiffre.
+              </div>
+
+              <div class="definition">
+                <strong>En résumé —</strong> Les systèmes de numération (binaire, octal, hexadécimal) sont la base de toute représentation numérique. Le choix de la base dépend du contexte : le binaire pour le matériel, l'hexadécimal pour la compacité de l'écriture, le DCB pour les affichages décimaux, et le Gray pour les transitions sans aléa.
+              </div>
+
+              <p>Le chapitre suivant abordera l'algèbre de Boole, langage mathématique qui permettra de manipuler ces variables binaires à l'aide d'opérations logiques formelles.</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 1 / 6</div>
+          <div><a href="chapitre-02-algebre-de-boole.html" class="btn btn-secondary btn-sm">Algèbre de Boole <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

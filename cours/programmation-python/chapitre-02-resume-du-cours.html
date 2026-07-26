@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Programmation Python — Chapitre 2: 📘 Résumé du cours — BIT Study HUB">
+  <title>Programmation Python — Chapitre 2: 📘 Résumé du cours</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #3776AB; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #3776AB; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #3776AB; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #3776AB; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #3776AB; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #3776AB; background: color-mix(in srgb, #3776AB 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #3776AB; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #3776AB 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Programmation Python</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 2</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">CS101 · Chapitre 2 / 3</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">📘 Résumé du cours</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Programmation Python — Introduction à la programmation en Python: syntaxe, types, structures de contrôle, fonctions, POO, projets pratiques.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #3776AB" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-introduction.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">Introduction</div></a><a href="chapitre-02-resume-du-cours.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">📘 Résumé du cours</div></a><a href="chapitre-03-exercices-corriges.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">📝 Exercices corrigés</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            <h2 style="font-size:2rem; color:#dacbb8; border-bottom:2px solid #2e2e2e; padding-bottom:0.3rem;">📘 Résumé du cours</h2>
+
+        <div class="carte">
+            <h3>🔹 Introduction à la programmation</h3>
+            <p><strong>Programmation :</strong> donner des instructions précises et logiques à un ordinateur. Un programme est une suite d'étapes ordonnées.</p>
+            <p><strong>L'ordinateur est littéral :</strong> il exécute exactement ce que vous dites, pas ce que vous voulez dire. Chaque instruction doit être complète et sans ambiguïté.</p>
+            <p><strong>Langages de bas niveau :</strong> assembleur (registres, instructions élémentaires), C (gestion manuelle de la mémoire, compilation).</p>
+            <p><strong>Python :</strong> langage de haut niveau, interprété, généraliste, orienté objet, dynamique, open source.</p>
+        </div>
+
+        <div class="carte">
+            <h3>🔹 Python en pratique</h3>
+            <p><strong>Version :</strong> Python 3 (standard actuel, Python 2.7 abandonné).</p>
+            <p><strong>Usages :</strong> web, données, IA, automatisation, fintech (Paystack, Flutterwave, Interswitch, Google, Spotify).</p>
+            <p><strong>Environnement :</strong> Python 3, VS Code (extension Python), GitHub.</p>
+            <p><strong>Shell (REPL) :</strong> environnement interactif (<code>>>></code>) pour tester des instructions.</p>
+        </div>
+
+        <div class="carte">
+            <h3>🔹 Syntaxe et règles</h3>
+            <p><strong>Commentaires :</strong> <code># commentaire</code> (ligne simple) ou <code>''' ... '''</code> (multiligne).</p>
+            <p><strong>Indentation :</strong> 4 espaces par niveau (VS Code le fait automatiquement). Ne pas mélanger tabulations et espaces.</p>
+            <p><strong>Notation :</strong> sensible à la casse (<code>nom</code> ≠ <code>Nom</code>), mots-clés réservés (<code>if</code>, <code>for</code>, <code>class</code>…).</p>
+        </div>
+
+        <div class="carte">
+            <h3>🔹 Projet fil rouge : Student Record System</h3>
+            <p>Un projet construit sur 4 jours pour appliquer les concepts.</p>
+            <ul>
+                <li><strong>Jour 2 :</strong> Stocker les infos (nom, ID, programme, niveau, GPA), saisie utilisateur, affichage formaté.</li>
+                <li><strong>Jour 3 :</strong> Gérer un registre complet, vérifier le statut académique.</li>
+                <li><strong>Jour 4 :</strong> Classe <code>Student</code> avec attributs et méthodes.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ===================== EXERCICES ===================== -->
+    
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-01-introduction.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> Introduction</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 2 / 3</div>
+          <div><a href="chapitre-03-exercices-corriges.html" class="btn btn-secondary btn-sm">📝 Exercices corrigés <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

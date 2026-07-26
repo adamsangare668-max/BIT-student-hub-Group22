@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Management Financier — Chapitre 11: 📌 Exercices corrigés — BIT Study HUB">
+  <title>Management Financier — Chapitre 11: 📌 Exercices corrigés</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #2E7D32; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #2E7D32; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #2E7D32; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #2E7D32; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #2E7D32; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #2E7D32; background: color-mix(in srgb, #2E7D32 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #2E7D32; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']] }, svg: { fontCache: 'global' } };</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #2E7D32 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Management Financier</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 11</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">MG102 · Chapitre 11 / 11</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">📌 Exercices corrigés</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Management Financier — Principes financiers: comptabilité, analyse financière, budget, investissement, ROI.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #2E7D32" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-introduction.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">Introduction</div></a><a href="chapitre-02-table-des-matieres.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">📑 Table des matières</div></a><a href="chapitre-03-1-generalites-sur-la-gestion-financiere.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">1. Généralités sur la gestion financière</div></a><a href="chapitre-04-2-politique-d-approvisionnement.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">2. Politique d&#x27;approvisionnement</div></a><a href="chapitre-05-3-calcul-des-couts.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">3. Calcul des coûts</div></a><a href="chapitre-06-4-repartition-des-charges-indirectes.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">4. Répartition des charges indirectes</div></a><a href="chapitre-07-5-interets-simple-et-compose.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">7</div><div style="font-size: var(--fs-sm); font-weight: 500">5. Intérêts simple et composé</div></a><a href="chapitre-08-6-actualisation-et-investissement.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">8</div><div style="font-size: var(--fs-sm); font-weight: 500">6. Actualisation et investissement</div></a><a href="chapitre-09-7-van-tri-ratios.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">9</div><div style="font-size: var(--fs-sm); font-weight: 500">7. VAN, TRI, ratios</div></a><a href="chapitre-10-8-gestion-de-tresorerie.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">10</div><div style="font-size: var(--fs-sm); font-weight: 500">8. Gestion de trésorerie</div></a><a href="chapitre-11-exercices-corriges.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">11</div><div style="font-size: var(--fs-sm); font-weight: 500">📌 Exercices corrigés</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            <h2>📌 Exercices corrigés</h2>
+    <p style="margin-bottom:1.5rem;">Tous les exercices, TD et cas pratiques du cours sont résolus ci-dessous avec étapes détaillées.</p>
+
+    <!-- Cas pratique 1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_cp1')">Afficher / Masquer</button>
+      <h4>Cas pratique 1 — Sources de financement</h4>
+      <p><strong>Énoncé :</strong> Société ALPHA : capital social 15 000 000 FCFA, emprunt bancaire 5 000 000 FCFA, crédit fournisseur 2 000 000 FCFA.</p>
+      <div id="sol_cp1" class="solution">
+        <p><strong>1. Sources :</strong></p>
+        <ul>
+          <li>Capitaux propres : 15 000 000 FCFA</li>
+          <li>Emprunt bancaire : 5 000 000 FCFA</li>
+          <li>Crédit fournisseur : 2 000 000 FCFA</li>
+        </ul>
+        <p><strong>2. Total des ressources :</strong></p>
+        <p>$$15\,000\,000 + 5\,000\,000 + 2\,000\,000 = 22\,000\,000\ \text{FCFA}$$</p>
+        <span class="resultat">Total : 22 000 000 FCFA.</span>
+      </div>
+    </div>
+
+    <!-- Questions révision ch1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_rev1')">Afficher / Masquer</button>
+      <h4>Questions de révision — Chapitre 1</h4>
+      <div id="sol_rev1" class="solution">
+        <p><strong>1. Définir la gestion financière :</strong> Ensemble des méthodes et techniques pour assurer la disponibilité des ressources financières.</p>
+        <p><strong>2. Objectifs :</strong> Rentabilité, solvabilité, croissance.</p>
+        <p><strong>3. Missions du responsable financier :</strong> Planification, recherche de financement, gestion de trésorerie, analyse financière.</p>
+        <p><strong>4. Importance de la trésorerie :</strong> Permet d'assurer les paiements, éviter les découverts et optimiser les excédents.</p>
+        <span class="resultat">Réponses synthétiques.</span>
+      </div>
+    </div>
+
+    <!-- QEC exercice -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_qec')">Afficher / Masquer</button>
+      <h4>Exercice QEC</h4>
+      <p><strong>Énoncé :</strong> D = 15 000 unités, S = 2 500 FCFA, H = 100 FCFA. Calculer la QEC.</p>
+      <div id="sol_qec" class="solution">
+        <p>$$QEC = \sqrt{\frac{2 \times 15\,000 \times 2\,500}{100}} = \sqrt{750\,000} \approx 866\ \text{unités}$$</p>
+        <span class="resultat">QEC ≈ 866 unités.</span>
+      </div>
+    </div>
+
+    <!-- TD N°1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_td1')">Afficher / Masquer</button>
+      <h4>TD N°1 — Coût de production et coût de revient</h4>
+      <p><strong>Énoncé :</strong> Matières : 800 000, Main d'œuvre : 400 000, Charges indirectes : 200 000, Charges commerciales : 100 000, Charges administratives : 50 000.</p>
+      <div id="sol_td1" class="solution">
+        <p><strong>Coût de production :</strong></p>
+        <p>$$800\,000 + 400\,000 + 200\,000 = 1\,400\,000\ \text{FCFA}$$</p>
+        <p><strong>Coût de revient :</strong></p>
+        <p>$$1\,400\,000 + 100\,000 + 50\,000 = 1\,550\,000\ \text{FCFA}$$</p>
+        <span class="resultat">Coût de production : 1 400 000 FCFA ; Coût de revient : 1 550 000 FCFA.</span>
+      </div>
+    </div>
+
+    <!-- Intérêt simple -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_int_simple')">Afficher / Masquer</button>
+      <h4>Exercice — Intérêt simple</h4>
+      <p><strong>Énoncé :</strong> Capital 1 500 000 FCFA, taux 8%, durée 4 ans.</p>
+      <div id="sol_int_simple" class="solution">
+        <p>$$I = 1\,500\,000 \times 0,08 \times 4 = 480\,000\ \text{FCFA}$$</p>
+        <p>$$Valeur\ acquise = 1\,500\,000 + 480\,000 = 1\,980\,000\ \text{FCFA}$$</p>
+        <span class="resultat">Intérêt : 480 000 FCFA ; Valeur acquise : 1 980 000 FCFA.</span>
+      </div>
+    </div>
+
+    <!-- TD N°2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_td2')">Afficher / Masquer</button>
+      <h4>TD N°2 — Intérêt composé et actualisation</h4>
+      <p><strong>Énoncé :</strong> 1) Valeur acquise de 2 500 000 FCFA à 8% pendant 5 ans. 2) Valeur actuelle de 10 000 000 FCFA dans 6 ans à 10%.</p>
+      <div id="sol_td2" class="solution">
+        <p><strong>1) Intérêt composé :</strong></p>
+        <p>$$VF = 2\,500\,000 \times (1,08)^5 = 2\,500\,000 \times 1,4693 = 3\,673\,250\ \text{FCFA}$$</p>
+        <p><strong>2) Actualisation :</strong></p>
+        <p>$$VA = 10\,000\,000 \times (1,10)^{-6} = 10\,000\,000 \times 0,5645 = 5\,645\,000\ \text{FCFA}$$</p>
+        <span class="resultat">VF : 3 673 250 FCFA ; VA : 5 645 000 FCFA.</span>
+      </div>
+    </div>
+
+    <!-- VAN exemple -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_van')">Afficher / Masquer</button>
+      <h4>Exercice — Calcul de la VAN</h4>
+      <p><strong>Énoncé :</strong> Investissement 10 000 FCFA, flux 4 000, 5 000, 6 000 FCFA sur 3 ans, taux 10%.</p>
+      <div id="sol_van" class="solution">
+        <p>$$VAN = -10\,000 + \frac{4\,000}{1,10} + \frac{5\,000}{1,10^2} + \frac{6\,000}{1,10^3}$$</p>
+        <p>$$= -10\,000 + 3\,636,36 + 4\,132,23 + 4\,507,89 = 2\,276,48\ \text{FCFA}$$</p>
+        <p>VAN > 0 → projet rentable.</p>
+        <span class="resultat">VAN = 2 276,48 FCFA (projet accepté).</span>
+      </div>
+    </div>
+
+    <!-- Étude de cas projets A et B -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_projets')">Afficher / Masquer</button>
+      <h4>Étude de cas — Projets A et B</h4>
+      <p><strong>Énoncé :</strong> Projet A : investissement 8 000 000, flux annuel 3 000 000 sur 4 ans. Projet B : investissement 8 000 000, flux 2 000 000, 2 500 000, 3 500 000, 5 000 000. Taux = 10%.</p>
+      <div id="sol_projets" class="solution">
+        <p><strong>Projet A :</strong></p>
+        <p>$$VAN_A = -8\,000\,000 + 3\,000\,000 \times \frac{1-(1,10)^{-4}}{0,10}$$</p>
+        <p>$$= -8\,000\,000 + 3\,000\,000 \times 3,1699 = 1\,509\,700\ \text{FCFA}$$</p>
+        <p><strong>Projet B :</strong></p>
+        <p>$$VAN_B = -8\,000\,000 + \frac{2\,000\,000}{1,10} + \frac{2\,500\,000}{1,10^2} + \frac{3\,500\,000}{1,10^3} + \frac{5\,000\,000}{1,10^4}$$</p>
+        <p>$$= -8\,000\,000 + 1\,818\,182 + 2\,066\,116 + 2\,629\,720 + 3\,415\,067 = 1\,929\,085\ \text{FCFA}$$</p>
+        <p>Les deux projets sont rentables, le projet B a la VAN la plus élevée.</p>
+        <span class="resultat">VAN_A ≈ 1 509 700 FCFA ; VAN_B ≈ 1 929 085 FCFA. Projet B préférable.</span>
+      </div>
+    </div>
+
+    <!-- Exercice corrigé résultat prévisionnel -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_res_previsionnel')">Afficher / Masquer</button>
+      <h4>Exercice — Résultat prévisionnel</h4>
+      <p><strong>Énoncé :</strong> Ventes 25 000 000, Charges 18 000 000.</p>
+      <div id="sol_res_previsionnel" class="solution">
+        <p>$$Résultat = 25\,000\,000 - 18\,000\,000 = 7\,000\,000\ \text{FCFA}$$</p>
+        <span class="resultat">Résultat prévisionnel : 7 000 000 FCFA.</span>
+      </div>
+    </div>
+
+    <!-- TD N°3 ratios -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_td3')">Afficher / Masquer</button>
+      <h4>TD N°3 — Ratios financiers</h4>
+      <p><strong>Énoncé :</strong> Actif circulant 12 000 000, Passif circulant 6 000 000, Dettes 18 000 000, Capitaux propres 12 000 000, Résultat net 3 600 000, Actif total 24 000 000.</p>
+      <div id="sol_td3" class="solution">
+        <p><strong>1) Ratio de liquidité :</strong></p>
+        <p>$$\frac{12\,000\,000}{6\,000\,000} = 2$$</p>
+        <p><strong>2) Ratio d'endettement :</strong></p>
+        <p>$$\frac{18\,000\,000}{12\,000\,000} = 1,5$$</p>
+        <p><strong>3) ROA (Rentabilité économique) :</strong></p>
+        <p>$$\frac{3\,600\,000}{24\,000\,000} \times 100 = 15\%$$</p>
+        <span class="resultat">Liquidité = 2 ; Endettement = 1,5 ; ROA = 15%.</span>
+      </div>
+    </div>
+
+    <!-- Cas pratique final (start-up) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol_startup')">Afficher / Masquer</button>
+      <h4>Cas pratique final — Start-up informatique</h4>
+      <p><strong>Énoncé :</strong> Investissement 12 000 000 FCFA, flux : 4 000 000, 5 000 000, 6 000 000 sur 3 ans, taux 10%. Bénéfice net 2 400 000, actif total 15 000 000, dettes 9 000 000, capitaux propres 18 000 000.</p>
+      <div id="sol_startup" class="solution">
+        <p><strong>1) VAN :</strong></p>
+        <p>$$VAN = -12\,000\,000 + \frac{4\,000\,000}{1,10} + \frac{5\,000\,000}{1,10^2} + \frac{6\,000\,000}{1,10^3}$$</p>
+        <p>$$= -12\,000\,000 + 3\,636\,364 + 4\,132\,231 + 4\,507\,889 = 276\,484\ \text{FCFA}$$</p>
+        <p><strong>2) Délai de récupération :</strong> 3 ans (flux cumulés = 15 000 000 > 12 000 000).</p>
+        <p><strong>3) ROA :</strong> $$\frac{2\,400\,000}{15\,000\,000} \times 100 = 16\%$$</p>
+        <p><strong>4) Ratio d'endettement :</strong> $$\frac{9\,000\,000}{18\,000\,000} = 0,5$$</p>
+        <p><strong>5) Avis :</strong> VAN positive, délai de récupération de 3 ans, ROA de 16% et endettement maîtrisé. Projet rentable et viable.</p>
+        <span class="resultat">VAN ≈ 276 484 FCFA ; Payback = 3 ans ; ROA = 16% ; Endettement = 0,5. Projet accepté.</span>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem;">Tous les exercices et cas pratiques du cours ont été corrigés avec des étapes détaillées.</p>
+  </div>
+
+  <a href="#top" class="backtop">⬆ Retour en haut</a>
+</div>
+
+
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-10-8-gestion-de-tresorerie.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> 8. Gestion de trésorerie</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 11 / 11</div>
+          <div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

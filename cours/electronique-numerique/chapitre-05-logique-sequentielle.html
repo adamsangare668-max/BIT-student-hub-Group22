@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Électronique Numérique — Chapitre 5: Logique séquentielle — BIT Study HUB">
+  <title>Électronique Numérique — Chapitre 5: Logique séquentielle</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #7E57C2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #7E57C2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #7E57C2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #7E57C2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #7E57C2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #7E57C2; background: color-mix(in srgb, #7E57C2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #7E57C2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #7E57C2 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Électronique Numérique</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 5</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">CS107 · Chapitre 5 / 6</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">Logique séquentielle</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Bascules RS, D, JK, T; tables de transition; chronogrammes; synchrone vs asynchrone.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #7E57C2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-systemes-de-numeration.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">Systèmes de numération</div></a>
+                <a href="chapitre-02-algebre-de-boole.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">Algèbre de Boole</div></a>
+                <a href="chapitre-03-portes-logiques.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">Portes logiques</div></a>
+                <a href="chapitre-04-logique-combinatoire.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">Logique combinatoire</div></a>
+                <a href="chapitre-05-logique-sequentielle.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">Logique séquentielle</div></a>
+                <a href="chapitre-06-compteurs-registres.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">Compteurs et registres</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            <div class="container" id="top">
+              <h1>Chapitre 5 — Logique séquentielle</h1>
+              <p>Contrairement à la logique combinatoire, la <strong>logique séquentielle</strong> intègre la notion de temps et de mémoire : la sortie dépend non seulement des entrées présentes, mais aussi de l'état antérieur du système. L'élément de mémorisation de base est la <strong>bascule</strong> (flip-flop). Ce chapitre présente les différentes bascules, leurs tables de transition et leur utilisation synchrone ou asynchrone.</p>
+
+              <div class="toc">
+                <a href="#sec1">1. Définitions et classifications</a>
+                <a href="#sec2">2. Bascule RS asynchrone</a>
+                <a href="#sec3">3. Bascule D, JK et T</a>
+                <a href="#sec4">4. Fonctionnement synchrone (horloge)</a>
+                <a href="#sec5">5. Chronogrammes</a>
+                <a href="#sec6">6. Synthèse et applications</a>
+              </div>
+
+              <div class="definition">
+                <strong>Définition — Circuit séquentiel :</strong> Un circuit séquentiel est un système dont la sortie dépend des entrées présentes <em>et</em> de l'état interne (mémoire). Formellement : S(t) = f(E(t), E(t-1), ..., S(t-1)). Il contient au moins un élément de mémorisation (bascule).
+              </div>
+
+              <h2 id="sec1">1. Définitions et classifications</h2>
+              <p>On distingue deux grandes familles de circuits séquentiels :</p>
+              <ul>
+                <li><strong>Séquentiel asynchrone</strong> : les sorties changent dès que les entrées changent. Plus rapide mais sensible aux aléas (race hazards).</li>
+                <li><strong>Séquentiel synchrone</strong> : les changements d'état sont synchronisés par un signal d'<strong>horloge</strong> (clock). Plus prévisible et facile à concevoir, c'est le modèle des processeurs.</li>
+              </ul>
+
+              <p>Les bascules sont classées selon leur nombre d'entrées de commande et leur comportement :</p>
+              <ul>
+                <li><strong>Bascule RS</strong> (Reset-Set) : la plus simple, mémorise 1 bit.</li>
+                <li><strong>Bascule D</strong> (Data) : recopie son entrée sur front d'horloge.</li>
+                <li><strong>Bascule JK</strong> : version universelle et améliorée de la RS.</li>
+                <li><strong>Bascule T</strong> (Toggle) : bascule d'état à chaque impulsion.</li>
+              </ul>
+
+              <h2 id="sec2">2. Bascule RS asynchrone</h2>
+              <p>La bascule RS possède deux entrées : S (Set, mise à 1) et R (Reset, mise à 0). Elle mémorise un bit Q et son complément Q̄. C'est le point de départ historique, souvent réalisé à partir de deux portes NOR ou NAND bouclées.</p>
+
+              <table>
+                <thead><tr><th>S</th><th>R</th><th>Qₙ₊₁</th><th>État</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>0</td><td>Qₙ</td><td>Mémoire (conservation)</td></tr>
+                  <tr><td>0</td><td>1</td><td>0</td><td>Reset</td></tr>
+                  <tr><td>1</td><td>0</td><td>1</td><td>Set</td></tr>
+                  <tr><td>1</td><td>1</td><td>X</td><td>Interdit (état instable)</td></tr>
+                </tbody>
+              </table>
+
+              <div class="remarque">
+                <strong>Remarque — État interdit :</strong> La combinaison S = R = 1 est interdite car elle force Q et Q̄ à 0 simultanément, ce qui est logiquement impossible (Q et Q̄ doivent être complémentaires). Lors du relâchement, le système peut basculer dans un état imprévisible. La bascule JK résout ce problème.
+              </div>
+
+              <h2 id="sec3">3. Bascules D, JK et T</h2>
+
+              <h3>3.1 Bascule D (Data ou Delay)</h3>
+              <p>La bascule D mémorise la valeur de l'entrée D au moment d'un front d'horloge. Elle évite l'état interdit de la RS en n'ayant qu'une seule entrée de données.</p>
+              <table>
+                <thead><tr><th>Horloge</th><th>D</th><th>Qₙ₊₁</th></tr></thead>
+                <tbody>
+                  <tr><td>Front ↑</td><td>0</td><td>0</td></tr>
+                  <tr><td>Front ↑</td><td>1</td><td>1</td></tr>
+                  <tr><td>Absent</td><td>X</td><td>Qₙ (mémorisé)</td></tr>
+                </tbody>
+              </table>
+              <p>La bascule D est l'élément de base des registres et des mémoires. On la trouve dans les composants 74LS74 (double D), 74LS175 (quadruple D).</p>
+
+              <h3>3.2 Bascule JK</h3>
+              <p>La bascule JK généralise la RS : J = Set, K = Reset. Elle évite l'état interdit en interprétant J = K = 1 comme une inversion de l'état (toggle).</p>
+              <table>
+                <thead><tr><th>J</th><th>K</th><th>Qₙ₊₁</th><th>Effet</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>0</td><td>Qₙ</td><td>Mémoire</td></tr>
+                  <tr><td>0</td><td>1</td><td>0</td><td>Reset</td></tr>
+                  <tr><td>1</td><td>0</td><td>1</td><td>Set</td></tr>
+                  <tr><td>1</td><td>1</td><td>Q̄ₙ</td><td>Toggle (inversion)</td></tr>
+                </tbody>
+              </table>
+
+              <div class="exemple">
+                <strong>Exemple — Compteur modulo 2 :</strong><br>
+                Une bascule JK avec J = K = 1 bascule à chaque front d'horloge. Sa sortie Q alterne 0, 1, 0, 1... C'est un diviseur de fréquence par 2 : si l'horloge est à 1 MHz, Q est à 500 kHz. En mettant plusieurs bascules en cascade, on divise par 4, 8, 16, etc.
+              </div>
+
+              <h3>3.3 Bascule T (Toggle)</h3>
+              <p>La bascule T est un cas particulier de la JK avec J = K = T. Si T = 1, la sortie bascule à chaque front ; si T = 0, elle conserve son état.</p>
+              <pre><code>Qₙ₊₁ = T ⊕ Qₙ</code></pre>
+
+              <h2 id="sec4">4. Fonctionnement synchrone (horloge)</h2>
+              <p>Dans un système synchrone, toutes les bascules partagent le même signal d'horloge <code>CLK</code>. Les changements d'état se produisent soit sur un <strong>front montant</strong> (0 → 1), soit sur un <strong>front descendant</strong> (1 → 0), selon le composant. Cela garantit que toutes les bascules évoluent de manière cohérente.</p>
+
+              <p>Pour rendre une bascule sensible au front (et non au niveau), on intercale un détecteur de front entre l'horloge et la bascule RS : c'est le principe des bascules <em>maître-esclave</em> (master-slave) ou de la détection de front.</p>
+
+              <div class="definition">
+                <strong>Définition — Temps de setup et de hold :</strong>
+                <ul>
+                  <li><strong>t_setup</strong> : durée minimale pendant laquelle l'entrée doit être stable <em>avant</em> le front d'horloge.</li>
+                  <li><strong>t_hold</strong> : durée minimale pendant laquelle l'entrée doit rester stable <em>après</em> le front d'horloge.</li>
+                </ul>
+                Le non-respect de ces contraintes entraîne un phénomène de <em>métastabilité</em> : la sortie peut rester indéterminée un certain temps.
+              </div>
+
+              <h2 id="sec5">5. Chronogrammes</h2>
+              <p>Un <strong>chronogramme</strong> est un graphe temporel représentant l'évolution des signaux en fonction du temps. Il est indispensable pour visualiser le comportement dynamique d'un circuit séquentiel.</p>
+
+              <div class="exemple">
+                <strong>Exemple — Chronogramme d'une bascule D sur front montant :</strong>
+                <pre><code>CLK  ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐
+       │ │ │ │ │ │ │ │ │ │ │ │
+      ─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └
+D    0  1  1  0  1  0  1  0
+       ▲     ▲     ▲     ▲
+Q    0  0  1  1  0  1  1  1  (Q prend D au front ↑)</code></pre>
+                On voit que Q recopie D uniquement sur les fronts montants de CLK.
+              </div>
+
+              <div class="remarque">
+                <strong>Remarque — Entrées asynchrones :</strong> La plupart des bascules intégrées possèdent en plus des entrées asynchrones <code>PRESET</code> (forcée à 1) et <code>CLEAR</code> (forcée à 0) qui agissent indépendamment de l'horloge. Elles servent à initialiser le système au démarrage (reset global).
+              </div>
+
+              <h2 id="sec6">6. Synthèse et applications</h2>
+              <p>Pour synthétiser un circuit séquentiel, on procède en plusieurs étapes :</p>
+              <ol>
+                <li>Identifier les entrées, les sorties et le nombre d'états nécessaires.</li>
+                <li>Construire le graphe d'états ou la table de transitions.</li>
+                <li>Choisir le codage des états (binaire, Gray, one-hot).</li>
+                <li>Choisir le type de bascule (D, JK, T) selon la complexité.</li>
+                <li>Dériver les équations des entrées des bascules par Karnaugh.</li>
+                <li>Câbler les bascules et la logique combinatoire de commande.</li>
+              </ol>
+
+              <p>Les applications sont nombreuses : compteurs, registres, machines à états finis (FSM), contrôleurs de bus, circuits de synchronisation, diviseurs de fréquence, anti-rebonds pour boutons poussoirs, etc.</p>
+
+              <div class="exercice">
+                <strong>Exercice 1 :</strong> Compléter la table de transition d'une bascule D en explicitant l'équation <code>Qₙ₊₁ = D</code>.<br>
+                <strong>Exercice 2 :</strong> Tracer le chronogramme d'une bascule JK avec J = K = 1 sur 5 périodes d'horloge. Quelle est la fréquence de Q par rapport à CLK ?<br>
+                <strong>Exercice 3 :</strong> Convertir une bascule D en bascule T en utilisant un OU-exclusif. Donner le schéma logique.
+              </div>
+
+              <div class="definition">
+                <strong>En résumé —</strong> La logique séquentielle introduit la mémoire par le biais des bascules (RS, D, JK, T). Le fonctionnement synchrone sous horloge garantit un comportement prévisible. Ces éléments de base permettent de construire les compteurs et registres présentés dans le chapitre final.
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-04-logique-combinatoire.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> Logique combinatoire</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 5 / 6</div>
+          <div><a href="chapitre-06-compteurs-registres.html" class="btn btn-secondary btn-sm">Compteurs et registres <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

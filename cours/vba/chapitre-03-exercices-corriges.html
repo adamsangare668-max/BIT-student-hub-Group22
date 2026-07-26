@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Programmation VBA — Chapitre 3: 📝 Exercices corrigés — BIT Study HUB">
+  <title>Programmation VBA — Chapitre 3: 📝 Exercices corrigés</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #4CAF50; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #4CAF50; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #4CAF50; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #4CAF50; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #4CAF50; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #4CAF50; background: color-mix(in srgb, #4CAF50 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #4CAF50; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #4CAF50 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Programmation VBA</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 3</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">CS103 · Chapitre 3 / 3</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">📝 Exercices corrigés</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Programmation VBA — Visual Basic for Applications: macros Excel, automatisation, programmation évènementielle.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #4CAF50" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-introduction.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">Introduction</div></a><a href="chapitre-02-resume-du-cours.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">📘 Résumé du cours</div></a><a href="chapitre-03-exercices-corriges.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">📝 Exercices corrigés</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            <h2 style="font-size:2rem; color:#dacbb8; border-bottom:2px solid #2e2e2e; padding-bottom:0.3rem;">📝 Exercices corrigés</h2>
+
+        <!-- Exercice 1 : nombre de voyelles -->
+        <div class="exercice" id="ex1">
+            <div class="exercice-titre">
+                <span>Exercice 1 – Compter les voyelles</span>
+                <button class="btn-toggle" onclick="toggleEx(this)">▾</button>
+            </div>
+            <div class="exercice-contenu visible">
+                <p><strong>Énoncé :</strong> Écrire un programme (Sub <code>nombrevoyelles()</code>) qui renvoie le nombre de voyelles contenues dans une chaîne de caractères entrée par l’utilisateur.</p>
+
+                <h4>Correction</h4>
+                <p><strong>Algorithme :</strong></p>
+                <ol>
+                    <li>Demander la chaîne à l’utilisateur (<code>InputBox</code>).</li>
+                    <li>Initialiser un compteur à 0.</li>
+                    <li>Parcourir chaque caractère de la chaîne (boucle <code>For</code> de 1 à <code>Len(texte)</code>).</li>
+                    <li>Extraire le caractère avec <code>Mid</code>.</li>
+                    <li>Si le caractère est une voyelle (minuscule ou majuscule), incrémenter le compteur.</li>
+                    <li>Afficher le résultat.</li>
+                </ol>
+
+                <p><strong>Code VBA complet :</strong></p>
+                <pre>Sub nombrevoyelles()
+    Dim texte As String
+    Dim i As Integer
+    Dim caractere As String
+    Dim compteur As Integer
+
+    texte = InputBox("Entrez une chaîne de caractères")
+    compteur = 0
+
+    For i = 1 To Len(texte)
+        caractere = Mid(texte, i, 1)
+        If caractere = "a" Or caractere = "e" Or caractere = "i" Or caractere = "o" Or caractere = "u" Or caractere = "y" Or _
+           caractere = "A" Or caractere = "E" Or caractere = "I" Or caractere = "O" Or caractere = "U" Or caractere = "Y" Then
+            compteur = compteur + 1
+        End If
+    Next i
+
+    MsgBox "Le nombre de voyelles est : " & compteur
+End Sub</pre>
+
+                <div class="remarque"><strong>Remarque :</strong> La fonction <code>Mid(texte, i, 1)</code> extrait un caractère à la position <code>i</code>. La boucle <code>For</code> parcourt toute la chaîne.</div>
+                <div class="resultat">✔ Réponse : le programme affiche le nombre total de voyelles (a, e, i, o, u, y) dans la chaîne saisie.</div>
+            </div>
+        </div>
+
+        <!-- Exercice 2 : Bulletin étudiant -->
+        <div class="exercice" id="ex2">
+            <div class="exercice-titre">
+                <span>Exercice 2 – Bulletin étudiant</span>
+                <button class="btn-toggle" onclick="toggleEx(this)">▾</button>
+            </div>
+            <div class="exercice-contenu visible">
+                <p><strong>Énoncé :</strong> Créer une macro <code>BulletinEtudiant()</code> qui demande : nom, filière, niveau, moyenne. Puis affiche : nom, filière, niveau, moyenne, décision et mention selon les barèmes fournis.</p>
+                <table>
+                    <tr><th>Moyenne</th><th>Décision</th><th>Mention</th></tr>
+                    <tr><td>&gt;= 10</td><td>Admis</td><td>—</td></tr>
+                    <tr><td>&lt; 10</td><td>Ajourné</td><td>Échec</td></tr>
+                    <tr><td>&gt;= 16</td><td>—</td><td>Très Bien</td></tr>
+                    <tr><td>&gt;= 14</td><td>—</td><td>Bien</td></tr>
+                    <tr><td>&gt;= 12</td><td>—</td><td>Assez Bien</td></tr>
+                    <tr><td>&gt;= 10</td><td>—</td><td>Passable</td></tr>
+                </table>
+
+                <h4>Correction</h4>
+                <p><strong>Algorithme :</strong></p>
+                <ol>
+                    <li>Demander les 4 informations avec <code>InputBox</code>.</li>
+                    <li>Vérifier que la moyenne est numérique (<code>IsNumeric</code>). Si non, afficher une erreur et sortir.</li>
+                    <li>Déterminer la décision (Admis si &gt;= 10, sinon Ajourné).</li>
+                    <li>Déterminer la mention avec <code>If...ElseIf</code>.</li>
+                    <li>Afficher le bulletin complet avec <code>MsgBox</code>.</li>
+                </ol>
+
+                <p><strong>Code VBA :</strong></p>
+                <pre>Sub BulletinEtudiant()
+    Dim Nom As String, Filiere As String, Niveau As String
+    Dim Saisie As String, Moyenne As Double
+    Dim Decision As String, Mention As String
+
+    Nom = InputBox("Entrez le nom de l'étudiant")
+    Filiere = InputBox("Entrez la filière")
+    Niveau = InputBox("Entrez le niveau")
+    Saisie = InputBox("Entrez la moyenne")
+
+    If Not IsNumeric(Saisie) Then
+        MsgBox "La moyenne doit être un nombre", vbCritical, "Erreur"
+        Exit Sub
+    End If
+
+    Moyenne = CDbl(Saisie)
+
+    If Moyenne >= 10 Then Decision = "Admis" Else Decision = "Ajourné"
+
+    If Moyenne >= 16 Then Mention = "Très Bien"
+    ElseIf Moyenne >= 14 Then Mention = "Bien"
+    ElseIf Moyenne >= 12 Then Mention = "Assez Bien"
+    ElseIf Moyenne >= 10 Then Mention = "Passable"
+    Else Mention = "Échec"
+    End If
+
+    MsgBox "BULLETIN ÉTUDIANT" & vbCrLf & _
+           "Nom : " & Nom & vbCrLf & _
+           "Filière : " & Filiere & vbCrLf & _
+           "Niveau : " & Niveau & vbCrLf & _
+           "Moyenne : " & Moyenne & vbCrLf & _
+           "Décision : " & Decision & vbCrLf & _
+           "Mention : " & Mention, vbInformation, "Résultat"
+End Sub</pre>
+                <div class="resultat">✔ La macro affiche un bulletin complet avec la décision et la mention appropriées.</div>
+            </div>
+        </div>
+
+        <!-- Exercice 3 : TP FormatNotes (modification macro) -->
+        <div class="exercice" id="ex3">
+            <div class="exercice-titre">
+                <span>Exercice 3 – TP : Macro FormatNotes</span>
+                <button class="btn-toggle" onclick="toggleEx(this)">▾</button>
+            </div>
+            <div class="exercice-contenu visible">
+                <p><strong>Énoncé :</strong> Enregistrer une macro <code>FormatNotes</code> qui met les titres en gras, centrés, ajoute des bordures et ajuste les colonnes. Puis modifier le code pour : taille des titres = 14, fond coloré des titres, bordures sur A1:C5, et ajouter un message de fin.</p>
+
+                <h4>Correction</h4>
+                <p><strong>Version enregistrée (simplifiée) :</strong></p>
+                <pre>Sub FormatNotes()
+    Range("A1:C1").Font.Bold = True
+    Range("A1:C1").HorizontalAlignment = xlCenter
+    Range("A1:C5").Borders.LineStyle = xlContinuous
+    Columns("A:C").AutoFit
+End Sub</pre>
+
+                <p><strong>Code modifié selon les consignes :</strong></p>
+                <pre>Sub FormatNotes()
+    ' Mettre les titres en gras, taille 14, centrés
+    Range("A1:C1").Font.Bold = True
+    Range("A1:C1").Font.Size = 14
+    Range("A1:C1").HorizontalAlignment = xlCenter
+    ' Couleur de fond des titres (gris clair)
+    Range("A1:C1").Interior.Color = RGB(200, 200, 200)
+    ' Bordures sur A1:C5
+    Range("A1:C5").Borders.LineStyle = xlContinuous
+    ' Ajustement des colonnes
+    Columns("A:C").AutoFit
+    ' Message de confirmation
+    MsgBox "Mise en forme terminée"
+End Sub</pre>
+                <div class="remarque"><strong>Remarque :</strong> La modification de la macro permet d’adapter facilement la mise en forme sans la réenregistrer. L’ajout d’un message (MsgBox) rend l’exécution plus conviviale.</div>
+                <div class="resultat">✔ La macro modifiée applique la mise en forme demandée et informe l’utilisateur.</div>
+            </div>
+        </div>
+
+        <!-- Exercice 4 : Associer un bouton -->
+        <div class="exercice" id="ex4">
+            <div class="exercice-titre">
+                <span>Exercice 4 – Bouton "Calculer les moyennes"</span>
+                <button class="btn-toggle" onclick="toggleEx(this)">▾</button>
+            </div>
+            <div class="exercice-contenu visible">
+                <p><strong>Énoncé :</strong> Créer un bouton dans Excel qui exécute une macro <code>CalculerMoyennes</code> pour calculer les moyennes d’un tableau (CC, TP, Examen).</p>
+
+                <h4>Correction</h4>
+                <p><strong>Macro à associer :</strong></p>
+                <pre>Sub CalculerMoyennes()
+    Dim i As Long
+    Dim DerniereLigne As Long
+    DerniereLigne = Cells(Rows.Count, "A").End(xlUp).Row
+    For i = 2 To DerniereLigne
+        Cells(i, "E").Value = (Cells(i, "B").Value + Cells(i, "C").Value + Cells(i, "D").Value) / 3
+    Next i
+    MsgBox "Les moyennes ont été calculées"
+End Sub</pre>
+                <p><strong>Étapes pour le bouton :</strong></p>
+                <ol>
+                    <li>Onglet Développeur → Insérer → Bouton (contrôle de formulaire).</li>
+                    <li>Dessiner le bouton dans la feuille.</li>
+                    <li>Dans la fenêtre "Affecter une macro", choisir <code>CalculerMoyennes</code>.</li>
+                    <li>Modifier le texte du bouton (clic droit → Modifier le texte) en "Calculer les moyennes".</li>
+                </ol>
+                <div class="resultat">✔ Le bouton déclenche le calcul des moyennes et affiche une confirmation.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========== Figure =========== -->
+    <div style="margin-top:3rem; border-top:1px solid #2a2a2a; padding-top:2rem;">
+        <h3 style="color:#dacbb8;">Illustration – Structure d’une macro VBA</h3>
+        <div class="figure-placeholder">
+            <svg width="420" height="120" viewBox="0 0 420 120" style="background:#161616; border-radius:20px;">
+                <rect x="20" y="10" width="380" height="30" fill="#2a3a3a" stroke="#b89b7b" stroke-width="1.5" rx="6" />
+                <text x="30" y="30" fill="#e0d6c0" font-size="13" font-family="Trebuchet MS">Sub NomMacro()</text>
+                <rect x="40" y="45" width="340" height="20" fill="#1f2a2a" stroke="#5f8b8b" stroke-width="1" rx="4" />
+                <text x="50" y="59" fill="#a9cdcd" font-size="11" font-family="Courier New">' instructions...</text>
+                <rect x="20" y="75" width="380" height="30" fill="#2a3a3a" stroke="#b89b7b" stroke-width="1.5" rx="6" />
+                <text x="30" y="95" fill="#e0d6c0" font-size="13" font-family="Trebuchet MS">End Sub</text>
+                <line x1="40" y1="45" x2="40" y2="75" stroke="#5f8b8b" stroke-width="1.5" stroke-dasharray="3 3" />
+            </svg>
+            <span style="color:#999; font-size:0.9rem;">Structure de base d’une procédure Sub en VBA.</span>
+        </div>
+    </div>
+
+    <a href="#top" class="back-top">⬆ Retour en haut</a>
+</div>
+
+
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-02-resume-du-cours.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> 📘 Résumé du cours</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 3 / 3</div>
+          <div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

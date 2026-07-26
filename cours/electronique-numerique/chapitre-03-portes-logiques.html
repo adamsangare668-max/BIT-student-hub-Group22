@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Électronique Numérique — Chapitre 3: Portes logiques — BIT Study HUB">
+  <title>Électronique Numérique — Chapitre 3: Portes logiques</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #7E57C2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #7E57C2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #7E57C2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #7E57C2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #7E57C2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #7E57C2; background: color-mix(in srgb, #7E57C2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #7E57C2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #7E57C2 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Électronique Numérique</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 3</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">CS107 · Chapitre 3 / 6</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">Portes logiques</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">AND, OR, NOT, NAND, NOR, XOR, XNOR; tables de vérité; symboles; équivalences; portes universelles.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #7E57C2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-systemes-de-numeration.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">Systèmes de numération</div></a>
+                <a href="chapitre-02-algebre-de-boole.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">Algèbre de Boole</div></a>
+                <a href="chapitre-03-portes-logiques.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">Portes logiques</div></a>
+                <a href="chapitre-04-logique-combinatoire.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">Logique combinatoire</div></a>
+                <a href="chapitre-05-logique-sequentielle.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">Logique séquentielle</div></a>
+                <a href="chapitre-06-compteurs-registres.html" class="list-item" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">Compteurs et registres</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            <div class="container" id="top">
+              <h1>Chapitre 3 — Portes logiques</h1>
+              <p>Les portes logiques sont les briques élémentaires de tout circuit électronique numérique. Réalisées à partir de transistors, elles implémentent physiquement les opérations de l'algèbre de Boole. Ce chapitre présente les différentes portes, leurs tables de vérité, leurs symboles, et la notion fondamentale de portes universelles.</p>
+
+              <div class="toc">
+                <a href="#sec1">1. Portes de base (ET, OU, NON)</a>
+                <a href="#sec2">2. Portes universelles (NAND, NOR)</a>
+                <a href="#sec3">3. Portes OU-exclusif et coincidence</a>
+                <a href="#sec4">4. Tables de vérité résumées</a>
+                <a href="#sec5">5. Équivalences de portes</a>
+                <a href="#sec6">6. Synthèse et niveaux de logique</a>
+              </div>
+
+              <h2 id="sec1">1. Portes de base</h2>
+
+              <h3>1.1 Porte ET (AND)</h3>
+              <p>La porte ET réalise le produit logique : la sortie vaut 1 si et seulement si <strong>toutes</strong> les entrées valent 1. Symbole logique : <code>Y = A · B</code>.</p>
+              <table>
+                <thead><tr><th>A</th><th>B</th><th>Y = A · B</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>0</td><td>0</td></tr>
+                  <tr><td>0</td><td>1</td><td>0</td></tr>
+                  <tr><td>1</td><td>0</td><td>0</td></tr>
+                  <tr><td>1</td><td>1</td><td>1</td></tr>
+                </tbody>
+              </table>
+
+              <h3>1.2 Porte OU (OR)</h3>
+              <p>La porte OU réalise la somme logique : la sortie vaut 1 si <strong>au moins une</strong> entrée vaut 1. Symbole : <code>Y = A + B</code>.</p>
+              <table>
+                <thead><tr><th>A</th><th>B</th><th>Y = A + B</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>0</td><td>0</td></tr>
+                  <tr><td>0</td><td>1</td><td>1</td></tr>
+                  <tr><td>1</td><td>0</td><td>1</td></tr>
+                  <tr><td>1</td><td>1</td><td>1</td></tr>
+                </tbody>
+              </table>
+
+              <h3>1.3 Porte NON (NOT / Inverseur)</h3>
+              <p>La porte NON inverse l'entrée : <code>Y = Ā</code>. C'est la seule porte à une seule entrée.</p>
+              <table>
+                <thead><tr><th>A</th><th>Y = Ā</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>1</td></tr>
+                  <tr><td>1</td><td>0</td></tr>
+                </tbody>
+              </table>
+
+              <div class="definition">
+                <strong>Définition — Table de vérité :</strong> Une table de vérité est un tableau qui énumère toutes les combinaisons possibles des variables d'entrée et la valeur de sortie correspondante. Pour n entrées, il y a 2ⁿ lignes.
+              </div>
+
+              <h2 id="sec2">2. Portes universelles (NAND, NOR)</h2>
+              <p>Les portes <strong>NAND</strong> (NON-ET) et <strong>NOR</strong> (NON-OU) sont appelées <em>universelles</em> car elles permettent, à elles seules, de réaliser n'importe quelle fonction logique.</p>
+
+              <h3>2.1 Porte NAND</h3>
+              <p>C'est un ET suivi d'un NON : <code>Y = ¬(A · B)</code>. C'est la porte la plus utilisée en CMOS car elle nécessite moins de transistors qu'un ET.</p>
+              <table>
+                <thead><tr><th>A</th><th>B</th><th>Y = ¬(A·B)</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>0</td><td>1</td></tr>
+                  <tr><td>0</td><td>1</td><td>1</td></tr>
+                  <tr><td>1</td><td>0</td><td>1</td></tr>
+                  <tr><td>1</td><td>1</td><td>0</td></tr>
+                </tbody>
+              </table>
+
+              <h3>2.2 Porte NOR</h3>
+              <p>C'est un OU suivi d'un NON : <code>Y = ¬(A + B)</code>.</p>
+              <table>
+                <thead><tr><th>A</th><th>B</th><th>Y = ¬(A+B)</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>0</td><td>1</td></tr>
+                  <tr><td>0</td><td>1</td><td>0</td></tr>
+                  <tr><td>1</td><td>0</td><td>0</td></tr>
+                  <tr><td>1</td><td>1</td><td>0</td></tr>
+                </tbody>
+              </table>
+
+              <div class="exemple">
+                <strong>Exemple — Réaliser un inverseur avec un NAND :</strong><br>
+                En reliant les deux entrées d'un NAND : <code>Y = ¬(A · A) = ¬A</code>. On obtient ainsi un inverseur.<br>
+                Pour faire un ET : <code>A · B = ¬(¬(A·B))</code> = NAND(NAND(A,B), NAND(A,B)).
+              </div>
+
+              <h2 id="sec3">3. Portes OU-exclusif et coïncidence</h2>
+
+              <h3>3.1 Porte XOR (OU-exclusif)</h3>
+              <p>La sortie vaut 1 si et seulement si les deux entrées sont <strong>différentes</strong>. Très utilisée dans les additionneurs et la détection d'erreurs.</p>
+              <p><code>Y = A ⊕ B = A·B̄ + Ā·B</code></p>
+              <table>
+                <thead><tr><th>A</th><th>B</th><th>Y = A ⊕ B</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>0</td><td>0</td></tr>
+                  <tr><td>0</td><td>1</td><td>1</td></tr>
+                  <tr><td>1</td><td>0</td><td>1</td></tr>
+                  <tr><td>1</td><td>1</td><td>0</td></tr>
+                </tbody>
+              </table>
+
+              <h3>3.2 Porte XNOR (coïncidence)</h3>
+              <p>C'est l'inverse du XOR : la sortie vaut 1 si les deux entrées sont <strong>identiques</strong>. <code>Y = ¬(A ⊕ B) = A·B + Ā·B̄</code></p>
+
+              <div class="remarque">
+                <strong>Remarque :</strong> Le XOR est souvent appelé "détecteur de différence" tandis que le XNOR est un "détecteur d'égalité". Le XOR sert aussi à inverser conditionnellement un signal : si B=1, <code>A ⊕ 1 = Ā</code> ; si B=0, <code>A ⊕ 0 = A</code>.
+              </div>
+
+              <h2 id="sec4">4. Synthèse des tables de vérité</h2>
+              <table>
+                <thead>
+                  <tr><th>A</th><th>B</th><th>AND</th><th>OR</th><th>NAND</th><th>NOR</th><th>XOR</th><th>XNOR</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+                  <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+                  <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+                  <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+                </tbody>
+              </table>
+
+              <h2 id="sec5">5. Équivalences de portes</h2>
+              <p>Grâce aux théorèmes de De Morgan, une même fonction peut être réalisée par différents assemblages de portes. Le choix dépend de la technologie disponible (CMOS, TTL) et des contraintes (vitesse, consommation, nombre de puces).</p>
+
+              <div class="exemple">
+                <strong>Exemple — Trois réalisations équivalentes de <code>Y = A · B</code> :</strong>
+                <ul>
+                  <li>Une porte ET.</li>
+                  <li>NAND suivi d'un inverseur : <code>Y = ¬(¬(A·B))</code>.</li>
+                  <li>Avec De Morgan : <code>Y = ¬(Ā + B̄)</code>, soit un NOR dont les entrées sont inversées.</li>
+                </ul>
+              </div>
+
+              <div class="definition">
+                <strong>Définition — Portes universelles :</strong> Une porte est dite universelle si toute fonction booléenne peut être réalisée en utilisant uniquement cette porte. NAND et NOR sont les deux portes universelles en électronique. Cela permet de standardiser la fabrication et de réduire le coût des circuits intégrés.
+              </div>
+
+              <h2 id="sec6">6. Niveaux de logique et caractéristiques électriques</h2>
+              <p>Physiquement, les 0 et 1 correspondent à des plages de tension. En logique TTL, un 0 est typiquement 0 V à 0,8 V, un 1 est 2 V à 5 V. En CMOS, les niveaux dépendent de la tension d'alimentation VDD. On distingue deux conventions :</p>
+              <ul>
+                <li><strong>Logique positive</strong> : 1 = niveau haut, 0 = niveau bas (la plus courante).</li>
+                <li><strong>Logique négative</strong> : 1 = niveau bas, 0 = niveau haut (rare, parfois utilisée pour les signaux de commande actifs à l'état bas, notés avec une barre : /RESET ou RESET).</li>
+              </ul>
+
+              <p>Les familles logiques les plus courantes sont :</p>
+              <ul>
+                <li><strong>TTL</strong> (Transistor-Transistor Logic) : historique (74xx), alimentation 5 V, rapide mais gourmande en énergie.</li>
+                <li><strong>CMOS</strong> (Complementary MOS) : 74HC, 74HCT, 4000. Faible consommation, large plage d'alimentation (2 à 15 V selon la sous-famille), idéale pour les circuits intégrés modernes.</li>
+                <li><strong>BiCMOS</strong> (74BCT, 74ABT) : combine vitesse TTL et faible consommation CMOS.</li>
+                <li><strong>ECL</strong> (Emitter-Coupled Logic) : ultra-rapide, mais très gourmande. Réservée à des applications très spécifiques (télécoms, supercalculateurs anciens).</li>
+              </ul>
+
+              <h3>6.1 Paramètres électriques essentiels</h3>
+              <p>Pour comparer et dimensionner les circuits logiques, on s'intéresse à plusieurs grandeurs :</p>
+              <ul>
+                <li><strong>Tensions de seuil</strong> : V_IH(min), V_IL(max), V_OH(min), V_OL(max) garantissent la compatibilité entre entrées et sorties.</li>
+                <li><strong>Courants</strong> : I_OH et I_OL maximaux que la sortie peut fournir ; I_IH et I_IL consommés par une entrée.</li>
+                <li><strong>Fan-out</strong> : nombre maximum d'entrées qu'une sortie peut piloter tout en respectant les tensions. En TTL standard, environ 10 ; en CMOS, beaucoup plus (le courant d'entrée est quasi nul).</li>
+                <li><strong>Temps de propagation</strong> : t_PLH et t_PHL (passage bas → haut et haut → bas). Typiquement quelques nanosecondes en 74HC, moins de 1 ns en ECL.</li>
+                <li><strong>Consommation</strong> : statique (au repos) et dynamique (proportionnelle à la fréquence d'horloge en CMOS, formule P = f·C·V²).</li>
+              </ul>
+
+              <div class="remarque">
+                <strong>Remarque — Temps de propagation :</strong> Chaque porte introduit un délai (de l'ordre de la nanoseconde en CMOS). Dans les circuits critiques (microprocesseurs), ce délai cumulé limite la fréquence d'horloge maximale. On parle aussi de "fan-out" : le nombre maximum d'entrées qu'une sortie peut piloter. Les concepteurs doivent aussi éviter les <em>aléas de commutation</em> (glitches) dus à des temps de propagation différents sur plusieurs chemins.
+              </div>
+
+              <h3>6.2 Aléas (hazards) et méthodes de mitigation</h3>
+              <p>Lorsque plusieurs entrées changent simultanément mais avec des temps de propagation légèrement différents, la sortie peut transiter par des états faux pendant un bref instant. On parle d'<strong>aléa statique</strong> (glitch d'un état logique) ou d'<strong>aléa dynamique</strong> (plusieurs transitions avant stabilisation). Les méthodes de mitigation incluent :</p>
+              <ul>
+                <li>L'ajout de termes <em>consensus</em> dans l'expression booléenne (théorème de consensus).</li>
+                <li>L'utilisation d'une horloge synchrone pour échantillonner la sortie après stabilisation.</li>
+                <li>Le filtrage RC (résistance + condensateur) pour les signaux lents.</li>
+              </ul>
+
+              <div class="exercice">
+                <strong>Exercice 1 :</strong> Donner la table de vérité d'une porte XOR à 3 entrées <code>Y = A ⊕ B ⊕ C</code>. Que remarquez-vous ? (Indice : parité).<br>
+                <strong>Exercice 2 :</strong> Réaliser une porte OR en n'utilisant que des portes NOR.<br>
+                <strong>Exercice 3 :</strong> À l'aide de De Morgan, montrer que <code>¬(A + B + C) = Ā · B̄ · C̄</code> et proposer une réalisation avec uniquement des NAND.
+              </div>
+
+              <div class="definition">
+                <strong>En résumé —</strong> Les sept portes fondamentales (ET, OU, NON, NAND, NOR, XOR, XNOR) suffisent à construire n'importe quel circuit logique. NAND et NOR sont universelles et privilégiées en technologie CMOS. Le chapitre suivant montre comment combiner ces portes pour réaliser des fonctions combinatoires utiles : décodeurs, multiplexeurs, additionneurs, etc.
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-02-algebre-de-boole.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> Algèbre de Boole</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 3 / 6</div>
+          <div><a href="chapitre-04-logique-combinatoire.html" class="btn btn-secondary btn-sm">Logique combinatoire <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

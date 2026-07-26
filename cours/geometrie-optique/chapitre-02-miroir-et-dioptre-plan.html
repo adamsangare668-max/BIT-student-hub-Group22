@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Géométrie Optique — Chapitre 2: 🪞 Miroir et Dioptre Plan — BIT Study HUB">
+  <title>Géométrie Optique — Chapitre 2: 🪞 Miroir et Dioptre Plan</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #F4511E; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #F4511E; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #F4511E; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #F4511E; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #F4511E; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #F4511E; background: color-mix(in srgb, #F4511E 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #F4511E; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']] }, svg: { fontCache: 'global' } };</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #F4511E 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Géométrie Optique</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 2</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">PH101 · Chapitre 2 / 4</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">🪞 Miroir et Dioptre Plan</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Géométrie Optique — Optique géométrique: réflexion, réfraction, lentilles, miroirs, instruments d&#x27;optique.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #F4511E" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-fondamentaux-de-l-optique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">🔬 Fondamentaux de l&#x27;Optique</div></a><a href="chapitre-02-miroir-et-dioptre-plan.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">🪞 Miroir et Dioptre Plan</div></a><a href="chapitre-03-miroirs-spheriques.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">🔦 Miroirs Sphériques</div></a><a href="chapitre-04-optique-geometrique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">🔬 Optique Géométrique</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            
+    <div class="container" id="top">
+
+        <!-- ===== EN-TÊTE ===== -->
+        <h1>🪞 Miroir et Dioptre Plan</h1>
+        <p class="subtitle">Résumé détaillé du cours · Optique Géométrique · Physique L1</p>
+
+        <!-- ===== TABLE DES MATIÈRES ===== -->
+        <div class="toc">
+            <h2>📑 Table des matières</h2>
+            <ul>
+                <li><a href="#s1">1. Réflexion et miroirs plans</a></li>
+                <li><a href="#s1-1">1.1 Miroirs plans</a></li>
+                <li><a href="#s1-2">1.2 Principe de la réflexion</a></li>
+                <li><a href="#s1-3">1.3 Loi de Snell pour la réflexion</a></li>
+                <li><a href="#s1-4">1.4 Formule de conjugaison du miroir plan</a></li>
+                <li><a href="#s2">2. Réfraction et dioptres plans</a></li>
+                <li><a href="#s2-1">2.1 Dioptres plans</a></li>
+                <li><a href="#s2-2">2.2 Indice de réfraction</a></li>
+                <li><a href="#s2-3">2.3 Principe de la réfraction</a></li>
+                <li><a href="#s2-4">2.4 Loi de Snell-Descartes</a></li>
+                <li><a href="#s2-5">2.5 Angle limite et réflexion totale</a></li>
+                <li><a href="#s2-6">2.6 Formule de conjugaison du dioptre plan</a></li>
+                <li><a href="#s3">3. Prisme</a></li>
+                <li><a href="#s3-1">3.1 Définition</a></li>
+                <li><a href="#s3-2">3.2 Trajet des rayons</a></li>
+                <li><a href="#s3-3">3.3 Dispersion de la lumière</a></li>
+            </ul>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 1 : RÉFLEXION ET MIROIRS PLANS -->
+        <h2 id="s1">1. Réflexion et miroirs plans</h2>
+
+        <!-- 1.1 -->
+        <h3 id="s1-1">1.1 Miroirs plans</h3>
+        <div class="card">
+            <div class="definition">
+                <strong>Définition :</strong> Un <strong>miroir plan</strong> est une surface réfléchissante plane et polie.
+            </div>
+        </div>
+
+        <!-- 1.2 -->
+        <h3 id="s1-2">1.2 Principe de la réflexion de la lumière</h3>
+        <div class="card">
+            <div class="definition">
+                La <strong>réflexion</strong> est le phénomène qui permet à la lumière de changer de direction lorsqu'elle rencontre une interface, tout en restant dans le milieu d'origine.
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Type de réflexion</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Réflexion spéculaire</strong></td>
+                            <td>La lumière est réfléchie dans une direction unique et bien définie (miroir parfait).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Réflexion diffuse</strong></td>
+                            <td>La lumière est réfléchie dans toutes les directions (surface rugueuse).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 1.3 -->
+        <h3 id="s1-3">1.3 Loi de Snell pour la réflexion</h3>
+        <div class="card">
+            <div class="definition">
+                <strong>Première loi :</strong> Le rayon réfléchi se trouve dans le plan d'incidence.
+            </div>
+            <div class="definition">
+                <strong>Deuxième loi :</strong> Le rayon réfléchi est symétrique du rayon incident par rapport à la normale.
+            </div>
+            <div class="formule">
+                \( \hat{r} = \hat{i} \)
+            </div>
+            <p>où :</p>
+            <ul>
+                <li>\( \hat{i} \) est l'angle d'incidence,</li>
+                <li>\( \hat{r} \) est l'angle de réflexion.</li>
+            </ul>
+            <div class="remarque">
+                💡 Tout rayon incident perpendiculaire au plan du miroir est réfléchi sur lui-même.
+            </div>
+        </div>
+
+        <!-- 1.4 -->
+        <h3 id="s1-4">1.4 Formule de conjugaison du miroir plan</h3>
+        <div class="card">
+            <div class="definition">
+                La formule de conjugaison d'un système optique est la relation entre la position de l'image et celle de l'objet par rapport au système.
+            </div>
+            <p>Pour un miroir plan :</p>
+            <div class="formule">
+                \( \overline{AH} + \overline{A'H} = 0 \)
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Propriété</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Nature</strong></td><td>Image virtuelle</td></tr>
+                        <tr><td><strong>Orientation</strong></td><td>Droite (non renversée)</td></tr>
+                        <tr><td><strong>Taille</strong></td><td>Même grandeur que l'objet (\( AB = A'B' \))</td></tr>
+                        <tr><td><strong>Position</strong></td><td>Symétrique par rapport au miroir</td></tr>
+                        <tr><td><strong>Distance</strong></td><td>Équidistante du miroir</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="resultat">
+                ✅ L'image donnée par un miroir plan est virtuelle, droite, de même taille que l'objet et symétrique par rapport au miroir.
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 2 : RÉFRACTION ET DIOPTRES PLANS -->
+        <h2 id="s2">2. Réfraction et dioptres plans</h2>
+
+        <!-- 2.1 -->
+        <h3 id="s2-1">2.1 Dioptres plans</h3>
+        <div class="card">
+            <div class="definition">
+                <strong>Définition :</strong> Un <strong>dioptre plan</strong> est une surface plane qui sépare deux milieux optiques différents, généralement l'air et un autre matériau (verre, eau, etc.).
+            </div>
+            <div class="remarque">
+                <strong>Exemple :</strong> La surface libre d'un lac au repos est un dioptre plan séparant l'eau (indice \( n_{\text{eau}} \)) et l'air (indice \( n_{\text{air}} \)).
+            </div>
+        </div>
+
+        <!-- 2.2 -->
+        <h3 id="s2-2">2.2 Indice de réfraction absolu et relatif</h3>
+        <div class="card">
+            <div class="definition">
+                L'<strong>indice de réfraction absolu</strong> (\( n \)) est une grandeur sans dimension, définie par le rapport entre la vitesse de la lumière dans le vide et la vitesse de la lumière dans le milieu considéré.
+            </div>
+            <div class="formule">
+                \( n = \dfrac{c}{v} \)
+            </div>
+            <p>où :</p>
+            <ul>
+                <li>\( c = 3 \times 10^8 \, \text{m} \cdot \text{s}^{-1} \) (vitesse dans le vide),</li>
+                <li>\( v \) est la vitesse dans le milieu.</li>
+            </ul>
+            <div class="remarque">
+                💡 \( n \geq 1 \). Plus \( n \) est grand, plus la lumière se propage lentement dans le milieu.
+            </div>
+        </div>
+
+        <!-- 2.3 -->
+        <h3 id="s2-3">2.3 Principe de la réfraction de la lumière</h3>
+        <div class="card">
+            <p>Lorsque la lumière rencontre une interface plane :</p>
+            <ul>
+                <li>Une partie est <strong>réfléchie</strong>.</li>
+                <li>L'autre est <strong>réfractée</strong>.</li>
+            </ul>
+            <div class="definition">
+                La <strong>réfraction</strong> est le changement de direction de la lumière lorsqu'elle traverse l'interface entre deux milieux transparents d'indices différents.
+            </div>
+            <p><strong>Angles :</strong></p>
+            <ul>
+                <li><strong>\( i_1 \)</strong> : angle d'incidence (entre le rayon incident et la normale),</li>
+                <li><strong>\( i_2 \)</strong> : angle de réfraction (entre le rayon réfracté et la normale).</li>
+            </ul>
+        </div>
+
+        <!-- 2.4 -->
+        <h3 id="s2-4">2.4 Loi de Snell-Descartes pour la réfraction</h3>
+        <div class="card">
+            <div class="definition">
+                <strong>Première loi :</strong> Le rayon incident, le rayon réfracté et la normale à la surface de séparation sont dans le plan d'incidence.
+            </div>
+            <div class="definition">
+                <strong>Deuxième loi (loi de Snell-Descartes) :</strong>
+            </div>
+            <div class="formule">
+                \( n_1 \sin i_1 = n_2 \sin i_2 \)
+            </div>
+            <p>où :</p>
+            <ul>
+                <li>\( n_1 \) est l'indice du milieu 1 (milieu d'incidence),</li>
+                <li>\( n_2 \) est l'indice du milieu 2 (milieu de réfraction).</li>
+            </ul>
+        </div>
+
+        <!-- 2.5 -->
+        <h3 id="s2-5">2.5 Angle limite et réflexion totale</h3>
+
+        <div class="card">
+            <h4>2.5.1 Cas \( n_2 > n_1 \) (passage vers un milieu plus réfringent)</h4>
+            <div class="formule">
+                \( \sin i_2 = \dfrac{n_1}{n_2} \sin i_1 \)
+            </div>
+            <p>Comme \( \dfrac{n_1}{n_2} < 1 \), on a \( i_2 < i_1 \) : le rayon réfracté se rapproche de la normale.</p>
+            <div class="definition">
+                Lorsque l'incidence est rasante (\( i_1 = 90^\circ \)), l'angle de réfraction prend une valeur particulière <strong>\( \lambda \)</strong>, appelée <strong>angle limite de réfraction</strong>, définie par :
+            </div>
+            <div class="formule">
+                \( \sin \lambda = \dfrac{n_1}{n_2} \)
+            </div>
+        </div>
+
+        <div class="card">
+            <h4>2.5.2 Cas \( n_2 < n_1 \) (passage vers un milieu moins réfringent)</h4>
+            <div class="formule">
+                \( \sin i_2 = \dfrac{n_1}{n_2} \sin i_1 \)
+            </div>
+            <p>Comme \( \dfrac{n_1}{n_2} > 1 \), on a \( i_2 > i_1 \) : le rayon réfracté s'éloigne de la normale.</p>
+            <div class="definition">
+                <strong>Réflexion totale :</strong> Lorsque \( i_2 \) atteint \( 90^\circ \), le rayon réfracté n'existe plus ; toute la lumière est réfléchie.
+            </div>
+            <p>L'angle critique \( i_c \) est défini par :</p>
+            <div class="formule">
+                \( \sin i_c = \dfrac{n_2}{n_1} \)
+            </div>
+            <div class="resultat">
+                ✅ La condition de réflexion totale est : \( \sin i_1 \geq \dfrac{n_2}{n_1} \).
+            </div>
+        </div>
+
+        <!-- 2.6 -->
+        <h3 id="s2-6">2.6 Formule de conjugaison du dioptre plan</h3>
+        <div class="card">
+            <div class="definition">
+                Dans l'approximation de Gauss (incidence paraxiale, petits angles), la formule de conjugaison du dioptre plan s'écrit :
+            </div>
+            <div class="formule">
+                \( \dfrac{HA_2}{n_2} = \dfrac{HA_1}{n_1} \)
+            </div>
+            <p>où :</p>
+            <ul>
+                <li>\( A_1 \) est l'objet,</li>
+                <li>\( A_2 \) est l'image,</li>
+                <li>\( H \) est le point d'incidence sur le dioptre.</li>
+            </ul>
+            <div class="remarque">
+                💡 Cette relation est valable dans les conditions de Gauss (stigmatisme approché).
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 3 : PRISME -->
+        <h2 id="s3">3. Prisme</h2>
+
+        <!-- 3.1 -->
+        <h3 id="s3-1">3.1 Définition</h3>
+        <div class="card">
+            <div class="definition">
+                Un <strong>prisme</strong> est un élément optique utilisé pour réfracter, réfléchir ou disperser la lumière en ses différentes composantes colorées.
+            </div>
+            <div class="remarque">
+                En optique géométrique, un prisme est l'association de deux <strong>dioptres plans non parallèles</strong>.
+            </div>
+        </div>
+
+        <!-- 3.2 -->
+        <h3 id="s3-2">3.2 Trajet des rayons dans un prisme</h3>
+        <div class="card">
+            <p>Le trajet d'un rayon lumineux à travers un prisme suit les lois de Snell-Descartes aux deux interfaces (entrée et sortie).</p>
+            <ul>
+                <li>L'indice de réfraction du prisme dépend de la longueur d'onde.</li>
+                <li>La lumière bleue est déviée <strong>plus</strong> que la lumière jaune, elle-même déviée <strong>plus</strong> que la lumière rouge.</li>
+            </ul>
+            <div class="remarque">
+                💡 Cette propriété permet d'utiliser le prisme en <strong>spectroscopie</strong> pour analyser les radiations polychromatiques.
+            </div>
+        </div>
+
+        <!-- 3.3 -->
+        <h3 id="s3-3">3.3 Dispersion de la lumière</h3>
+        <div class="card">
+            <div class="definition">
+                La <strong>dispersion de la lumière</strong> par un prisme est un phénomène optique dans lequel la lumière blanche est séparée en ses différentes couleurs constitutives.
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Couleur</th><th>Déviation</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Rouge</td><td>Moins déviée (se propage plus vite)</td></tr>
+                        <tr><td>Orange</td><td>Déviation intermédiaire</td></tr>
+                        <tr><td>Jaune</td><td>Déviation intermédiaire</td></tr>
+                        <tr><td>Vert</td><td>Déviation intermédiaire</td></tr>
+                        <tr><td>Bleu</td><td>Déviation intermédiaire</td></tr>
+                        <tr><td>Indigo</td><td>Déviation intermédiaire</td></tr>
+                        <tr><td>Violet</td><td>Plus déviée (se propage plus lentement)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="resultat">
+                ✅ La lumière blanche est séparée en un <strong>spectre continu</strong> allant du rouge au violet, en raison de la dépendance de l'indice de réfraction avec la longueur d'onde.
+            </div>
+        </div>
+
+        <!-- ===== CONCLUSION ===== -->
+        <h2 style="margin-top:60px; border-bottom:2px solid #f0c27f;">Conclusion du résumé</h2>
+
+        <div class="card" style="border-left-color: #7cb87c;">
+            <p>Ce chapitre présente les concepts fondamentaux de l'optique géométrique concernant les surfaces planes :</p>
+            <ol>
+                <li><strong>Miroir plan</strong> : surface réfléchissante qui produit une image virtuelle, droite, de même taille, symétrique de l'objet. La formule de conjugaison est :</li>
+                <div class="formule" style="font-size:1rem; background-color:#1a1a1a;">
+                    \( \overline{AH} + \overline{A'H} = 0 \)
+                </div>
+                <li><strong>Dioptre plan</strong> : interface entre deux milieux d'indices différents. La réfraction est régie par la loi de Snell-Descartes :</li>
+                <div class="formule" style="font-size:1rem; background-color:#1a1a1a;">
+                    \( n_1 \sin i_1 = n_2 \sin i_2 \)
+                </div>
+                <li>Un <strong>angle critique</strong> existe lorsque \( n_1 > n_2 \), au-delà duquel se produit la <strong>réflexion totale</strong>.</li>
+                <li><strong>Prisme</strong> : association de deux dioptres plans non parallèles. Il permet la <strong>dispersion</strong> de la lumière blanche en un spectre coloré.</li>
+            </ol>
+        </div>
+
+        <!-- ===== FIN ===== -->
+        <p style="text-align:center; color:#6a6a6a; margin-top:60px; border-top:1px solid #2a2a2a; padding-top:30px;">
+            Résumé du cours – Chapitre 2 : Miroir et Dioptre Plan
+        </p>
+
+    </div>
+
+    <!-- ===== BOUTON RETOUR EN HAUT ===== -->
+    <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});" title="Retour en haut">↑</button>
+
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-01-fondamentaux-de-l-optique.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> 🔬 Fondamentaux de l&#x27;Optique</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 2 / 4</div>
+          <div><a href="chapitre-03-miroirs-spheriques.html" class="btn btn-secondary btn-sm">🔦 Miroirs Sphériques <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

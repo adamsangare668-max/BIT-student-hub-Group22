@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Algorithmique Dynamique — Chapitre 1: Chapitre 1 : Allocation des données en C — BIT Study HUB">
+  <title>Algorithmique Dynamique — Chapitre 1: Chapitre 1 : Allocation des données en C</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #00897B; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #00897B; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #00897B; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #00897B; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #00897B; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #00897B; background: color-mix(in srgb, #00897B 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #00897B; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #00897B 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Algorithmique Dynamique</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 1</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">CS109 · Chapitre 1 / 3</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">Chapitre 1 : Allocation des données en C</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Algorithmique Dynamique — Structures de données dynamiques: listes chaînées, piles, files, arbres, graphes, algorithmes de tri.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #00897B" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-chapitre-1-allocation-des-donnees-en-c.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">Chapitre 1 : Allocation des données en C</div></a><a href="chapitre-02-chapitre-3-les-files-queues.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">Chapitre 3 : Les files (Queues)</div></a><a href="chapitre-03-chapitre-3-les-files-queues.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">Chapitre 3 : Les files (Queues)</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            
+<div class="container" id="top">
+    <h1>Chapitre 1 : Allocation des données en C</h1>
+    <div class="sous-titre">Résumé détaillé du cours · Exercices corrigés · Burkina Institute of Technology</div>
+    <div class="toc">
+        <a href="#resume">📘 Résumé</a>
+        <a href="#ex1">Exercice 1 – Pointeurs</a>
+        <a href="#ex2">Exercice 2 – Chasseur de bugs</a>
+        <a href="#ex3">Exercice 3 – malloc</a>
+        <a href="#ex4">Exercice 4 – Compléter</a>
+        <a href="#ex5">Mini-projet</a>
+    </div>
+
+    <!-- ===================== RÉSUMÉ ===================== -->
+    <section id="resume">
+        <h2 style="font-size:2rem; color:#dacbb8; border-bottom:2px solid #2e2e2e; padding-bottom:0.3rem;">📘 Résumé du cours</h2>
+
+        <div class="carte">
+            <h3>🔹 1. Variables et mémoire</h3>
+            <p>Une <strong>variable</strong> est une case mémoire qui stocke une valeur. Ex. <code>int age = 25;</code> réserve un espace et y place 25.</p>
+        </div>
+
+        <div class="carte">
+            <h3>🔹 2. Pointeurs</h3>
+            <p>Un <strong>pointeur</strong> est une variable qui contient une <strong>adresse mémoire</strong>.</p>
+            <ul>
+                <li><code>&age</code> → adresse de la variable <code>age</code></li>
+                <li><code>*p</code> → valeur stockée à l'adresse pointée par <code>p</code></li>
+            </ul>
+            <p>Un pointeur est comme une "carte d'adresse" vers une maison.</p>
+        </div>
+
+        <div class="carte">
+            <h3>🔹 3. Passage par adresse</h3>
+            <p>Permet de modifier une variable dans une fonction. Ex. <code>void modifier(int *x) { *x = 100; }</code></p>
+        </div>
+
+        <div class="carte">
+            <h3>🔹 4. Allocation dynamique</h3>
+            <p>Contourne la taille fixe des tableaux.</p>
+            <ul>
+                <li><code>malloc(n * sizeof(type))</code> → alloue dans le <strong>tas (heap)</strong>.</li>
+                <li><code>free(ptr)</code> → libère la mémoire.</li>
+            </ul>
+            <div class="remarque"><strong>À retenir :</strong> toujours libérer la mémoire avec <code>free()</code> pour éviter les fuites.</div>
+        </div>
+
+        <div class="carte">
+            <h3>🔹 5. Complexité algorithmique</h3>
+            <p>Mesure l'efficacité d'un algorithme.</p>
+            <ul>
+                <li><strong>O(1)</strong> : constant (très rapide)</li>
+                <li><strong>O(n)</strong> : linéaire (parcours simple)</li>
+                <li><strong>O(n²)</strong> : quadratique (lent pour de grandes données)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ===================== EXERCICES ===================== -->
+    <h2 style="font-size:2rem; color:#dacbb8; border-bottom:2px solid #2e2e2e; padding-bottom:0.3rem;">📝 Exercices corrigés</h2>
+
+    <!-- EXERCICE 1 -->
+    <div class="exercice" id="ex1">
+        <div class="exercice-titre">
+            <span>Exercice 1 – Questions sur les pointeurs</span>
+            <button class="btn-toggle" onclick="toggleEx(this)">▾</button>
+        </div>
+        <div class="exercice-contenu visible">
+            <p><strong>Énoncé :</strong> Soit <code>int age = 25; int *p = &age;</code></p>
+            <ol>
+                <li>Quelle est la valeur de <code>age</code> ?</li>
+                <li>Que contient <code>p</code> ?</li>
+                <li>Que représente <code>*p</code> ?</li>
+                <li>Pourquoi les deux affichages <code>printf("%d", age);</code> et <code>printf("%d", *p);</code> donnent-ils le même résultat ?</li>
+            </ol>
+
+            <h4>Correction</h4>
+            <ol>
+                <li><code>age</code> vaut <strong>25</strong>.</li>
+                <li><code>p</code> contient l'<strong>adresse mémoire</strong> de la variable <code>age</code>.</li>
+                <li><code>*p</code> représente la <strong>valeur pointée</strong>, c'est-à-dire la valeur stockée à l'adresse contenue dans <code>p</code>, soit <strong>25</strong>.</li>
+                <li>Les deux affichent 25 car <code>*p</code> déréférence le pointeur pour accéder à la valeur de <code>age</code>.</li>
+            </ol>
+            <div class="resultat">✔ age = 25 ; p = adresse de age ; *p = 25 ; les deux affichages sont identiques.</div>
+        </div>
+    </div>
+
+    <!-- EXERCICE 2 : Chasseur de bugs -->
+    <div class="exercice" id="ex2">
+        <div class="exercice-titre">
+            <span>Exercice 2 – Chasseur de bugs</span>
+            <button class="btn-toggle" onclick="toggleEx(this)">▾</button>
+        </div>
+        <div class="exercice-contenu visible">
+            <p><strong>Énoncé :</strong> Le programme suivant contient des erreurs. Trouvez-les.</p>
+            <pre>#include &lt;stdio.h&gt;
+int main()
+    int *p;
+    *p = 15;
+    printf("%d", *p);
+    return 0;
+}</pre>
+
+            <h4>Correction</h4>
+            <p><strong>Erreurs :</strong></p>
+            <ul>
+                <li>Le pointeur <code>p</code> n'est pas initialisé. Il pointe vers une zone mémoire aléatoire (ou <code>NULL</code>).</li>
+                <li>Avant d'utiliser <code>*p</code>, il faut assigner une adresse valide (soit une variable existante, soit un bloc alloué avec <code>malloc()</code>).</li>
+                <li>Il manque les accolades <code>{ }</code> autour du corps de <code>main()</code>.</li>
+            </ul>
+            <p><strong>Version corrigée :</strong></p>
+            <pre>#include &lt;stdio.h&gt;
+int main() {
+    int *p;
+    int valeur = 15;
+    p = &valeur;  // ou p = malloc(sizeof(int));
+    *p = 15;
+    printf("%d", *p);
+    return 0;
+}</pre>
+            <div class="resultat">✔ Le pointeur doit pointer vers une zone mémoire valide avant d'être déréférencé.</div>
+        </div>
+    </div>
+
+    <!-- EXERCICE 3 : malloc -->
+    <div class="exercice" id="ex3">
+        <div class="exercice-titre">
+            <span>Exercice 3 – Allocation avec malloc</span>
+            <button class="btn-toggle" onclick="toggleEx(this)">▾</button>
+        </div>
+        <div class="exercice-contenu visible">
+            <p><strong>Énoncé :</strong> Soit <code>int *tab = malloc(5 * sizeof(int));</code></p>
+            <ol>
+                <li>Combien d'entiers sont créés ?</li>
+                <li>Où sont-ils stockés ?</li>
+                <li>Pourquoi utilise-t-on <code>sizeof(int)</code> ?</li>
+                <li>Que faut-il faire à la fin du programme ?</li>
+            </ol>
+
+            <h4>Correction</h4>
+            <ol>
+                <li><strong>5</strong> entiers sont alloués.</li>
+                <li>Ils sont stockés dans le <strong>tas (heap)</strong>, une zone mémoire gérée dynamiquement.</li>
+                <li><code>sizeof(int)</code> donne la taille en octets d'un entier (généralement 4). Cela permet à <code>malloc()</code> de réserver l'espace exact nécessaire.</li>
+                <li>Il faut libérer la mémoire avec <code>free(tab);</code> pour éviter les fuites mémoire.</li>
+            </ol>
+            <div class="resultat">✔ 5 entiers dans le tas ; sizeof(int) pour la taille ; free() pour libérer.</div>
+        </div>
+    </div>
+
+    <!-- EXERCICE 4 : Compléter le code -->
+    <div class="exercice" id="ex4">
+        <div class="exercice-titre">
+            <span>Exercice 4 – Compléter le programme</span>
+            <button class="btn-toggle" onclick="toggleEx(this)">▾</button>
+        </div>
+        <div class="exercice-contenu visible">
+            <p><strong>Énoncé :</strong> Compléter le code pour créer dynamiquement une victime et saisir ses informations.</p>
+            <pre>typedef struct {
+    char nom[30];
+    int age;
+    int priorite;
+} Victime;
+
+int main() {
+    Victime *v;
+    // compléter ici
+}</pre>
+
+            <h4>Correction</h4>
+            <pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+typedef struct {
+    char nom[30];
+    int age;
+    int priorite;
+} Victime;
+
+int main() {
+    Victime *v = malloc(sizeof(Victime));
+    if (v == NULL) { printf("Erreur mémoire\n"); return 1; }
+
+    printf("Nom : "); scanf("%s", v->nom);
+    printf("Âge : "); scanf("%d", &v->age);
+    printf("Priorité : "); scanf("%d", &v->priorite);
+
+    printf("\n--- Victime ---\n");
+    printf("Nom : %s\n", v->nom);
+    printf("Âge : %d\n", v->age);
+    printf("Priorité : %d\n", v->priorite);
+
+    free(v);
+    return 0;
+}</pre>
+            <div class="resultat">✔ Le programme alloue, saisit, affiche et libère la mémoire.</div>
+        </div>
+    </div>
+
+    <!-- MINI-PROJET -->
+    <div class="exercice" id="ex5">
+        <div class="exercice-titre">
+            <span>Mini-projet – Registre des victimes (5 victimes)</span>
+            <button class="btn-toggle" onclick="toggleEx(this)">▾</button>
+        </div>
+        <div class="exercice-contenu visible">
+            <p><strong>Énoncé :</strong> Écrire un programme capable de gérer 5 victimes sans utiliser un tableau statique. Le programme doit :</p>
+            <ul>
+                <li>Définir la structure <code>Victime</code>.</li>
+                <li>Créer dynamiquement les 5 victimes.</li>
+                <li>Demander à l'utilisateur : nom, âge, priorité.</li>
+                <li>Afficher toutes les victimes.</li>
+                <li>Libérer la mémoire.</li>
+            </ul>
+
+            <h4>Correction (solution avec tableau de pointeurs)</h4>
+            <pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+typedef struct {
+    char nom[30];
+    int age;
+    int priorite;
+} Victime;
+
+int main() {
+    Victime *victimes[5];  // tableau de 5 pointeurs
+    for (int i = 0; i < 5; i++) {
+        victimes[i] = malloc(sizeof(Victime));
+        if (victimes[i] == NULL) {
+            printf("Erreur mémoire pour la victime %d\n", i+1);
+            return 1;
+        }
+        printf("\n--- Victime %d ---\n", i+1);
+        printf("Nom : "); scanf("%s", victimes[i]->nom);
+        printf("Âge : "); scanf("%d", &victimes[i]->age);
+        printf("Priorité : "); scanf("%d", &victimes[i]->priorite);
+    }
+
+    printf("\n=== REGISTRE DES VICTIMES ===\n");
+    for (int i = 0; i < 5; i++) {
+        printf("%d. %s, %d ans, priorité %d\n",
+               i+1, victimes[i]->nom, victimes[i]->age, victimes[i]->priorite);
+    }
+
+    for (int i = 0; i < 5; i++) {
+        free(victimes[i]);
+    }
+    return 0;
+}</pre>
+            <div class="resultat">✔ Programme complet : allocation, saisie, affichage, libération.</div>
+            <div class="remarque"><strong>Remarque :</strong> Chaque victime est allouée individuellement dans le tas. Le tableau de pointeurs permet de les gérer sans taille fixe.</div>
+        </div>
+    </div>
+
+    <!-- =========== Figure =========== -->
+    <div style="margin-top:3rem; border-top:1px solid #2a2a2a; padding-top:2rem;">
+        <h3 style="color:#dacbb8;">Illustration – Mémoire et pointeurs</h3>
+        <div class="figure-placeholder">
+            <svg width="400" height="120" viewBox="0 0 400 120" style="background:#161616; border-radius:20px;">
+                <rect x="20" y="10" width="120" height="40" fill="#2a3a3a" stroke="#b89b7b" stroke-width="2" rx="6"/>
+                <text x="40" y="35" fill="#e0d6c0" font-size="12" font-family="Trebuchet MS">age = 25</text>
+                <text x="20" y="70" fill="#a9cdcd" font-size="11" font-family="Trebuchet MS">Adresse : 0x7ffc</text>
+                <line x1="150" y1="30" x2="200" y2="30" stroke="#5f8b8b" stroke-width="2" marker-end="url(#arrow)"/>
+                <rect x="210" y="10" width="140" height="40" fill="#1f2a2a" stroke="#5f8b8b" stroke-width="2" rx="6"/>
+                <text x="225" y="35" fill="#a9cdcd" font-size="12" font-family="Trebuchet MS">p = 0x7ffc</text>
+                <text x="210" y="70" fill="#a9cdcd" font-size="11" font-family="Trebuchet MS">*p = 25</text>
+                <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#5f8b8b"/>
+                    </marker>
+                </defs>
+            </svg>
+            <span style="color:#999; font-size:0.9rem;">Schéma : variable age et pointeur p pointant vers son adresse.</span>
+        </div>
+    </div>
+
+    <a href="#top" class="back-top">⬆ Retour en haut</a>
+</div>
+
+
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 1 / 3</div>
+          <div><a href="chapitre-02-chapitre-3-les-files-queues.html" class="btn btn-secondary btn-sm">Chapitre 3 : Les files (Queues) <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

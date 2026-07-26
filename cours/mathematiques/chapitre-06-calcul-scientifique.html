@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mathématiques — Chapitre 6: 💻 Calcul Scientifique — BIT Study HUB">
+  <title>Mathématiques — Chapitre 6: 💻 Calcul Scientifique</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']] }, svg: { fontCache: 'global' } };</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Mathématiques</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 6</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">MA · Chapitre 6 / 6</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">💻 Calcul Scientifique</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Mathématiques — Ensemble des cours de mathématiques: analyse, algèbre, probabilités, statistiques, calcul scientifique.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1976D2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-analyse-i.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">📐 Analyse I</div></a><a href="chapitre-02-analyse-ii.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">📈 Analyse II</div></a><a href="chapitre-03-algebre-generale.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">🧮 Algèbre Générale</div></a><a href="chapitre-04-algebre-lineaire-l1.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">🧮 Algèbre linéaire L1</div></a><a href="chapitre-05-probabilites-amp-statistiques.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">📊 Probabilités &amp;amp; Statistiques</div></a><a href="chapitre-06-calcul-scientifique.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">💻 Calcul Scientifique</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            
+<div class="container" id="top">
+  <h1 class="titre-principal">💻 Calcul Scientifique</h1>
+  <div class="sous-titre">Python pour la Data Science &amp; le calcul numérique — Résumé &amp; exercices corrigés • CS28</div>
+  
+  <!-- TOC -->
+  <div class="toc">
+    <h2>📑 Table des matières</h2>
+    <ul>
+      <li><a href="#ch1">1. Introduction à Python scientifique</a></li>
+      <li><a href="#ch1b">1.1 NumPy, Matplotlib</a></li>
+      <li><a href="#ch2">2. Analyse de données avec Pandas</a></li>
+      <li><a href="#ch3">3. Méthodes numériques (équations, systèmes)</a></li>
+      <li><a href="#ch4">4. Interpolation, intégration, ODE</a></li>
+      <li><a href="#exos">📌 Exercices corrigés</a></li>
+    </ul>
+  </div>
+
+  <!-- ==================== CHAPITRE 1 ==================== -->
+  <div class="section" id="ch1">
+    <h2>1. Introduction à Python scientifique</h2>
+    <div class="card">
+      <h3>Qu'est-ce que le calcul scientifique ?</h3>
+      <p>Le calcul scientifique est l'utilisation d'outils numériques, d'algorithmes et de programmation pour résoudre des problèmes mathématiques, scientifiques et d'ingénierie. Il combine :</p>
+      <ul>
+        <li><strong>Mathématiques</strong> (modèles, équations, statistiques)</li>
+        <li><strong>Algorithmes</strong> (méthodes numériques)</li>
+        <li><strong>Programmation</strong> (implémentation)</li>
+      </ul>
+      <h4>Écosystème Python</h4>
+      <ul>
+        <li><strong>NumPy</strong> : tableaux, vecteurs, matrices, opérations vectorisées</li>
+        <li><strong>SciPy</strong> : algorithmes scientifiques (optimisation, intégration, algèbre linéaire)</li>
+        <li><strong>Pandas</strong> : manipulation de données tabulaires (CSV, Excel)</li>
+        <li><strong>Matplotlib</strong> : visualisation scientifique</li>
+        <li><strong>Jupyter</strong> : cahiers interactifs</li>
+      </ul>
+    </div>
+    <div class="card" id="ch1b">
+      <h3>NumPy : vecteurs, matrices, fonctions</h3>
+      <p>Un tableau NumPy permet d'effectuer des opérations élément par élément sans boucles explicites.</p>
+      <pre>
+import numpy as np
+x = np.array([1, 2, 3, 4, 5])
+print(x + 2)          # [3 4 5 6 7]
+print(x * x)          # [ 1  4  9 16 25]
+print(np.sin(x))      # fonctions mathématiques vectorisées
+      </pre>
+      <h4>Matrices et opérations</h4>
+      <pre>
+A = np.array([[2, 1], [3, 4]])
+b = np.array([5, 6])
+print(A @ b)          # produit matrice-vecteur
+print(np.linalg.det(A))
+print(np.linalg.solve(A, b))
+      </pre>
+      <h4>Visualisation avec Matplotlib</h4>
+      <pre>
+import matplotlib.pyplot as plt
+x = np.linspace(0, 10, 100)
+y = x**2
+plt.plot(x, y)
+plt.xlabel("x"); plt.ylabel("y = x²")
+plt.grid(True); plt.show()
+      </pre>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 2 ==================== -->
+  <div class="section" id="ch2">
+    <h2>2. Analyse de données avec Pandas</h2>
+    <div class="card">
+      <h3>Lecture et exploration</h3>
+      <pre>
+import pandas as pd
+data = pd.read_csv("fichier.csv")
+print(data.head())        # 5 premières lignes
+print(data.info())        # types, valeurs manquantes
+print(data.describe())    # statistiques descriptives
+      </pre>
+      <h3>Statistiques descriptives</h3>
+      <p>Pour une colonne $x_1,\dots,x_n$ :</p>
+      <p>$$\bar{x} = \frac{1}{n}\sum x_i,\quad s^2 = \frac{1}{n}\sum (x_i-\bar{x})^2,\quad s=\sqrt{s^2}.$$</p>
+      <h3>Visualisation</h3>
+      <ul>
+        <li><strong>Histogramme</strong> : distribution des données</li>
+        <li><strong>Nuage de points</strong> : relation entre deux variables</li>
+      </ul>
+      <pre>
+plt.hist(data["score"], bins=10)
+plt.scatter(data["study_hours"], data["score"])
+      </pre>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 3 ==================== -->
+  <div class="section" id="ch3">
+    <h2>3. Méthodes numériques</h2>
+    <div class="card">
+      <h3>Erreurs numériques</h3>
+      <ul>
+        <li><strong>Erreur d'arrondi</strong> : précision finie de l'ordinateur</li>
+        <li><strong>Erreur de troncature</strong> : approximation d'un processus infini</li>
+      </ul>
+      <h3>Résolution d'équations non linéaires</h3>
+      <p>On cherche $x$ tel que $f(x)=0$.</p>
+      <h4>Méthode de la bissection</h4>
+      <p>Si $f$ continue sur $[a,b]$ et $f(a)f(b)<0$, il existe une racine. On divise l'intervalle par 2 itérativement.</p>
+      <pre>
+def bisection(f, a, b, tol=1e-6):
+    if f(a)*f(b) >= 0: raise ValueError
+    while (b-a)/2 > tol:
+        m = (a+b)/2
+        if f(m) == 0: return m
+        elif f(a)*f(m) < 0: b = m
+        else: a = m
+    return (a+b)/2
+      </pre>
+      <h4>Méthode de Newton-Raphson</h4>
+      <p>$$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$</p>
+      <p>Plus rapide mais nécessite la dérivée et un bon point initial.</p>
+      <h3>Systèmes linéaires</h3>
+      <p>Résoudre $Ax=b$. Méthodes :</p>
+      <ul>
+        <li><strong>Élimination de Gauss</strong> (pivot)</li>
+        <li><strong>Jacobi</strong> : $x^{(k+1)} = (b - (A-D)x^{(k)})/D$</li>
+        <li><strong>Gauss-Seidel</strong> : utilise les valeurs les plus récentes</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 4 ==================== -->
+  <div class="section" id="ch4">
+    <h2>4. Interpolation, intégration, ODE</h2>
+    <div class="card">
+      <h3>Interpolation linéaire</h3>
+      <p>$$y = y_1 + \frac{x-x_1}{x_2-x_1}(y_2-y_1)$$</p>
+      <h3>Dérivation numérique</h3>
+      <p>Différence centrale : $f'(x) \approx \frac{f(x+h)-f(x-h)}{2h}$</p>
+      <h3>Intégration numérique</h3>
+      <ul>
+        <li><strong>Rectangle</strong> : $\int_a^b f(x)dx \approx h\sum f(x_k)$</li>
+        <li><strong>Trapèzes</strong> : $\int_a^b f(x)dx \approx \frac{h}{2}[f(x_0)+2\sum_{k=1}^{n-1} f(x_k)+f(x_n)]$</li>
+        <li><strong>Simpson</strong> : $\int_a^b f(x)dx \approx \frac{h}{3}[f(x_0)+4\sum_{\text{impair}}f(x_k)+2\sum_{\text{pair}}f(x_k)+f(x_n)]$</li>
+      </ul>
+      <h3>Équations différentielles ordinaires</h3>
+      <p>Problème : $y' = f(t,y), y(t_0)=y_0$.</p>
+      <ul>
+        <li><strong>Euler</strong> : $y_{n+1} = y_n + h f(t_n,y_n)$</li>
+        <li><strong>RK4</strong> : $y_{n+1} = y_n + \frac{h}{6}(k_1+2k_2+2k_3+k_4)$</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== EXERCICES ==================== -->
+  <div class="section" id="exos">
+    <h2>📌 Exercices corrigés</h2>
+    <p style="margin-bottom:1.5rem;">Tous les exercices du PDF sont résolus avec des implémentations Python et des explications détaillées.</p>
+
+    <!-- ========== CHAPITRE 1 ========= -->
+    <h3 style="margin-top:2rem;">Chapitre 1 — Fondamentaux</h3>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_1')">Afficher / Masquer</button>
+      <h4>Exercice 1 — Tableau NumPy</h4>
+      <p><strong>Énoncé :</strong> Créer un tableau contenant les entiers de 1 à 100 et calculer leurs carrés.</p>
+      <div id="sol1_1" class="solution">
+        <pre>
+import numpy as np
+x = np.arange(1, 101)
+carres = x ** 2
+print(carres)
+        </pre>
+        <p>Résultat : un tableau NumPy de 100 éléments, chacun étant le carré de l'entier correspondant.</p>
+        <span class="resultat">Tableau des carrés de 1 à 100.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_2')">Afficher / Masquer</button>
+      <h4>Exercice 2 — Tracé de sin/cos</h4>
+      <p><strong>Énoncé :</strong> Générer 200 valeurs entre 0 et $2\pi$ et tracer $\sin(x)$ et $\cos(x)$.</p>
+      <div id="sol1_2" class="solution">
+        <pre>
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.linspace(0, 2*np.pi, 200)
+plt.plot(x, np.sin(x), label="sin(x)")
+plt.plot(x, np.cos(x), label="cos(x)")
+plt.legend(); plt.grid(True); plt.show()
+        </pre>
+        <span class="resultat">Graphique avec les deux courbes.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_3')">Afficher / Masquer</button>
+      <h4>Exercice 3 — Matrice 3×3 et déterminant</h4>
+      <p><strong>Énoncé :</strong> Créer une matrice 3×3 et calculer son déterminant.</p>
+      <div id="sol1_3" class="solution">
+        <pre>
+A = np.array([[1,2,3],[4,5,6],[7,8,9]])
+det = np.linalg.det(A)
+print(det)  # 0.0
+        </pre>
+        <p>Le déterminant est nul car les lignes sont linéairement dépendantes.</p>
+        <span class="resultat">$\det = 0$.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_4')">Afficher / Masquer</button>
+      <h4>Exercice 4 — Système linéaire 2×2</h4>
+      <p><strong>Énoncé :</strong> Résoudre $\begin{cases}2x+y=5\\x+3y=6\end{cases}$.</p>
+      <div id="sol1_4" class="solution">
+        <pre>
+A = np.array([[2,1],[1,3]])
+b = np.array([5,6])
+x = np.linalg.solve(A, b)
+print(x)  # [1.8 1.4]
+        </pre>
+        <p>Vérification : $2(1.8)+1.4=5$, $1.8+3(1.4)=6$.</p>
+        <span class="resultat">$x=1.8, y=1.4$.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_5')">Afficher / Masquer</button>
+      <h4>Exercice 5 — Benchmark d'algorithme</h4>
+      <p><strong>Énoncé :</strong> Mesurer et tracer le temps d'exécution d'une boucle pour des tailles croissantes.</p>
+      <div id="sol1_5" class="solution">
+        <pre>
+import time
+sizes = [100, 500, 1000, 2000, 5000]
+times = []
+for n in sizes:
+    start = time.time()
+    s = 0
+    for i in range(n):
+        s += i**2
+    times.append((time.time()-start)*1000)
+plt.plot(sizes, times, marker='o')
+plt.xlabel("Taille n"); plt.ylabel("Temps (ms)")
+plt.grid(True); plt.show()
+        </pre>
+        <span class="resultat">Graphique montrant la croissance du temps.</span>
+      </div>
+    </div>
+
+    <!-- ========== CHAPITRE 2 ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 2 — Analyse de données</h3>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_1')">Afficher / Masquer</button>
+      <h4>Exercice 1 — Import CSV</h4>
+      <p><strong>Énoncé :</strong> Importer un fichier CSV et afficher les 5 premières lignes.</p>
+      <div id="sol2_1" class="solution">
+        <pre>
+import pandas as pd
+data = pd.read_csv("students.csv")
+print(data.head())
+        </pre>
+        <span class="resultat">Affichage des 5 premières lignes.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_2')">Afficher / Masquer</button>
+      <h4>Exercice 2 — Statistiques descriptives</h4>
+      <p><strong>Énoncé :</strong> Calculer moyenne, médiane et écart-type d'une colonne.</p>
+      <div id="sol2_2" class="solution">
+        <pre>
+moy = data["score"].mean()
+med = data["score"].median()
+std = data["score"].std()
+print(moy, med, std)
+        </pre>
+        <span class="resultat">Valeurs numériques.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_3')">Afficher / Masquer</button>
+      <h4>Exercice 3 — Histogramme</h4>
+      <p><strong>Énoncé :</strong> Tracer l'histogramme des notes.</p>
+      <div id="sol2_3" class="solution">
+        <pre>
+import matplotlib.pyplot as plt
+plt.hist(data["score"], bins=10, edgecolor='black')
+plt.xlabel("Score"); plt.ylabel("Fréquence")
+plt.title("Distribution des notes")
+plt.show()
+        </pre>
+        <span class="resultat">Histogramme affiché.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_4')">Afficher / Masquer</button>
+      <h4>Exercice 4 — Nuage de points</h4>
+      <p><strong>Énoncé :</strong> Tracer un nuage de points entre deux colonnes numériques.</p>
+      <div id="sol2_4" class="solution">
+        <pre>
+plt.scatter(data["study_hours"], data["score"])
+plt.xlabel("Heures d'étude"); plt.ylabel("Score")
+plt.title("Étude et performance")
+plt.grid(True); plt.show()
+        </pre>
+        <span class="resultat">Nuage de points montrant la corrélation.</span>
+      </div>
+    </div>
+
+    <!-- ========== CHAPITRE 3 ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 3 — Méthodes numériques</h3>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_1')">Afficher / Masquer</button>
+      <h4>Exercice 1 — Bissection</h4>
+      <p><strong>Énoncé :</strong> Approcher la racine de $f(x)=x^3-x-2$ sur $[1,2]$.</p>
+      <div id="sol3_1" class="solution">
+        <pre>
+def f(x): return x**3 - x - 2
+def bisection(f, a, b, tol=1e-6):
+    if f(a)*f(b) >= 0: raise ValueError
+    while (b-a)/2 > tol:
+        m = (a+b)/2
+        if f(m) == 0: return m
+        elif f(a)*f(m) < 0: b = m
+        else: a = m
+    return (a+b)/2
+racine = bisection(f, 1, 2)
+print(racine)  # ~1.521379709
+        </pre>
+        <span class="resultat">Racine ≈ 1.52138.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_2')">Afficher / Masquer</button>
+      <h4>Exercice 2 — Newton-Raphson</h4>
+      <p><strong>Énoncé :</strong> Appliquer Newton à $f(x)=x^2-5$.</p>
+      <div id="sol3_2" class="solution">
+        <pre>
+def f(x): return x**2 - 5
+def df(x): return 2*x
+def newton(f, df, x0, tol=1e-6):
+    x = x0
+    while True:
+        x_new = x - f(x)/df(x)
+        if abs(x_new - x) < tol: return x_new
+        x = x_new
+racine = newton(f, df, 2)
+print(racine)  # ~2.2360679
+        </pre>
+        <span class="resultat">$\sqrt{5} \approx 2.23607$.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_3')">Afficher / Masquer</button>
+      <h4>Exercice 3 — Système 3×3</h4>
+      <p><strong>Énoncé :</strong> Résoudre un système 3×3 avec NumPy.</p>
+      <div id="sol3_3" class="solution">
+        <pre>
+A = np.array([[3,2,-1],[2,-2,4],[-1,0.5,-1]])
+b = np.array([1,-2,0])
+x = np.linalg.solve(A, b)
+print(x)
+        </pre>
+        <span class="resultat">Solution du système.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_4')">Afficher / Masquer</button>
+      <h4>Exercice 4 — Jacobi (3 itérations)</h4>
+      <p><strong>Énoncé :</strong> Système $\begin{cases}4x+y=9\\x+3y=8\end{cases}$.</p>
+      <div id="sol3_4" class="solution">
+        <pre>
+x, y = 0, 0
+for k in range(3):
+    x_new = (9 - y)/4
+    y_new = (8 - x)/3
+    x, y = x_new, y_new
+    print(x, y)
+# Itération 1: (2.25, 2.667)
+# Itération 2: (1.583, 1.917)
+# Itération 3: (1.771, 2.139)
+        </pre>
+        <span class="resultat">Approches de la solution (2,2).</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_5')">Afficher / Masquer</button>
+      <h4>Exercice 5 — Comparaison Jacobi / Gauss-Seidel</h4>
+      <p><strong>Énoncé :</strong> Même système, comparer les vitesses.</p>
+      <div id="sol3_5" class="solution">
+        <pre>
+# Gauss-Seidel : utilise les valeurs fraîchement calculées
+x, y = 0, 0
+for k in range(3):
+    x = (9 - y)/4
+    y = (8 - x)/3
+    print(x, y)
+# It1: (2.25, 1.917)
+# It2: (1.771, 2.076)
+# It3: (1.981, 2.006)
+        </pre>
+        <p>Gauss-Seidel converge plus vite vers (2,2).</p>
+        <span class="resultat">Gauss-Seidel plus rapide.</span>
+      </div>
+    </div>
+
+    <!-- ========== CHAPITRE 4 ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 4 — Interpolation, intégration, ODE</h3>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_1')">Afficher / Masquer</button>
+      <h4>Exercice 1 — Interpolation linéaire</h4>
+      <p><strong>Énoncé :</strong> Interpoler entre (2,10) et (5,25) en $x=3$.</p>
+      <div id="sol4_1" class="solution">
+        <pre>
+def interpol(x, x1, y1, x2, y2):
+    return y1 + (x-x1)*(y2-y1)/(x2-x1)
+val = interpol(3, 2, 10, 5, 25)
+print(val)  # 15.0
+        </pre>
+        <span class="resultat">15.0.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_2')">Afficher / Masquer</button>
+      <h4>Exercice 2 — Dérivée numérique</h4>
+      <p><strong>Énoncé :</strong> $f(x)=\sin x$, approximer $f'(1)$.</p>
+      <div id="sol4_2" class="solution">
+        <pre>
+def deriv(f, x, h=1e-5):
+    return (f(x+h)-f(x-h))/(2*h)
+f = np.sin
+print(deriv(f, 1))  # ~0.5403023 (cos(1))
+        </pre>
+        <span class="resultat">$\cos(1) \approx 0.5403$.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_3')">Afficher / Masquer</button>
+      <h4>Exercice 3 — Intégration trapèzes</h4>
+      <p><strong>Énoncé :</strong> $\int_0^1 x^2 dx$ avec la méthode des trapèzes.</p>
+      <div id="sol4_3" class="solution">
+        <pre>
+def trapez(f, a, b, n):
+    h = (b-a)/n
+    s = 0.5*(f(a)+f(b))
+    for k in range(1,n):
+        s += f(a+k*h)
+    return h*s
+f = lambda x: x**2
+print(trapez(f, 0, 1, 100))  # ~0.33335
+        </pre>
+        <span class="resultat">≈ 1/3.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_4')">Afficher / Masquer</button>
+      <h4>Exercice 4 — Euler</h4>
+      <p><strong>Énoncé :</strong> $y'=0.5y$, $y(0)=10$, $h=0.1$, 20 pas.</p>
+      <div id="sol4_4" class="solution">
+        <pre>
+def euler(f, t0, y0, h, n):
+    t, y = t0, y0
+    for k in range(n):
+        y = y + h*f(t,y)
+        t = t + h
+    return t, y
+f = lambda t,y: 0.5*y
+t, y = euler(f, 0, 10, 0.1, 20)
+print(y)  # ~27.18 (proche de 10*e^(1)=27.18)
+        </pre>
+        <span class="resultat">≈ 27.18.</span>
+      </div>
+    </div>
+
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_5')">Afficher / Masquer</button>
+      <h4>Exercice 5 — Logistique</h4>
+      <p><strong>Énoncé :</strong> Simuler $\frac{dU}{dt}=rU(1-U/K)$ avec $r=0.3, K=1000, U(0)=50$.</p>
+      <div id="sol4_5" class="solution">
+        <pre>
+def logistique(t, U):
+    r, K = 0.3, 1000
+    return r*U*(1 - U/K)
+t0, U0, h, n = 0, 50, 0.5, 100
+t_vals, U_vals = [], []
+t, U = t0, U0
+for k in range(n):
+    t_vals.append(t); U_vals.append(U)
+    U = U + h*logistique(t,U)
+    t = t + h
+plt.plot(t_vals, U_vals)
+plt.xlabel("Temps"); plt.ylabel("Utilisateurs")
+plt.title("Croissance logistique")
+plt.grid(True); plt.show()
+        </pre>
+        <span class="resultat">Courbe en S typique de la logistique.</span>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem;">Tous les exercices du cours ont été résolus avec des implémentations Python et des explications détaillées.</p>
+  </div>
+
+  <a href="#top" class="backtop">⬆ Retour en haut</a>
+</div>
+
+
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-05-probabilites-amp-statistiques.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> 📊 Probabilités &amp;amp; Statistiques</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 6 / 6</div>
+          <div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

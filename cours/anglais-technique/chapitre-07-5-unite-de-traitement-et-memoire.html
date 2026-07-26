@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Anglais Technique — Chapitre 7: 5. Unité de traitement et mémoire — BIT Study HUB">
+  <title>Anglais Technique — Chapitre 7: 5. Unité de traitement et mémoire</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1565C0; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1565C0; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1565C0; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1565C0; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1565C0; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1565C0; background: color-mix(in srgb, #1565C0 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1565C0; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1565C0 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Anglais Technique</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 7</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">EN101 · Chapitre 7 / 20</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">5. Unité de traitement et mémoire</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Anglais Technique — Vocabulaire et grammaire technique en informatique: documentation, présentations, emails.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1565C0" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-introduction.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">Introduction</div></a><a href="chapitre-02-table-des-matieres.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">📑 Table des matières</div></a><a href="chapitre-03-1-introduction-a-l-ordinateur.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">1. Introduction à l&#x27;ordinateur</div></a><a href="chapitre-04-2-types-de-systemes-informatiques.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">2. Types de systèmes informatiques</div></a><a href="chapitre-05-3-peripheriques-d-entree.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">3. Périphériques d&#x27;entrée</div></a><a href="chapitre-06-4-peripheriques-de-sortie.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">4. Périphériques de sortie</div></a><a href="chapitre-07-5-unite-de-traitement-et-memoire.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">7</div><div style="font-size: var(--fs-sm); font-weight: 500">5. Unité de traitement et mémoire</div></a><a href="chapitre-08-6-disques-et-lecteurs-de-stockage.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">8</div><div style="font-size: var(--fs-sm); font-weight: 500">6. Disques et lecteurs de stockage</div></a><a href="chapitre-09-7-systemes-d-exploitation-et-interface-graphique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">9</div><div style="font-size: var(--fs-sm); font-weight: 500">7. Systèmes d&#x27;exploitation et interface graphique</div></a><a href="chapitre-10-8-fonctionnalites-des-logiciels-de-traitement-de-texte.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">10</div><div style="font-size: var(--fs-sm); font-weight: 500">8. Fonctionnalités des logiciels de traitement de texte</div></a><a href="chapitre-11-9-tableurs-et-bases-de-donnees.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">11</div><div style="font-size: var(--fs-sm); font-weight: 500">9. Tableurs et bases de données</div></a><a href="chapitre-12-10-multimedia.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">12</div><div style="font-size: var(--fs-sm); font-weight: 500">10. Multimédia</div></a><a href="chapitre-13-11-programmation-informatique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">13</div><div style="font-size: var(--fs-sm); font-weight: 500">11. Programmation informatique</div></a><a href="chapitre-14-12-informatique-et-emploi.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">14</div><div style="font-size: var(--fs-sm); font-weight: 500">12. Informatique et emploi</div></a><a href="chapitre-15-13-reseaux-informatiques.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">15</div><div style="font-size: var(--fs-sm); font-weight: 500">13. Réseaux informatiques</div></a><a href="chapitre-16-14-internet.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">16</div><div style="font-size: var(--fs-sm); font-weight: 500">14. Internet</div></a><a href="chapitre-17-15-securite-sur-internet.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">17</div><div style="font-size: var(--fs-sm); font-weight: 500">15. Sécurité sur Internet</div></a><a href="chapitre-18-16-acronymes-courants-en-informatique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">18</div><div style="font-size: var(--fs-sm); font-weight: 500">16. Acronymes courants en informatique</div></a><a href="chapitre-19-17-glossaire-des-termes-lies-a-l-intelligence-artificielle.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">19</div><div style="font-size: var(--fs-sm); font-weight: 500">17. Glossaire des termes liés à l&#x27;intelligence artificielle</div></a><a href="chapitre-20-18-exercices-d-ecriture-correction.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">20</div><div style="font-size: var(--fs-sm); font-weight: 500">18. Exercices d&#x27;écriture (correction)</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            <h2 id="s5">5. Unité de traitement et mémoire</h2>
+
+        <div class="card">
+            <h3>5.1 Le processeur (CPU)</h3>
+            <p>Le cerveau de l'ordinateur. Composants :</p>
+            <ul>
+                <li><strong>Unité de contrôle</strong> : examine et exécute les instructions.</li>
+                <li><strong>ALU</strong> : effectue les opérations arithmétiques et logiques.</li>
+                <li><strong>Registres</strong> : mémoire à haute vitesse.</li>
+            </ul>
+            <p>Vitesse mesurée en <strong>Gigahertz (GHz)</strong>. La carte mère est le circuit principal.</p>
+        </div>
+
+        <div class="card">
+            <h3>5.2 RAM et ROM</h3>
+            <ul>
+                <li><strong>RAM</strong> : volatile, perd les données à l'arrêt. Détermine le nombre de programmes et leur rapidité.</li>
+                <li><strong>ROM</strong> : permanente, contient les instructions essentielles.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>5.3 Unités de mémoire</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>Unité</th><th>Valeur</th></tr></thead>
+                    <tbody>
+                        <tr><td>Bit</td><td>0 ou 1</td></tr>
+                        <tr><td>Octet (Byte)</td><td>8 bits</td></tr>
+                        <tr><td>Kilooctet (KB)</td><td>1 024 octets</td></tr>
+                        <tr><td>Mégaoctet (MB)</td><td>1 024 KB</td></tr>
+                        <tr><td>Gigaoctet (GB)</td><td>1 024 MB</td></tr>
+                        <tr><td>Téraoctet (TB)</td><td>1 024 GB</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 6 -->
+        
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-06-4-peripheriques-de-sortie.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> 4. Périphériques de sortie</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 7 / 20</div>
+          <div><a href="chapitre-08-6-disques-et-lecteurs-de-stockage.html" class="btn btn-secondary btn-sm">6. Disques et lecteurs de stockage <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

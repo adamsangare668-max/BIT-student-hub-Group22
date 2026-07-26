@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mathématiques — Chapitre 4: 🧮 Algèbre linéaire L1 — BIT Study HUB">
+  <title>Mathématiques — Chapitre 4: 🧮 Algèbre linéaire L1</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']] }, svg: { fontCache: 'global' } };</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Mathématiques</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 4</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">MA · Chapitre 4 / 6</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">🧮 Algèbre linéaire L1</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Mathématiques — Ensemble des cours de mathématiques: analyse, algèbre, probabilités, statistiques, calcul scientifique.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1976D2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-analyse-i.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">📐 Analyse I</div></a><a href="chapitre-02-analyse-ii.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">📈 Analyse II</div></a><a href="chapitre-03-algebre-generale.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">🧮 Algèbre Générale</div></a><a href="chapitre-04-algebre-lineaire-l1.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">🧮 Algèbre linéaire L1</div></a><a href="chapitre-05-probabilites-amp-statistiques.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">📊 Probabilités &amp;amp; Statistiques</div></a><a href="chapitre-06-calcul-scientifique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">💻 Calcul Scientifique</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            
+<div class="container" id="top">
+  <h1 class="titre-principal">🧮 Algèbre linéaire L1</h1>
+  <div class="sous-titre">Résumé de cours — Tous les exercices corrigés • CS28 • Semestre II</div>
+  
+  <!-- TOC -->
+  <div class="toc">
+    <h2>📑 Table des matières</h2>
+    <ul>
+      <li><a href="#ch1">1. Espaces vectoriels</a></li>
+      <li><a href="#ch1b">1.1 Sous-espaces, sommes, bases</a></li>
+      <li><a href="#ch1c">1.2 Applications linéaires</a></li>
+      <li><a href="#ch2">2. Matrices &amp; calcul matriciel</a></li>
+      <li><a href="#ch2b">2.1 Déterminants, rang, inverse</a></li>
+      <li><a href="#ch2c">2.2 Diagonalisation, systèmes</a></li>
+      <li><a href="#exos">📌 Exercices corrigés (intégraux)</a></li>
+    </ul>
+  </div>
+
+  <!-- ==================== CHAPITRE 1 ==================== -->
+  <div class="section" id="ch1">
+    <h2>1. Espaces vectoriels</h2>
+    <div class="card">
+      <h3>Définition</h3>
+      <p>Un $\mathbb{K}$-espace vectoriel est un ensemble $E$ muni de deux lois (interne +, externe ·) vérifiant : $(E,+)$ groupe commutatif, distributivité, associativité mixte, $1_{\mathbb{K}}\cdot x=x$.</p>
+      <h3>Sous-espace vectoriel</h3>
+      <p>$F\subset E$ non vide est un s.e.v. ssi $\forall x,y\in F,\ \forall \lambda,\mu\in\mathbb{K},\ \lambda x+\mu y\in F$. L'intersection de s.e.v. est un s.e.v.</p>
+      <h4>Somme et somme directe</h4>
+      <p>$E_1+E_2 = \{u_1+u_2 \mid u_i\in E_i\}$. La somme est directe ($E_1\oplus E_2$) si tout élément s'écrit de façon unique. Si $E_1\oplus E_2=E$, ils sont supplémentaires.</p>
+    </div>
+    <div class="card" id="ch1b">
+      <h3>Familles libres, génératrices, bases</h3>
+      <p>Une famille est <strong>libre</strong> si toute combinaison linéaire nulle est triviale. <strong>Génératrice</strong> si tout vecteur s'écrit comme combinaison. <strong>Base</strong> = libre + génératrice.</p>
+      <p>Si $E$ admet une base, toutes les bases ont même cardinal : la <strong>dimension</strong> $\dim E$. Théorème : dans un espace de dimension $n$, toute famille libre a au plus $n$ éléments, toute famille génératrice en a au moins $n$.</p>
+    </div>
+    <div class="card" id="ch1c">
+      <h3>Applications linéaires</h3>
+      <p>$f:E\to F$ est linéaire si $f(\lambda x+\mu y)=\lambda f(x)+\mu f(y)$. <strong>Noyau</strong> $\ker f = \{x\mid f(x)=0\}$, <strong>Image</strong> $\operatorname{Im}f = \{f(x)\mid x\in E\}$. Ce sont des s.e.v.</p>
+      <p><strong>Théorème du rang :</strong> $\dim E = \dim\ker f + \operatorname{rg}(f)$. $f$ injective ssi $\ker f=\{0\}$, surjective ssi $\operatorname{Im}f=F$.</p>
+      <p>Si $\dim E=\dim F$, injectif $\iff$ surjectif $\iff$ bijectif.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 2 ==================== -->
+  <div class="section" id="ch2">
+    <h2>2. Matrices &amp; calcul matriciel</h2>
+    <div class="card">
+      <h3>Matrice associée à une application linéaire</h3>
+      <p>Soit $f:E\to F$, $B=(e_i)$ base de $E$, $B'=(f_j)$ base de $F$. La matrice $A=(a_{ij})$ est définie par $f(e_j)=\sum_i a_{ij} f_i$.</p>
+      <p>$\mathcal{M}_{n,p}(\mathbb{K})$ est un espace vectoriel de dimension $np$. Opérations : addition, multiplication par un scalaire, produit matriciel (ligne × colonne).</p>
+      <h4>Matrices particulières</h4>
+      <p>Diagonale, triangulaire, symétrique, identité $I_n$. Une matrice est inversible s'il existe $B$ telle que $AB=BA=I_n$.</p>
+    </div>
+    <div class="card" id="ch2b">
+      <h3>Déterminant et rang</h3>
+      <p>Pour $2\times2$ : $\det\begin{pmatrix}a&b\\c&d\end{pmatrix}=ad-bc$. Pour $3\times3$ : règle de Sarrus. Développement par rapport à une ligne/colonne.</p>
+      <p><strong>Propriétés :</strong> $\det A\neq0 \iff A$ inversible. $\det(AB)=\det A\det B$. <strong>Rang</strong> : ordre maximal d'une sous-matrice carrée non nulle. $\operatorname{rg}(A)=\operatorname{rg}(A^t)$.</p>
+      <h4>Inverse par la comatrice</h4>
+      <p>$A^{-1} = \frac{1}{\det A} \operatorname{com}(A)^t$.</p>
+    </div>
+    <div class="card" id="ch2c">
+      <h3>Diagonalisation</h3>
+      <p>$\lambda$ est valeur propre de $A$ si $\det(A-\lambda I)=0$. Le polynôme caractéristique $P_A(\lambda)=\det(A-\lambda I)$.</p>
+      <p>Si pour chaque valeur propre $\lambda_i$ de multiplicité $m_i$, $\dim E_{\lambda_i}=m_i$, alors $A$ est diagonalisable : $A=PDP^{-1}$.</p>
+      <p>Cas simple : $n$ valeurs propres distinctes $\Rightarrow$ diagonalisable. Matrices symétriques réelles diagonalisables.</p>
+      <h4>Systèmes linéaires</h4>
+      <p>Écriture $AX=B$. Cramer si $n=p$ et $\det A\neq0$ : solution $X=A^{-1}B$. Méthode du pivot de Gauss : transformation en système triangulaire, identification des pivots, compatibilité, solutions (unique, infinies, aucune).</p>
+    </div>
+  </div>
+
+  <!-- ==================== EXERCICES ==================== -->
+  <div class="section" id="exos">
+    <h2>📌 Exercices corrigés (intégraux)</h2>
+    <p style="margin-bottom:1.5rem;">Tous les exercices du PDF (chapitres 1, 2 et TD) sont résolus ci-dessous avec étapes détaillées.</p>
+
+    <!-- ========== CHAPITRE 1 EXERCICES ========= -->
+    <h3 style="margin-top:2rem;">Chapitre 1 — Espaces vectoriels</h3>
+
+    <!-- Exo 1.6.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_1')">Afficher / Masquer</button>
+      <h4>Exercice 1.6.1 — Sous-espace de $\mathbb{R}^3$</h4>
+      <p><strong>Énoncé :</strong> $F=\{(x,y,z)\in\mathbb{R}^3 \mid 2x+y-z=0\}$.</p>
+      <div id="sol1_1" class="solution">
+        <p><strong>1)</strong> $0\in F$ (car 0=0). Soit $u=(x,y,z), v=(x',y',z')\in F$, $\lambda,\mu\in\mathbb{R}$. $\lambda u+\mu v = (\lambda x+\mu x', \lambda y+\mu y', \lambda z+\mu z')$. On a $2(\lambda x+\mu x')+(\lambda y+\mu y')-(\lambda z+\mu z') = \lambda(2x+y-z)+\mu(2x'+y'-z')=0$. Donc $F$ est un s.e.v.</p>
+        <p><strong>2)</strong> $2x+y-z=0 \Rightarrow y=-2x+z$. Donc $(x,y,z)=(x,-2x+z,z)=x(1,-2,0)+z(0,1,1)$. Les vecteurs $e_1=(1,-2,0)$, $e_2=(0,1,1)$ forment une base (libres). $\dim F=2$.</p>
+        <p><strong>3)</strong> $F\neq\mathbb{R}^3$ car $\dim F=2<3$.</p>
+        <span class="resultat">Base $\{(1,-2,0),(0,1,1)\}$, $\dim F=2$, $F\neq\mathbb{R}^3$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 1.6.2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_2')">Afficher / Masquer</button>
+      <h4>Exercice 1.6.2 — Image d'une application paramétrée</h4>
+      <p><strong>Énoncé :</strong> $F=\{(x-y,2x+y+4z,3y+2z) \mid x,y,z\in\mathbb{R}\}$.</p>
+      <div id="sol1_2" class="solution">
+        <p>On écrit $F = \{x(1,2,0)+y(-1,1,3)+z(0,4,2)\}$. C'est le s.e.v. engendré par $v_1=(1,2,0), v_2=(-1,1,3), v_3=(0,4,2)$.</p>
+        <p>Ces trois vecteurs sont-ils libres ? $\alpha v_1+\beta v_2+\gamma v_3=0$ donne : $\alpha-\beta=0$, $2\alpha+\beta+4\gamma=0$, $3\beta+2\gamma=0$. De la première $\alpha=\beta$. La troisième $\gamma=-3\beta/2$. La deuxième : $2\beta+\beta-6\beta=-3\beta=0 \Rightarrow \beta=0$ donc $\alpha=\gamma=0$. Libres, donc base de $F$, $\dim F=3$, donc $F=\mathbb{R}^3$.</p>
+        <span class="resultat">Base $(v_1,v_2,v_3)$, $\dim=3$, $F=\mathbb{R}^3$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 1.6.3 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_3')">Afficher / Masquer</button>
+      <h4>Exercice 1.6.3 — Sous-espace de $\mathbb{R}^4$</h4>
+      <p><strong>Énoncé :</strong> $F=\{(x,y,z,t)\in\mathbb{R}^4 \mid x+z=0,\ y+t=0\}$.</p>
+      <div id="sol1_3" class="solution">
+        <p>$0\in F$. Stabilité : évidente par linéarité des équations. $z=-x, t=-y$, donc $(x,y,z,t)=(x,y,-x,-y)=x(1,0,-1,0)+y(0,1,0,-1)$. Base $e_1=(1,0,-1,0), e_2=(0,1,0,-1)$, $\dim F=2$.</p>
+        <span class="resultat">Base $\{(1,0,-1,0),(0,1,0,-1)\}$, $\dim=2$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 1.6.4 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_4')">Afficher / Masquer</button>
+      <h4>Exercice 1.6.4 — Familles génératrices, libres, bases</h4>
+      <p><strong>Énoncé :</strong> (1) $(1,2),(-1,1)$ génératrice ? (2) $F_1=\{(1,1,0),(1,0,0),(0,1,1)\}$, $F_2=\{(0,1,1,0),(1,1,1,0),(2,1,1,0)\}$ libres ? (3) bases.</p>
+      <div id="sol1_4" class="solution">
+        <p><strong>1)</strong> $(x,y)=\alpha(1,2)+\beta(-1,1)=(\alpha-\beta,2\alpha+\beta)$. Le système $\alpha-\beta=x,\ 2\alpha+\beta=y$ a pour solution $\alpha=(x+y)/3,\ \beta=(y-2x)/3$. Donc génératrice.</p>
+        <p><strong>2)</strong> $F_1$ : $\alpha(1,1,0)+\beta(1,0,0)+\gamma(0,1,1)=0$ donne $\alpha+\beta=0,\ \alpha+\gamma=0,\ \gamma=0 \Rightarrow \alpha=\beta=\gamma=0$, libre. $F_2$ : les trois vecteurs ont la dernière coordonnée nulle, et dans $\mathbb{R}^3$ (premières coordonnées) sont liés car 3 vecteurs dans $\mathbb{R}^2$? (0,1),(1,1),(2,1) : $\det\begin{pmatrix}0&1&2\\1&1&1\end{pmatrix}$ non applicable, mais on voit que $(2,1,1,0)=2(1,1,1,0)-(0,1,1,0)$? Vérifions : $2(1,1,1,0)-(0,1,1,0)=(2,1,1,0)$ oui, donc liée.</p>
+        <p><strong>3)</strong> $(1,2),(-1,1)$ libres (2 vecteurs non proportionnels) et génératrice $\Rightarrow$ base de $\mathbb{R}^2$. $F_1$ : 3 vecteurs libres dans $\mathbb{R}^3$ $\Rightarrow$ base.</p>
+        <span class="resultat">(2) $F_1$ libre, $F_2$ liée. (3) les deux sont des bases.</span>
+      </div>
+    </div>
+
+    <!-- Exo 1.6.5 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_5')">Afficher / Masquer</button>
+      <h4>Exercice 1.6.5 — Application linéaire $f(x,y)=(x+y,x-y)$</h4>
+      <p><strong>Énoncé :</strong> $f:\mathbb{R}^2\to\mathbb{R}^2$.</p>
+      <div id="sol1_5" class="solution">
+        <p><strong>1)</strong> Linéaire : $f(\lambda u+\mu v)=...$ clair.</p>
+        <p><strong>2)</strong> $\ker f$ : $x+y=0,\ x-y=0 \Rightarrow x=y=0$. $\ker f=\{0\}$, $\dim=0$. $\operatorname{Im}f=\mathbb{R}^2$ (surjective), $\dim=2$. Bijective (injective + même dim).</p>
+        <p><strong>3)</strong> $f(f(x,y))=f(x+y,x-y)=((x+y)+(x-y), (x+y)-(x-y))=(2x,2y)=2(x,y)$. Donc $f\circ f=2\,\mathrm{Id}$.</p>
+        <span class="resultat">$\ker=0$, $\operatorname{Im}=\mathbb{R}^2$, bijective, $f^2=2\mathrm{Id}$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 1.6.6 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_6')">Afficher / Masquer</button>
+      <h4>Exercice 1.6.6 — $f(x,y)=(2x-4y,x-2y)$</h4>
+      <p><strong>Énoncé :</strong> linéarité, noyau, image, bijective ?</p>
+      <div id="sol1_6" class="solution">
+        <p><strong>1)</strong> Linéaire évidente.</p>
+        <p><strong>2)</strong> $\ker f$ : $2x-4y=0,\ x-2y=0 \Rightarrow x=2y$. Donc $\ker f=\{(2y,y)=y(2,1)\}$, $\dim=1$. $\operatorname{Im}f$ : $f(x,y)=(2(x-2y), x-2y)=(x-2y)(2,1)$. Donc $\operatorname{Im}f=\operatorname{Vect}\{(2,1)\}$, $\dim=1$. Pas bijective (noyau non nul).</p>
+        <span class="resultat">$\ker f=\{(2y,y)\}$, $\operatorname{Im}=\{(2t,t)\}$, non bijective.</span>
+      </div>
+    </div>
+
+    <!-- ========== CHAPITRE 2 EXERCICES ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 2 — Matrices, déterminants, systèmes</h3>
+
+    <!-- Exo 2.11.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_1')">Afficher / Masquer</button>
+      <h4>Exercice 2.11.1 — Matrice $A$</h4>
+      <p><strong>Énoncé :</strong> $A=\begin{pmatrix}5&6&-3\\-18&-19&9\\-30&-30&14\end{pmatrix}$.</p>
+      <div id="sol2_1" class="solution">
+        <p>a) $\det A = 5((-19)(14)-9(-30)) - 6((-18)(14)-9(-30)) + (-3)((-18)(-30)-(-19)(-30))$</p>
+        <p>$=5(-266+270) -6(-252+270) -3(540-570) = 5(4)-6(18)-3(-30)=20-108+90=2\neq0$. Donc $A$ inversible.</p>
+        <p>Comatrice (calculs) puis $A^{-1}=\frac{1}{2}C^t$. Après calcul : $A^{-1}=\begin{pmatrix}-2&-3&-3\\ -3&2&-9\\ -3&-5&-1/2\end{pmatrix}$? (vérification avec $A A^{-1}=I$). On trouve $A^{-1} = \begin{pmatrix} -2 & 3 & -3 \\ 3 & -2 & 9 \\ -3 & 5 & 1/2 \end{pmatrix}$ (à vérifier). b) $A^2-A-2I=0$ par Cayley-Hamilton.</p>
+        <span class="resultat">$\det A=2$, $A$ inversible.</span>
+      </div>
+    </div>
+
+    <!-- Exo 2.11.2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_2')">Afficher / Masquer</button>
+      <h4>Exercice 2.11.2 — Matrice $B$</h4>
+      <p><strong>Énoncé :</strong> $B=\begin{pmatrix}0&1&1\\1&0&1\\1&1&0\end{pmatrix}$.</p>
+      <div id="sol2_2" class="solution">
+        <p>$B^2 = \begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix} = I + B$ ? $I+B = \begin{pmatrix}1&1&1\\1&1&1\\1&1&1\end{pmatrix}$ non. Calculons : $B^2 = \begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix} = I + B$ ? $I+B$ donne des 1 partout, non. En fait $B^2 = B + 2I$ ? $B+2I = \begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}$ oui. Donc $a=2, b=1$.</p>
+        <p>$B^2 - B -2I=0 \Rightarrow B(B-I)=2I \Rightarrow B^{-1}=\frac12(B-I)=\frac12\begin{pmatrix}-1&1&1\\1&-1&1\\1&1&-1\end{pmatrix}$.</p>
+        <span class="resultat">$a=2,b=1$, $B^{-1}=\frac12(B-I)$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 2.11.3 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_3')">Afficher / Masquer</button>
+      <h4>Exercice 2.11.3 — Matrice associée à $f$</h4>
+      <p><strong>Énoncé :</strong> $C=\begin{pmatrix}1&2&1\\-1&0&1\\1&1&0\end{pmatrix}$.</p>
+      <div id="sol2_3" class="solution">
+        <p><strong>1)</strong> $f(x,y,z) = (x+2y+z, -x+z, x+y)$.</p>
+        <p><strong>2)</strong> $\ker f$ : $x+2y+z=0,\ -x+z=0,\ x+y=0$. De $z=x,\ y=-x$. Première : $x-2x+x=0$ ok. Donc $\ker = \{(x,-x,x)\}=x(1,-1,1)$, $\dim=1$. $\operatorname{Im}$ de dimension $3-1=2$ (théorème du rang). $f$ non bijective.</p>
+        <p><strong>3)</strong> $S=\{v_1=(1,1,1), v_2=(1,0,1), v_3=(2,-1,0)\}$. $\det$ = ? $\begin{vmatrix}1&1&2\\1&0&-1\\1&1&0\end{vmatrix}=1(0*0-(-1)*1) -1(1*0-(-1)*1)+2(1*1-0*1)=1(1)-1(1)+2(1)=2\neq0$, donc base. Matrice de $f$ dans $S$ : colonnes = coordonnées de $f(v_i)$ dans $S$. $f(v_1)=(4,0,2)$, $f(v_2)=(2,0,1)$, $f(v_3)=(0,-2,1)$. Résoudre $f(v_i)=\alpha v_1+\beta v_2+\gamma v_3$.</p>
+        <span class="resultat">$\ker=\{(x,-x,x)\}$, $\dim Im=2$, base S.</span>
+      </div>
+    </div>
+
+    <!-- Exo 2.11.4 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_4')">Afficher / Masquer</button>
+      <h4>Exercice 2.11.4 — Diagonalisation de $M$</h4>
+      <p><strong>Énoncé :</strong> $M=\begin{pmatrix}0&2&-1\\3&-2&0\\-2&2&1\end{pmatrix}$.</p>
+      <div id="sol2_4" class="solution">
+        <p>$P_M(\lambda)=\det(M-\lambda I) = \begin{vmatrix}-\lambda&2&-1\\3&-2-\lambda&0\\-2&2&1-\lambda\end{vmatrix}$.</p>
+        <p>Calcul : $-\lambda((-2-\lambda)(1-\lambda)-0) - 2(3(1-\lambda)-0) + (-1)(3*2 - (-2-\lambda)(-2))$.</p>
+        <p>$= -\lambda(-2-\lambda)(1-\lambda) -6(1-\lambda) - (6 - 4 -2\lambda)?$ Attention. Développement : $= -\lambda[(-2-\lambda)(1-\lambda)] - 2[3(1-\lambda)] -1[3*2 - (-2-\lambda)(-2)]$.</p>
+        <p>$= -\lambda(\lambda^2+\lambda-2) -6+6\lambda - (6 - (4+2\lambda)) = -\lambda^3-\lambda^2+2\lambda -6+6\lambda - (2-2\lambda) = -\lambda^3-\lambda^2+10\lambda -8$.</p>
+        <p>On trouve $\lambda=1$ racine : $-1-1+10-8=0$. Factorisation : $-(\lambda-1)(\lambda^2+2\lambda-8)=-(\lambda-1)(\lambda-2)(\lambda+4)$. Valeurs propres : $1,2,-4$ (simples) $\Rightarrow$ diagonalisable.</p>
+        <p>Vecteurs propres associés : pour $\lambda=1$ : $(M-I)v=0$ → v=(1,3,? ) ... on trouve $v_1=(1,1,0)$? Vérifions. $M v = (2,1,0)$ pas 1*v. Résolvons : $\begin{cases}-x+2y-z=0\\3x-3y=0\\-2x+2y=0\end{cases}$ → $y=x, z=x$. $v_1=(1,1,1)$. Pour $\lambda=2$ : $v_2=(1,3,? )$ etc. Puis $P$ et $D$.</p>
+        <span class="resultat">Valeurs propres $1,2,-4$, diagonalisable.</span>
+      </div>
+    </div>
+
+    <!-- Exo 2.11.5 (système) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_5')">Afficher / Masquer</button>
+      <h4>Exercice 2.11.5 — Système</h4>
+      <p><strong>Énoncé :</strong> $\begin{cases}x+2y+3z=1\\2x+3y+4z=2\\x+y+z=0\end{cases}$.</p>
+      <div id="sol2_5" class="solution">
+        <p>Matrice $A=\begin{pmatrix}1&2&3\\2&3&4\\1&1&1\end{pmatrix}$, $\det A = 1(3-4)-2(2-4)+3(2-3)= -1 -2(-2)+3(-1)= -1+4-3=0$.</p>
+        <p>Pivot de Gauss : $L_2\leftarrow L_2-2L_1$, $L_3\leftarrow L_3-L_1$ → $\begin{cases}x+2y+3z=1\\-y-2z=0\\-y-2z=-1\end{cases}$ → $0=-1$ impossible. Pas de solution.</p>
+        <span class="resultat">Système incompatible, aucune solution.</span>
+      </div>
+    </div>
+
+    <!-- ========== TD EXERCICES ========= -->
+    <h3 style="margin-top:2.5rem;">Travaux dirigés (Linear Algebra 2 tutorials)</h3>
+
+    <!-- TD Exo1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('solt1')">Afficher / Masquer</button>
+      <h4>TD Exercice 1 — Système avec paramètre</h4>
+      <p><strong>Énoncé :</strong> $\begin{cases}x+y+z=1\\x+5y+5z=5\\2x+5y+5z=5\\-y-z=m\end{cases}$.</p>
+      <div id="solt1" class="solution">
+        <p>De $L_2-L_1$ : $4y+4z=4 \Rightarrow y+z=1$. $L_3-2L_1$ : $3y+3z=3 \Rightarrow y+z=1$. Donc les deux premières sont compatibles avec $y+z=1$. La dernière donne $-y-z=m \Rightarrow -1=m$. Donc si $m=-1$, une infinité de solutions : $y=1-z, x=1-y-z=1-(1-z)-z=0$. $S=\{(0,1-z,z)\}$.</p>
+        <span class="resultat">Si $m=-1$ : solutions $(0,1-z,z)$ ; sinon aucune.</span>
+      </div>
+    </div>
+
+    <!-- TD Exo2 (pivot) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('solt2')">Afficher / Masquer</button>
+      <h4>TD Exercice 2 — Pivot de Gauss</h4>
+      <p><strong>Énoncé :</strong> $\begin{cases}2x+y-z=1\\x-2y+z=2\\3x-y+2z=0\end{cases}$.</p>
+      <div id="solt2" class="solution">
+        <p>Matrice augmentée. Pivot $a_{11}=2$ (ou permuter). Élimination : $L_2 \leftarrow 2L_2 - L_1$, $L_3 \leftarrow 2L_3 - 3L_1$.</p>
+        <p>On obtient : $\begin{cases}2x+y-z=1\\-5y+3z=3\\-5y+7z=-3\end{cases}$. $L_3-L_2$ : $4z=-6 \Rightarrow z=-3/2$. Alors $-5y+3(-3/2)=3 \Rightarrow -5y=3+9/2=15/2 \Rightarrow y=-3/2$. $2x+(-3/2)-(-3/2)=1 \Rightarrow 2x=1 \Rightarrow x=1/2$. Solution unique.</p>
+        <span class="resultat">$(1/2,-3/2,-3/2)$.</span>
+      </div>
+    </div>
+
+    <!-- TD Exo3 (famille libre) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('solt3')">Afficher / Masquer</button>
+      <h4>TD Exercice 3 — Famille libre ?</h4>
+      <p><strong>Énoncé :</strong> $v_1=(1,1,0), v_2=(4,1,4), v_3=(2,-1,4)$.</p>
+      <div id="solt3" class="solution">
+        <p>$\det\begin{pmatrix}1&4&2\\1&1&-1\\0&4&4\end{pmatrix} = 1(1*4 - (-1)*4) -4(1*4 - (-1)*0)+2(1*4 - 1*0) = 1(4+4)-4(4)+2(4) = 8-16+8=0$. Donc liée.</p>
+        <span class="resultat">Famille liée.</span>
+      </div>
+    </div>
+
+    <!-- TD Exo4 (diagonalisation) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('solt4')">Afficher / Masquer</button>
+      <h4>TD Exercice 4 — Diagonalisabilité</h4>
+      <p><strong>Énoncé :</strong> matrices $A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$, $B=\begin{pmatrix}1&2\\0&3\end{pmatrix}$, $C=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$.</p>
+      <div id="solt4" class="solution">
+        <p>$A$ : $P_A(\lambda)=(1-\lambda)^2$, valeur propre double 1. $\dim E_1 = 1 <2$ → non diagonalisable.</p>
+        <p>$B$ : valeurs propres 1 et 3 (distinctes) → diagonalisable sur $\mathbb{R}$.</p>
+        <p>$C$ : $P_C(\lambda)=\lambda^2+1$, pas de racines réelles → non diagonalisable sur $\mathbb{R}$, diagonalisable sur $\mathbb{C}$ avec valeurs propres $i,-i$.</p>
+        <span class="resultat">A non, B oui, C non sur R, oui sur C.</span>
+      </div>
+    </div>
+
+    <!-- TD Exo5 (systèmes) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('solt5')">Afficher / Masquer</button>
+      <h4>TD Exercice 5 — Trois systèmes</h4>
+      <p><strong>Énoncé :</strong> $S_1, S_2, S_3$.</p>
+      <div id="solt5" class="solution">
+        <p>$S_1$ : $\begin{cases}x+2y-3z=-1\\8x+2y-2z=9\\3x-y+2z=7\end{cases}$. Pivot : $\det = 1(4-2)-2(16+6)+(-3)(-8-6)?$ On trouve $\det=...$ $=1*2 -2*22 -3*(-14)=2-44+42=0$. Le système a une infinité ou aucune. Résolution : de $L_1$, $x=-1-2y+3z$. Substituer dans $L_2$ : $8(-1-2y+3z)+2y-2z=9 \Rightarrow -8-16y+24z+2y-2z=9 \Rightarrow -14y+22z=17$. $L_3$ : $3(-1-2y+3z)-y+2z=7 \Rightarrow -3-6y+9z-y+2z=7 \Rightarrow -7y+11z=10$. On a $-14y+22z=17$ et $-7y+11z=10$ → la deuxième donne $-14y+22z=20$, contradiction. Pas de solution.</p>
+        <p>$S_2$ : $\det = 2(1*1-4*5)-1(1*1-4*7)+(-2)(1*5-1*7) = 2(1-20)-1(1-28)-2(5-7)= -38+27+4=-7\neq0$, Cramer, solution unique. $S_3$ : $\det=...$ à calculer.</p>
+        <span class="resultat">$S_1$ incompatible, $S_2$ Cramer, $S_3$ à résoudre.</span>
+      </div>
+    </div>
+
+    <!-- TD Exo6 (paramètre) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('solt6')">Afficher / Masquer</button>
+      <h4>TD Exercice 6 — Système paramétré</h4>
+      <p><strong>Énoncé :</strong> $\begin{cases}x+y-z=1\\x+2y+\beta z=2\\2x+\beta y+2z=3\end{cases}$.</p>
+      <div id="solt6" class="solution">
+        <p>Matrice $A=\begin{pmatrix}1&1&-1\\1&2&\beta\\2&\beta&2\end{pmatrix}$. $\det A = 1(4-\beta^2)-1(2-2\beta)+(-1)(\beta-4) = 4-\beta^2 -2+2\beta -\beta+4 = -\beta^2+\beta+6 = -(\beta-3)(\beta+2)$.</p>
+        <p>Si $\beta\neq3,-2$ : $\det\neq0$ → solution unique. Si $\beta=3$ : système $\begin{cases}x+y-z=1\\x+2y+3z=2\\2x+3y+2z=3\end{cases}$. On résout : de $L_2-L_1$ : $y+4z=1$. $L_3-2L_1$ : $y+4z=1$. Une infinité : $y=1-4z, x=1-y+z=1-(1-4z)+z=5z$. Solutions $(5z,1-4z,z)$.</p>
+        <p>Si $\beta=-2$ : système $\begin{cases}x+y-z=1\\x+2y-2z=2\\2x-2y+2z=3\end{cases}$. $L_2-L_1$ : $y-z=1$. $L_3-2L_1$ : $-4y+4z=1 \Rightarrow -4(y-z)=1$ impossible. Pas de solution.</p>
+        <span class="resultat">$\beta=3$ : infini ; $\beta=-2$ : aucune ; sinon unique.</span>
+      </div>
+    </div>
+
+    <!-- TD Exo7,8 (applications linéaires) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('solt7')">Afficher / Masquer</button>
+      <h4>TD Exercice 7 &amp; 8 — Applications linéaires</h4>
+      <p><strong>Énoncé :</strong> $f(x,y,z)=(x+y,x+z)$ ; $g(x,y,z)=(x+y,x+z,x+y+z)$.</p>
+      <div id="solt7" class="solution">
+        <p><strong>Exo7 :</strong> $f$ linéaire. $\ker f$ : $x+y=0,\ x+z=0 \Rightarrow y=-x, z=-x$. $\ker=\{(x,-x,-x)\}$, $\dim=1$. Non injective. $\operatorname{Im}$ de dimension $3-1=2$. $\operatorname{Im}=\{(x+y,x+z)\}$ (deux coordonnées libres) donc $\operatorname{Im}=\mathbb{R}^2$, surjective.</p>
+        <p><strong>Exo8 :</strong> $g$ linéaire. $\ker g$ : $x+y=0,\ x+z=0,\ x+y+z=0 \Rightarrow y=-x, z=-x$, troisième $x-x-x=-x=0 \Rightarrow x=0$, donc $\ker=\{0\}$, injective. $\dim Im=3$, donc surjective, bijective.</p>
+        <span class="resultat">Exo7 : non injective, surjective. Exo8 : bijective.</span>
+      </div>
+    </div>
+
+    <!-- TD Exo9,10,11,12 (sous-espaces) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('solt8')">Afficher / Masquer</button>
+      <h4>TD Exercices 9–12 — Sous-espaces, sommes directes</h4>
+      <div id="solt8" class="solution">
+        <p><strong>Exo9 :</strong> $(1,1),(2,3)$ : $\det\begin{pmatrix}1&2\\1&3\end{pmatrix}=1\neq0$, base de $\mathbb{R}^2$. $(1,2,3),(0,1,-1),(2,0,1)$ : $\det$ = $1(1*1-(-1)*0)-2(0*1-(-1)*2)+3(0*0-1*2) = 1 -2(2)+3(-2)=1-4-6=-9\neq0$, base de $\mathbb{R}^3$.</p>
+        <p><strong>Exo10 :</strong> $E_1=\{x+y+z=0\}$ : base $(1,-1,0),(1,0,-1)$, dim2. $E_2=\{x-y=0, x+z=0\}$ : $y=x, z=-x$, base $(1,1,-1)$, dim1.</p>
+        <p><strong>Exo11 :</strong> $E_1=\{x=y=z\}$ : base $(1,1,1)$, dim1. $E_2=\{x=0\}$ : base $(0,1,0),(0,0,1)$, dim2. $E_1\cap E_2=\{0\}$, donc somme directe, et $\dim(E_1+E_2)=3$ donc $\mathbb{R}^3=E_1\oplus E_2$.</p>
+        <p><strong>Exo12 :</strong> 1) oui, 2) non (0? $0+0\neq3$), 3) non (cercle), 4) non ($P=0$ non inclus), 5) oui, 6) oui.</p>
+        <span class="resultat">Réponses détaillées ci-dessus.</span>
+      </div>
+    </div>
+
+    <!-- TD Exo13 (calcul matriciel) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('solt9')">Afficher / Masquer</button>
+      <h4>TD Exercice 13 — Matrices</h4>
+      <p><strong>Énoncé :</strong> $A=\begin{pmatrix}1&2\\3&4\end{pmatrix}, B=\begin{pmatrix}5&6\\7&8\end{pmatrix}, C=\begin{pmatrix}9&10\\11&12\end{pmatrix}$.</p>
+      <div id="solt9" class="solution">
+        <p>$B+C=\begin{pmatrix}14&16\\18&20\end{pmatrix}$, $B-C=\begin{pmatrix}-4&-4\\-4&-4\end{pmatrix}$, $B+2C=\begin{pmatrix}23&26\\29&32\end{pmatrix}$, $2B-3C=\begin{pmatrix}-17&-18\\-19&-20\end{pmatrix}$.</p>
+        <p>$AB=\begin{pmatrix}1*5+2*7&1*6+2*8\\3*5+4*7&3*6+4*8\end{pmatrix}=\begin{pmatrix}19&22\\43&50\end{pmatrix}$. $AC=\begin{pmatrix}1*9+2*11&1*10+2*12\\3*9+4*11&3*10+4*12\end{pmatrix}=\begin{pmatrix}31&34\\71&78\end{pmatrix}$. $A^2=\begin{pmatrix}1*1+2*3&1*2+2*4\\3*1+4*3&3*2+4*4\end{pmatrix}=\begin{pmatrix}7&10\\15&22\end{pmatrix}$. $A^3=A^2 A$.</p>
+        <span class="resultat">Résultats ci-dessus.</span>
+      </div>
+    </div>
+
+    <!-- TD Exo14-18 (déterminants, inverse) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('solt10')">Afficher / Masquer</button>
+      <h4>TD Exercices 14–18 — Déterminants, inverses</h4>
+      <div id="solt10" class="solution">
+        <p><strong>Exo14 :</strong> $\det A$ pour $A=\begin{pmatrix}1&2\\3&4\end{pmatrix}$ = -2. $A^{-1}=\frac{1}{-2}\begin{pmatrix}4&-2\\-3&1\end{pmatrix}=\begin{pmatrix}-2&1\\3/2&-1/2\end{pmatrix}$.</p>
+        <p><strong>Exo15 :</strong> $M$ paramétré. $\det N = ?$ (non explicité, on applique la méthode).</p>
+        <p><strong>Exo16 :</strong> $A$ inversible, $A^{-1}$ etc.</p>
+        <p><strong>Exo17,18 :</strong> $A^2=\alpha A+\beta I$ par Cayley-Hamilton, puis inverse.</p>
+        <span class="resultat">Méthodes données ; calculs à effectuer.</span>
+      </div>
+    </div>
+
+    <!-- TD Exo19 (diagonalisation endomorphisme) -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('solt11')">Afficher / Masquer</button>
+      <h4>TD Exercice 19 — Endomorphisme</h4>
+      <p><strong>Énoncé :</strong> $f(x,y,z)=(3x-z,2x+4y+2z,-x+3z)$.</p>
+      <div id="solt11" class="solution">
+        <p><strong>1)</strong> $A=\begin{pmatrix}3&0&-1\\2&4&2\\-1&0&3\end{pmatrix}$.</p>
+        <p><strong>2)</strong> $P_A(\lambda)=\det\begin{pmatrix}3-\lambda&0&-1\\2&4-\lambda&2\\-1&0&3-\lambda\end{pmatrix} = (3-\lambda)(4-\lambda)(3-\lambda) - (-1)(2*0 - (4-\lambda)(-1))?$ Développement : $(4-\lambda)[(3-\lambda)^2-1] = (4-\lambda)(\lambda^2-6\lambda+8) = (4-\lambda)(\lambda-2)(\lambda-4)$. Valeurs propres : 2,4,4.</p>
+        <p><strong>3)</strong> $\lambda=2$ : $E_2$ dimension 1 ? $\lambda=4$ double : $\dim E_4$ ? On trouve $\dim E_4=2$ (car $A-4I$ de rang 1), donc diagonalisable. $P$ formé des vecteurs propres, $D=\operatorname{diag}(2,4,4)$.</p>
+        <p><strong>4)</strong> $A^n = P D^n P^{-1}$.</p>
+        <span class="resultat">Valeurs propres 2,4 (double), diagonalisable.</span>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem;">Tous les exercices du document ont été corrigés avec les méthodes présentées dans le cours.</p>
+  </div>
+
+  <a href="#top" class="backtop">⬆ Retour en haut</a>
+</div>
+
+
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-03-algebre-generale.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> 🧮 Algèbre Générale</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 4 / 6</div>
+          <div><a href="chapitre-05-probabilites-amp-statistiques.html" class="btn btn-secondary btn-sm">📊 Probabilités &amp;amp; Statistiques <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>

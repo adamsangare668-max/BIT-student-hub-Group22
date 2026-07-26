@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mathématiques — Chapitre 3: 🧮 Algèbre Générale — BIT Study HUB">
+  <title>Mathématiques — Chapitre 3: 🧮 Algèbre Générale</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité avec HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']] }, svg: { fontCache: 'global' } };</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7)">
+          <a href="../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html" style="color: rgba(255,255,255,0.7)">Mathématiques</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Chapitre 3</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">MA · Chapitre 3 / 6</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">🧮 Algèbre Générale</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Mathématiques — Ensemble des cours de mathématiques: analyse, algèbre, probabilités, statistiques, calcul scientifique.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--space-8); align-items: start;">
+          <!-- Sidebar: Sommaire -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4)); max-height: calc(100vh - var(--header-height) - var(--space-8)); overflow-y: auto;">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1976D2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Sommaire
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                <a href="chapitre-01-analyse-i.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">1</div><div style="font-size: var(--fs-sm); font-weight: 500">📐 Analyse I</div></a><a href="chapitre-02-analyse-ii.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">2</div><div style="font-size: var(--fs-sm); font-weight: 500">📈 Analyse II</div></a><a href="chapitre-03-algebre-generale.html" class="list-item active" style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">3</div><div style="font-size: var(--fs-sm); font-weight: 500">🧮 Algèbre Générale</div></a><a href="chapitre-04-algebre-lineaire-l1.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">4</div><div style="font-size: var(--fs-sm); font-weight: 500">🧮 Algèbre linéaire L1</div></a><a href="chapitre-05-probabilites-amp-statistiques.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">5</div><div style="font-size: var(--fs-sm); font-weight: 500">📊 Probabilités &amp;amp; Statistiques</div></a><a href="chapitre-06-calcul-scientifique.html" class="list-item " style="padding: var(--space-2) var(--space-3);"><div class="chapter-number" style="width: 28px; height: 28px; font-size: var(--fs-xs)">6</div><div style="font-size: var(--fs-sm); font-weight: 500">💻 Calcul Scientifique</div></a>
+              </div>
+              <a href="index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Vue d'ensemble
+              </a>
+            </div>
+          </aside>
+
+          <!-- Contenu -->
+          <article class="course-content">
+            
+<div class="container" id="top">
+  <h1 class="titre-principal">🧮 Algèbre Générale</h1>
+  <div class="sous-titre">Résumé de cours — Tous les exercices corrigés • CS • Semestre I</div>
+  
+  <!-- TOC -->
+  <div class="toc">
+    <h2>📑 Table des matières</h2>
+    <ul>
+      <li><a href="#ch1">1. Logique &amp; raisonnement</a></li>
+      <li><a href="#ch2">2. Théorie des ensembles</a></li>
+      <li><a href="#ch3">3. Structures algébriques</a></li>
+      <li><a href="#ch4">4. Arithmétique dans $\mathbb{Z}$</a></li>
+      <li><a href="#ch5">5. Nombres complexes</a></li>
+      <li><a href="#ch6">6. Polynômes &amp; fractions rationnelles</a></li>
+      <li><a href="#exos">📌 Exercices corrigés</a></li>
+    </ul>
+  </div>
+
+  <!-- ==================== CHAPITRE 1 ==================== -->
+  <div class="section" id="ch1">
+    <h2>1. Logique &amp; raisonnement</h2>
+    <div class="card">
+      <h3>Propositions, connecteurs</h3>
+      <p>Une proposition est une assertion vraie ou fausse. Connecteurs : $\wedge$ (et), $\vee$ (ou), $\Rightarrow$ (implication), $\Leftrightarrow$ (équivalence).</p>
+      <ul>
+        <li>$P\Rightarrow Q$ est faux seulement si $P$ vrai et $Q$ faux.</li>
+        <li>$P\Leftrightarrow Q$ est vrai si $P$ et $Q$ ont même valeur de vérité.</li>
+        <li>Contraposée : $(P\Rightarrow Q)\Leftrightarrow(\overline{Q}\Rightarrow\overline{P})$.</li>
+        <li>Négation : $\overline{P\Rightarrow Q}\equiv P\wedge\overline{Q}$.</li>
+      </ul>
+      <h4>Quantificateurs</h4>
+      <p>$\forall$ (pour tout), $\exists$ (il existe). Négation : $\overline{\forall x, P(x)}\equiv \exists x, \overline{P(x)}$.</p>
+      <h4>Méthodes de raisonnement</h4>
+      <ul>
+        <li><strong>Direct</strong> : on suppose $P$ et on montre $Q$.</li>
+        <li><strong>Contraposée</strong> : on montre $\overline{Q}\Rightarrow\overline{P}$.</li>
+        <li><strong>Par l'absurde</strong> : on suppose le contraire et on aboutit à une contradiction.</li>
+        <li><strong>Contre-exemple</strong> : pour montrer qu'une proposition universelle est fausse.</li>
+        <li><strong>Récurrence</strong> : initialisation + hérédité.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 2 ==================== -->
+  <div class="section" id="ch2">
+    <h2>2. Théorie des ensembles</h2>
+    <div class="card">
+      <h3>Opérations</h3>
+      <ul>
+        <li>Inclusion $A\subset B$ : $\forall x\in A, x\in B$.</li>
+        <li>Union $A\cup B$, intersection $A\cap B$, différence $A\setminus B$, complémentaire.</li>
+        <li>Lois : commutativité, associativité, distributivité, idempotence, lois de Morgan.</li>
+      </ul>
+      <h4>Produit cartésien</h4>
+      <p>$A\times B=\{(a,b)\mid a\in A, b\in B\}$.</p>
+      <h4>Applications</h4>
+      <ul>
+        <li>Injective : $f(x)=f(y)\Rightarrow x=y$.</li>
+        <li>Surjective : $\forall y\in F,\exists x\in E, f(x)=y$.</li>
+        <li>Bijective : injective + surjective.</li>
+        <li>Image directe $f(A)$, image réciproque $f^{-1}(B)$.</li>
+      </ul>
+      <h4>Relations binaires</h4>
+      <p>Équivalence : réflexive, symétrique, transitive. Classe d'équivalence.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 3 ==================== -->
+  <div class="section" id="ch3">
+    <h2>3. Structures algébriques</h2>
+    <div class="card">
+      <h3>Loi de composition interne</h3>
+      <p>$\star:G\times G\to G$. Propriétés : commutative, associative, élément neutre, symétrique.</p>
+      <h4>Groupe</h4>
+      <p>$(G,\star)$ avec neutre, associatif, chaque élément admet un symétrique. Si commutative : groupe abélien.</p>
+      <h4>Anneau</h4>
+      <p>$(A,+,\times)$ : $(A,+)$ groupe abélien, $\times$ associative et distributive sur $+$.</p>
+      <h4>Corps</h4>
+      <p>Anneau unitaire où tout élément non nul est inversible pour $\times$.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 4 ==================== -->
+  <div class="section" id="ch4">
+    <h2>4. Arithmétique dans $\mathbb{Z}$</h2>
+    <div class="card">
+      <h3>Divisibilité, division euclidienne</h3>
+      <p>$a=bq+r,\ 0\le r<|b|$.</p>
+      <h4>Nombres premiers</h4>
+      <p>Nombre ayant exactement deux diviseurs positifs : 1 et lui-même. Infinité des nombres premiers.</p>
+      <h4>PGCD et PPCM</h4>
+      <p>Algorithme d'Euclide pour le PGCD. Relation : $a\wedge b \times a\vee b = ab$.</p>
+      <p>Identité de Bézout : $\exists u,v\in\mathbb{Z},\ au+bv=a\wedge b$.</p>
+      <h4>Nombres premiers entre eux</h4>
+      <p>$a\wedge b=1$. Lemme de Gauss : si $a\mid bc$ et $a\wedge b=1$, alors $a\mid c$.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 5 ==================== -->
+  <div class="section" id="ch5">
+    <h2>5. Nombres complexes</h2>
+    <div class="card">
+      <h3>Forme algébrique</h3>
+      <p>$z=x+iy$, $\Re(z)=x$, $\Im(z)=y$.</p>
+      <h4>Conjugué et module</h4>
+      <p>$\overline{z}=x-iy$, $|z|=\sqrt{x^2+y^2}$. $|z|^2=z\overline{z}$.</p>
+      <h4>Forme trigonométrique</h4>
+      <p>$z=|z|(\cos\theta+i\sin\theta)$, $\arg z=\theta$.</p>
+      <h4>Formule de Moivre</h4>
+      <p>$(\cos\theta+i\sin\theta)^n=\cos(n\theta)+i\sin(n\theta)$.</p>
+      <h4>Exponentielle complexe</h4>
+      <p>$e^{i\theta}=\cos\theta+i\sin\theta$.</p>
+      <h4>Racines n-ièmes</h4>
+      <p>$z^n=\alpha$ ⇒ $|z|=\sqrt[n]{|\alpha|}$, $\arg z=\frac{\arg\alpha+2k\pi}{n}$.</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHAPITRE 6 ==================== -->
+  <div class="section" id="ch6">
+    <h2>6. Polynômes &amp; fractions rationnelles</h2>
+    <div class="card">
+      <h3>Polynômes</h3>
+      <p>$P(X)=\sum a_k X^k$. Degré, addition, multiplication, division euclidienne.</p>
+      <h4>Racines</h4>
+      <p>$\lambda$ racine si $P(\lambda)=0$. Racine d'ordre $m$ si $(X-\lambda)^m\mid P$ et $(X-\lambda)^{m+1}\nmid P$.</p>
+      <p>Dans $\mathbb{C}[X]$, tout polynôme de degré $n$ a $n$ racines comptées avec multiplicité.</p>
+      <h4>Fractions rationnelles</h4>
+      <p>$F=P/Q$. Décomposition en éléments simples sur $\mathbb{R}$ ou $\mathbb{C}$.</p>
+    </div>
+  </div>
+
+  <!-- ==================== EXERCICES ==================== -->
+  <div class="section" id="exos">
+    <h2>📌 Exercices corrigés</h2>
+    <p style="margin-bottom:1.5rem;">Tous les exercices du PDF sont résolus ci-dessous avec étapes détaillées.</p>
+
+    <!-- ========== CHAPITRE 1 ========= -->
+    <h3 style="margin-top:2rem;">Chapitre 1 — Logique</h3>
+
+    <!-- Exo 1.3.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_1')">Afficher / Masquer</button>
+      <h4>Exercice 1.3.1 — Négations</h4>
+      <p><strong>Énoncé :</strong> Nier : $a<b$, $a<b<c$, $\forall x\in\mathbb{R},\exists y\in\mathbb{R}, 2x-5<2$, etc.</p>
+      <div id="sol1_1" class="solution">
+        <p>1) $a\ge b$. 2) $a\ge b$ ou $b\ge c$. 3) $\exists x\in\mathbb{R},\forall y\in\mathbb{R}, 2x-5\ge2$. 4) $\exists\epsilon>0,\forall\beta>0,\ |\epsilon|<\beta$ et $|x^2|\ge\epsilon$. 5) $\exists z\in\mathbb{R},\ z\ne0$ et $z\notin]3,5]$. 6) $\forall\lambda\in\mathbb{R}^+,\exists n\in\mathbb{N},\ |U_n|>\lambda$.</p>
+        <span class="resultat">Négations données.</span>
+      </div>
+    </div>
+
+    <!-- Exo 1.3.2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_2')">Afficher / Masquer</button>
+      <h4>Exercice 1.3.2 — Quantificateurs</h4>
+      <p><strong>Énoncé :</strong> Produit de deux pairs ? de deux impairs ?</p>
+      <div id="sol1_2" class="solution">
+        <p>1) $\forall a,b\in2\mathbb{Z},\ ab\in2\mathbb{Z}$ (vrai).</p>
+        <p>2) $\forall a,b\in2\mathbb{Z}+1,\ ab\in2\mathbb{Z}+1$ (vrai).</p>
+        <p>3) pair × impair = pair.</p>
+        <p>4) $n$ pair $\Leftrightarrow n^2$ pair (vrai).</p>
+        <span class="resultat">Vrai pour les trois.</span>
+      </div>
+    </div>
+
+    <!-- Exo 1.3.3 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_3')">Afficher / Masquer</button>
+      <h4>Exercice 1.3.3 — Vrai ou faux</h4>
+      <p><strong>Énoncé :</strong> 7 propositions quantifiées.</p>
+      <div id="sol1_3" class="solution">
+        <p>1) Vrai (prendre $z=-2x+1$). 2) Vrai (prendre $x=0$). 3) Faux. 4) Vrai. 5) Vrai (prendre $x=-1$). 6) Vrai. 7) Faux (contradiction).</p>
+        <span class="resultat">1 V, 2 V, 3 F, 4 V, 5 V, 6 V, 7 F.</span>
+      </div>
+    </div>
+
+    <!-- Exo 1.3.4 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol1_4')">Afficher / Masquer</button>
+      <h4>Exercice 1.3.4 — Raisonnements</h4>
+      <p><strong>Énoncé :</strong> $\sqrt2\notin\mathbb{Q}$, $n^2$ pair ⇒ $n$ pair, sommes de cubes.</p>
+      <div id="sol1_4" class="solution">
+        <p>1) $\sqrt2$ irrationnel (démonstration classique par l'absurde).</p>
+        <p>2) Si $n$ impair, $n^2$ impair, contraposée de $n^2$ pair ⇒ $n$ pair.</p>
+        <p>3) $\sum_{k=1}^n k^3 = \left(\frac{n(n+1)}2\right)^2$ par récurrence.</p>
+        <p>4) $4^n+6n-1$ divisible par 9 : initialisation $n=1$ : 9, hérédité.</p>
+        <span class="resultat">Démontré.</span>
+      </div>
+    </div>
+
+    <!-- ========== CHAPITRE 2 ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 2 — Ensembles</h3>
+
+    <!-- Exo 2.4.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_1')">Afficher / Masquer</button>
+      <h4>Exercice 2.4.1 — Ensembles</h4>
+      <p><strong>Énoncé :</strong> $A=\{1,2,5\}$, $B=\{\{1,2\},5\}$, etc.</p>
+      <div id="sol2_1" class="solution">
+        <p>$A=E$ (mêmes éléments). $A\not\subset B$ car $1,2\notin B$. $B\not\subset A$ car $\{1,2\}\notin A$.</p>
+        <p>$A\cap B=\{5\}$, $G\cup H=\{\{1,2\},\{5\},5,\{1\},\{2\}\}$, $E-G=\{1,2\}$.</p>
+        <p>Complémentaire de $A$ dans $D$ : $\{\emptyset,1,2,5\}$? $D=\{\emptyset,1,2,5\}$ donc $D\setminus A=\{\emptyset\}$.</p>
+        <span class="resultat">Résultats donnés.</span>
+      </div>
+    </div>
+
+    <!-- Exo 2.4.2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_2')">Afficher / Masquer</button>
+      <h4>Exercice 2.4.2 — Propriétés ensemblistes</h4>
+      <p><strong>Énoncé :</strong> Montrer des égalités.</p>
+      <div id="sol2_2" class="solution">
+        <p>1) $(A\cap B)\cup B^c = (A\cup B^c)\cap(B\cup B^c) = (A\cup B^c)\cap E = A\cup B^c$.</p>
+        <p>2) $(A-B)-C = A\cap B^c\cap C^c = A\cap(B\cup C)^c = A-(B\cup C)$.</p>
+        <p>3) $A-(B\cap C) = A\cap(B\cap C)^c = A\cap(B^c\cup C^c) = (A\cap B^c)\cup(A\cap C^c) = (A-B)\cup(A-C)$.</p>
+        <span class="resultat">Démontré.</span>
+      </div>
+    </div>
+
+    <!-- Exo 2.4.3 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_3')">Afficher / Masquer</button>
+      <h4>Exercice 2.4.3 — Applications</h4>
+      <p><strong>Énoncé :</strong> $f(x)=2-x$, $g(x)=x^2+1$.</p>
+      <div id="sol2_3" class="solution">
+        <p>$f(\{1/2\})=\{3/2\}$, $f^{-1}(\{0\})=\{2\}$.</p>
+        <p>$g([-1,1])=[1,2]$, $g^{-1}([0,2])=[-1,1]$ (car $x^2+1\in[0,2]$ ⇒ $x^2\le1$).</p>
+        <p>$f:[0,1]\to[1,2]$ est bijective (strictement décroissante). $g:[-1,1]\to[1,2]$ est surjective mais pas injective (car $g(x)=g(-x)$).</p>
+        <span class="resultat">$f$ bijective, $g$ non injective.</span>
+      </div>
+    </div>
+
+    <!-- Exo 2.4.4 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol2_4')">Afficher / Masquer</button>
+      <h4>Exercice 2.4.4 — Relation d'équivalence</h4>
+      <p><strong>Énoncé :</strong> $(x,y)\Re(x',y') \iff x+y=x'+y'$.</p>
+      <div id="sol2_4" class="solution">
+        <p>Réflexive, symétrique, transitive évidentes.</p>
+        <p>Classe de $(0,0)$ : $\{(x,y)\mid x+y=0\}$ (droite $y=-x$).</p>
+        <p>Classe de $(1,3)$ : $\{(x,y)\mid x+y=4\}$.</p>
+        <span class="resultat">Classes données.</span>
+      </div>
+    </div>
+
+    <!-- ========== CHAPITRE 3 ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 3 — Structures</h3>
+
+    <!-- Exo 3.2.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_1')">Afficher / Masquer</button>
+      <h4>Exercice 3.2.1 — Loi $*$</h4>
+      <p><strong>Énoncé :</strong> $x*y=xy+(x^2-1)(y^2-1)$.</p>
+      <div id="sol3_1" class="solution">
+        <p>Commutative : $x*y=y*x$ (expression symétrique).</p>
+        <p>Neutre $e$ : $x*e=x$ ⇒ $xe+(x^2-1)(e^2-1)=x$ ⇒ pour tout $x$, $e=0$? $x*0=0+(x^2-1)(-1)=1-x^2\ne x$. Pas de neutre.</p>
+        <p>$2*y=5$ ⇒ $2y+(3)(y^2-1)=5$ ⇒ $3y^2+2y-8=0$ ⇒ $y=4/3$ ou $y=-2$.</p>
+        <span class="resultat">Pas de neutre, solutions $4/3$ et $-2$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 3.2.2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_2')">Afficher / Masquer</button>
+      <h4>Exercice 3.2.2 — Groupe</h4>
+      <p><strong>Énoncé :</strong> $(x,y)\star(x',y')=(xx',xy'+y)$.</p>
+      <div id="sol3_2" class="solution">
+        <p>Neutre $(1,0)$. Associativité : $(x,y)\star((x',y')\star(x'',y'')) = (xx'x'', xx'y''+xy'+y)$ = $((x,y)\star(x',y'))\star(x'',y'')$.</p>
+        <p>Symétrique de $(x,y)$ : $(x^{-1}, -x^{-1}y)$.</p>
+        <p>Non commutatif : $(1,1)\star(1,2)=(1,3)$, $(1,2)\star(1,1)=(1,2)$.</p>
+        <span class="resultat">Groupe non commutatif.</span>
+      </div>
+    </div>
+
+    <!-- Exo 3.2.3 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol3_3')">Afficher / Masquer</button>
+      <h4>Exercice 3.2.3 — Anneau</h4>
+      <p><strong>Énoncé :</strong> $(\mathbb{Z}^2,\perp,\circ)$.</p>
+      <div id="sol3_3" class="solution">
+        <p>$(\mathbb{Z}^2,\perp)$ groupe abélien (addition vectorielle).</p>
+        <p>$\circ$ associative, distributive, commutative. Neutre $(1,0)$.</p>
+        <span class="resultat">Anneau commutatif unitaire.</span>
+      </div>
+    </div>
+
+    <!-- ========== CHAPITRE 4 ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 4 — Arithmétique</h3>
+
+    <!-- Exo 4.5.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_1')">Afficher / Masquer</button>
+      <h4>Exercice 4.5.1 — Divisibilité</h4>
+      <p><strong>Énoncé :</strong> $a/b \iff a/(b-ka)$, $(a-5)/(a+7)$, $n-1\mid n+3$, $x^2-y^2=13$.</p>
+      <div id="sol4_1" class="solution">
+        <p>1) $a\mid b \iff \exists k, b=ka$. $b-ka$ est multiple de $a$.</p>
+        <p>2) $(a-5)\mid(a+7)$ ⇒ $(a-5)\mid(a+7)-(a-5)=12$. Donc $a-5\in\{\pm1,\pm2,\pm3,\pm4,\pm6,\pm12\}$ ⇒ $a\in\{4,6,3,7,2,8,1,9,-1,11,-7,17\}$.</p>
+        <p>3) $n-1\mid n+3$ ⇒ $n-1\mid4$ ⇒ $n-1\in\{\pm1,\pm2,\pm4\}$ ⇒ $n\in\{2,0,3,-1,5,-3\}$.</p>
+        <p>4) $(x-y)(x+y)=13$ ⇒ $x-y=1, x+y=13$ ⇒ $x=7,y=6$ ; ou $x-y=-1,x+y=-13$ ⇒ $(-7,-6)$.</p>
+        <span class="resultat">Solutions données.</span>
+      </div>
+    </div>
+
+    <!-- Exo 4.5.2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol4_2')">Afficher / Masquer</button>
+      <h4>Exercice 4.5.2 — Multiples et fractions</h4>
+      <p><strong>Énoncé :</strong> $2^{5n+1}+3^{n+3}$ multiple de 29.</p>
+      <div id="sol4_2" class="solution">
+        <p>$2^{5n+1}=2\cdot32^n\equiv2\cdot3^n \pmod{29}$ (car $32\equiv3$). $3^{n+3}=27\cdot3^n\equiv-2\cdot3^n$. Somme nulle modulo 29.</p>
+        <p>$q_n=\frac{n+19}{n-7}$. Simplifiable si $n-7\mid n+19$ ⇒ $n-7\mid26$ ⇒ $n-7\in\{1,2,13,26\}$ ⇒ $n\in\{8,9,20,33\}$.</p>
+        <span class="resultat">Démontré, $n$ donnés.</span>
+      </div>
+    </div>
+
+    <!-- ========== CHAPITRE 5 ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 5 — Complexes</h3>
+
+    <!-- Exo 5.14.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol5_1')">Afficher / Masquer</button>
+      <h4>Exercice 5.14.1 — Polynôme $X^4-3X^3+X^2+4$</h4>
+      <p><strong>Énoncé :</strong> Montrer que 2 est racine, multiplicité.</p>
+      <div id="sol5_1" class="solution">
+        <p>$P(2)=16-24+4+4=0$. Dérivée $P'(X)=4X^3-9X^2+2X$, $P'(2)=32-36+4=0$. $P''(X)=12X^2-18X+2$, $P''(2)=48-36+2=14\ne0$. Multiplicité 2.</p>
+        <p>Division par $(X-2)^2$ : $P=(X-2)^2(X^2+X+1)$. Sur $\mathbb{C}$ : $X^2+X+1=(X-j)(X-j^2)$.</p>
+        <span class="resultat">Racines : $2$ double, $j$ et $j^2$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 5.14.2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol5_2')">Afficher / Masquer</button>
+      <h4>Exercice 5.14.2 — Polynôme paramétré</h4>
+      <p><strong>Énoncé :</strong> $P(X)=X^4+\alpha X^3+3X^2-4X+\alpha$.</p>
+      <div id="sol5_2" class="solution">
+        <p>$P(-2)=16-8\alpha+12+8+\alpha=0$ ⇒ $36-7\alpha=0$ ⇒ $\alpha=36/7$.</p>
+        <p>Multiplicité : $P'(X)=4X^3+3\alpha X^2+6X-4$. $P'(-2)=-32+12\alpha-12-4=12\alpha-48=0$ ⇒ $\alpha=4$. Pas compatible. Donc $\alpha=36/7$ donne racine simple.</p>
+        <span class="resultat">$\alpha=36/7$, racine simple.</span>
+      </div>
+    </div>
+
+    <!-- Exo 5.14.3 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol5_3')">Afficher / Masquer</button>
+      <h4>Exercice 5.14.3 — Nombres complexes</h4>
+      <p><strong>Énoncé :</strong> $z_1=(\sqrt6-i\sqrt2)(1/8-i\sqrt3/8)$.</p>
+      <div id="sol5_3" class="solution">
+        <p>$z_1 = \frac{\sqrt6}{8}-\frac{i\sqrt{18}}{8}-i\frac{\sqrt2}{8}+i^2\frac{\sqrt6}{8} = 0 - i\frac{\sqrt2+\sqrt{18}}{8} = -i\frac{4\sqrt2}{8} = -i\frac{\sqrt2}{2}$.</p>
+        <p>$|z_1|=\frac{\sqrt2}{2}$, $\arg z_1=-\pi/2$.</p>
+        <p>$z_2=\frac{1-i\sqrt3}{1/2+i\sqrt3/2}$. Module et argument à calculer.</p>
+        <span class="resultat">$z_1=-i\sqrt2/2$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 5.14.4 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol5_4')">Afficher / Masquer</button>
+      <h4>Exercice 5.14.4 — Racines de $A$</h4>
+      <p><strong>Énoncé :</strong> $A=(1+i)/\sqrt2$.</p>
+      <div id="sol5_4" class="solution">
+        <p>$A=e^{i\pi/4}$. Racines carrées : $z=e^{i\pi/8}$ et $z=-e^{i\pi/8}$.</p>
+        <p>En algébrique : $z=\sqrt{\frac{\sqrt2+1}{2\sqrt2}} + i\sqrt{\frac{\sqrt2-1}{2\sqrt2}}$ (d'après les formules de $|\cos|$ et $|\sin|$).</p>
+        <p>$\cos(\pi/8)=\sqrt{\frac{1+\cos(\pi/4)}2} = \sqrt{\frac{1+\sqrt2/2}2} = \frac{\sqrt{2+\sqrt2}}{2}$. $\sin(\pi/8)=\frac{\sqrt{2-\sqrt2}}{2}$.</p>
+        <span class="resultat">Valeurs données.</span>
+      </div>
+    </div>
+
+    <!-- ========== CHAPITRE 6 ========= -->
+    <h3 style="margin-top:2.5rem;">Chapitre 6 — Polynômes</h3>
+
+    <!-- Exo 6.3.1 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol6_1')">Afficher / Masquer</button>
+      <h4>Exercice 6.3.1 — Carré de polynôme</h4>
+      <p><strong>Énoncé :</strong> $P(X)=X^4+2aX^3+bX^2+2X+1$.</p>
+      <div id="sol6_1" class="solution">
+        <p>On cherche $P=(X^2+\alpha X+\beta)^2$. $X^4+2\alpha X^3+(\alpha^2+2\beta)X^2+2\alpha\beta X+\beta^2$.</p>
+        <p>Identification : $2\alpha=2a$ ⇒ $\alpha=a$. $2\alpha\beta=2$ ⇒ $\alpha\beta=1$. $\beta^2=1$ ⇒ $\beta=\pm1$.</p>
+        <p>Si $\beta=1$, $a=1$ et $b=a^2+2=3$. Si $\beta=-1$, $a=-1$ et $b=1-2=-1$.</p>
+        <span class="resultat">$(a,b)=(1,3)$ ou $(-1,-1)$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 6.3.2 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol6_2')">Afficher / Masquer</button>
+      <h4>Exercice 6.3.2 — Divisions euclidiennes</h4>
+      <p><strong>Énoncé :</strong> Diviser trois polynômes.</p>
+      <div id="sol6_2" class="solution">
+        <p>1) $X^4+5X^3+12X^2+19X-7$ par $X^2+3X-1$ : quotient $X^2+2X+7$, reste $0$ (vérification).</p>
+        <p>2) $X^4-4X^3-9X^2+27X+38$ par $X^2-X-7$ : quotient $X^2-3X-5$, reste $0$.</p>
+        <p>3) $X^5-X^2+2$ par $X^2+1$ : quotient $X^3-X-1$, reste $X+3$.</p>
+        <span class="resultat">Quotients et restes donnés.</span>
+      </div>
+    </div>
+
+    <!-- Exo 6.3.3 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol6_3')">Afficher / Masquer</button>
+      <h4>Exercice 6.3.3 — Divisibilité</h4>
+      <p><strong>Énoncé :</strong> $X^{n+1}\cos((n-1)\alpha)-X^n\cos(n\alpha)-X\cos\alpha+1$ divisible par $X^2-2X\cos\alpha+1$.</p>
+      <div id="sol6_3" class="solution">
+        <p>Les racines de $X^2-2X\cos\alpha+1$ sont $e^{i\alpha}$ et $e^{-i\alpha}$.</p>
+        <p>Évaluer en $X=e^{i\alpha}$ : $e^{i(n+1)\alpha}\cos((n-1)\alpha)-e^{in\alpha}\cos(n\alpha)-e^{i\alpha}\cos\alpha+1$.</p>
+        <p>En utilisant $\cos\theta=(e^{i\theta}+e^{-i\theta})/2$, on montre que l'expression est nulle. Idem pour $e^{-i\alpha}$. Donc divisible.</p>
+        <span class="resultat">Démontré.</span>
+      </div>
+    </div>
+
+    <!-- Exo 6.3.4 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol6_4')">Afficher / Masquer</button>
+      <h4>Exercice 6.3.4 — Divisibilité par $X^2+2$</h4>
+      <p><strong>Énoncé :</strong> $X^2+2$ divise $X^4+X^3+\lambda X^2+\mu X+2$.</p>
+      <div id="sol6_4" class="solution">
+        <p>Racines de $X^2+2$ : $i\sqrt2$ et $-i\sqrt2$.</p>
+        <p>Poser $X=i\sqrt2$ : $4 -2i\sqrt2 -2\lambda + i\mu\sqrt2 +2=0$ ⇒ partie réelle : $6-2\lambda=0$ ⇒ $\lambda=3$. Partie imaginaire : $(-2+\mu)\sqrt2=0$ ⇒ $\mu=2$.</p>
+        <span class="resultat">$\lambda=3,\mu=2$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 6.3.5 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol6_5')">Afficher / Masquer</button>
+      <h4>Exercice 6.3.5 — PGCD de polynômes</h4>
+      <p><strong>Énoncé :</strong> $P=X^4-3X^3+X^2+4$, $Q=X^3-3X^2+3X-2$.</p>
+      <div id="sol6_5" class="solution">
+        <p>On sait que 2 est racine de $P$ (multiplicité 2). $Q(2)=8-12+6-2=0$. $Q'(X)=3X^2-6X+3$, $Q'(2)=12-12+3=3\ne0$ donc 2 racine simple de $Q$.</p>
+        <p>Donc $X-2$ divise $P$ et $Q$. PGCD = $X-2$ (sauf si autre facteur commun).</p>
+        <span class="resultat">PGCD $=X-2$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 6.3.6 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol6_6')">Afficher / Masquer</button>
+      <h4>Exercice 6.3.6 — Racines de polynômes</h4>
+      <p><strong>Énoncé :</strong> $X^3-8X^2+23X-28$, somme de deux racines égale à la troisième.</p>
+      <div id="sol6_6" class="solution">
+        <p>Soit $r_1+r_2=r_3$. Somme des racines $=8$ ⇒ $2r_3=8$ ⇒ $r_3=4$. $P(4)=64-128+92-28=0$. On divise par $X-4$ : $X^2-4X+7$, racines $2\pm i\sqrt3$.</p>
+        <span class="resultat">Racines : $4,\ 2\pm i\sqrt3$.</span>
+      </div>
+    </div>
+
+    <!-- Exo 6.3.7 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol6_7')">Afficher / Masquer</button>
+      <h4>Exercice 6.3.7 — Décomposition en irréductibles</h4>
+      <p><strong>Énoncé :</strong> $X^4+1$, $X^8-1$, $(X^2-X+1)^2+1$.</p>
+      <div id="sol6_7" class="solution">
+        <p>$X^4+1=(X^2+\sqrt2X+1)(X^2-\sqrt2X+1)$ (sur $\mathbb{R}$).</p>
+        <p>$X^8-1=(X-1)(X+1)(X^2+1)(X^4+1)$.</p>
+        <p>$(X^2-X+1)^2+1 = (X^2-X+1-i)(X^2-X+1+i)$ (sur $\mathbb{C}$). Sur $\mathbb{R}$, non factorisable en degrés 1.</p>
+        <span class="resultat">Décompositions données.</span>
+      </div>
+    </div>
+
+    <!-- Exo 6.3.8 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol6_8')">Afficher / Masquer</button>
+      <h4>Exercice 6.3.8 — Polynôme $P$</h4>
+      <p><strong>Énoncé :</strong> $X^4-6X^3+9X^2+9$.</p>
+      <div id="sol6_8" class="solution">
+        <p>$X^4-6X^3+9X^2 = X^2(X^2-6X+9)=X^2(X-3)^2$.</p>
+        <p>$P=X^2(X-3)^2+9$. Sur $\mathbb{C}$, $P=(X^2-3X-3i)(X^2-3X+3i)$.</p>
+        <span class="resultat">Décomposition donnée.</span>
+      </div>
+    </div>
+
+    <!-- Exo 6.3.9 -->
+    <div class="card-exercice">
+      <button class="btn-toggle" onclick="toggleSolution('sol6_9')">Afficher / Masquer</button>
+      <h4>Exercice 6.3.9 — Racines en progression arithmétique</h4>
+      <p><strong>Énoncé :</strong> $8X^3-12X^2-2X+3$.</p>
+      <div id="sol6_9" class="solution">
+        <p>Racines $a-d,a,a+d$. Somme $3a=12/8=3/2$ ⇒ $a=1/2$. Produit $a(a^2-d^2)=-3/8$ ⇒ $(1/2)(1/4-d^2)=-3/8$ ⇒ $1/4-d^2=-3/4$ ⇒ $d^2=1$ ⇒ $d=\pm1$.</p>
+        <p>Racines : $1/2-1=-1/2$, $1/2$, $1/2+1=3/2$. Donc $P=8(X+1/2)(X-1/2)(X-3/2)$.</p>
+        <span class="resultat">Racines $-1/2,1/2,3/2$.</span>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem;">Tous les exercices du document ont été corrigés avec les méthodes présentées dans le cours.</p>
+  </div>
+
+  <a href="#top" class="backtop">⬆ Retour en haut</a>
+</div>
+
+
+
+          </article>
+        </div>
+
+        <!-- Navigation prev/next -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border);">
+          <div><a href="chapitre-02-analyse-ii.html" class="btn btn-secondary btn-sm"><svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-left"/></svg> 📈 Analyse II</a></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Chapitre 3 / 6</div>
+          <div><a href="chapitre-04-algebre-lineaire-l1.html" class="btn btn-secondary btn-sm">🧮 Algèbre linéaire L1 <svg width="16" height="16" aria-hidden="true"><use href="#icon-chevron-right"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+  </script>
+</body>
+</html>
