@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Processeur et mémoire — Correction détaillée (Architecture des Ordinateurs) — BIT Study HUB">
+  <title>Processeur et mémoire — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #FF7043; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #FF7043; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #FF7043; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #FF7043; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #FF7043; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #FF7043; background: color-mix(in srgb, #FF7043 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #FF7043; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #FF7043 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Architecture des Ordinateurs</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Processeur et mémoire</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Architecture des Ordinateurs · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-17.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>L'examen d'Architecture des Ordinateurs comporte quatre parties :</p>
+<ol>
+  <li>décrire le cycle Fetch-Décode-Exécute d'un processeur ;</li>
+  <li>expliquer la hiérarchie mémoire et calculer un temps d'accès moyen ;</li>
+  <li>analyser un programme assembleur simple (somme de tableau) ;</li>
+  <li>comparer les modes d'adressage (immédiat, direct, indirect, indexé).</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Cycle d'instruction.</strong>
+  Le processeur exécute chaque instruction machine en trois étapes :
+  (1) <strong>Fetch</strong> (recherche) : charger l'instruction depuis la
+  mémoire à l'adresse pointée par le compteur ordinal (PC/IP) ;
+  (2) <strong>Décode</strong> : identifier l'opcode et les opérandes ;
+  (3) <strong>Exécute</strong> : réaliser l'opération (calcul, accès mémoire,
+  saut). Le PC est ensuite incrémenté (ou mis à jour en cas de branchement).
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Cycle</strong> : décrire les trois phases et le rôle des registres (PC, IR, accumulateur).</li>
+  <li><strong>Hiérarchie</strong> : registres → cache L1/L2/L3 → RAM → SSD/HDD, du plus rapide/petit au plus lent/grand.</li>
+  <li><strong>Temps moyen</strong> : T = h &middot; T<sub>cache</sub> + (1 &minus; h) &middot; T<sub>RAM</sub>, où h est le taux de succès (hit rate).</li>
+  <li><strong>Assembleur</strong> : suivre les registres et comprendre chaque instruction.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Question 1 — Cycle Fetch-Décode-Exécute</h3>
+<p>Le processeur répète indéfiniment :</p>
+<ol>
+  <li><strong>Fetch</strong> : l'adresse contenue dans PC est envoyée sur le bus d'adresse ; la mémoire renvoie l'instruction sur le bus de données ; elle est stockée dans le registre d'instruction (IR). PC est incrémenté de la taille de l'instruction (4 octets en MIPS).</li>
+  <li><strong>Décode</strong> : l'unité de contrôle identifie l'opcode (les 6 premiers bits en MIPS) et les opérandes (registres source/destination, immédiat, offset). Elle active les signaux de contrôle appropriés (ALU, mux, lecture/écriture registre).</li>
+  <li><strong>Exécute</strong> : l'ALU réalise l'opération (addition, soustraction, ET logique, etc.), ou la mémoire est lue/écrite, ou le PC est modifié (saut, branchement conditionnel).</li>
+</ol>
+<p>Le résultat est écrit dans le registre destination, puis le cycle reprend.
+Sur un processeur pipeliné, plusieurs instructions chevauchent ces étapes
+(une par étape), ce qui multiplie le débit.</p>
+
+<h3>Question 2 — Hiérarchie mémoire et temps moyen</h3>
+<p>Hiérarchie (du plus rapide au plus lent) :</p>
+<table>
+  <tr><th>Niveau</th><th>Taille typique</th><th>Latence</th><th>Coût / Mo</th></tr>
+  <tr><td>Registres</td><td>~1 Ko</td><td>&lt; 1 ns</td><td>—</td></tr>
+  <tr><td>Cache L1</td><td>32 Ko</td><td>1-2 ns</td><td>$$$$$</td></tr>
+  <tr><td>Cache L2</td><td>256 Ko</td><td>5-10 ns</td><td>$$$$</td></tr>
+  <tr><td>Cache L3</td><td>8 Mo</td><td>30-50 ns</td><td>$$$</td></tr>
+  <tr><td>RAM</td><td>16 Go</td><td>100 ns</td><td>$$</td></tr>
+  <tr><td>SSD NVMe</td><td>1 To</td><td>100 &mu;s</td><td>$</td></tr>
+  <tr><td>HDD</td><td>4 To</td><td>10 ms</td><td>$</td></tr>
+</table>
+<p>Temps d'accès moyen avec cache : si le taux de succès du cache L1 est
+h = 0,95, T<sub>L1</sub> = 2 ns, T<sub>RAM</sub> = 100 ns :</p>
+<pre><code>T<sub>moy</sub> = 0,95 &times; 2 + 0,05 &times; 100
+       = 1,9 + 5 = 6,9 ns</code></pre>
+<p>Soit environ 3,5&times; plus lent que le cache seul, mais 14&times; plus rapide
+que la RAM seule. La <strong>localité</strong> spatiale et temporelle des
+programmes permet d'atteindre ces 95 % de succès.</p>
+
+<h3>Question 3 — Programme assembleur (somme de tableau)</h3>
+<pre><code>;; MIPS : somme des éléments d'un tableau de 10 entiers
+.data
+tab:  .word 5, 12, 8, 3, 17, 9, 4, 6, 11, 2
+.text
+main:
+    la   $t0, tab      ; $t0 = adresse du tableau
+    li   $t1, 0        ; $t1 = somme = 0
+    li   $t2, 0        ; $t2 = compteur i = 0
+    li   $t3, 10       ; $t3 = taille du tableau
+boucle:
+    bge  $t2, $t3, fin ; si i &gt;= 10, sortir
+    lw   $t4, 0($t0)   ; $t4 = tab[i]
+    add  $t1, $t1, $t4 ; somme += $t4
+    addi $t0, $t0, 4   ; avancer le pointeur (4 octets)
+    addi $t2, $t2, 1   ; i++
+    j    boucle
+fin:
+    move $a0, $t1
+    li   $v0, 1
+    syscall            ; afficher la somme (77)</code></pre>
+<p>Le résultat est 5+12+8+3+17+9+4+6+11+2 = <strong>77</strong>.</p>
+
+<h3>Question 4 — Modes d'adressage</h3>
+<table>
+  <tr><th>Mode</th><th>Exemple</th><th>Signification</th></tr>
+  <tr><td>Immédiat</td><td><code>li $t0, 42</code></td><td>La valeur 42 est dans l'instruction</td></tr>
+  <tr><td>Direct (registre)</td><td><code>add $t0, $t1, $t2</code></td><td>Opérandes dans des registres</td></tr>
+  <tr><td>Direct (mémoire)</td><td><code>lw $t0, etiquette</code></td><td>Adresse absolue codée dans l'instruction</td></tr>
+  <tr><td>Indirect (registre)</td><td><code>lw $t0, 0($t1)</code></td><td>Adresse = contenu de $t1 + offset 0</td></tr>
+  <tr><td>Indexé / Base+déplacement</td><td><code>lw $t0, 8($t1)</code></td><td>Adresse = $t1 + 8 (accès à tab[2])</td></tr>
+  <tr><td>PC-relatif</td><td><code>beq $t0, $t1, label</code></td><td>Saut relatif au PC (compacité)</td></tr>
+</table>
+
+<div class="exemple">
+  <strong>Exemple appliqué.</strong> Le mode indexé est fondamental pour
+  parcourir un tableau : <code>lw $t4, 0($t0)</code> lit tab[i], puis
+  <code>addi $t0, $t0, 4</code> passe à tab[i+1]. C'est exactement ce que font
+  les boucles <code>for</code> en C après compilation.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Pipeline</strong> : les aléas (data, contrôle, structurel)
+        peuvent imposer des bulles (stalls) et réduire les performances.</li>
+    <li><strong>Principe de localité</strong> : spatial (données proches) et
+        temporel (données réutilisées). Les boucles en sont la meilleure
+        illustration.</li>
+    <li><strong>Endianness</strong> : little-endian (x86, ARM par défaut) ou
+        big-endian (réseaux, certains DSP). Important pour la sérialisation.</li>
+    <li><strong>Alignement</strong> : lire un <code>int</code> à une adresse
+        non multiple de 4 peut causer une exception ou une baisse de perf.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Les architectures <strong> superscalaires</strong>, <strong>out-of-order</strong>
+      et <strong>prédiction de branchement</strong> augmentent l'IPC
+      (instructions par cycle).</li>
+  <li>Les <strong>GPU</strong> et leurs milliers de cœurs SIMD sont spécialisés
+      dans le parallélisme de données.</li>
+  <li>La <strong>mémoire virtuelle</strong> et la pagination permettent
+      d'exécuter des processus plus grands que la RAM physique.</li>
+  <li>L'assembleur RISC-V, ouvert et modulaire, est de plus en plus enseigné
+      en remplacement de MIPS.</li>
+  <li>L'<strong>émulateur RARS/MARS</strong> permet d'exécuter du code MIPS
+      pour apprendre en pratique.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #FF7043" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/architecture-ordinateurs/index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-16-langage-c-tp-structures/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>TP C — Structures et fichiers</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 17 / 17</div>
+          <a href="../examen-18-comptabilite-generale-ds/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>DS Comptabilité Générale — CS26</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

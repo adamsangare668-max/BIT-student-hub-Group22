@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TP C — Structures et fichiers — Correction détaillée (Langage C) — BIT Study HUB">
+  <title>TP C — Structures et fichiers — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #3776AB; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #3776AB; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #3776AB; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #3776AB; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #3776AB; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #3776AB; background: color-mix(in srgb, #3776AB 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #3776AB; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #3776AB 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Langage C</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">TP C — Structures et fichiers</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Langage C · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-16.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>Le TP C demande de gérer un carnet d'adresses en C avec :</p>
+<ol>
+  <li>une structure <code>Contact</code> (nom, prénom, téléphone, email) ;</li>
+  <li>une fonction d'ajout de contact dans un tableau dynamique ;</li>
+  <li>une fonction de recherche par nom ;</li>
+  <li>la sauvegarde dans un fichier texte et le chargement au démarrage ;</li>
+  <li>un menu interactif en ligne de commande.</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Structure.</strong>
+  Une structure C (<code>struct</code>) est un type composé regroupant plusieurs
+  champs de types potentiellement différents sous un même nom. Elle permet de
+  manipuler des enregistrements logiques (Contact, Étudiant, Point, etc.). On
+  accède aux champs par l'opérateur <code>.</code> (sur une variable) ou
+  <code>-&gt;</code> (sur un pointeur).
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Définir</strong> la structure avec <code>typedef</code> pour simplifier l'écriture.</li>
+  <li><strong>Allouer</strong> dynamiquement le tableau de contacts avec <code>malloc</code> + <code>realloc</code>.</li>
+  <li><strong>Manipuler les chaînes</strong> avec <code>strcpy</code>, <code>strcmp</code>, <code>strncpy</code> (sécurisée).</li>
+  <li><strong>Lire/écrire</strong> dans un fichier avec <code>fopen</code>, <code>fprintf</code>, <code>fscanf</code>, <code>fgets</code>.</li>
+  <li><strong>Fermer</strong> systématiquement les fichiers et libérer la mémoire.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Déclaration de la structure</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+#define MAX_NAME    50
+#define MAX_PHONE   15
+#define MAX_EMAIL   80
+#define FILENAME    "contacts.txt"
+
+typedef struct {
+    char nom[MAX_NAME];
+    char prenom[MAX_NAME];
+    char telephone[MAX_PHONE];
+    char email[MAX_EMAIL];
+} Contact;</code></pre>
+
+<h3>Gestion du tableau dynamique</h3>
+<pre><code>typedef struct {
+    Contact *data;     /* tableau dynamique */
+    size_t   count;    /* nombre de contacts */
+    size_t   capacity; /* capacité allouée */
+} Carnet;
+
+void carnet_init(Carnet *c) {
+    c-&gt;capacity = 4;
+    c-&gt;count = 0;
+    c-&gt;data = malloc(c-&gt;capacity * sizeof(Contact));
+    if (!c-&gt;data) { perror("malloc"); exit(EXIT_FAILURE); }
+}
+
+void carnet_free(Carnet *c) {
+    free(c-&gt;data);
+    c-&gt;data = NULL;
+    c-&gt;count = c-&gt;capacity = 0;
+}
+
+void carnet_ajouter(Carnet *c, const Contact *ct) {
+    if (c-&gt;count == c-&gt;capacity) {
+        c-&gt;capacity *= 2;
+        Contact *tmp = realloc(c-&gt;data, c-&gt;capacity * sizeof(Contact));
+        if (!tmp) { perror("realloc"); exit(EXIT_FAILURE); }
+        c-&gt;data = tmp;
+    }
+    c-&gt;data[c-&gt;count++] = *ct;
+}
+
+Contact *carnet_rechercher(Carnet *c, const char *nom) {
+    for (size_t i = 0; i &lt; c-&gt;count; i++) {
+        if (strcmp(c-&gt;data[i].nom, nom) == 0)
+            return &amp;c-&gt;data[i];
+    }
+    return NULL;
+}</code></pre>
+
+<h3>Persistance fichier</h3>
+<pre><code>void carnet_sauvegarder(const Carnet *c, const char *filename) {
+    FILE *f = fopen(filename, "w");
+    if (!f) { perror("fopen"); return; }
+    for (size_t i = 0; i &lt; c-&gt;count; i++) {
+        fprintf(f, "%s|%s|%s|%s\n",
+                c-&gt;data[i].nom,
+                c-&gt;data[i].prenom,
+                c-&gt;data[i].telephone,
+                c-&gt;data[i].email);
+    }
+    fclose(f);
+}
+
+void carnet_charger(Carnet *c, const char *filename) {
+    FILE *f = fopen(filename, "r");
+    if (!f) return;  /* fichier inexistant au premier lancement */
+    char ligne[256];
+    while (fgets(ligne, sizeof(ligne), f)) {
+        Contact ct;
+        if (sscanf(ligne, "%49[^|]|%49[^|]|%14[^|]|%79[^\n]",
+                   ct.nom, ct.prenom, ct.telephone, ct.email) == 4) {
+            carnet_ajouter(c, &amp;ct);
+        }
+    }
+    fclose(f);
+}</code></pre>
+<p>Le format <code>nom|prenom|tel|email</code> avec séparateur <code>|</code>
+évite les conflits avec les espaces. <code>sscanf</code> avec <code>%[^|]</code>
+lit jusqu'au séparateur.</p>
+
+<h3>Menu interactif</h3>
+<pre><code>int main(void) {
+    Carnet carnet;
+    carnet_init(&amp;carnet);
+    carnet_charger(&amp;carnet, FILENAME);
+
+    int choix;
+    do {
+        printf("\n--- CARNET D'ADRESSES ---\n");
+        printf("1. Ajouter un contact\n");
+        printf("2. Rechercher par nom\n");
+        printf("3. Lister tous\n");
+        printf("4. Quitter\n");
+        printf("Choix : ");
+        if (scanf("%d", &amp;choix) != 1) break;
+        while (getchar() != '\n');  /* vider le buffer */
+
+        if (choix == 1) {
+            Contact ct;
+            printf("Nom : ");      fgets(ct.nom, MAX_NAME, stdin);
+            printf("Prénom : ");   fgets(ct.prenom, MAX_NAME, stdin);
+            printf("Téléphone : "); fgets(ct.telephone, MAX_PHONE, stdin);
+            printf("Email : ");    fgets(ct.email, MAX_EMAIL, stdin);
+            /* retirer les '\n' finaux */
+            ct.nom[strcspn(ct.nom, "\n")] = 0;
+            ct.prenom[strcspn(ct.prenom, "\n")] = 0;
+            ct.telephone[strcspn(ct.telephone, "\n")] = 0;
+            ct.email[strcspn(ct.email, "\n")] = 0;
+            carnet_ajouter(&amp;carnet, &amp;ct);
+        } else if (choix == 2) {
+            char nom[MAX_NAME];
+            printf("Nom à chercher : ");
+            fgets(nom, MAX_NAME, stdin);
+            nom[strcspn(nom, "\n")] = 0;
+            Contact *trouve = carnet_rechercher(&amp;carnet, nom);
+            if (trouve)
+                printf("→ %s %s, tél: %s, email: %s\n",
+                       trouve-&gt;prenom, trouve-&gt;nom,
+                       trouve-&gt;telephone, trouve-&gt;email);
+            else
+                printf("Introuvable.\n");
+        } else if (choix == 3) {
+            for (size_t i = 0; i &lt; carnet.count; i++) {
+                printf("%zu. %s %s — %s\n", i+1,
+                       carnet.data[i].prenom, carnet.data[i].nom,
+                       carnet.data[i].telephone);
+            }
+        }
+    } while (choix != 4);
+
+    carnet_sauvegarder(&amp;carnet, FILENAME);
+    carnet_free(&amp;carnet);
+    printf("Au revoir !\n");
+    return 0;
+}</code></pre>
+
+<div class="exemple">
+  <strong>Exemple d'utilisation.</strong> L'utilisateur saisit un contact
+  « Traoré Awa 70123456 awa@bit.bf », puis le quitte. Au prochain lancement,
+  le contact est automatiquement chargé depuis <code>contacts.txt</code>. La
+  persistance est assurée entre les sessions.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Dépassement de tampon</strong> : préférer <code>fgets</code> à
+        <code>gets</code> (supprimé en C11) et <code>strncpy</code> à
+        <code>strcpy</code> pour éviter les débordements.</li>
+    <li><strong>realloc</strong> : toujours stocker le résultat dans une
+        variable temporaire pour ne pas perdre le pointeur en cas d'échec.</li>
+    <li><strong>Fichiers</strong> : toujours vérifier le retour de <code>fopen</code>
+        et fermer avec <code>fclose</code> (sinon fuite de descripteur).</li>
+    <li><strong>Buffer stdin</strong> : vider le buffer après un <code>scanf</code>
+        pour éviter les bugs avec <code>fgets</code> qui récupère le <code>\n</code>.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>La <strong>persistance binaire</strong> via <code>fwrite</code>/<code>fread</code>
+      est plus rapide mais pas portable entre architectures différentes
+      (endianness).</li>
+  <li>Les <strong>fichiers CSV</strong> sont un format texte universel,
+      lisibles par Excel et Python.</li>
+  <li>Les <strong>BDD embarquées</strong> (SQLite via libsqlite3) offrent des
+      requêtes SQL et une gestion transactionnelle.</li>
+  <li>La <strong>compilation séparée</strong> : séparer en <code>carnet.c</code> +
+      <code>carnet.h</code> + <code>main.c</code> facilite la réutilisation et la
+      maintenance.</li>
+  <li>Les outils <code>valgrind</code> et <code>-fsanitize=address</code>
+      détectent les fuites et débordements.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #3776AB" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/langage-c/chapitre-08-6-pointeurs-amp-allocation-dynamique.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-15-langage-c-pointeurs/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Pointeurs et tableaux</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 16 / 16</div>
+          <a href="../examen-17-architecture-processeur/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Processeur et mémoire</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

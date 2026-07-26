@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pointeurs et tableaux — Correction détaillée (Langage C) — BIT Study HUB">
+  <title>Pointeurs et tableaux — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #3776AB; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #3776AB; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #3776AB; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #3776AB; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #3776AB; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #3776AB; background: color-mix(in srgb, #3776AB 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #3776AB; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #3776AB 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Langage C</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Pointeurs et tableaux</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Langage C · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-15.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>L'examen C propose quatre exercices sur les pointeurs et tableaux :</p>
+<ol>
+  <li>échanger les valeurs de deux variables via des pointeurs ;</li>
+  <li>parcourir un tableau via arithmétique de pointeurs ;</li>
+  <li>implémenter une fonction <code>strlen</code> et <code>strcpy</code> maison ;</li>
+  <li>manipuler un tableau 2D via pointeur de pointeur.</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Pointeur.</strong>
+  Un pointeur est une variable qui contient l'adresse mémoire d'une autre
+  variable. On le déclare avec <code>T *p;</code> où T est le type pointé.
+  L'opérateur <code>&amp;</code> (adresse) donne l'adresse d'une variable ;
+  l'opérateur <code>*</code> (déréférencement) accède à la valeur pointée.
+  Les pointeurs permettent le passage par adresse, l'allocation dynamique et la
+  manipulation efficace des tableaux.
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Distinguer</strong> adresse, valeur et pointeur.</li>
+  <li><strong>Arithmétique</strong> : p + i avance de i &times; sizeof(T) octets.</li>
+  <li><strong>Passage par adresse</strong> : modifier une variable dans une fonction.</li>
+  <li><strong>Tableaux et pointeurs</strong> : <code>arr[i]</code> &equiv; <code>*(arr + i)</code>.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Exercice 1 — Échange par pointeurs</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+void echanger(int *a, int *b) {
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
+int main(void) {
+    int x = 10, y = 20;
+    printf("Avant : x=%d, y=%d\n", x, y);
+    echanger(&amp;x, &amp;y);
+    printf("Après : x=%d, y=%d\n", x, y);
+    return 0;
+}</code></pre>
+<p>Sortie : <code>Avant : x=10, y=20</code> puis <code>Après : x=20, y=10</code>.
+Les modifications sont visibles dans <code>main</code> car on passe les
+adresses.</p>
+
+<h3>Exercice 2 — Parcours par pointeur</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+#define N 5
+
+int main(void) {
+    int tab[N] = {10, 20, 30, 40, 50};
+    int *p;
+    int somme = 0;
+
+    /* Parcours par indice */
+    for (int i = 0; i &lt; N; i++)
+        printf("%d ", tab[i]);
+    printf("\n");
+
+    /* Parcours par pointeur : équivalent */
+    for (p = tab; p &lt; tab + N; p++) {
+        printf("%d ", *p);
+        somme += *p;
+    }
+    printf("\nSomme = %d\n", somme);
+
+    return 0;
+}</code></pre>
+<p>L'arithmétique <code>tab + N</code> avance de N &times; sizeof(int) = 20 octets.
+On a <code>tab[i]</code> &equiv; <code>*(tab + i)</code> &equiv; <code>*(i + tab)</code>
+&equiv; <code>i[tab]</code> (cette dernière écriture est valide mais illisible).</p>
+
+<h3>Exercice 3 — strlen et strcpy maison</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+/* Longueur d'une chaîne (sans le '\0') */
+size_t mon_strlen(const char *s) {
+    const char *p = s;
+    while (*p != '\0')
+        p++;
+    return p - s;  /* différence de pointeurs = nombre d'éléments */
+}
+
+/* Copie de src vers dst (dst doit être assez grand) */
+char *mon_strcpy(char *dst, const char *src) {
+    char *ret = dst;
+    while ((*dst++ = *src++) != '\0')
+        ;
+    return ret;
+}
+
+int main(void) {
+    char s[] = "Bonjour";
+    char copie[100];
+
+    printf("Longueur : %zu\n", mon_strlen(s));  /* 7 */
+    mon_strcpy(copie, s);
+    printf("Copie : %s\n", copie);              /* Bonjour */
+    return 0;
+}</code></pre>
+<p>L'astuce <code>(*dst++ = *src++) != '\0'</code> copie le caractère, incrémente
+les deux pointeurs, et teste la valeur copiée — tout en une seule ligne,
+idiome classique du C.</p>
+
+<h3>Exercice 4 — Tableau 2D via pointeur de pointeur</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void) {
+    int lignes = 3, cols = 4;
+    int **mat = malloc(lignes * sizeof(int *));
+
+    for (int i = 0; i &lt; lignes; i++) {
+        mat[i] = malloc(cols * sizeof(int));
+        for (int j = 0; j &lt; cols; j++)
+            mat[i][j] = i * cols + j;
+    }
+
+    /* Affichage */
+    for (int i = 0; i &lt; lignes; i++) {
+        for (int j = 0; j &lt; cols; j++)
+            printf("%3d ", mat[i][j]);
+        printf("\n");
+    }
+
+    /* Libération */
+    for (int i = 0; i &lt; lignes; i++)
+        free(mat[i]);
+    free(mat);
+
+    return 0;
+}</code></pre>
+<p>La mémoire est allouée ligne par ligne, ce qui permet des « tableaux
+irréguliers » (jagged arrays) où chaque ligne a une taille différente.</p>
+
+<div class="exemple">
+  <strong>Exemple appliqué.</strong> Les pointeurs de fonction
+  (<code>int (*f)(int, int)</code>) sont utilisés pour les callbacks, par
+  exemple <code>qsort</code> de la bibliothèque standard :
+  <code>qsort(tab, n, sizeof(int), comparateur);</code> où <code>comparateur</code>
+  est une fonction <code>int (*)(const void *, const void *)</code>.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Pointeur non initialisé</strong> : son déréférencement est un
+        comportement indéfini (segfault probable).</li>
+    <li><strong>Fuite mémoire</strong> : chaque <code>malloc</code> doit avoir
+        un <code>free</code> correspondant.</li>
+    <li><strong>const</strong> : qualifier en <code>const</code> les paramètres
+        non modifiés pour la sûreté et l'auto-documentation.</li>
+    <li><strong>Tableaux vs pointeurs</strong> : un tableau n'est pas un
+        pointeur (sizeof diffère), mais il se décompose en pointeur sur sa
+        première élément lorsqu'il est utilisé dans une expression.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>L'<strong>allocation dynamique</strong> : malloc, calloc, realloc, free.</li>
+  <li>Les <strong>pointeurs de fonction</strong> : callbacks, tables de
+      dispatch, simulation de la POO en C.</li>
+  <li>Les <strong>listes chaînées</strong>, piles, files, arbres : structures
+      dynamiques fondées sur les pointeurs.</li>
+  <li>Outils de diagnostic : <code>valgrind</code> (fuites mémoire),
+      <code>gdb</code> (débogueur), <code>AddressSanitizer</code> (-fsanitize=address).</li>
+  <li>Le C moderne (C11, C23) apporte des types plus sûrs, les génériques
+      via <code>_Generic</code>, les atomiques, etc.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #3776AB" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/langage-c/chapitre-08-6-pointeurs-amp-allocation-dynamique.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-14-python-tp-student-record/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>TP Python — Student Record</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 15 / 15</div>
+          <a href="../examen-16-langage-c-tp-structures/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>TP C — Structures et fichiers</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

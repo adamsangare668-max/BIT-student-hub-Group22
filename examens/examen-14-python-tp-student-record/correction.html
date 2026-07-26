@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TP Python — Student Record — Correction détaillée (Programmation Python) — BIT Study HUB">
+  <title>TP Python — Student Record — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #3776AB; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #3776AB; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #3776AB; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #3776AB; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #3776AB; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #3776AB; background: color-mix(in srgb, #3776AB 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #3776AB; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #3776AB 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Programmation Python</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">TP Python — Student Record</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Programmation Python · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-14.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>Le TP demande de développer un système de gestion d'étudiants en Python. Le
+cahier des charges impose :</p>
+<ol>
+  <li>une classe <code>Student</code> avec attributs (id, nom, prénom, notes) ;</li>
+  <li>une classe <code>StudentRecord</code> pour gérer une collection d'étudiants ;</li>
+  <li>des méthodes pour ajouter, supprimer, rechercher un étudiant ;</li>
+  <li>calcul de la moyenne d'un étudiant et du major de promotion ;</li>
+  <li>persistance des données dans un fichier JSON.</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Programmation orientée objet.</strong>
+  La POO organise le code autour de classes qui combinent données (attributs)
+  et comportements (méthodes). Une classe est un « moule » ; un objet est une
+  instance de classe. Les trois piliers sont l'<em>encapsulation</em> (masquer
+  les détails internes), l'<em>héritage</em> (réutiliser et spécialiser) et le
+  <em>polymorphisme</em> (une même interface, des comportements variés).
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Identifier les entités</strong> : Student, StudentRecord.</li>
+  <li><strong>Définir les attributs</strong> et leurs types.</li>
+  <li><strong>Implémenter les méthodes</strong> une par une, en testant au fur et à mesure.</li>
+  <li><strong>Gérer les erreurs</strong> : étudiant introuvable, fichier illisible.</li>
+  <li><strong>Sauvegarder/charger</strong> via le module <code>json</code>.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Classe Student</h3>
+<pre><code>class Student:
+    """Représente un étudiant avec son identité et ses notes."""
+
+    def __init__(self, student_id, nom, prenom, notes=None):
+        self.student_id = student_id
+        self.nom = nom
+        self.prenom = prenom
+        self.notes = notes if notes is not None else []
+
+    def ajouter_note(self, note):
+        if 0 &lt;= note &lt;= 20:
+            self.notes.append(note)
+        else:
+            raise ValueError("La note doit être entre 0 et 20")
+
+    def moyenne(self):
+        if not self.notes:
+            return 0.0
+        return sum(self.notes) / len(self.notes)
+
+    def __str__(self):
+        return f"[{self.student_id}] {self.prenom} {self.nom} - moy: {self.moyenne():.2f}"
+
+    def to_dict(self):
+        return {
+            "id": self.student_id,
+            "nom": self.nom,
+            "prenom": self.prenom,
+            "notes": self.notes
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data["id"], data["nom"], data["prenom"], data["notes"])</code></pre>
+
+<h3>Classe StudentRecord</h3>
+<pre><code>import json
+
+class StudentRecord:
+    """Gère une collection d'étudiants."""
+
+    def __init__(self):
+        self.students = {}  # id -&gt; Student
+
+    def ajouter(self, student):
+        if student.student_id in self.students:
+            raise ValueError(f"ID {student.student_id} déjà présent")
+        self.students[student.student_id] = student
+
+    def supprimer(self, student_id):
+        if student_id not in self.students:
+            raise KeyError(f"Étudiant {student_id} introuvable")
+        del self.students[student_id]
+
+    def rechercher(self, student_id):
+        return self.students.get(student_id, None)
+
+    def major(self):
+        if not self.students:
+            return None
+        return max(self.students.values(), key=lambda s: s.moyenne())
+
+    def moyenne_promotion(self):
+        if not self.students:
+            return 0.0
+        moyennes = [s.moyenne() for s in self.students.values() if s.notes]
+        return sum(moyennes) / len(moyennes) if moyennes else 0.0
+
+    def sauvegarder(self, fichier):
+        with open(fichier, "w", encoding="utf-8") as f:
+            json.dump([s.to_dict() for s in self.students.values()], f,
+                      ensure_ascii=False, indent=2)
+
+    def charger(self, fichier):
+        try:
+            with open(fichier, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            self.students = {s["id"]: Student.from_dict(s) for s in data}
+        except FileNotFoundError:
+            self.students = {}
+
+    def __iter__(self):
+        return iter(self.students.values())</code></pre>
+
+<h3>Programme principal (main)</h3>
+<pre><code>if __name__ == "__main__":
+    sr = StudentRecord()
+    sr.charger("students.json")
+
+    # Ajout d'étudiants
+    s1 = Student(1, "Traoré", "Awa", [12, 15, 18])
+    s2 = Student(2, "Kouassi", "Ibrahim", [10, 14, 9])
+    s3 = Student(3, "Bamba", "Fatou", [16, 17, 19])
+    for s in [s1, s2, s3]:
+        try:
+            sr.ajouter(s)
+        except ValueError as e:
+            print(e)
+
+    # Affichage
+    for s in sr:
+        print(s)
+
+    major = sr.major()
+    print(f"\nMajor : {major}")
+
+    # Sauvegarde
+    sr.sauvegarder("students.json")</code></pre>
+
+<div class="exemple">
+  <strong>Exemple de sortie.</strong>
+  <pre><code>[1] Awa Traoré - moy: 15.00
+[2] Ibrahim Kouassi - moy: 11.00
+[3] Fatou Bamba - moy: 17.33
+
+Major : [3] Fatou Bamba - moy: 17.33</code></pre>
+  La persistance JSON permet de conserver les données entre deux exécutions du
+  programme.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Paramètre par défaut mutable</strong> : ne jamais utiliser
+      <code>def f(notes=[])</code> car la liste est partagée. Utiliser
+      <code>notes=None</code> puis <code>if notes is None: notes = []</code>.</li>
+    <li><strong>Encapsulation</strong> : en Python, on préfixe par <code>_</code>
+      les attributs « protégés » et <code>__</code> les « privés » (name
+      mangling).</li>
+    <li><strong>Exceptions</strong> : toujours catcher spécifiquement
+      (<code>except ValueError</code>), pas <code>except:</code> générique.</li>
+    <li><strong>Encodage</strong> : préciser <code>encoding="utf-8"</code> pour
+      gérer les accents.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Les <strong>dataclasses</strong> (Python 3.7+) génèrent automatiquement
+      <code>__init__</code>, <code>__repr__</code>, <code>__eq__</code> :</li>
+</ul>
+<pre><code>from dataclasses import dataclass, field
+
+@dataclass
+class Student:
+    student_id: int
+    nom: str
+    prenom: str
+    notes: list = field(default_factory=list)</code></pre>
+<ul>
+  <li>La <strong>sérialisation binaire</strong> via <code>pickle</code> est plus
+      rapide que JSON mais pas portable.</li>
+  <li>Les <strong>BDD</strong> (SQLite, PostgreSQL via SQLAlchemy) remplacent le
+      fichier JSON pour les volumes importants.</li>
+  <li>Le module <code>abc</code> permet de définir des classes abstraites avec
+      méthodes abstraites.</li>
+  <li>Les <strong>tests unitaires</strong> avec <code>unittest</code> ou
+      <code>pytest</code> garantissent la non-régression du code.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #3776AB" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/programmation-python/index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-13-python-bases/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Bases de Python</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 14 / 14</div>
+          <a href="../examen-15-langage-c-pointeurs/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Pointeurs et tableaux</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

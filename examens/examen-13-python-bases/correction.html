@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bases de Python — Correction détaillée (Programmation Python) — BIT Study HUB">
+  <title>Bases de Python — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #3776AB; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #3776AB; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #3776AB; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #3776AB; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #3776AB; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #3776AB; background: color-mix(in srgb, #3776AB 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #3776AB; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #3776AB 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Programmation Python</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Bases de Python</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Programmation Python · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-13.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>L'examen Python S1 comporte quatre exercices :</p>
+<ol>
+  <li>manipulation de variables et types (int, float, str, bool) ;</li>
+  <li>structures de contrôle : calcul du PGCD et test de primalité ;</li>
+  <li>fonctions : écrire une fonction <code>est_palindrome(s)</code> ;</li>
+  <li>listes : implémenter un tri par sélection et une recherche linéaire.</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Python.</strong>
+  Python est un langage de programmation interprété, multi-paradigme et à typage
+  dynamique fort. Il a été créé par Guido van Rossum en 1991. Sa syntaxe lisible,
+  sa bibliothèque standard riche et son écosystème (NumPy, Pandas, Django,
+  Flask, TensorFlow) en font le langage privilégié pour l'enseignement, le
+  prototypage, la science des données et le machine learning.
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Types de base</strong> : int, float, str, bool, None. Connaître les conversions (int(), float(), str()).</li>
+  <li><strong>Structures de contrôle</strong> : if/elif/else, for, while, break, continue.</li>
+  <li><strong>Fonctions</strong> : def, return, paramètres par défaut, args/kwargs.</li>
+  <li><strong>Collections</strong> : list, tuple, dict, set, et leurs méthodes.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Exercice 1 — Types et conversions</h3>
+<pre><code># Conversions et types
+a = 10              # int
+b = 3.14            # float
+c = "Bonjour"       # str
+d = True            # bool
+
+# Conversion string vers int (attention : ValueError si non numérique)
+n = int("42")       # 42
+x = float("3.14")   # 3.14
+s = str(42)         # "42"
+
+# Calculs
+print(type(a + b))  # &lt;class 'float'&gt; (int + float = float)
+print(type(a + a))  # &lt;class 'int'&gt;
+print(a / 3)        # 3.333... (division toujours float)
+print(a // 3)       # 3   (division entière)
+print(a % 3)        # 1   (modulo)
+print(2 ** 10)      # 1024 (puissance)</code></pre>
+
+<h3>Exercice 2 — PGCD et primalité</h3>
+<pre><code>def pgcd(a, b):
+    """Calcule le PGCD par l'algorithme d'Euclide."""
+    while b != 0:
+        a, b = b, a % b
+    return abs(a)
+
+def est_premier(n):
+    """Teste si n est premier."""
+    if n &lt; 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    i = 3
+    while i * i &lt;= n:
+        if n % i == 0:
+            return False
+        i += 2
+    return True
+
+# Tests
+print(pgcd(48, 18))        # 6
+print(est_premier(17))     # True
+print(est_premier(100))    # False</code></pre>
+
+<h3>Exercice 3 — Palindrome</h3>
+<pre><code>def est_palindrome(s):
+    """Vérifie si une chaîne est un palindrome (sans tenir compte des espaces)."""
+    s = s.lower().replace(" ", "")
+    return s == s[::-1]
+
+# Tests
+print(est_palindrome("radar"))         # True
+print(est_palindrome("Esope reste ici"))  # True
+print(est_palindrome("python"))        # False</code></pre>
+<p>L'expression <code>s[::-1]</code> utilise le slicing avec un pas &minus;1
+pour inverser la chaîne.</p>
+
+<h3>Exercice 4 — Tri par sélection</h3>
+<pre><code>def tri_selection(arr):
+    """Tri par sélection : complexité O(n^2)."""
+    n = len(arr)
+    for i in range(n):
+        # Trouver le minimum dans [i..n-1]
+        min_idx = i
+        for j in range(i + 1, n):
+            if arr[j] &lt; arr[min_idx]:
+                min_idx = j
+        # Échanger
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+    return arr
+
+def recherche_lineaire(arr, x):
+    """Recherche linéaire : retourne l'indice de x ou -1."""
+    for i, v in enumerate(arr):
+        if v == x:
+            return i
+    return -1
+
+# Tests
+print(tri_selection([5, 2, 9, 1, 5, 6]))  # [1, 2, 5, 5, 6, 9]
+print(recherche_lineaire([10, 20, 30], 20))  # 1
+print(recherche_lineaire([10, 20, 30], 99))  # -1</code></pre>
+
+<div class="exemple">
+  <strong>Exemple appliqué.</strong> Python est utilisé pour l'analyse de
+  données : <code>pandas</code> pour les DataFrames, <code>numpy</code> pour les
+  tableaux multidimensionnels, <code>matplotlib</code> pour les visualisations.
+  La fonction <code>enumerate()</code> est idiomatique pour parcourir indices
+  et valeurs simultanément.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Indentation</strong> : en Python, l'indentation est syntaxique.
+        Une erreur d'indentation provoque une <code>IndentationError</code>.</li>
+    <li><strong>Typage dynamique</strong> : une variable peut changer de type
+        au cours de l'exécution, mais cela nuit à la lisibilité.</li>
+    <li><strong>Mutabilité</strong> : list, dict, set sont mutables ;
+        int, float, str, tuple sont immuables.</li>
+    <li><strong>Indexation</strong> : Python commence à 0. <code>arr[-1]</code>
+        est le dernier élément.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>La <strong>compréhension de listes</strong> :
+      <code>[x**2 for x in range(10) if x % 2 == 0]</code> est idiomatique.</li>
+  <li>Les <strong>générateurs</strong> avec <code>yield</code> permettent
+      d'itérer sans stocker toute la séquence en mémoire.</li>
+  <li>La <strong>programmation orientée objet</strong> :
+      <code>class</code>, <code>__init__</code>, héritage, polymorphisme.</li>
+  <li>Les <strong>décorateurs</strong> (<code>@staticmethod</code>,
+      <code>@property</code>) modifient le comportement des fonctions.</li>
+  <li>Le module <code>typing</code> introduit les annotations de type
+      (<code>def f(x: int) -&gt; str:</code>) pour la robustesse.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #3776AB" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/programmation-python/index.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-12-algorithmique-qcm/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Algorithmes et structures de contrôle — QCM</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 13 / 13</div>
+          <a href="../examen-14-python-tp-student-record/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>TP Python — Student Record</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

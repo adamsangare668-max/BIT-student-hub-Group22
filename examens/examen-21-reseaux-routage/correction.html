@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Routage et protocoles — Correction détaillée (Réseaux Informatiques) — BIT Study HUB">
+  <title>Routage et protocoles — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #FF7043; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #FF7043; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #FF7043; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #FF7043; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #FF7043; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #FF7043; background: color-mix(in srgb, #FF7043 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #FF7043; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #FF7043 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Réseaux Informatiques</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Routage et protocoles</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Réseaux Informatiques · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-21.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>L'examen porte sur le routage et les protocoles associés :</p>
+<ol>
+  <li>différencier routage statique et dynamique ;</li>
+  <li>comparer RIP (distance vector) et OSPF (link state) ;</li>
+  <li>construire la table de routage d'un routeur à partir d'une topologie ;</li>
+  <li>expliquer le rôle de BGP pour le routage inter-AS.</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Routage.</strong>
+  Le routage est le processus qui consiste à déterminer le prochain saut
+  (next hop) vers la destination d'un paquet IP. Chaque routeur maintient une
+  <em>table de routage</em> qui associe des préfixes réseau (ex : 192.168.0.0/24)
+  à une interface de sortie et/ou un routeur voisin. Les protocoles de routage
+  (RIP, OSPF, BGP) permettent de peupler automatiquement cette table en
+  échangeant des informations entre routeurs.
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Identifier</strong> le type de routage (interne/externe, statique/dynamique).</li>
+  <li><strong>Comprendre</strong> les algorithmes : distance vector (Bellman-Ford) vs link state (Dijkstra).</li>
+  <li><strong>Calculer</strong> les métriques (sauts RIP, coût OSPF = 10<sup>8</sup>/bande passante).</li>
+  <li><strong>Construire</strong> la table en suivant le plus court chemin.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Question 1 — Routage statique vs dynamique</h3>
+<table>
+  <tr><th>Critère</th><th>Statique</th><th>Dynamique</th></tr>
+  <tr><td>Configuration</td><td>Manuelle (ip route)</td><td>Automatique via protocole</td></tr>
+  <tr><td>Adaptabilité</td><td>Faible (intervention humaine)</td><td>Élevée (re-convergence)</td></tr>
+  <tr><td>Overhead</td><td>Nul</td><td>Présent (échange de messages)</td></tr>
+  <tr><td>Visibilité</td><td>Pas de panne détectée</td><td>Détection automatique</td></tr>
+  <tr><td>Usage typique</td><td>Petits réseaux, default route</td><td>Grands réseaux d'entreprise</td></tr>
+</table>
+<p>En pratique, on combine les deux : routage dynamique pour l'intérieur,
+route statique par défaut (0.0.0.0/0) vers le FAI.</p>
+
+<h3>Question 2 — RIP vs OSPF</h3>
+<table>
+  <tr><th>Critère</th><th>RIP (v2)</th><th>OSPF (v2)</th></tr>
+  <tr><td>Type</td><td>Distance vector</td><td>Link state</td></tr>
+  <tr><td>Métrique</td><td>Nombre de sauts (max 15)</td><td>Coût (basé sur la bande passante)</td></tr>
+  <tr><td>Algorithme</td><td>Bellman-Ford</td><td>Dijkstra (SPF)</td></tr>
+  <tr><td>Convergence</td><td>Lente (30 s + holddown)</td><td>Rapide (LSA flooded)</td></tr>
+  <tr><td>Topologie</td><td>Par réseau</td><td>Hiérarchique (areas)</td></tr>
+  <tr><td>Charge</td><td>UDP 520, broadcast/multicast</td><td>IP 89, multicast 224.0.0.5/6</td></tr>
+  <tr><td>Échelle</td><td>Petits réseaux (&lt; 15 sauts)</td><td>Grands réseaux d'entreprise</td></tr>
+</table>
+
+<h3>Question 3 — Table de routage d'un routeur R1</h3>
+<p>Topologie :</p>
+<pre><code>  [LAN1: 10.0.1.0/24]
+        |
+       R1 ---- R2 ---- [LAN2: 10.0.2.0/24]
+        |        |
+       R3 ---- R4
+        |
+   [LAN3: 10.0.3.0/24]</code></pre>
+<p>Métrique : 1 par lien. Table de routage de R1 :</p>
+<table>
+  <tr><th>Destination</th><th>Masque</th><th>Next hop</th><th>Interface</th><th>Métrique</th></tr>
+  <tr><td>10.0.1.0</td><td>/24</td><td>— (direct)</td><td>eth0</td><td>0</td></tr>
+  <tr><td>10.0.2.0</td><td>/24</td><td>R2</td><td>eth1</td><td>1</td></tr>
+  <tr><td>10.0.3.0</td><td>/24</td><td>R3</td><td>eth2</td><td>1</td></tr>
+  <tr><td>R2-R4 link</td><td>/30</td><td>R2</td><td>eth1</td><td>1</td></tr>
+  <tr><td>R3-R4 link</td><td>/30</td><td>R3</td><td>eth2</td><td>1</td></tr>
+  <tr><td>0.0.0.0</td><td>/0</td><td>R2 (default)</td><td>eth1</td><td>—</td></tr>
+</table>
+<p>Si le lien R1-R3 tombe, R1 atteint LAN3 via R2 &rarr; R4 &rarr; R3 (métrique 3).
+OSPF converge en quelques secondes après échange de LSA.</p>
+
+<h3>Question 4 — BGP (Border Gateway Protocol)</h3>
+<p>BGP est le protocole de routage <strong>inter-AS</strong> (Autonomous Systems)
+qui assure le routage sur Internet. Chaque AS (FAI, grande entreprise) est
+identifié par un numéro (ASN, 32 bits). BGP échange des préfixes IP avec les
+AS voisins via TCP (port 179).</p>
+<p>Caractéristiques :</p>
+<ul>
+  <li><strong>Path vector</strong> : la métrique est un chemin d'AS (ex : AS100 &rarr; AS200 &rarr; AS300).</li>
+  <li><strong>Politiques de routage</strong> : chaque AS peut filtrer ou modifier les routes (BGP attributes : LOCAL_PREF, MED, AS_PATH).</li>
+  <li><strong>Évite les boucles</strong> : un AS refuse une route qui le contient déjà dans AS_PATH.</li>
+  <li><strong>eBGP</strong> entre AS différents, <strong>iBGP</strong> à l'intérieur d'un AS.</li>
+</ul>
+<p>BGP est <em>path vector</em> et non link-state : il optimise la politique
+plutôt que la métrique technique. C'est ce qui permet à Internet de fonctionner
+malgré la diversité des opérateurs.</p>
+
+<div class="exemple">
+  <strong>Exemple appliqué.</strong> Quand vous chargez un site web, vos paquets
+  traversent plusieurs AS : votre FAI local (AS X) &rarr; un opérateur de transit
+  (AS Y) &rarr; le FAI de l'hébergeur (AS Z). La commande <code>traceroute</code>
+  révèle ces sauts. Une table BGP complète d'Internet contient aujourd'hui plus
+  de 900 000 préfixes IPv4.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Convergence</strong> : temps nécessaire à tous les routeurs
+        pour mettre à jour leurs tables après un changement topologique.</li>
+    <li><strong>Count to infinity</strong> : problème classique de RIP, atténué
+        par split horizon et route poisoning.</li>
+    <li><strong>Areas OSPF</strong> : la zone 0 (backbone) doit connecter toutes
+        les autres areas, ce qui structure la hiérarchie.</li>
+    <li><strong>Sécurité</strong> : les protocoles de routage doivent être
+        authentifiés (MD5, IPsec) pour éviter l'empoisonnement de table.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li><strong>EIGRP</strong> (Cisco) : hybride avancé, efficace mais propriétaire.</li>
+  <li><strong>IS-IS</strong> : protocole link state utilisé par les très grands
+      opérateurs (alternative à OSPF).</li>
+  <li><strong>SD-WAN</strong> : virtualise le routage WAN en séparant plan de
+      données et plan de contrôle.</li>
+  <li><strong>Segment Routing</strong> (SR-MPLS) : simplifie le traffic
+      engineering en encodant le chemin dans le paquet.</li>
+  <li>Outils : <code>show ip route</code> (Cisco IOS), <code>ip route</code>
+      (Linux), <code>bird</code>, <code>FRRouting</code>.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #FF7043" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/reseaux-informatiques/chapitre-01-introduction.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-20-reseaux-osi-tcpip/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Modèle OSI et TCP/IP</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 21 / 21</div>
+          <a href="../examen-22-electronique-numerique-logique/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Logique combinatoire</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

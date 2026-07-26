@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Distribution Normale — Exercice 3 — Correction détaillée (Probabilités et Statistiques) — BIT Study HUB">
+  <title>Distribution Normale — Exercice 3 — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Probabilités et Statistiques</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Distribution Normale — Exercice 3</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Probabilités et Statistiques · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-01.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>La demande journalière <code>X</code> d'une plateforme numérique suit une loi
+normale d'espérance <code>&mu; = 500</code> connexions et d'écart-type
+<code>&sigma; = 50</code> connexions. Le sujet demande de calculer la
+probabilité que la demande dépasse <code>600</code> connexions, celle qu'elle
+soit inférieure à <code>450</code>, puis la probabilité qu'elle soit comprise
+entre <code>450</code> et <code>600</code>. Une dernière question porte sur la
+valeur <code>x</code> telle que <code>P(X &le; x) = 0,95</code>.</p>
+
+<div class="definition">
+  <strong>Définition — Loi normale centrée réduite.</strong>
+  Si <code>X ~ &Nscr;(&mu;, &sigma;<sup>2</sup>)</code>, la variable
+  <code>Z = (X &minus; &mu;) / &sigma;</code> suit la loi normale
+  <code>&Nscr;(0, 1)</code>. Sa fonction de répartition se note
+  <code>&Phi;(z) = P(Z &le; z)</code> et se lit dans la table de la loi normale.
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Identifier</strong> les paramètres &mu; et &sigma; de la variable X.</li>
+  <li><strong>Centrer et réduire</strong> en posant Z = (X &minus; &mu;)/&sigma;.</li>
+  <li><strong>Calculer</strong> la valeur seuil z correspondant à la borne x demandée.</li>
+  <li><strong>Lire</strong> la probabilité &Phi;(z) dans la table.</li>
+  <li><strong>Adapter</strong> selon le sens de l'inégalité : <code>P(X &gt; x) = 1 &minus; &Phi;(z)</code>, <code>P(X &lt; x) = &Phi;(z)</code>.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Question 1 — P(X &gt; 600)</h3>
+<p>On calcule <code>z = (600 &minus; 500)/50 = 100/50 = 2</code>. La table
+donne <code>&Phi;(2) &asymp; 0,9772</code>, donc :</p>
+<pre><code>P(X &gt; 600) = 1 &minus; &Phi;(2) = 1 &minus; 0,9772 = 0,0228</code></pre>
+<p>Soit environ <strong>2,28 %</strong> de chances que la demande journalière
+dépasse 600 connexions.</p>
+
+<h3>Question 2 — P(X &lt; 450)</h3>
+<p><code>z = (450 &minus; 500)/50 = &minus;1</code>. Par symétrie de la loi
+normale, <code>&Phi;(&minus;1) = 1 &minus; &Phi;(1) = 1 &minus; 0,8413 = 0,1587</code>.</p>
+<pre><code>P(X &lt; 450) = &Phi;(&minus;1) &asymp; 0,1587</code></pre>
+<p>Soit environ <strong>15,87 %</strong>.</p>
+
+<h3>Question 3 — P(450 &le; X &le; 600)</h3>
+<p>On soustrait les deux résultats :</p>
+<pre><code>P(450 &le; X &le; 600) = &Phi;(2) &minus; &Phi;(&minus;1)
+                       = 0,9772 &minus; 0,1587 = 0,8185</code></pre>
+<p>Soit <strong>81,85 %</strong> : c'est la probabilité que la demande reste
+dans une plage « normale » d'exploitation.</p>
+
+<h3>Question 4 — Quantile à 95 %</h3>
+<p>On cherche <code>x</code> tel que <code>P(X &le; x) = 0,95</code>. On lit
+dans la table <code>z<sub>0,95</sub> &asymp; 1,645</code>, d'où :</p>
+<pre><code>x = &mu; + z &middot; &sigma; = 500 + 1,645 &times; 50 &asymp; 582,25</code></pre>
+<p>La plateforme peut prévoir une capacité d'environ <strong>583 connexions</strong>
+pour couvrir 95 % des jours.</p>
+
+<div class="exemple">
+  <strong>Exemple appliqué.</strong> Si l'infrastructure est dimensionnée à
+  582 connexions simultanées, seuls 5 % des jours dépasseront ce seuil. C'est
+  le raisonnement utilisé par les ingénieurs DevOps pour le « capacity
+  planning ».
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Erreur fréquente</strong> : oublier de réduire X en Z avant de
+        lire la table. Toujours passer par <code>Z = (X &minus; &mu;)/&sigma;</code>.</li>
+    <li><strong>Symétrie</strong> : <code>&Phi;(&minus;z) = 1 &minus; &Phi;(z)</code>.
+        Utile quand la table ne donne que les valeurs positives.</li>
+    <li><strong>Unités</strong> : &mu; et &sigma; doivent avoir la même unité que X.</li>
+    <li><strong>Approximation</strong> : pour &sigma; petit, la distribution est
+        très concentrée autour de &mu; (loi « piquée »).</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Le <strong>théorème central limite</strong> justifie l'omniprésence de la
+      loi normale : une somme de variables indépendantes tend vers une loi
+      normale, ce qui explique pourquoi la demande agrégée d'une plateforme est
+      bien modélisée par &Nscr;(&mu;, &sigma;<sup>2</sup>).</li>
+  <li>La <strong>règle 68-95-99,7</strong> : ~68 % des valeurs sont dans
+      [&mu;&minus;&sigma; ; &mu;+&sigma;], ~95 % dans [&plusmn;2&sigma;], ~99,7 %
+      dans [&plusmn;3&sigma;].</li>
+  <li>Lien avec la <strong>loi binomiale</strong> : pour n grand, B(n, p) est
+      approchée par &Nscr;(np, &radic;(np(1&minus;p))).</li>
+  <li>Outil pratique : en Python, <code>scipy.stats.norm.cdf(z)</code> donne
+      &Phi;(z) sans recourir à la table.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1976D2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/mathematiques/chapitre-05-probabilites-amp-statistiques.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <div></div>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 1 / 1</div>
+          <a href="../examen-02-probabilites-distribution-normale-2/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Distribution Normale — Exercices</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

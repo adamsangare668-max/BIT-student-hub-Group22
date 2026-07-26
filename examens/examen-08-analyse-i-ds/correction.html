@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DS Analyse I — Correction détaillée (Analyse I) — BIT Study HUB">
+  <title>DS Analyse I — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Analyse I</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">DS Analyse I</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Analyse I · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-08.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>Le devoir surveillé d'Analyse I couvre l'ensemble du programme du semestre.
+Il comporte quatre exercices indépendants :</p>
+<ol>
+  <li>calcul de limites et forme indéterminée ;</li>
+  <li>étude complète d'une fonction rationnelle ;</li>
+  <li>calcul d'une primitive et d'une intégrale ;</li>
+  <li>étude d'une suite récurrente et convergence.</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Limite finie en un point.</strong>
+  Soit f définie au voisinage de a (sauf éventuellement en a). On dit que f
+  admet la limite &ell; en a si : &forall; &epsilon; &gt; 0, &exist; &delta; &gt; 0,
+  &forall; x, |x &minus; a| &lt; &delta; &rArr; |f(x) &minus; &ell;| &lt; &epsilon;.
+  Notation : lim<sub>x&rarr;a</sub> f(x) = &ell;.
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Limites</strong> : reconnaître la forme indéterminée (0/0, &infin;&minus;&infin;, 0&times;&infin;, 1<sup>&infin;</sup>, &infin;<sup>0</sup>, 0<sup>0</sup>) et appliquer la technique adaptée (factorisation, règle de l'Hôpital, équivalents).</li>
+  <li><strong>Étude de fonction</strong> : domaine, parité, dérivée, signe, variations, branches infinies.</li>
+  <li><strong>Primitives</strong> : intégration par parties, par substitution, ou décomposition en éléments simples.</li>
+  <li><strong>Suites</strong> : monotonie + majoration/minoration &rArr; convergence.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Exercice 1 — Limite de (e<sup>x</sup> &minus; 1 &minus; x)/x<sup>2</sup> en 0</h3>
+<p>Forme indéterminée 0/0. On utilise le développement limité de e<sup>x</sup>
+à l'ordre 2 : e<sup>x</sup> = 1 + x + x<sup>2</sup>/2 + o(x<sup>2</sup>), donc
+e<sup>x</sup> &minus; 1 &minus; x = x<sup>2</sup>/2 + o(x<sup>2</sup>), et :</p>
+<pre><code>(e<sup>x</sup> &minus; 1 &minus; x)/x<sup>2</sup> = 1/2 + o(1) &rarr; <strong>1/2</strong></code></pre>
+<p>On retrouve ainsi le terme d'ordre 2 du DL de e<sup>x</sup> par passage à la
+limite.</p>
+
+<h3>Exercice 2 — Étude de f(x) = (x<sup>2</sup> + 1)/(x &minus; 1)</h3>
+<p>Domaine : &Rscr; &setminus; {1}. Dérivée :</p>
+<pre><code>f'(x) = [(2x)(x&minus;1) &minus; (x<sup>2</sup>+1)(1)]/(x&minus;1)<sup>2</sup>
+      = (2x<sup>2</sup> &minus; 2x &minus; x<sup>2</sup> &minus; 1)/(x&minus;1)<sup>2</sup>
+      = (x<sup>2</sup> &minus; 2x &minus; 1)/(x&minus;1)<sup>2</sup></code></pre>
+<p>Le numérateur s'annule en x = 1 &plusmn; &radic;2 (soit &asymp; &minus;0,41 et
+2,41). Limite en 1<sup>+</sup> : +&infin;; en 1<sup>&minus;</sup> : &minus;&infin;
+(brisure verticale). En +&infin;, f(x) ~ x (branche parabolique de direction
+asymptotique y = x + 1).</p>
+<p>En effectuant la division polynomiale : (x<sup>2</sup>+1)/(x&minus;1) = x + 1 + 2/(x&minus;1).
+L'asymptote oblique est donc <strong>y = x + 1</strong>, et la courbe est
+au-dessus si x &gt; 1, en dessous si x &lt; 1.</p>
+
+<h3>Exercice 3 — Primitive et intégrale</h3>
+<p>Calcul de &int; x&middot;e<sup>&minus;x</sup> dx par parties (u = x, dv = e<sup>&minus;x</sup>dx) :</p>
+<pre><code>&int; x&middot;e<sup>&minus;x</sup> dx = &minus;x&middot;e<sup>&minus;x</sup> + &int; e<sup>&minus;x</sup> dx = &minus;x&middot;e<sup>&minus;x</sup> &minus; e<sup>&minus;x</sup> + C</code></pre>
+<p>Sur [0, +&infin;[ :</p>
+<pre><code>&int;<sub>0</sub><sup>+&infin;</sup> x&middot;e<sup>&minus;x</sup> dx = [&minus;x&middot;e<sup>&minus;x</sup> &minus; e<sup>&minus;x</sup>]<sub>0</sub><sup>+&infin;</sup> = 0 &minus; (&minus;1) = <strong>1</strong></code></pre>
+<p>C'est le résultat classique de l'espérance de la loi exponentielle de
+paramètre 1.</p>
+
+<h3>Exercice 4 — Suite u<sub>n+1</sub> = u<sub>n</sub><sup>2</sup> + 1/4</h3>
+<p>Soit u<sub>0</sub> = 0. Les points fixes vérifient &ell; = &ell;<sup>2</sup> + 1/4,
+soit (&ell; &minus; 1/2)<sup>2</sup> = 0, d'où &ell; = 1/2. La suite vérifie
+u<sub>1</sub> = 1/4, u<sub>2</sub> = 5/16 &asymp; 0,3125, etc. Par étude de la
+fonction g(x) = x<sup>2</sup> + 1/4 : g'(x) = 2x, et pour x &isin; [0, 1/2],
+g(x) &le; 1/2. La suite est croissante et majorée par 1/2, donc converge vers
+le seul point fixe &ell; = 1/2. <strong>lim u<sub>n</sub> = 1/2</strong>.</p>
+
+<div class="exemple">
+  <strong>Exemple d'application.</strong> La méthode du point fixe converge
+  lorsque |g'(x)| &lt; 1 au voisinage du point fixe. Ici g'(1/2) = 1, ce qui
+  rend la convergence très lente (à la limite du critère) : on parle de
+  convergence sous-linéaire.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Formes indéterminées</strong> : ne jamais conclure trop vite.
+        Toujours transformer (factorisation, DL, équivalent).</li>
+    <li><strong>Dérivée et continuité</strong> : dérivable &rArr; continu, mais
+        la réciproque est fausse (ex : |x| en 0).</li>
+    <li><strong>Intégrale impropre</strong> : calculer la limite de
+        &int;<sub>0</sub><sup>A</sup> puis faire A &rarr; +&infin;.</li>
+    <li><strong>Suite récurrente</strong> : la monotonie dépend de u<sub>0</sub>.
+        Tester plusieurs valeurs initiales.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Les <strong>développements limités</strong> généralisent l'approximation
+      affine et donnent les comportements locaux (position de la courbe par
+      rapport à la tangente, points d'inflexion).</li>
+  <li>Le <strong>théorème de Rolle</strong> implique le théorème des
+      accroissements finis, qui implique l'inégalité des accroissements finis.</li>
+  <li>Les <strong>suites de fonctions</strong> et la convergence uniforme sont
+      la transition naturelle vers l'analyse de Lebesgue.</li>
+  <li>En pratique, les logiciels comme Python (sympy, scipy) automatisent ces
+      calculs mais comprendre les méthodes reste essentiel.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1976D2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/mathematiques/chapitre-01-analyse-i.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-07-analyse-i-nombres-reels/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Nombres réels et suites</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 8 / 8</div>
+          <a href="../examen-09-algebre-generale-structures/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Structures algébriques</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

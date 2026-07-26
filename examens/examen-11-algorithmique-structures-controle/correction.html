@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Structures de contrôle — Correction détaillée (Algorithmique) — BIT Study HUB">
+  <title>Structures de contrôle — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #3776AB; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #3776AB; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #3776AB; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #3776AB; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #3776AB; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #3776AB; background: color-mix(in srgb, #3776AB 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #3776AB; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #3776AB 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Algorithmique</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Structures de contrôle</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Algorithmique · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-11.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>Le sujet propose trois exercices en pseudocode et algorithmique :</p>
+<ol>
+  <li>écrire un algorithme qui demande un entier n et affiche sa factorielle ;</li>
+  <li>écrire un algorithme qui détermine si un nombre est premier ;</li>
+  <li>écrire un algorithme qui affiche les n premiers termes de la suite de Fibonacci ;</li>
+  <li>écrire un algorithme qui calcule le PGCD de deux entiers par l'algorithme d'Euclide.</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Structure de contrôle.</strong>
+  Une structure de contrôle est une instruction qui détermine l'ordre dans
+  lequel les autres instructions d'un algorithme sont exécutées. On distingue
+  les structures <em>conditionnelles</em> (si...alors...sinon, selon) et les
+  structures <em>itératives</em> (tant que, pour, répéter...jusqu'à). Elles
+  permettent d'écrire des algorithmes non linéaires qui s'adaptent aux données.
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Comprendre l'énoncé</strong> : identifier les entrées, les sorties et les contraintes.</li>
+  <li><strong>Décomposer le problème</strong> en sous-tâches simples.</li>
+  <li><strong>Choisir les structures</strong> : boucle Pour quand le nombre d'itérations est connu, Tant que sinon.</li>
+  <li><strong>Tester l'algorithme</strong> avec des cas particuliers (n = 0, n = 1, valeurs négatives).</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Exercice 1 — Factorielle</h3>
+<pre><code>Algorithme Factorielle
+  Variables : n, i, fact : entiers
+Début
+  Afficher "Entrez un entier n :"
+  Lire n
+  Si n &lt; 0 Alors
+    Afficher "Erreur : n doit être positif"
+  Sinon
+    fact &larr; 1
+    Pour i de 1 à n Faire
+      fact &larr; fact &times; i
+    FinPour
+    Afficher "n! = ", fact
+  FinSi
+Fin</code></pre>
+<p>Pour n = 5 : fact = 1 &times; 2 &times; 3 &times; 4 &times; 5 = 120.
+Cas particuliers : 0! = 1 (boucle non exécutée), 1! = 1.</p>
+
+<h3>Exercice 2 — Test de primalité</h3>
+<pre><code>Algorithme EstPremier
+  Variables : n, i : entiers ; est_premier : booléen
+Début
+  Lire n
+  Si n &lt; 2 Alors
+    est_premier &larr; Faux
+  SinonSi n = 2 Alors
+    est_premier &larr; Vrai
+  SinonSi n mod 2 = 0 Alors
+    est_premier &larr; Faux
+  Sinon
+    est_premier &larr; Vrai
+    i &larr; 3
+    Tant que i &times; i &le; n et est_premier Faire
+      Si n mod i = 0 Alors
+        est_premier &larr; Faux
+      FinSi
+      i &larr; i + 2
+    FinTantQue
+  FinSi
+  Afficher est_premier
+Fin</code></pre>
+<p>Complexité : O(&radic;n) au lieu de O(n) grâce à l'arrêt à &radic;n et au
+test de parité.</p>
+
+<h3>Exercice 3 — Suite de Fibonacci</h3>
+<pre><code>Algorithme Fibonacci
+  Variables : n, i, a, b, c : entiers
+Début
+  Lire n
+  a &larr; 0 ; b &larr; 1
+  Afficher a
+  Si n &ge; 2 Alors Afficher b FinSi
+  Pour i de 3 à n Faire
+    c &larr; a + b
+    Afficher c
+    a &larr; b ; b &larr; c
+  FinPour
+Fin</code></pre>
+<p>Pour n = 10 : 0, 1, 1, 2, 3, 5, 8, 13, 21, 34. Complexité O(n), mémoire O(1).</p>
+
+<h3>Exercice 4 — PGCD par Euclide</h3>
+<pre><code>Algorithme PGCD
+  Variables : a, b, r : entiers
+Début
+  Lire a, b
+  Tant que b &ne; 0 Faire
+    r &larr; a mod b
+    a &larr; b
+    b &larr; r
+  FinTantQue
+  Afficher "PGCD = ", a
+Fin</code></pre>
+<p>PGCD(48, 18) : r=12, a=18, b=12 &rarr; r=6, a=12, b=6 &rarr; r=0, a=6, b=0
+&rightarrow; <strong>PGCD = 6</strong>. Complexité O(log min(a, b)).</p>
+
+<div class="exemple">
+  <strong>Exemple appliqué.</strong> L'algorithme d'Euclide est à la base du
+  calcul du PGCD en cryptographie RSA, où il sert à déterminer les exposants
+  publics et privés via le théorème de Bézout : au + bv = pgcd(a, b).
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Initialisation</strong> : toujours initialiser les variables
+        avant la boucle, sinon comportement indéfini.</li>
+    <li><strong>Boucles infinies</strong> : s'assurer que la condition de sortie
+        finit par être atteinte (compteur incrémenté, variable modifiée).</li>
+    <li><strong>Choix de boucle</strong> : Pour si le nombre d'itérations est
+        connu ; Tant que sinon ; Répéter...jusqu'à si on veut au moins une
+        itération.</li>
+    <li><strong>Complexité</strong> : privilégier &radic;n à n, log n à n, etc.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Les <strong>structures imbriquées</strong> (boucle dans une condition
+      dans une boucle) permettent d'exprimer des algorithmes complexes mais
+      nuisent à la lisibilité.</li>
+  <li>La <strong>récursivité</strong> est une alternative élégante aux boucles
+      pour les problèmes divisibles (factorielle, Fibonacci, tours de Hanoï,
+      tri fusion).</li>
+  <li>Les <strong>invariants de boucle</strong> sont utilisés pour prouver la
+      correction d'un algorithme (méthode Hoare).</li>
+  <li>En programmation structurée, on évite les <code>goto</code> : les
+      structures de contrôle suffisent à exprimer tout algorithme (théorème de
+      Böhm-Jacopini).</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #3776AB" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/algorithmique-dynamique/chapitre-01-chapitre-1-allocation-des-donnees-en-c.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-10-algebre-lineaire-matrices/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Matrices et déterminants</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 11 / 11</div>
+          <a href="../examen-12-algorithmique-qcm/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Algorithmes et structures de contrôle — QCM</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

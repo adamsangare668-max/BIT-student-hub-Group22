@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Espaces vectoriels et matrices — Correction détaillée (Algèbre Linéaire) — BIT Study HUB">
+  <title>Espaces vectoriels et matrices — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Algèbre Linéaire</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Espaces vectoriels et matrices</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Algèbre Linéaire · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-05.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>Le sujet porte sur l'espace vectoriel &Rscr;<sup>3</sup> et le sous-espace
+<code>E = { (x, y, z) &isin; &Rscr;<sup>3</sup> : x + y + z = 0 }</code>. Il
+demande :</p>
+<ol>
+  <li>de montrer que E est un sous-espace vectoriel ;</li>
+  <li>de donner une base et la dimension de E ;</li>
+  <li>de calculer le produit matriciel A &middot; B avec A et B données ;</li>
+  <li>de déterminer le noyau de l'application linéaire définie par A.</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Sous-espace vectoriel.</strong>
+  Une partie F d'un espace vectoriel E est un sous-espace vectoriel si et
+  seulement si : (1) F est non vide (le plus simple : 0<sub>E</sub> &isin; F),
+  (2) F est stable par addition, (3) F est stable par multiplication externe.
+  Ces trois conditions se résument en : &forall; u, v &isin; F, &forall; &lambda;, &mu; &isin; &Rscr;, &lambda;u + &mu;v &isin; F.
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Sous-espace</strong> : vérifier que le vecteur nul appartient à F puis la stabilité par combinaison linéaire.</li>
+  <li><strong>Base</strong> : trouver une famille libre et génératrice de F.</li>
+  <li><strong>Produit matriciel</strong> : utiliser la règle « ligne &times; colonne ».</li>
+  <li><strong>Noyau</strong> : résoudre le système A&middot;X = 0 par pivot de Gauss.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Question 1 — E est un sous-espace vectoriel</h3>
+<p>Le vecteur nul (0, 0, 0) vérifie 0 + 0 + 0 = 0, donc 0<sub>&Rscr;<sup>3</sup></sub> &isin; E.
+Soient u = (x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>) et v = (x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub>)
+dans E, et &lambda;, &mu; &isin; &Rscr;. Alors :</p>
+<pre><code>(&lambda;x<sub>1</sub> + &mu;x<sub>2</sub>) + (&lambda;y<sub>1</sub> + &mu;y<sub>2</sub>) + (&lambda;z<sub>1</sub> + &mu;z<sub>2</sub>)
+  = &lambda;(x<sub>1</sub> + y<sub>1</sub> + z<sub>1</sub>) + &mu;(x<sub>2</sub> + y<sub>2</sub> + z<sub>2</sub>)
+  = &lambda;&middot;0 + &mu;&middot;0 = 0</code></pre>
+<p>Donc &lambda;u + &mu;v &isin; E. <strong>E est un sous-espace vectoriel de &Rscr;<sup>3</sup></strong>.</p>
+
+<h3>Question 2 — Base et dimension de E</h3>
+<p>Les vecteurs de E vérifient z = &minus;x &minus; y, donc tout vecteur s'écrit :</p>
+<pre><code>(x, y, z) = (x, y, &minus;x&minus;y) = x&middot;(1, 0, &minus;1) + y&middot;(0, 1, &minus;1)</code></pre>
+<p>La famille <strong>{(1, 0, &minus;1), (0, 1, &minus;1)}</strong> est libre (les
+deux vecteurs ne sont pas colinéaires) et génératrice de E : c'est une base de E.
+Donc <strong>dim(E) = 2</strong>. E est un plan vectoriel passant par l'origine.</p>
+
+<h3>Question 3 — Produit matriciel</h3>
+<p>Soit A = [[1, 2], [3, 4], [5, 6]] (3&times;2) et B = [[1, 0, 1], [0, 1, 1]] (2&times;3).
+Le produit A&middot;B existe et donne une matrice 3&times;3 :</p>
+<pre><code>A&middot;B = [[1, 2, 3],
+         [3, 4, 7],
+         [5, 6, 11]]</code></pre>
+<p>Par exemple, l'élément (1,1) vaut 1&middot;1 + 2&middot;0 = 1, le (1,2) vaut 1&middot;0 + 2&middot;1 = 2,
+et le (1,3) vaut 1&middot;1 + 2&middot;1 = 3.</p>
+
+<h3>Question 4 — Noyau de l'application définie par A</h3>
+<p>Soit A = [[1, 1, 1], [2, &minus;1, 0]] (matrice 2&times;3). Le système A&middot;X = 0 s'écrit :</p>
+<pre><code>x + y + z = 0
+2x &minus; y     = 0  &rArr;  y = 2x</code></pre>
+<p>En substituant dans la première équation : x + 2x + z = 0 &rArr; z = &minus;3x.
+Donc <code>ker(A) = { (x, 2x, &minus;3x) : x &isin; &Rscr; } = vect((1, 2, &minus;3))</code>.
+<strong>Le noyau est une droite vectorielle</strong>, engendrée par (1, 2, &minus;3).</p>
+
+<div class="exemple">
+  <strong>Exemple géométrique.</strong> Le théorème du rang donne
+  dim(ker A) + dim(im A) = n. Ici n = 3 et dim(ker A) = 1, donc dim(im A) = 2 :
+  l'image est un plan vectoriel, ce qui correspond bien à la matrice 2&times;3
+  de rang 2.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Vecteur nul</strong> : toujours vérifier d'abord que 0 &isin; F
+        avant de tester la stabilité. Cela évite les pièges du type « cercle
+        unité ».</li>
+    <li><strong>Dimension</strong> : dim(E) + dim(F) = dim(E &cap; F) + dim(E + F).</li>
+    <li><strong>Produit matriciel</strong> : non commutatif en général (AB &ne; BA),
+        mais associatif et distributif.</li>
+    <li><strong>Noyau</strong> : ker(A) = ker(A<sup>T</sup>A) (utile en
+        statistiques pour la régression linéaire).</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Les <strong>valeurs propres</strong> et la <strong>diagonalisation</strong>
+      permettent d'étudier les applications linéaires de manière simple.</li>
+  <li>La <strong>décomposition SVD</strong> (Singular Value Decomposition) est
+      centrale en apprentissage automatique (PCA, recommandation, compression).</li>
+  <li>Les <strong>espaces de Hilbert</strong> étendent l'algèbre linéaire aux
+      espaces de fonctions avec un produit scalaire infini.</li>
+  <li>En informatique graphique, les transformations (rotation, translation,
+      projection) sont des applications linéaires représentées par des matrices
+      4&times;4 (coordonnées homogènes).</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1976D2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/mathematiques/chapitre-04-algebre-lineaire-l1.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-04-analyse-ii-suites-series/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Suites et séries</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 5 / 5</div>
+          <a href="../examen-06-analyse-i-calcul-differentiel/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Calcul différentiel et suites numériques</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

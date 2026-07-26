@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Analyse financière — Correction détaillée (Management Financier) — BIT Study HUB">
+  <title>Analyse financière — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #5D4037; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #5D4037; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #5D4037; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #5D4037; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #5D4037; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #5D4037; background: color-mix(in srgb, #5D4037 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #5D4037; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #5D4037 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Management Financier</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Analyse financière</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Management Financier · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-19.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>L'examen de Management Financier propose une étude de cas sur l'entreprise
+BIT-SA. À partir du bilan et du compte de résultat, on demande de calculer les
+SIG, le FRNG, le BFR, la TN, ainsi que les principaux ratios de structure et
+de rentabilité, puis de commenter la situation financière.</p>
+
+<div class="definition">
+  <strong>Définitions clés.</strong>
+  <ul>
+    <li><strong>SIG</strong> (Soldes Intermédiaires de Gestion) : marge commerciale, production de l'exercice, valeur ajoutée, EBE, résultat d'exploitation.</li>
+    <li><strong>FRNG</strong> (Fonds de Roulement Net Global) = Ressources stables &minus; Emplois stables.</li>
+    <li><strong>BFR</strong> (Besoin en Fonds de Roulement) = Actif circulant &minus; Passif circulant.</li>
+    <li><strong>TN</strong> (Trésorerie Nette) = FRNG &minus; BFR = Trésorerie actif &minus; Trésorerie passif.</li>
+  </ul>
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Calculer les SIG</strong> du haut du compte de résultat vers le bas.</li>
+  <li><strong>Calculer le FRNG</strong> à partir du bilan fonctionnel (retraité).</li>
+  <li><strong>Calculer le BFR</strong> (exploitation + hors exploitation).</li>
+  <li><strong>Déduire la TN</strong> par l'équation TN = FRNG &minus; BFR.</li>
+  <li><strong>Calculer les ratios</strong> (liquidité, solvabilité, rentabilité, délais).</li>
+  <li><strong>Commenter</strong> en perspective sectorielle et temporelle.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Étape 1 — Soldes Intermédiaires de Gestion</h3>
+<table>
+  <tr><th>SIG</th><th>Calcul</th><th>Montant (k€)</th></tr>
+  <tr><td>Ventes de marchandises</td><td>707</td><td>2 000</td></tr>
+  <tr><td>Coût d'achat des marchandises vendues</td><td>607 + 6037 (variation)</td><td>1 400</td></tr>
+  <tr><td><strong>Marge commerciale</strong></td><td>2000 &minus; 1400</td><td><strong>600</strong></td></tr>
+  <tr><td>Production de l'exercice</td><td>70 + 71 + 72</td><td>3 500</td></tr>
+  <tr><td>Consommations en provenance de tiers</td><td>61 + 62</td><td>2 000</td></tr>
+  <tr><td><strong>Valeur ajoutée</strong></td><td>600 + 3500 &minus; 2000</td><td><strong>2 100</strong></td></tr>
+  <tr><td>Impôts et taxes + Charges de personnel</td><td>63 + 64</td><td>1 100</td></tr>
+  <tr><td><strong>EBE</strong></td><td>2100 &minus; 1100</td><td><strong>1 000</strong></td></tr>
+  <tr><td>Reprises + Autres produits &minus; Autres charges + Dotations</td><td></td><td>200 (net)</td></tr>
+  <tr><td><strong>Résultat d'exploitation</strong></td><td>1000 &minus; 200</td><td><strong>800</strong></td></tr>
+  <tr><td>Résultat financier</td><td>75 &minus; 65</td><td>&minus;100</td></tr>
+  <tr><td>Résultat exceptionnel</td><td>77 &minus; 67</td><td>+50</td></tr>
+  <tr><td><strong>Résultat net</strong></td><td>800 &minus; 100 + 50 &minus; impôt 225</td><td><strong>525</strong></td></tr>
+</table>
+
+<h3>Étape 2 — Bilan fonctionnel</h3>
+<table>
+  <tr><th>Actif stable</th><th>Montant</th><th>Ressources stables</th><th>Montant</th></tr>
+  <tr><td>Immobilisations</td><td>3 000</td><td>Capitaux propres</td><td>2 800</td></tr>
+  <tr><td></td><td></td><td>Dettes financières LT</td><td>900</td></tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr><td><strong>Total actif stable</strong></td><td><strong>3 000</strong></td><td><strong>Total ressources stables</strong></td><td><strong>3 700</strong></td></tr>
+</table>
+<p><strong>FRNG = 3 700 &minus; 3 000 = 700 k€</strong> (positif, bonne couverture
+des emplois stables).</p>
+
+<table>
+  <tr><th>Actif circulant</th><th>Montant</th><th>Passif circulant</th><th>Montant</th></tr>
+  <tr><td>Stocks</td><td>500</td><td>Fournisseurs</td><td>400</td></tr>
+  <tr><td>Clients</td><td>600</td><td>Dettes fiscales et sociales</td><td>200</td></tr>
+  <tr><td>Autres créances</td><td>100</td><td>Autres dettes</td><td>300</td></tr>
+  <tr><td><strong>Total AC</strong></td><td><strong>1 200</strong></td><td><strong>Total PC</strong></td><td><strong>900</strong></td></tr>
+</table>
+<p><strong>BFR = 1 200 &minus; 900 = 300 k€</strong> (positif, besoin de financement
+de l'exploitation, raisonnable).</p>
+
+<p><strong>TN = FRNG &minus; BFR = 700 &minus; 300 = 400 k€</strong> (trésorerie
+excédentaire, à placer ou réinvestir).</p>
+
+<h3>Étape 3 — Ratios clés</h3>
+<table>
+  <tr><th>Ratio</th><th>Formule</th><th>Valeur</th><th>Lecture</th></tr>
+  <tr><td>Liquidité générale</td><td>AC / PC</td><td>1,33</td><td>Bonne (&gt; 1)</td></tr>
+  <tr><td>Liquidité réduite</td><td>(AC &minus; stocks) / PC</td><td>0,78</td><td>Moyenne</td></tr>
+  <tr><td>Solvabilité</td><td>Capitaux propres / total passif</td><td>0,52</td><td>Endettement sain</td></tr>
+  <tr><td>Endettement</td><td>Dettes financières / CP</td><td>0,32</td><td>Acceptable (&lt; 1)</td></tr>
+  <tr><td>Rentabilité économique</td><td>RE / actif économique</td><td>800/3900 = 20,5 %</td><td>Très bonne</td></tr>
+  <tr><td>Rentabilité financière</td><td>Résultat net / CP</td><td>525/2800 = 18,75 %</td><td>Très bonne</td></tr>
+  <tr><td>Délai clients</td><td>(Clients / CA TTC) &times; 360</td><td>~90 jours</td><td>À surveiller</td></tr>
+  <tr><td>Délai fournisseurs</td><td>(Fournisseurs / achats TTC) &times; 360</td><td>~95 jours</td><td>Correct</td></tr>
+</table>
+
+<h3>Étape 4 — Commentaire</h3>
+<p>L'entreprise BIT-SA présente une <strong>situation financière saine</strong> :
+FRNG positif (700 k€), BFR contenu (300 k€), trésorerie nette excédentaire
+(400 k€). La rentabilité économique (20,5 %) et financière (18,75 %) sont
+élevées, témoignant d'une bonne efficacité opérationnelle. Le ratio
+d'endettement (32 %) est maîtrisé. Points de vigilance : le délai clients
+(90 jours) est élevé et pèse sur le BFR ; une politique de recouvrement plus
+rigoureuse libérerait de la trésorerie.</p>
+
+<div class="exemple">
+  <strong>Exemple appliqué.</strong> Les ratios financiers sont utilisés par
+  les banques pour évaluer le risque de crédit, par les investisseurs pour
+  estimer la valeur d'une entreprise et par les managers pour piloter la
+  performance. Les normes IFRS et le SYSCOHADA encadrent leur calcul.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Bilan fonctionnel vs financier</strong> : le fonctionnel
+        classe par fonction (exploitation, investissement, financement) ;
+        le financier par échéance (LT/CT).</li>
+    <li><strong>FRNG négatif</strong> : les emplois stables ne sont pas
+        intégralement financés par des ressources stables &rarr; risque
+        financier.</li>
+    <li><strong>BFR négatif</strong> : l'entreprise est en crédit permanent
+        de ses fournisseurs (ex : grande distribution).</li>
+    <li><strong>Effet de ciseaux</strong> : si rentabilité éco &gt; coût de la
+        dette, l'endettement augmente la rentabilité financière (effet de
+        levier). Sinon, effet de massue.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Le <strong>tableau de flux de trésorerie</strong> (TFT) complète
+      l'analyse en détaillant les flux d'exploitation, d'investissement et
+      de financement.</li>
+  <li>L'<strong>analyse par les ratios</strong> se compare aux moyennes
+      sectorielles (secteur bancaire, textile, agroalimentaire...).</li>
+  <li>Le <strong>score d'Altman</strong> prédit la probabilité de faillite.</li>
+  <li>La <strong>valorisation par DCF</strong> (Discounted Cash Flow) estime la
+      valeur d'une entreprise par actualisation de ses flux futurs.</li>
+  <li>Le <strong>working capital management</strong> optimise le BFR par
+      négociation des délais clients/fournisseurs et gestion des stocks.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #5D4037" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/management-financier/chapitre-09-7-van-tri-ratios.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-18-comptabilite-generale-ds/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>DS Comptabilité Générale — CS26</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 19 / 19</div>
+          <a href="../examen-20-reseaux-osi-tcpip/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Modèle OSI et TCP/IP</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

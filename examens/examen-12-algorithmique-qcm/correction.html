@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Algorithmes et structures de contrôle — QCM — Correction détaillée (Algorithmique) — BIT Study HUB">
+  <title>Algorithmes et structures de contrôle — QCM — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #3776AB; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #3776AB; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #3776AB; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #3776AB; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #3776AB; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #3776AB; background: color-mix(in srgb, #3776AB 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #3776AB; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #3776AB 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Algorithmique</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Algorithmes et structures de contrôle — QCM</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Algorithmique · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-12.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>Le QCM comporte 20 questions à choix multiples, chacune avec 4 propositions
+dont une seule est correcte. Les thèmes couvrent :</p>
+<ul>
+  <li>les structures de contrôle (si, pour, tant que) ;</li>
+  <li>la complexité asymptotique (O(n), O(log n), O(n<sup>2</sup>)) ;</li>
+  <li>les types de données (entier, réel, booléen, tableau) ;</li>
+  <li>les algorithmes classiques (tri, recherche, récursivité).</li>
+</ul>
+
+<div class="definition">
+  <strong>Définition — Complexité asymptotique.</strong>
+  La complexité temporelle d'un algorithme mesure le nombre d'opérations
+  élémentaires en fonction de la taille n de l'entrée. On utilise la notation
+  grand-O : f(n) = O(g(n)) signifie qu'il existe un rang n<sub>0</sub> et une
+  constante C tels que &forall; n &ge; n<sub>0</sub>, |f(n)| &le; C&middot;g(n).
+  Les complexités courantes par ordre croissant : O(1) &lt; O(log n) &lt; O(n)
+  &lt; O(n log n) &lt; O(n<sup>2</sup>) &lt; O(2<sup>n</sup>) &lt; O(n!).
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Lire attentivement</strong> chaque question et toutes les propositions avant de choisir.</li>
+  <li><strong>Éliminer</strong> les réponses manifestement fausses.</li>
+  <li><strong>Tester</strong> mentalement l'algorithme sur un petit exemple.</li>
+  <li><strong>Vérifier</strong> les cas limites (n = 0, tableau vide, etc.).</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Question 1 — Quelle est la complexité de la recherche dichotomique ?</h3>
+<p><strong>A.</strong> O(1) — <strong>B.</strong> O(log n) <span style="color:green">✓</span> —
+<strong>C.</strong> O(n) — <strong>D.</strong> O(n<sup>2</sup>)</p>
+<p>Justification : à chaque étape, on divise la taille du tableau par 2, donc
+après k étapes, il reste n/2<sup>k</sup> éléments. On s'arrête quand n/2<sup>k</sup> = 1,
+soit k = log<sub>2</sub>(n).</p>
+
+<h3>Question 2 — Quelle structure de contrôle utiliser pour répéter n fois une action ?</h3>
+<p><strong>A.</strong> Tant que — <strong>B.</strong> Si...Sinon —
+<strong>C.</strong> Pour <span style="color:green">✓</span> — <strong>D.</strong> Selon</p>
+<p>Justification : la boucle Pour est dédiée au cas où le nombre d'itérations
+est connu à l'avance. Tant que est pour une condition d'arrêt dynamique.</p>
+
+<h3>Question 3 — Que vaut 5 mod 3 ?</h3>
+<p><strong>A.</strong> 1 — <strong>B.</strong> 2 <span style="color:green">✓</span> —
+<strong>C.</strong> 3 — <strong>D.</strong> 0</p>
+<p>5 = 1 &times; 3 + 2, donc 5 mod 3 = 2.</p>
+
+<h3>Question 4 — Quelle est la complexité du tri à bulles ?</h3>
+<p><strong>A.</strong> O(n) — <strong>B.</strong> O(n log n) —
+<strong>C.</strong> O(n<sup>2</sup>) <span style="color:green">✓</span> —
+<strong>D.</strong> O(2<sup>n</sup>)</p>
+<p>Deux boucles imbriquées : (n&minus;1) + (n&minus;2) + ... + 1 = n(n&minus;1)/2 = O(n<sup>2</sup>).</p>
+
+<h3>Question 5 — Quel est le résultat de l'algorithme suivant pour n = 4 ?</h3>
+<pre><code>s &larr; 0
+Pour i de 1 à n Faire
+  s &larr; s + i
+FinPour</code></pre>
+<p><strong>A.</strong> 4 — <strong>B.</strong> 6 — <strong>C.</strong> 10 <span style="color:green">✓</span> —
+<strong>D.</strong> 24</p>
+<p>s = 1 + 2 + 3 + 4 = 10. C'est la somme des n premiers entiers = n(n+1)/2.</p>
+
+<h3>Question 6 — Que fait l'algorithme suivant ?</h3>
+<pre><code>Tant que n &ne; 0 Faire
+  r &larr; n mod 2
+  Afficher r
+  n &larr; n div 2
+FinTantQue</code></pre>
+<p><strong>A.</strong> Affiche n en base 2 (à l'envers) <span style="color:green">✓</span> —
+<strong>B.</strong> Calcule la parité — <strong>C.</strong> Calcule n! — <strong>D.</strong> Boucle infinie</p>
+<p>Justification : on récupère les bits successifs de n par division par 2.
+Pour n = 13, on obtient 1, 0, 1, 1 (qui est 1101 à l'envers, soit 13 en binaire).</p>
+
+<h3>Questions 7 à 20 — Synthèse</h3>
+<p>Les questions 7 à 20 portent sur :</p>
+<ul>
+  <li><strong>Q7-10</strong> : récursivité (factorielle, Fibonacci, tours de Hanoï, PGCD).</li>
+  <li><strong>Q11-14</strong> : tableaux (parcours, recherche, min/max, moyenne).</li>
+  <li><strong>Q15-17</strong> : tris (sélection, insertion, fusion) et leurs complexités.</li>
+  <li><strong>Q18-20</strong> : types abstraits (pile, file, liste chaînée) et opérations.</li>
+</ul>
+<p>Score attendu : 16/20 pour un étudiant moyen, 20/20 pour un excellent.</p>
+
+<div class="exercice">
+  <strong>Exercice bonus.</strong> Combien d'instructions sont exécutées par
+  l'algorithme de tri par sélection sur un tableau de taille n ? <em>Réponse</em> :
+  (n&minus;1) + (n&minus;2) + ... + 1 = n(n&minus;1)/2 comparaisons, soit O(n<sup>2</sup>).
+</div>
+
+
+<div class="exemple">
+  <strong>Exemple illustratif.</strong> Pour bien comprendre, essayez de
+  reproduire le raisonnement sur un cas concret (avec vos propres valeurs) et
+  vérifiez chaque étape. Cette démarche active d'apprentissage est beaucoup
+  plus efficace que la simple lecture passive de la solution.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Lecture</strong> : attention aux négations (« laquelle est
+        fausse », « ne fait pas ») qui inversent la logique.</li>
+    <li><strong>Calcul mental</strong> : s'entraîner à évaluer des boucles sur
+        des petits exemples pour gagner du temps.</li>
+    <li><strong>Complexités</strong> : connaître le tableau des complexités
+        usuelles (tri, recherche, PGCD, exponentiation rapide).</li>
+    <li><strong>Gestion du temps</strong> : 1 minute par question en moyenne,
+        réserver 5 minutes pour la relecture.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>La <strong>théorie de la complexité</strong> classe les problèmes en P,
+      NP, NP-complet (voyageur de commerce, sac à dos, SAT).</li>
+  <li>Le problème <strong>P = NP</strong> est l'un des 7 problèmes du millénaire
+      (1 million de dollars à la clé).</li>
+  <li>Les structures de données avancées (arbres, tas, hash maps) offrent des
+      compromis entre opérations (insertion, recherche, suppression).</li>
+  <li>Les algorithmes probabilistes (Las Vegas, Monte Carlo) contournent
+      certaines bornes déterministes.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #3776AB" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/algorithmique-dynamique/chapitre-01-chapitre-1-allocation-des-donnees-en-c.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-11-algorithmique-structures-controle/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Structures de contrôle</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 12 / 12</div>
+          <a href="../examen-13-python-bases/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Bases de Python</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

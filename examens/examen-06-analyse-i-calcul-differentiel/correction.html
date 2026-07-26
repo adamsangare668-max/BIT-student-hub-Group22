@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calcul différentiel et suites numériques — Correction détaillée (Analyse I) — BIT Study HUB">
+  <title>Calcul différentiel et suites numériques — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Analyse I</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Calcul différentiel et suites numériques</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Analyse I · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-06.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>Le sujet comporte trois exercices. Le premier étudie la fonction
+<code>f(x) = x<sup>3</sup> &minus; 3x + 1</code> (dérivée, variations,
+extrema). Le deuxième porte sur la limite de la suite
+<code>u<sub>n+1</sub> = (u<sub>n</sub> + 2/u<sub>n</sub>)/2</code> avec
+u<sub>0</sub> = 1 (méthode de Héron pour &radic;2). Le troisième demande le
+calcul de <code>&int;<sub>0</sub><sup>1</sup> (x<sup>2</sup> + 2x) dx</code>
+et l'étude de la convergence de la série &sum; ln(n)/n<sup>2</sup>.</p>
+
+<div class="definition">
+  <strong>Définition — Dérivée.</strong>
+  La dérivée de f en x<sub>0</sub> est la limite, si elle existe :
+  <code>f'(x<sub>0</sub>) = lim<sub>h&rarr;0</sub> (f(x<sub>0</sub>+h) &minus; f(x<sub>0</sub>))/h</code>.
+  Géométriquement, f'(x<sub>0</sub>) est le coefficient directeur de la tangente
+  à la courbe au point d'abscisse x<sub>0</sub>.
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Étude de fonction</strong> : domaine, dérivée, signe de la dérivée, tableau de variations, limites aux bornes.</li>
+  <li><strong>Suite récurrente</strong> : étudier la fonction g telle que u<sub>n+1</sub> = g(u<sub>n</sub>), ses points fixes, puis la monotonie de la suite.</li>
+  <li><strong>Intégrale</strong> : appliquer le théorème fondamental : &int; f(x) dx = F(b) &minus; F(a) où F est une primitive.</li>
+  <li><strong>Série</strong> : identifier le terme général et appliquer un test de convergence.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Exercice 1 — Étude de f(x) = x<sup>3</sup> &minus; 3x + 1</h3>
+<pre><code>f'(x) = 3x<sup>2</sup> &minus; 3 = 3(x<sup>2</sup> &minus; 1)
+f'(x) = 0  &hArr;  x = &plusmn;1</code></pre>
+<p>Signe de f' : positif sur ]&minus;&infin;, &minus;1], négatif sur [&minus;1, 1],
+positif sur [1, +&infin;[. Tableau de variations :</p>
+<table>
+  <tr><th>x</th><th>&minus;&infin;</th><th></th><th>&minus;1</th><th></th><th>1</th><th></th><th>+&infin;</th></tr>
+  <tr><td>f'</td><td>+</td><td>+</td><td>0</td><td>&minus;</td><td>0</td><td>+</td><td>+</td></tr>
+  <tr><td>f</td><td>&minus;&infin;</td><td>&rarr;</td><td>3</td><td>&rarr;</td><td>&minus;1</td><td>&rarr;</td><td>+&infin;</td></tr>
+</table>
+<p>La fonction présente un <strong>maximum local en x = &minus;1</strong> (valeur 3)
+et un <strong>minimum local en x = 1</strong> (valeur &minus;1). Elle s'annule
+trois fois (théorème des valeurs intermédiaires), entre &minus;2 et &minus;1,
+entre &minus;1 et 1, et entre 1 et 2.</p>
+
+<h3>Exercice 2 — Méthode de Héron</h3>
+<p>La suite est définie par u<sub>0</sub> = 1 et u<sub>n+1</sub> = (u<sub>n</sub> + 2/u<sub>n</sub>)/2.
+On montre par récurrence que u<sub>n</sub> &gt; 0 pour tout n. La seule limite
+finie possible &ell; vérifie &ell; = (&ell; + 2/&ell;)/2, soit &ell;<sup>2</sup> = 2,
+d'où &ell; = &radic;2. En calculant u<sub>1</sub> = 3/2 = 1,5 puis
+u<sub>2</sub> = (1,5 + 2/1,5)/2 &asymp; 1,4167, on converge très rapidement vers
+&radic;2 &asymp; 1,4142. La convergence est <strong>quadratique</strong> (le
+nombre de décimales correctes double à chaque itération).</p>
+
+<h3>Exercice 3 — Intégrale et série</h3>
+<pre><code>&int;<sub>0</sub><sup>1</sup> (x<sup>2</sup> + 2x) dx = [x<sup>3</sup>/3 + x<sup>2</sup>]<sub>0</sub><sup>1</sup> = 1/3 + 1 = <strong>4/3</strong></code></pre>
+<p>Pour la série &sum; ln(n)/n<sup>2</sup> : on a ln(n)/n<sup>2</sup> = o(1/n<sup>&alpha;</sup>)
+pour tout &alpha; &lt; 2. Comme &sum; 1/n<sup>3/2</sup> converge (Riemann,
+&alpha; = 3/2 &gt; 1) et que ln(n)/n<sup>2</sup> &lt; 1/n<sup>3/2</sup> pour
+n assez grand, on conclut par comparaison que la série <strong>converge</strong>.</p>
+
+<div class="exercice">
+  <strong>Exercice bonus.</strong> Étudier les variations de
+  g(x) = x &minus; ln(x). On trouve g'(x) = 1 &minus; 1/x, g passe par un minimum
+  en x = 1 (g(1) = 1). On en déduit l'inégalité classique
+  <code>ln(x) &le; x &minus; 1</code> pour tout x &gt; 0.
+</div>
+
+
+<div class="exemple">
+  <strong>Exemple illustratif.</strong> Les méthodes présentées ici (dérivation,
+  suites récurrentes, intégration) sont mobilisées dans de nombreux contextes :
+  calcul d'aires, vitesses instantanées, convergence d'algorithmes numériques.
+  Les appliquer à un cas concret aide à enraciner la démarche.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Limites à gauche/droite</strong> : toujours vérifier qu'elles
+        existent et coïncident avant de parler de limite.</li>
+    <li><strong>Suite récurrente</strong> : un point fixe &ell; n'est pas
+        nécessairement la limite de la suite (peut être répulsif).</li>
+    <li><strong>Primitive</strong> : ne pas oublier la constante d'intégration
+        pour une primitive générale ; elle s'élimine dans un calcul d'intégrale.</li>
+    <li><strong>Croissances comparées</strong> : pour x &rarr; +&infin;,
+        ln(x) &lt;&lt; x<sup>&alpha;</sup> &lt;&lt; e<sup>x</sup> (pour tout &alpha; &gt; 0).</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Le <strong>théorème des accroissements finis</strong> :
+      si f est continue sur [a, b] et dérivable sur ]a, b[, alors &exist; c &isin; ]a, b[
+      tel que f(b) &minus; f(a) = f'(c)(b &minus; a).</li>
+  <li>La <strong>règle de l'Hôpital</strong> lève les formes indéterminées
+      0/0 ou &infin;/&infin; en dérivant numérateur et dénominateur.</li>
+  <li>Les <strong>suites adjacentes</strong> (l'une croissante, l'autre
+      décroissante, leur différence tendant vers 0) convergent vers la même
+      limite.</li>
+  <li>En algorithmique, la <strong>méthode de Newton</strong> généralise la
+      méthode de Héron pour résoudre f(x) = 0 :</li>
+</ul>
+<pre><code>x<sub>n+1</sub> = x<sub>n</sub> &minus; f(x<sub>n</sub>)/f'(x<sub>n</sub>)</code></pre>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1976D2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/mathematiques/chapitre-01-analyse-i.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-05-algebre-lineaire-espaces/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Espaces vectoriels et matrices</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 6 / 6</div>
+          <a href="../examen-07-analyse-i-nombres-reels/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Nombres réels et suites</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

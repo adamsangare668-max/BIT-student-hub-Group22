@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calcul différentiel et intégral — Correction détaillée (Analyse II) — BIT Study HUB">
+  <title>Calcul différentiel et intégral — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Analyse II</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Calcul différentiel et intégral</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Analyse II · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-03.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>Le sujet propose une fonction de deux variables
+<code>f(x, y) = x<sup>2</sup>y + 3xy<sup>2</sup> &minus; 5x + 2y</code> et
+demande :</p>
+<ol>
+  <li>les dérivées partielles &part;f/&part;x et &part;f/&part;y ;</li>
+  <li>le gradient &nabla;f(1, 0) ;</li>
+  <li>les extrema locaux de <code>g(x, y) = x<sup>2</sup> + y<sup>2</sup> &minus; 2xy &minus; 6x + 4y + 5</code> ;</li>
+  <li>le calcul de l'intégrale double &int;&int;<sub>D</sub> (x + y) dx dy où D = [0, 1] &times; [0, 2].</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Dérivée partielle.</strong>
+  La dérivée partielle de f par rapport à x, notée &part;f/&part;x, est la
+  dérivée de f par rapport à x en considérant y comme constant. On l'obtient en
+  appliquant les règles de dérivation d'une fonction d'une variable, en
+  traitant y comme un paramètre.
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Dérivées partielles</strong> : appliquer les règles usuelles (somme, produit, chaîne) en fixant l'autre variable.</li>
+  <li><strong>Gradient</strong> : vecteur &nabla;f = (&part;f/&part;x, &part;f/&part;y). Il pointe dans la direction de plus forte pente.</li>
+  <li><strong>Extrema</strong> : annuler le gradient pour trouver les points critiques, puis étudier la matrice hessienne H pour classifier (minimum si det H &gt; 0 et &part;<sup>2</sup>f/&part;x<sup>2</sup> &gt; 0, maximum si det H &gt; 0 et &part;<sup>2</sup>f/&part;x<sup>2</sup> &lt; 0, point-selle si det H &lt; 0).</li>
+  <li><strong>Intégrale double</strong> : intégrer itérativement par le théorème de Fubini.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Question 1 — Dérivées partielles de f</h3>
+<pre><code>&part;f/&part;x = 2xy + 3y<sup>2</sup> &minus; 5
+&part;f/&part;y = x<sup>2</sup> + 6xy + 2</code></pre>
+
+<h3>Question 2 — Gradient en (1, 0)</h3>
+<pre><code>&part;f/&part;x (1, 0) = 2&middot;1&middot;0 + 3&middot;0 &minus; 5 = &minus;5
+&part;f/&part;y (1, 0) = 1 + 0 + 2 = 3
+&nabla;f(1, 0) = (&minus;5, 3)</code></pre>
+
+<h3>Question 3 — Extrema de g</h3>
+<pre><code>&part;g/&part;x = 2x &minus; 2y &minus; 6
+&part;g/&part;y = 2y &minus; 2x + 4</code></pre>
+<p>En résolvant le système &part;g/&part;x = 0 et &part;g/&part;y = 0, on
+trouve <code>x = 1, y = &minus;2</code>. La matrice hessienne est :</p>
+<pre><code>H = [ 2  &minus;2 ]
+    [&minus;2   2 ]
+det H = 4 &minus; 4 = 0</code></pre>
+<p>Le déterminant est nul : le test est non concluant. Cependant, en posant
+u = x &minus; y, on a <code>g = u<sup>2</sup> &minus; 6x + 4y + 5</code>.
+Le long de la droite x &minus; y = 4 (soit u = 4), g est constante et vaut
+16 &minus; 6x + 4(x &minus; 4) + 5 = 5. Il y a donc une droite de points
+critiques et aucun extremum strict : <strong>g présente une vallée</strong>.</p>
+
+<h3>Question 4 — Intégrale double</h3>
+<pre><code>&int;<sub>0</sub><sup>1</sup> &int;<sub>0</sub><sup>2</sup> (x + y) dy dx
+= &int;<sub>0</sub><sup>1</sup> [ xy + y<sup>2</sup>/2 ]<sub>0</sub><sup>2</sup> dx
+= &int;<sub>0</sub><sup>1</sup> (2x + 2) dx
+= [ x<sup>2</sup> + 2x ]<sub>0</sub><sup>1</sup>
+= 1 + 2 = <strong>3</strong></code></pre>
+
+<div class="exemple">
+  <strong>Exemple concret.</strong> Cette intégrale calcule la masse d'une
+  plaque carrée dont la densité surfacique est &rho;(x, y) = x + y. Le résultat
+  3 (en unités de masse) confirme l'intuition : la densité moyenne sur le
+  domaine [0,1]&times;[0,2] vaut 3/2 = 1,5 et l'aire vaut 2, donc masse = 3.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Ordre d'intégration</strong> : Fubini permet d'inverser l'ordre,
+        mais il faut adapter les bornes si le domaine n'est pas rectangulaire.</li>
+    <li><strong>Confusion gradient / dérivée directionnelle</strong> :
+        D<sub>u</sub>f = &nabla;f &middot; u<sup>0</sup> (produit scalaire avec un
+        vecteur unitaire).</li>
+    <li><strong>Hessienne</strong> : ne pas oublier le signe de
+        &part;<sup>2</sup>f/&part;x<sup>2</sup> pour distinguer minimum et maximum.</li>
+    <li><strong>Changement de variables</strong> : pour des domaines circulaires,
+        passer en coordonnées polaires (dx dy = r dr d&theta;).</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Le <strong>théorème de Schwarz</strong> assure que
+      &part;<sup>2</sup>f/&part;x&part;y = &part;<sup>2</sup>f/&part;y&part;x
+      lorsque f est de classe C<sup>2</sup>.</li>
+  <li>Les <strong>multiplicateurs de Lagrange</strong> permettent d'optimiser
+      sous contrainte g(x, y) = 0 en résolvant &nabla;f = &lambda; &nabla;g.</li>
+  <li>Les <strong>équations aux dérivées partielles</strong> (chaleur, onde,
+      Laplace) généralisent ces notions aux fonctions de plusieurs variables et
+      sont au cœur de la physique.</li>
+  <li>En machine learning, la <strong>descente de gradient</strong> utilise
+      &nabla;f pour minimiser une fonction de coût.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1976D2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/mathematiques/chapitre-02-analyse-ii.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-02-probabilites-distribution-normale-2/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Distribution Normale — Exercices</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 3 / 3</div>
+          <a href="../examen-04-analyse-ii-suites-series/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Suites et séries</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

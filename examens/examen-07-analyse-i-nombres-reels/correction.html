@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nombres réels et suites — Correction détaillée (Analyse I) — BIT Study HUB">
+  <title>Nombres réels et suites — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Analyse I</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Nombres réels et suites</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Analyse I · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-07.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>Le sujet traite des fondements de l'analyse réelle :</p>
+<ol>
+  <li>propriétés des nombres réels (borne sup, complétude) ;</li>
+  <li>étude de la suite u<sub>n</sub> = (1 + 1/n)<sup>n+1</sup> ;</li>
+  <li>théorème des gendarmes appliqué à v<sub>n</sub> = sin(n)/n ;</li>
+  <li>construction de l'ensemble &Rscr; via les coupures de Dedekind (question de cours).</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Borne supérieure.</strong>
+  Soit A une partie non vide majorée de &Rscr;. La borne supérieure de A,
+  notée sup(A), est le plus petit majorant de A : c'est un réel M tel que
+  (1) &forall; a &isin; A, a &le; M, et (2) &forall; &epsilon; &gt; 0, &exist; a &isin; A,
+  a &gt; M &minus; &epsilon;. L'existence de sup(A) pour toute partie non vide
+  majorée est l'axiome de la borne supérieure, qui caractérise &Rscr; parmi les
+  corps ordonnés.
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Bornes</strong> : identifier la propriété caractéristique et utiliser la définition avec &epsilon;.</li>
+  <li><strong>Suite monotone</strong> : étudier la monotonie (différence ou rapport u<sub>n+1</sub>/u<sub>n</sub>), puis appliquer le théorème de la limite monotone.</li>
+  <li><strong>Gendarmes</strong> : encadrer la suite entre deux suites de même limite.</li>
+  <li><strong>Complétude</strong> : toute suite de Cauchy réelle converge.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Question 1 — Borne sup de A = {1 &minus; 1/n : n &isin; &Nscr;<sup>*</sup>}</h3>
+<p>A est majorée par 1. Pour montrer que sup(A) = 1, on vérifie les deux
+propriétés :</p>
+<ul>
+  <li>(1) &forall; n &ge; 1, 1 &minus; 1/n &lt; 1, donc 1 majore A.</li>
+  <li>(2) Soit &epsilon; &gt; 0. Pour n &gt; 1/&epsilon;, on a 1/n &lt; &epsilon;,
+      donc 1 &minus; 1/n &gt; 1 &minus; &epsilon;. Ainsi &exist; a &isin; A avec
+      a &gt; 1 &minus; &epsilon;.</li>
+</ul>
+<p>Donc <strong>sup(A) = 1</strong>, qui n'appartient pas à A : A n'a pas de
+maximum.</p>
+
+<h3>Question 2 — Étude de u<sub>n</sub> = (1 + 1/n)<sup>n+1</sup></h3>
+<p>On montre (par étude de fonction logarithmique ou par inégalité classique)
+que u<sub>n</sub> est <strong>décroissante</strong> et minorée (par 1). Elle
+converge donc vers une limite &ell; &ge; 1. Or (1 + 1/n)<sup>n</sup> &rarr; e,
+donc (1 + 1/n)<sup>n+1</sup> = (1 + 1/n)<sup>n</sup> &middot; (1 + 1/n) &rarr; e &middot; 1 = e.
+Ainsi <strong>lim u<sub>n</sub> = e</strong>.</p>
+<p>Comme u<sub>n</sub> &gt; e pour tout n et (1 + 1/n)<sup>n</sup> &lt; e, on en
+déduit l'encadrement classique :</p>
+<pre><code>(1 + 1/n)<sup>n</sup> &lt; e &lt; (1 + 1/n)<sup>n+1</sup></code></pre>
+
+<h3>Question 3 — Limite de v<sub>n</sub> = sin(n)/n</h3>
+<p>On encadre : &minus;1/n &le; sin(n)/n &le; 1/n. Comme &minus;1/n &rarr; 0 et
+1/n &rarr; 0, le théorème des gendarmes donne <strong>v<sub>n</sub> &rarr; 0</strong>.
+La suite oscille autour de 0 avec une amplitude qui décroît en 1/n.</p>
+
+<h3>Question 4 — Construction de &Rscr; (coupures de Dedekind)</h3>
+<p>Une coupure de Dedekind est un couple (A, B) de parties non vides de &Qscr;
+telles que A &cap; B = &empty;, A &cup; B = &Qscr;, et tout élément de A est
+inférieur à tout élément de B. On identifie alors &Rscr; à l'ensemble des
+coupures de Dedekind de &Qscr;. Cette construction assure la complétude de &Rscr; :
+toute suite de Cauchy réelle converge, ce qui n'est pas le cas dans &Qscr;.</p>
+
+<div class="exemple">
+  <strong>Exemple concret.</strong> La coupure définissant &radic;2 est
+  A = {q &isin; &Qscr; : q &lt; 0 ou q<sup>2</sup> &lt; 2}, B = &Qscr; &setminus; A.
+  Cet « objet » n'est pas un rationnel mais appartient bien à &Rscr;.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Borne sup vs max</strong> : le maximum doit appartenir à
+        l'ensemble, pas la borne supérieure.</li>
+    <li><strong>Complétude</strong> : c'est la propriété clé qui distingue
+        &Rscr; de &Qscr;. &Qscr; est dénombrable mais non complet ;
+        &Rscr; est complet mais non dénombrable.</li>
+    <li><strong>Suite de Cauchy</strong> : &forall; &epsilon; &gt; 0, &exist; N,
+        &forall; p, q &ge; N, |u<sub>p</sub> &minus; u<sub>q</sub>| &lt; &epsilon;.</li>
+    <li><strong>Théorème de Bolzano-Weierstrass</strong> : toute suite bornée
+        admet une sous-suite convergente.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Les <strong>nombres p-adiques</strong> &Qscr;<sub>p</sub> complètent &Qscr;
+      pour une autre distance (la valuation p-adique).</li>
+  <li>Les <strong>hyperréels</strong> étendent &Rscr; avec des infiniment petits
+      et grands (analyse non standard).</li>
+  <li>L'<strong>axiome du choix</strong>, l'<strong>hypothèse du continu</strong>
+      : 2<sup>&alefsym;<sub>0</sub></sup> = &alefsym;<sub>1</sub> est indécidable
+      dans ZFC.</li>
+  <li>Les suites réelles sont la base de l'analyse numérique : convergence de
+      méthodes itératives (point fixe, Newton, dichotomie).</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1976D2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/mathematiques/chapitre-01-analyse-i.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-06-analyse-i-calcul-differentiel/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Calcul différentiel et suites numériques</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 7 / 7</div>
+          <a href="../examen-08-analyse-i-ds/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>DS Analyse I</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

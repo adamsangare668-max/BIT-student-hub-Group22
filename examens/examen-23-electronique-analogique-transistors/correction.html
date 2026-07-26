@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Transistors et amplificateurs — Correction détaillée (Électronique Analogique) — BIT Study HUB">
+  <title>Transistors et amplificateurs — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #7E57C2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #7E57C2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #7E57C2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #7E57C2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #7E57C2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #7E57C2; background: color-mix(in srgb, #7E57C2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #7E57C2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #7E57C2 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Électronique Analogique</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Transistors et amplificateurs</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Électronique Analogique · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-23.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>L'examen porte sur le transistor bipolaire (BJT) et l'amplificateur
+émetteur commun :</p>
+<ol>
+  <li>calculer le point de polarisation (IC, VCE) d'un montage émetteur commun ;</li>
+  <li>calculer le gain en tension AV = V<sub>out</sub>/V<sub>in</sub> ;</li>
+  <li>tracer les droites de charge statique et dynamique ;</li>
+  <li>analyser l'effet d'une résistance d'émetteur non découplée.</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Transistor bipolaire (BJT).</strong>
+  Le transistor bipolaire NPN est un dispositif à 3 bornes (émetteur E, base B,
+  collecteur C) commandé en courant : un faible courant de base I<sub>B</sub>
+  contrôle un courant de collecteur I<sub>C</sub> = &beta; &middot; I<sub>B</sub>
+  (&beta; = gain en courant, typiquement 100-300). Il fonctionne en 3 régions :
+  <em>blocage</em> (I<sub>C</sub> = 0), <em>active</em> (amplification linéaire,
+  V<sub>BE</sub> &asymp; 0,7 V) et <em>saturation</em> (V<sub>CE</sub> &asymp; 0,2 V,
+  utilisé en commutation).
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Polarisation</strong> : calculer I<sub>B</sub>, puis I<sub>C</sub> = &beta;I<sub>B</sub>, puis V<sub>CE</sub> = V<sub>CC</sub> &minus; R<sub>C</sub>I<sub>C</sub> &minus; R<sub>E</sub>I<sub>E</sub>.</li>
+  <li><strong>Point de repos Q</strong> : (I<sub>C0</sub>, V<sub>CE0</sub>) au milieu de la droite de charge pour un maximum de dynamique.</li>
+  <li><strong>Modèle petit signal</strong> : remplacer le transistor par r<sub>&pi;</sub> = V<sub>T</sub>/I<sub>B</sub> et g<sub>m</sub> = I<sub>C</sub>/V<sub>T</sub> (V<sub>T</sub> &asymp; 26 mV à 300 K).</li>
+  <li><strong>Gain</strong> : A<sub>V</sub> = &minus;g<sub>m</sub> &middot; R<sub>C</sub> (émetteur commun découplé), ou &minus;R<sub>C</sub>/R<sub>E</sub> (non découplé).</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Question 1 — Point de polarisation</h3>
+<p>Soit V<sub>CC</sub> = 12 V, R<sub>C</sub> = 4 k&Omega;, R<sub>E</sub> = 1 k&Omega;,
+pont de base équivalent V<sub>TH</sub> = 2 V, R<sub>TH</sub> = 20 k&Omega;,
+&beta; = 200, V<sub>BE</sub> = 0,7 V.</p>
+<p>Équation de la maille base-émetteur :</p>
+<pre><code>V<sub>TH</sub> = R<sub>TH</sub> &middot; I<sub>B</sub> + V<sub>BE</sub> + R<sub>E</sub> &middot; I<sub>E</sub>
+avec I<sub>E</sub> = (&beta; + 1) I<sub>B</sub> &asymp; &beta; I<sub>B</sub>
+
+I<sub>B</sub> = (V<sub>TH</sub> &minus; V<sub>BE</sub>) / (R<sub>TH</sub> + (&beta;+1) R<sub>E</sub>)
+         = (2 &minus; 0,7) / (20 k + 201 &times; 1 k)
+         = 1,3 / 221 k = 5,88 &mu;A
+
+I<sub>C</sub> = &beta; &middot; I<sub>B</sub> = 200 &times; 5,88 &mu;A = 1,18 mA
+
+V<sub>CE</sub> = V<sub>CC</sub> &minus; R<sub>C</sub> I<sub>C</sub> &minus; R<sub>E</sub> I<sub>E</sub>
+       &asymp; 12 &minus; 4 k &times; 1,18 mA &minus; 1 k &times; 1,18 mA
+       = 12 &minus; 4,72 &minus; 1,18 = <strong>6,10 V</strong></code></pre>
+<p>Point Q : <strong>I<sub>C0</sub> &asymp; 1,18 mA, V<sub>CE0</sub> &asymp; 6,1 V</strong>.
+Bien centré sur la droite de charge (V<sub>CE</sub> entre 0 et 12 V).</p>
+
+<h3>Question 2 — Gain en tension</h3>
+<p>Si R<sub>E</sub> est découplée par un condensateur, le gain est :</p>
+<pre><code>A<sub>V</sub> = &minus;g<sub>m</sub> &middot; R<sub>C</sub>  avec  g<sub>m</sub> = I<sub>C0</sub> / V<sub>T</sub> = 1,18 mA / 26 mV = 45,4 mS
+A<sub>V</sub> = &minus;45,4 mS &times; 4 k&Omega; = <strong>&minus;181</strong></code></pre>
+<p>Le signe négatif indique une inversion de phase (180&deg;). Pour un gain
+plus stable, on laisse une partie de R<sub>E</sub> non découplée :</p>
+<pre><code>A<sub>V</sub> = &minus;R<sub>C</sub> / R<sub>E</sub> = &minus;4 k&Omega; / 1 k&Omega; = <strong>&minus;4</strong></code></pre>
+<p>Le gain dépend alors uniquement des résistances, indépendamment de &beta;,
+de la température et de la dispersion des transistors.</p>
+
+<h3>Question 3 — Droites de charge</h3>
+<p><strong>Droite statique</strong> : V<sub>CE</sub> = V<sub>CC</sub> &minus; (R<sub>C</sub> + R<sub>E</sub>) I<sub>C</sub>.</p>
+<ul>
+  <li>I<sub>C</sub> = 0 &rarr; V<sub>CE</sub> = 12 V</li>
+  <li>V<sub>CE</sub> = 0 &rarr; I<sub>C</sub> = 12 / (4 k + 1 k) = 2,4 mA</li>
+</ul>
+<p>Le point Q (1,18 mA ; 6,1 V) est sur cette droite, au milieu.</p>
+<p><strong>Droite dynamique</strong> (avec condensateur de découplage sur R<sub>E</sub>) :
+V<sub>CE</sub> = V<sub>CE0</sub> &minus; R<sub>C</sub> &Delta;I<sub>C</sub>.
+Elle est plus pentue (pente &minus;1/R<sub>C</sub>) et détermine l'amplitude
+maximale non distordue du signal de sortie (env. &plusmn;6 V ici, soit 12 V<sub>crête-à-crête</sub>).</p>
+
+<h3>Question 4 — Effet d'une R<sub>E</sub> non découplée</h3>
+<p>Si R<sub>E</sub> = 1 k&Omega; n'est pas découplée :</p>
+<ul>
+  <li>Le gain chute de &minus;181 à &minus;4 (plus stable mais plus faible).</li>
+  <li>L'impédance d'entrée augmente : r<sub>in</sub> = r<sub>&pi;</sub> + (&beta;+1) R<sub>E</sub>
+      &asymp; 4,4 k + 201 &times; 1 k = 205 k&Omega;.</li>
+  <li>La contre-réaction améliore la linéarité, la stabilité thermique et la
+      bande passante, au prix du gain.</li>
+</ul>
+<p>C'est un compromis classique en conception analogique : <em>gain vs stabilité</em>.</p>
+
+<div class="exemple">
+  <strong>Exemple appliqué.</strong> Les amplificateurs opérationnels (AOP)
+  intègrent plusieurs étages à transistors : différentiel en entrée (gain élevé,
+  CMRR), étage de gain en tension (émetteur commun), étage de puissance
+  (push-pull AB). Le tout en contre-réaction négative pour stabiliser le gain
+  et l'impédance.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>V<sub>BE</sub> &asymp; 0,7 V</strong> : approximation valable
+        pour le silicium à courant modéré. Diminue d'environ 2 mV/&deg;C.</li>
+    <li><strong>Effet Early</strong> : I<sub>C</sub> dépend légèrement de V<sub>CE</sub>
+        (résistance de sortie r<sub>0</sub> = V<sub>A</sub>/I<sub>C</sub>).</li>
+    <li><strong>Découplage</strong> : le condensateur C<sub>E</sub> en parallèle
+        de R<sub>E</sub> court-circuite R<sub>E</sub> en AC, augmentant le gain.</li>
+    <li><strong>Stabilité thermique</strong> : le point Q doit être stable en
+        température ; la polarisation par pont de base est robuste.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Les transistors <strong>MOSFET</strong> (à effet de champ) commandés en
+      tension sont utilisés en logique CMOS et en puissance.</li>
+  <li>Les <strong>amplificateurs différentiels</strong> sont à la base des AOP
+      (LM741, TL081, AD8055).</li>
+  <li>La <strong>contre-réaction</strong> (Black, 1934) est universelle :
+      A<sub>fermé</sub> = A / (1 + &beta;A), et améliore stabilité, bande
+      passante, impédances au prix du gain.</li>
+  <li>Les <strong>classes d'amplification</strong> (A, B, AB, C, D) diffèrent
+      par le taux de conduction et le rendement (50 %, 78 %, ...).</li>
+  <li>Outils : <strong>SPICE</strong> (LTspice, ngspice) pour la simulation,
+      <strong>gEDA</strong>/<strong>KiCad</strong> pour le schéma et le routage.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #7E57C2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/electronique-analogique/chapitre-01-introduction.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-22-electronique-numerique-logique/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Logique combinatoire</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 23 / 23</div>
+          <a href="../examen-24-optique-lentilles/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Lentilles et miroirs</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

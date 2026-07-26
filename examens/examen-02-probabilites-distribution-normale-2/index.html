@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Probabilités et Statistiques — Distribution Normale — Exercices (Examen, S2, 2025-2026) — BIT Study HUB">
+  <title>Distribution Normale — Exercices — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white;">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Probabilités et Statistiques</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Distribution Normale — Exercices</span>
+        </nav>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4);">
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white">Examen</span>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white">S2</span>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white">2025-2026</span>
+        <span class="badge" style="background: rgba(255, 255, 255, 0.25); color: white"><svg width="12" height="12" aria-hidden="true"><use href="#icon-check"/></svg> Avec corrigé</span>
+        </div>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2)">Distribution Normale — Exercices</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Probabilités et Statistiques · Examen · S2 · 2025-2026</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-6); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-primary btn-lg" style="background: white; color: #1976D2; border-color: white;">
+            <svg width="18" height="18" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="correction.html" class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="18" height="18" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+            Voir la correction
+          </a>
+          <a href="../../exams-images/examen-02.jpeg" download class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="18" height="18" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 2fr 1fr; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu principal -->
+          <div>
+            <!-- Aperçu du sujet -->
+            <div class="card mb-6" style="padding: var(--space-4);">
+              <h2 style="margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2); color: #1976D2;">
+                <svg width="22" height="22" aria-hidden="true"><use href="#icon-image"/></svg>
+                Aperçu du sujet
+              </h2>
+              <a href="sujet.html" style="display: block; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--bit-border);">
+                <img src="../../exams-images/examen-02.jpeg" alt="Sujet : Distribution Normale — Exercices" style="width: 100%; height: auto; display: block; background: var(--bit-bg-alt); max-height: 600px; object-fit: contain;">
+              </a>
+              <p style="text-align: center; color: var(--bit-text-muted); font-size: var(--fs-sm); margin-top: var(--space-3);">
+                Cliquez sur l'image pour ouvrir la visionneuse interactive (zoom, rotation, navigation)
+              </p>
+            </div>
+
+            <!-- À propos -->
+            <div class="card mb-6" style="padding: var(--space-6);">
+              <h2 style="margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2); color: #1976D2;">
+                <svg width="22" height="22" aria-hidden="true"><use href="#icon-info"/></svg>
+                À propos de cet examen
+              </h2>
+              <p>Cet examen aborde la <strong>loi normale</strong>, loi continue centrale en probabilités et statistiques. Vous y manipulerez les notions d'espérance, d'écart-type, de fonction de répartition et de centrage-réduction via la variable Z. La résolution s'appuie fortement sur la <strong>table de la loi normale centrée réduite</strong>.</p>
+              <p>Les applications sont nombreuses en gestion, en fiabilité et en machine learning : modélisation du bruit, intervalles de confiance, tests d'hypothèses. L'examen entraîne à la lecture critique d'énoncés concrets (demande d'une plateforme, taille d'une population, temps de service).</p>
+              <p>Maîtriser la loi normale est une compétence transversale : elle réapparaît en échantillonnage, en contrôle qualité (six-sigma), en finance (modèle de Black-Scholes) et même en ML (initialisation des poids, hypothèse gaussienne des modèles linéaires).</p>
+            </div>
+
+            <!-- Comment utiliser -->
+            <div class="card" style="padding: var(--space-6); border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft);">
+              <h2 style="margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2);">
+                <svg width="22" height="22" style="color: var(--bit-accent)" aria-hidden="true"><use href="#icon-lightbulb"/></svg>
+                Comment utiliser cette ressource
+              </h2>
+              <ol style="margin-left: 0; padding-left: 1.2em;">
+                <li style="margin-bottom: var(--space-2);"><strong>Lisez le sujet en entier</strong> avant de commencer, en identifiant les questions faciles et difficiles.</li>
+                <li style="margin-bottom: var(--space-2);"><strong>Tentez d'abord l'examen sans la correction</strong>, en conditions réelles (durée, sans téléphone).</li>
+                <li style="margin-bottom: var(--space-2);"><strong>Comparez ensuite avec la correction</strong> et notez vos erreurs pour ne pas les reproduire.</li>
+                <li style="margin-bottom: var(--space-2);"><strong>Refaites les questions ratées</strong> en understandsant chaque étape, pas en recopiant.</li>
+                <li style="margin-bottom: var(--space-2);"><strong>Travaillez en groupe</strong> pour expliquer vos raisonnements : enseigner, c'est apprendre deux fois.</li>
+                <li><strong>Conservez vos fiches de révision</strong> et relisez-les régulièrement (répétition espacée).</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2);">
+                <svg width="18" height="18" style="color: #1976D2" aria-hidden="true"><use href="#icon-info"/></svg>
+                Informations
+              </h4>
+              <div class="list-item" style="padding: var(--space-3) 0;">
+                <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-book"/></svg></div>
+                <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Matière</div><div class="list-item-meta">Probabilités et Statistiques</div></div>
+              </div>
+              <div class="list-item" style="padding: var(--space-3) 0;">
+                <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-exam"/></svg></div>
+                <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Type</div><div class="list-item-meta">Examen</div></div>
+              </div>
+              <div class="list-item" style="padding: var(--space-3) 0;">
+                <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-calendar"/></svg></div>
+                <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Semestre</div><div class="list-item-meta">S2</div></div>
+              </div>
+              <div class="list-item" style="padding: var(--space-3) 0;">
+                <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-clock"/></svg></div>
+                <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Année universitaire</div><div class="list-item-meta">2025-2026</div></div>
+              </div>
+              <div class="list-item" style="padding: var(--space-3) 0;">
+                <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-user"/></svg></div>
+                <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Contributeur</div><div class="list-item-meta">Moussa T.</div></div>
+              </div>
+              <div class="list-item" style="padding: var(--space-3) 0;">
+                <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Vues</div><div class="list-item-meta">137</div></div>
+              </div>
+              <div class="list-item" style="padding: var(--space-3) 0;">
+                <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-download"/></svg></div>
+                <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Téléchargements</div><div class="list-item-meta">22</div></div>
+              </div>
+              <div class="list-item" style="padding: var(--space-3) 0;">
+                <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-shield"/></svg></div>
+                <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Statut</div><div class="list-item-meta"><span style="color: var(--bit-text-muted)">Non vérifié</span></div></div>
+              </div>
+              <a href="../../cours/mathematiques/chapitre-05-probabilites-amp-statistiques.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-lightbulb"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">Besoin d'aide ?</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Discutez avec vos camarades sur le groupe Telegram de la filière CS.
+                  </p>
+                  <a href="correction.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+                    Voir la correction
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-01-probabilites-distribution-normale/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Distribution Normale — Exercice 3</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 2 / 2</div>
+          <a href="../examen-03-analyse-ii-calcul-differentiel/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Calcul différentiel et intégral</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

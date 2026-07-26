@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TP C — Structures et fichiers — Sujet (Langage C, TP, S1) — BIT Study HUB">
+  <title>TP C — Structures et fichiers — Sujet — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #3776AB 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Langage C</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Sujet</span>
+        </nav>
+        <span class="badge" style="background: rgba(255,255,255,0.15); color: white; margin-bottom: var(--space-3)">Sujet d'examen</span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">TP C — Structures et fichiers</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Langage C · TP · S1 · 2025-2026</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Visionneuse -->
+          <div>
+            <div class="image-viewer" id="image-viewer" style="border: 1px solid var(--bit-border);">
+              <div style="background: var(--bit-bg-alt); display: flex; align-items: center; justify-content: center; min-height: 400px; padding: var(--space-4);">
+                <img id="exam-image" src="../../exams-images/examen-16.jpeg" alt="Sujet d'examen : TP C — Structures et fichiers" style="width: 100%; max-height: 80vh; object-fit: contain; transition: transform 0.3s ease;">
+              </div>
+              <div class="image-viewer-controls">
+                <div>
+                  <span class="text-muted text-sm">
+                    <svg width="14" height="14" style="vertical-align: middle" aria-hidden="true"><use href="#icon-file"/></svg>
+                    examen-16-langage-c-tp-structures.jpeg
+                  </span>
+                </div>
+                <div style="display: flex; gap: var(--space-2); align-items: center;">
+                  <button class="btn btn-ghost btn-sm" id="zoom-out" title="Dézoomer" aria-label="Dézoomer">
+                    <svg width="16" height="16" aria-hidden="true"><use href="#icon-zoom-out"/></svg>
+                  </button>
+                  <span class="text-sm font-mono" id="zoom-level" style="min-width: 50px; text-align: center;">100%</span>
+                  <button class="btn btn-ghost btn-sm" id="zoom-in" title="Zoomer" aria-label="Zoomer">
+                    <svg width="16" height="16" aria-hidden="true"><use href="#icon-zoom-in"/></svg>
+                  </button>
+                  <button class="btn btn-ghost btn-sm" id="rotate" title="Rotation" aria-label="Pivoter">
+                    <svg width="16" height="16" aria-hidden="true"><use href="#icon-rotate"/></svg>
+                  </button>
+                  <a href="../../exams-images/examen-16.jpeg" download="examen-16-langage-c-tp-structures.jpeg" class="btn btn-ghost btn-sm" title="Télécharger" aria-label="Télécharger">
+                    <svg width="16" height="16" aria-hidden="true"><use href="#icon-download"/></svg>
+                  </a>
+                </div>
+                <div>
+                  <span class="badge badge-info">TP</span>
+                  <span class="badge badge-neutral">S1</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top: var(--space-6); padding: var(--space-5);">
+              <h3 style="margin-bottom: var(--space-3); display: flex; align-items: center; gap: var(--space-2); color: #3776AB;">
+                <svg width="20" height="20" aria-hidden="true"><use href="#icon-lightbulb"/></svg>
+                Conseils pour le sujet
+              </h3>
+              <ul style="padding-left: 1.5em; margin: 0;">
+                <li style="margin-bottom: var(--space-2);">Lisez attentivement l'énoncé et surlignez les mots-clés (calculer, démontrer, justifier).</li>
+                <li style="margin-bottom: var(--space-2);">Numérotez vos réponses et rédigez proprement (le correcteur doit vous comprendre).</li>
+                <li style="margin-bottom: var(--space-2);">Justifiez chaque étape : une réponse sans calcul peut être sanctionnée.</li>
+                <li style="margin-bottom: var(--space-2);">Vérifiez vos résultats (ordre de grandeur, unités, cohérence).</li>
+                <li>Gérez votre temps : ne restez pas bloqué sur une question, revenez-y plus tard.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sidebar Aller à -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #3776AB" aria-hidden="true"><use href="#icon-list"/></svg>
+                Aller à
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="correction.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Solution détaillée</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil de l'examen</div></div>
+                </a>
+              </div>
+              <a href="../../../../examens.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-4)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                Tous les examens
+              </a>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-15-langage-c-pointeurs/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Pointeurs et tableaux</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 16 / 16</div>
+          <a href="../examen-17-architecture-processeur/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Processeur et mémoire</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+
+    // Visionneuse d'image : zoom + rotation
+    (function() {
+      const img = document.getElementById('exam-image');
+      const zoomLevel = document.getElementById('zoom-level');
+      let zoom = 100, rotation = 0;
+
+      function update() {
+        img.style.transform = `rotate(${rotation}deg) scale(${zoom / 100})`;
+        zoomLevel.textContent = zoom + '%';
+      }
+      document.getElementById('zoom-in').addEventListener('click', () => {
+        zoom = Math.min(zoom + 25, 300); update();
+      });
+      document.getElementById('zoom-out').addEventListener('click', () => {
+        zoom = Math.max(zoom - 25, 25); update();
+      });
+      document.getElementById('rotate').addEventListener('click', () => {
+        rotation = (rotation + 90) % 360; update();
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === '+' || e.key === '=') { zoom = Math.min(zoom + 25, 300); update(); }
+        if (e.key === '-') { zoom = Math.max(zoom - 25, 25); update(); }
+        if (e.key === 'r' || e.key === 'R') { rotation = (rotation + 90) % 360; update(); }
+      });
+    })();
+  </script>
+</body>
+</html>

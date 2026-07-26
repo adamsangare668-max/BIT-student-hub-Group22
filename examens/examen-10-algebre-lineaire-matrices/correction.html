@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Matrices et déterminants — Correction détaillée (Algèbre Linéaire) — BIT Study HUB">
+  <title>Matrices et déterminants — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #1976D2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #1976D2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #1976D2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #1976D2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #1976D2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #1976D2; background: color-mix(in srgb, #1976D2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #1976D2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #1976D2 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Algèbre Linéaire</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Matrices et déterminants</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Algèbre Linéaire · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-10.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>Le sujet porte sur les matrices et déterminants :</p>
+<ol>
+  <li>calcul du déterminant de A = [[2, 1, 0], [1, 3, 1], [0, 1, 2]] ;</li>
+  <li>inversion de A par la méthode des cofacteurs ;</li>
+  <li>résolution du système A&middot;X = b avec b = (1, 2, 3) par la règle de Cramer ;</li>
+  <li>diagonalisation de B = [[2, 1], [1, 2]].</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Déterminant.</strong>
+  Le déterminant d'une matrice carrée A d'ordre n est un scalaire noté det(A)
+  qui mesure le volume orienté du parallélépipède formé par les vecteurs
+  colonnes de A. Il est nul si et seulement si A n'est pas inversible. Pour une
+  matrice 3&times;3, on utilise la règle de Sarrus ou le développement par cofacteurs.
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Déterminant 3&times;3</strong> : règle de Sarrus ou développement par cofacteurs.</li>
+  <li><strong>Inversion</strong> : A<sup>&minus;1</sup> = (1/det A) &middot; <sup>t</sup>com(A), où com(A) est la comatrice.</li>
+  <li><strong>Règle de Cramer</strong> : x<sub>i</sub> = det(A<sub>i</sub>)/det(A), où A<sub>i</sub> est A avec la i-ème colonne remplacée par b.</li>
+  <li><strong>Diagonalisation</strong> : calculer le polynôme caractéristique, les valeurs propres, les sous-espaces propres.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Question 1 — Déterminant de A</h3>
+<p>Par développement selon la première ligne :</p>
+<pre><code>det(A) = 2&middot;det[[3,1],[1,2]] &minus; 1&middot;det[[1,1],[0,2]] + 0
+       = 2&middot;(6&minus;1) &minus; 1&middot;(2&minus;0) + 0
+       = 10 &minus; 2 = <strong>8</strong></code></pre>
+<p>det(A) &ne; 0, donc A est inversible.</p>
+
+<h3>Question 2 — Inversion par cofacteurs</h3>
+<p>On calcule la comatrice. Les cofacteurs :</p>
+<pre><code>C<sub>11</sub> = +det[[3,1],[1,2]] = 5    C<sub>12</sub> = &minus;det[[1,1],[0,2]] = &minus;2    C<sub>13</sub> = +det[[1,3],[0,1]] = 1
+C<sub>21</sub> = &minus;det[[1,0],[1,2]] = &minus;2    C<sub>22</sub> = +det[[2,0],[0,2]] = 4     C<sub>23</sub> = &minus;det[[2,1],[0,1]] = &minus;2
+C<sub>31</sub> = +det[[1,0],[3,1]] = 1     C<sub>32</sub> = &minus;det[[2,0],[1,1]] = &minus;2    C<sub>33</sub> = +det[[2,1],[1,3]] = 5</code></pre>
+<p>D'où la transposée (comatrice) :</p>
+<pre><code>A<sup>&minus;1</sup> = (1/8) &middot; [[5, &minus;2, 1],
+                  [&minus;2, 4, &minus;2],
+                  [1, &minus;2, 5]]</code></pre>
+<p>Vérification : A &middot; A<sup>&minus;1</sup> = I<sub>3</sub>.</p>
+
+<h3>Question 3 — Règle de Cramer</h3>
+<p>Avec b = (1, 2, 3)<sup>T</sup>, on remplace chaque colonne :</p>
+<pre><code>A<sub>1</sub> = [[1,1,0],[2,3,1],[3,1,2]] &rArr; det(A<sub>1</sub>) = 1&middot;5 &minus; 1&middot;1 + 0 = 4   &rArr; x<sub>1</sub> = 4/8 = 1/2
+A<sub>2</sub> = [[2,1,0],[1,2,1],[0,3,2]] &rArr; det(A<sub>2</sub>) = 2&middot;1 &minus; 1&middot;2 + 0 = 0    &rArr; x<sub>2</sub> = 0/8 = 0
+A<sub>3</sub> = [[2,1,1],[1,3,2],[0,1,3]] &rArr; det(A<sub>3</sub>) = 2&middot;7 &minus; 1&middot;3 + 1&middot;1 = 12  &rArr; x<sub>3</sub> = 12/8 = 3/2</code></pre>
+<p>La solution est <strong>X = (1/2, 0, 3/2)</strong>. Vérification :
+2&middot;(1/2) + 1&middot;0 + 0 = 1 ✓, etc.</p>
+
+<h3>Question 4 — Diagonalisation de B = [[2, 1], [1, 2]]</h3>
+<p>Polynôme caractéristique :</p>
+<pre><code>&chi;<sub>B</sub>(&lambda;) = det(B &minus; &lambda;I) = (2&minus;&lambda;)<sup>2</sup> &minus; 1 = &lambda;<sup>2</sup> &minus; 4&lambda; + 3 = (&lambda;&minus;1)(&lambda;&minus;3)</code></pre>
+<p>Valeurs propres : &lambda;<sub>1</sub> = 1, &lambda;<sub>2</sub> = 3. Vecteurs
+propres associés :</p>
+<ul>
+  <li>Pour &lambda;<sub>1</sub> = 1 : (B &minus; I)v = 0 &rArr; v = (1, &minus;1).</li>
+  <li>Pour &lambda;<sub>2</sub> = 3 : (B &minus; 3I)v = 0 &rArr; v = (1, 1).</li>
+</ul>
+<p>La matrice de passage P = [[1, 1], [&minus;1, 1]] diagonalise B :</p>
+<pre><code>P<sup>&minus;1</sup>BP = [[1, 0], [0, 3]] = D</code></pre>
+<p>B est donc diagonalisable, avec spectre {1, 3}.</p>
+
+<div class="exemple">
+  <strong>Exemple appliqué.</strong> La diagonalisation simplifie le calcul des
+  puissances : B<sup>n</sup> = P&middot;D<sup>n</sup>&middot;P<sup>&minus;1</sup>.
+  Par exemple, B<sup>10</sup> = P&middot;diag(1, 59049)&middot;P<sup>&minus;1</sup>
+  se calcule en quelques opérations.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Déterminant et inversibilité</strong> : A inversible &hArr; det(A) &ne; 0.</li>
+    <li><strong>Multiplicativité</strong> : det(AB) = det(A)&middot;det(B).</li>
+    <li><strong>Cofacteurs</strong> : bien respecter le signe (&minus;1)<sup>i+j</sup>.</li>
+    <li><strong>Diagonalisation</strong> : une matrice est diagonalisable si la
+        somme des dimensions des sous-espaces propres égale n.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Le <strong>théorème spectral</strong> : toute matrice symétrique réelle
+      est diagonalisable dans une base orthonormée.</li>
+  <li>La <strong>Jordanisation</strong> généralise la diagonalisation aux
+      matrices non diagonalisables.</li>
+  <li>Les <strong>valeurs singulières</strong> (SVD) étendent la diagonalisation
+      aux matrices rectangulaires.</li>
+  <li>Les matrices apparaissent partout : systèmes d'équations, graphes
+      (matrice d'adjacence), mécanique quantique, machine learning.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #1976D2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/mathematiques/chapitre-04-algebre-lineaire-l1.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-09-algebre-generale-structures/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Structures algébriques</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 10 / 10</div>
+          <a href="../examen-11-algorithmique-structures-controle/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Structures de contrôle</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

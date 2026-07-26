@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modèle OSI et TCP/IP — Correction détaillée (Réseaux Informatiques) — BIT Study HUB">
+  <title>Modèle OSI et TCP/IP — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #FF7043; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #FF7043; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #FF7043; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #FF7043; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #FF7043; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #FF7043; background: color-mix(in srgb, #FF7043 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #FF7043; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #FF7043 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Réseaux Informatiques</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Modèle OSI et TCP/IP</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Réseaux Informatiques · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-20.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>L'examen sur les réseaux porte sur les modèles OSI et TCP/IP :</p>
+<ol>
+  <li>décrire les 7 couches du modèle OSI ;</li>
+  <li>comparer avec le modèle TCP/IP à 4 couches ;</li>
+  <li>analyser une trame Ethernet et un paquet IP ;</li>
+  <li>expliquer le fonctionnement du three-way handshake TCP.</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Modèle OSI.</strong>
+  Le modèle OSI (Open Systems Interconnection), normalisé par l'ISO en 1984,
+  est un modèle de référence en 7 couches qui décrit les fonctions d'un système
+  de communication réseau. Chaque couche offre des services à la couche
+  supérieure et utilise ceux de la couche inférieure. C'est un cadre théorique
+  qui sert de base à l'enseignement et à la standardisation des protocoles.
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Mémoriser</strong> les 7 couches OSI (mnémonique : « Pour Le Réseau Tout N'est Pas Si Simple »).</li>
+  <li><strong>Associer</strong> à chaque couche des protocoles et équipements.</li>
+  <li><strong>Comprendre l'encapsulation</strong> : chaque couque ajoute son en-tête.</li>
+  <li><strong>Comparer</strong> avec TCP/IP (4 couches) : Application, Transport, Internet, Accès réseau.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Question 1 — Les 7 couches du modèle OSI</h3>
+<table>
+  <tr><th>#</th><th>Couche</th><th>Rôle</th><th>Protocoles</th><th>Équipements</th></tr>
+  <tr><td>7</td><td>Application</td><td>Interface utilisateur</td><td>HTTP, FTP, SMTP, DNS, SSH</td><td>Pare-feu applicatif, proxy</td></tr>
+  <tr><td>6</td><td>Présentation</td><td>Codage, chiffrement, compression</td><td>TLS/SSL, JPEG, ASCII</td><td>Passerelle</td></tr>
+  <tr><td>5</td><td>Session</td><td>Gestion des sessions</td><td>NetBIOS, RPC, SOCKS</td><td>—</td></tr>
+  <tr><td>4</td><td>Transport</td><td>Transmission de bout en bout, fiabilité</td><td>TCP, UDP, QUIC</td><td>Pare-feu, proxy</td></tr>
+  <tr><td>3</td><td>Réseau</td><td>Routage, adressage logique</td><td>IPv4, IPv6, ICMP, OSPF</td><td>Routeur, L3 switch</td></tr>
+  <tr><td>2</td><td>Liaison</td><td>Transmission de trames sur un support</td><td>Ethernet, Wi-Fi, PPP, ARP</td><td>Switch, pont, AP</td></tr>
+  <tr><td>1</td><td>Physique</td><td>Transmission des bits</td><td>10BASE-T, 1000BASE-T, fiber</td><td>Hub, répéteur, câbles</td></tr>
+</table>
+
+<h3>Question 2 — Comparaison OSI vs TCP/IP</h3>
+<table>
+  <tr><th>OSI</th><th>TCP/IP</th><th>Exemples</th></tr>
+  <tr><td>7 Application</td><td rowspan="3">4 Application</td><td rowspan="3">HTTP, DNS, SMTP</td></tr>
+  <tr><td>6 Présentation</td></tr>
+  <tr><td>5 Session</td></tr>
+  <tr><td>4 Transport</td><td>3 Transport</td><td>TCP, UDP</td></tr>
+  <tr><td>3 Réseau</td><td>2 Internet</td><td>IP, ICMP</td></tr>
+  <tr><td>2 Liaison</td><td rowspan="2">1 Accès réseau</td><td rowspan="2">Ethernet, Wi-Fi</td></tr>
+  <tr><td>1 Physique</td></tr>
+</table>
+<p>TCP/IP est plus pragmatique : les couches 5, 6, 7 d'OSI sont fusionnées dans
+la couche Application, et les couches 1, 2 dans Accès réseau. TCP/IP est
+<em>implémenté</em> (Internet réel) tandis qu'OSI est <em>théorique</em>.</p>
+
+<h3>Question 3 — Encapsulation d'une requête HTTP</h3>
+<p>Soit une requête HTTP GET vers http://exemple.com/index.html :</p>
+<ol>
+  <li><strong>Application</strong> : « GET /index.html HTTP/1.1\r\nHost: exemple.com\r\n\r\n »</li>
+  <li><strong>Transport</strong> : ajout en-tête TCP (port source 54321, port dest 80, seq, ack, flags SYN/ACK/PSH).</li>
+  <li><strong>Réseau</strong> : ajout en-tête IP (IP source 192.168.1.10, IP dest 93.184.216.34, TTL 64).</li>
+  <li><strong>Liaison</strong> : ajout en-tête Ethernet (MAC source AA:BB:CC:DD:EE:FF, MAC dest MAC du routeur, type 0x0800).</li>
+  <li><strong>Physique</strong> : conversion en signaux électriques (câble cuivre) ou lumineux (fibre).</li>
+</ol>
+<p>À la réception, chaque couche décapsule : Ethernet lit son en-tête et
+transmet le paquet IP à la couche 3, qui transmet le segment TCP à la couche 4,
+qui reconstitue le flux de données et le transmet au serveur HTTP.</p>
+
+<h3>Question 4 — Three-way handshake TCP</h3>
+<pre><code>Client                          Serveur
+  |--- SYN (seq=x) ------------&gt;|
+  |&lt;-- SYN-ACK (seq=y, ack=x+1)-|
+  |--- ACK (ack=y+1) -----------&gt;|
+  |                             |
+  |=== connexion établie ========|</code></pre>
+<p>Le client envoie un segment SYN avec un numéro de séquence initial x. Le
+serveur répond par SYN-ACK avec son propre numéro y et acquitte x+1. Le client
+confirme par ACK y+1. La connexion est alors <strong>établie</strong> dans les
+deux sens (full-duplex). Chaque octet envoyé est numéroté et acquitté, ce qui
+permet la retransmission en cas de perte.</p>
+
+<div class="exemple">
+  <strong>Exemple appliqué.</strong> Lorsqu'on tape une URL dans le navigateur,
+  le modèle TCP/IP se traduit par : DNS (couche Application) résout le nom en IP,
+  TCP (couche Transport) ouvre la connexion vers le port 443, IP (couche
+  Internet) route les paquets à travers plusieurs routeurs, Ethernet/Wi-Fi
+  (couche Accès) transmet sur le lien local. Au final, une page web implique
+  des dizaines d'allers-retours à travers ces 4 couches.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Encapsulation</strong> : chaque couche ajoute son en-tête, ce
+        qui induit une <em>overhead</em> (ex : en-têtes TCP/IP = 40 octets par
+        segment). Important pour les protocoles temps réel.</li>
+    <li><strong>Connexion vs sans connexion</strong> : TCP est orienté connexion
+        (fiable), UDP est sans connexion (rapide, mais sans garantie).</li>
+    <li><strong>Adressage</strong> : IP = adresse logique (routeur), MAC =
+        adresse physique (switch). ARP fait le lien.</li>
+    <li><strong>MTU</strong> : Maximum Transmission Unit, taille max d'une
+        trame (1500 octets en Ethernet standard). La fragmentation IP intervient
+        au-delà.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Les <strong>VPN</strong> (IPsec, OpenVPN, WireGuard) chiffrent les
+      données au niveau de la couche 3 (IPsec) ou 6 (TLS-based VPN).</li>
+  <li>Les <strong>SDN</strong> (Software Defined Networks) séparent le plan de
+      contrôle du plan de données pour virtualiser le réseau.</li>
+  <li><strong>QUIC</strong> (HTTP/3) remplace TCP+TLS par un protocole UDP
+      chiffré et multiplexé, réduisant la latence.</li>
+  <li><strong>IPv6</strong> (128 bits) répond à la pénurie d'IPv4 (32 bits) :
+      340 sextillions d'adresses contre 4,3 milliards.</li>
+  <li>Les outils <code>tcpdump</code>, <code>Wireshark</code>, <code>nmap</code>
+      permettent d'analyser le trafic réel selon les couches OSI.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #FF7043" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/reseaux-informatiques/chapitre-01-introduction.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-19-management-financier-analyse/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Analyse financière</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 20 / 20</div>
+          <a href="../examen-21-reseaux-routage/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Routage et protocoles</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>

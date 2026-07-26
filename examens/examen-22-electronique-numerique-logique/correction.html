@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Logique combinatoire — Correction détaillée (Électronique Numérique) — BIT Study HUB">
+  <title>Logique combinatoire — Correction détaillée — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="../../assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    /* Styles spécifiques au contenu de cours (compatibilité HTML original) */
+    .course-content { font-family: var(--font-body); line-height: 1.7; color: var(--bit-text); max-width: 100%; }
+    .course-content h1, .course-content h2, .course-content h3, .course-content h4 { font-family: var(--font-heading); margin-top: 1.5em; margin-bottom: 0.5em; color: var(--bit-text); }
+    .course-content h1 { font-size: var(--fs-3xl); border-left: 4px solid #7E57C2; padding-left: var(--space-4); }
+    .course-content h2 { font-size: var(--fs-2xl); color: #7E57C2; padding-bottom: var(--space-2); border-bottom: 2px solid var(--bit-border); }
+    .course-content h3 { font-size: var(--fs-xl); color: #7E57C2; }
+    .course-content p { margin: 1em 0; }
+    .course-content ul, .course-content ol { margin: 1em 0; padding-left: 2em; }
+    .course-content li { margin: 0.5em 0; }
+    .course-content pre, .course-content code { font-family: var(--font-mono); background: var(--bit-bg-alt); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); font-size: var(--fs-sm); }
+    .course-content pre { padding: var(--space-4); overflow-x: auto; border: 1px solid var(--bit-border); }
+    .course-content code { background: var(--bit-bg-alt); }
+    .course-content pre code { background: transparent; padding: 0; }
+    .course-content blockquote { border-left: 4px solid #7E57C2; padding-left: var(--space-4); margin: 1em 0; color: var(--bit-text-muted); font-style: italic; }
+    .course-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    .course-content th, .course-content td { border: 1px solid var(--bit-border); padding: var(--space-2) var(--space-3); text-align: left; }
+    .course-content th { background: var(--bit-bg-alt); font-weight: 600; }
+    .course-content img { max-width: 100%; height: auto; margin: 1em 0; border-radius: var(--radius-md); }
+    .course-content a { color: #7E57C2; text-decoration: underline; }
+    .course-content .toc, .course-content .carte, .course-content .resultat, .course-content .remarque, .course-content .exercice, .course-content .definition, .course-content .exemple { background: var(--bit-surface); border: 1px solid var(--bit-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; }
+    .course-content .resultat { border-left: 4px solid #7E57C2; background: color-mix(in srgb, #7E57C2 5%, var(--bit-surface)); }
+    .course-content .remarque { border-left: 4px solid var(--bit-warning); background: rgba(255, 179, 0, 0.05); }
+    .course-content .exercice { border-left: 4px solid var(--bit-info); background: rgba(25, 118, 210, 0.05); }
+    .course-content .definition { border-left: 4px solid var(--bit-success); background: rgba(0, 200, 83, 0.05); }
+    .course-content .exemple { border-left: 4px solid var(--bit-accent); background: var(--bit-accent-soft); }
+    .course-content .toc a { color: #7E57C2; text-decoration: none; }
+    .course-content .toc a:hover { text-decoration: underline; }
+    [data-theme="dark"] .course-content pre, [data-theme="dark"] .course-content code { background: var(--bit-bg); }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+
+  <main id="main">
+    <section class="page-header" style="background: linear-gradient(135deg, #7E57C2 0%, var(--bit-primary) 100%); color: white; padding: var(--space-10) 0 var(--space-8);">
+      <div class="container">
+        <nav class="breadcrumb" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-4)">
+          <a href="../../../index.html" style="color: rgba(255,255,255,0.7)">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../examens.html" style="color: rgba(255,255,255,0.7)">Examens</a>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: rgba(255,255,255,0.9)">Électronique Numérique</span>
+          <span class="breadcrumb-separator">/</span>
+          <span style="color: white">Correction</span>
+        </nav>
+        <span class="badge" style="background: rgba(0, 200, 83, 0.2); color: #B9F6CA; margin-bottom: var(--space-3)">
+          <svg width="12" height="12" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+          Correction détaillée
+        </span>
+        <h1 class="page-title" style="color: white; margin-bottom: var(--space-2); font-size: var(--fs-3xl)">Logique combinatoire</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: var(--fs-lg)">Électronique Numérique · Correction pédagogique générée par BIT Study HUB</p>
+
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap;">
+          <a href="sujet.html" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-eye"/></svg>
+            Voir le sujet
+          </a>
+          <a href="../../exams-images/examen-22.jpeg" download class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-download"/></svg>
+            Télécharger le sujet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 260px; gap: var(--space-8); align-items: start;">
+
+          <!-- Contenu de la correction -->
+          <article class="course-content">
+            <div class="card" style="padding: var(--space-4) var(--space-5); margin-bottom: var(--space-6); background: var(--bit-accent-soft); border-color: var(--bit-accent); border-left: 4px solid var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-info"/></svg>
+                <div>
+                  <strong>Correction pédagogique.</strong>
+                  <p style="margin: var(--space-2) 0 0; font-size: var(--fs-sm); color: var(--bit-text-muted);">
+                    Cette correction a été rédigée par l'équipe BIT Study HUB pour vous aider à comprendre
+                    la démarche attendue. Le sujet original (image) peut comporter des variantes : adaptez
+                    les calculs à vos valeurs numériques précises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+<h2>📋 Énoncé résumé</h2>
+<p>L'examen de logique combinatoire propose :</p>
+<ol>
+  <li>simplifier l'expression F(A,B,C) = &sum; m(1, 3, 5, 7) par Karnaugh ;</li>
+  <li>concevoir un additionneur complet 1 bit ;</li>
+  <li>concevoir un décodeur 3 vers 8 ;</li>
+  <li>analyser un multiplexeur 4 vers 1.</li>
+</ol>
+
+<div class="definition">
+  <strong>Définition — Circuit combinatoire.</strong>
+  Un circuit logique combinatoire est un circuit dont les sorties ne dépendent
+  que des entrées présentes (pas de mémoire). Il se décrit par une fonction
+  booléenne et peut être réalisé avec des portes logiques (ET, OU, NON, XOR,
+  NAND, NOR). À l'inverse, un circuit séquentiel possède des éléments mémoire
+  (bascules) et son état dépend des entrées passées.
+</div>
+
+<h2>💡 Méthodologie</h2>
+<ol>
+  <li><strong>Table de vérité</strong> : lister toutes les combinaisons d'entrées et les sorties.</li>
+  <li><strong>Forme canonique</strong> : somme de mintermes (&sum; m(...)) ou produit de maxtermes.</li>
+  <li><strong>Simplification</strong> : table de Karnaugh ou algèbre de Boole.</li>
+  <li><strong>Implémentation</strong> : choix des portes, optimisation du nombre de circuits intégrés.</li>
+</ol>
+
+<h2>✅ Solution détaillée</h2>
+<h3>Question 1 — Simplification par Karnaugh de F(A,B,C) = &sum; m(1, 3, 5, 7)</h3>
+<p>Table de vérité :</p>
+<table>
+  <tr><th>A</th><th>B</th><th>C</th><th>F</th></tr>
+  <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  <tr><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+  <tr><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+  <tr><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+  <tr><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+  <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+</table>
+<p>Table de Karnaugh (lignes AB, colonnes C) :</p>
+<table>
+  <tr><th>AB \ C</th><th>0</th><th>1</th></tr>
+  <tr><td>00</td><td>0</td><td>1</td></tr>
+  <tr><td>01</td><td>0</td><td>1</td></tr>
+  <tr><td>11</td><td>0</td><td>1</td></tr>
+  <tr><td>10</td><td>0</td><td>1</td></tr>
+</table>
+<p>Les 4 « 1 » de la colonne C = 1 forment un groupe de 4, ce qui élimine A
+et B. La fonction simplifiée est :</p>
+<pre><code>F = C</code></pre>
+<p>Vérification : F vaut 1 si et seulement si C = 1, indépendamment de A et B.
+Effectivement, les mintermes m(1, 3, 5, 7) correspondent à C = 1.</p>
+
+<h3>Question 2 — Additionneur complet 1 bit</h3>
+<p>Un additionneur complet calcule S = A &oplus; B &oplus; R<sub>in</sub> (somme)
+et R<sub>out</sub> = AB + R<sub>in</sub>(A &oplus; B) (retenue sortante).</p>
+<table>
+  <tr><th>A</th><th>B</th><th>R<sub>in</sub></th><th>S</th><th>R<sub>out</sub></th></tr>
+  <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+  <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+  <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+  <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+</table>
+<p>Implémentation : 2 XOR (pour S), 2 AND et 1 OR (pour R<sub>out</sub>). En
+cascadant n additionneurs complets, on obtient un additionneur n bits à
+propagation de retenue (ripple-carry adder).</p>
+
+<h3>Question 3 — Décodeur 3 vers 8</h3>
+<p>Un décodeur 3 vers 8 possède 3 entrées A, B, C et 8 sorties Y<sub>0</sub>...Y<sub>7</sub>,
+une seule étant active (à 1) selon le code binaire en entrée.</p>
+<pre><code>Y<sub>0</sub> = &not;A &middot; &not;B &middot; &not;C    (000)
+Y<sub>1</sub> = &not;A &middot; &not;B &middot; C      (001)
+Y<sub>2</sub> = &not;A &middot; B &middot; &not;C       (010)
+Y<sub>3</sub> = &not;A &middot; B &middot; C         (011)
+Y<sub>4</sub> = A &middot; &not;B &middot; &not;C        (100)
+Y<sub>5</sub> = A &middot; &not;B &middot; C          (101)
+Y<sub>6</sub> = A &middot; B &middot; &not;C           (110)
+Y<sub>7</sub> = A &middot; B &middot; C             (111)</code></pre>
+<p>Implémentation : 8 portes AND à 3 entrées, 3 inverseurs. C'est l'outil de
+base pour sélectionner une adresse mémoire parmi 2<sup>n</sup>.</p>
+
+<h3>Question 4 — Multiplexeur 4 vers 1</h3>
+<p>Un MUX 4&times;1 possède 4 entrées de données D<sub>0</sub>...D<sub>3</sub>,
+2 entrées de sélection S<sub>1</sub>, S<sub>0</sub>, et 1 sortie Y. La sortie
+recopie l'entrée sélectionnée par le code binaire S<sub>1</sub>S<sub>0</sub>.</p>
+<pre><code>Y = &not;S<sub>1</sub> &middot; &not;S<sub>0</sub> &middot; D<sub>0</sub> + &not;S<sub>1</sub> &middot; S<sub>0</sub> &middot; D<sub>1</sub>
+  + S<sub>1</sub> &middot; &not;S<sub>0</sub> &middot; D<sub>2</sub> + S<sub>1</sub> &middot; S<sub>0</sub> &middot; D<sub>3</sub></code></pre>
+<table>
+  <tr><th>S<sub>1</sub></th><th>S<sub>0</sub></th><th>Y</th></tr>
+  <tr><td>0</td><td>0</td><td>D<sub>0</sub></td></tr>
+  <tr><td>0</td><td>1</td><td>D<sub>1</sub></td></tr>
+  <tr><td>1</td><td>0</td><td>D<sub>2</sub></td></tr>
+  <tr><td>1</td><td>1</td><td>D<sub>3</sub></td></tr>
+</table>
+<p>Les MUX sont utilisés pour la sélection de données, la conversion parallèle
+&harr; série, et même l'implémentation de fonctions booléennes arbitraires
+(en connectant les D<sub>i</sub> à 0 ou 1 selon la table de vérité).</p>
+
+<div class="exemple">
+  <strong>Exemple appliqué.</strong> L'UAL (Unité Arithmétique et Logique) d'un
+  processeur utilise des MUX pour choisir entre plusieurs opérations (addition,
+  soustraction, ET, OU) en fonction du code-op. Les FPGAs modernes sont
+  essentiellement composés de tables de correspondance (LUT) qui sont des MUX
+  reconfigurables.
+</div>
+
+
+<div class="exercice">
+  <strong>Exercice d'application.</strong> Reprenez la méthodologie ci-dessus
+  avec des valeurs numériques différentes (par exemple un autre jeu de
+  paramètres) et vérifiez que vous arrivez au bon résultat. Puis essayez de
+  refaire l'exercice sans regarder la solution : c'est la meilleure façon de
+  fixer durablement la méthode.
+</div>
+
+<h2>📝 Notes importantes</h2>
+<div class="remarque">
+  <ul>
+    <li><strong>Théorème de De Morgan</strong> : &not;(A&middot;B) = &not;A + &not;B
+        et &not;(A+B) = &not;A &middot; &not;B. Permet de convertir ET/OU.</li>
+    <li><strong>Universalité</strong> : NAND (ou NOR) seul suffit à exprimer
+        toute fonction booléenne.</li>
+    <li><strong>Hazards</strong> : les aléas de commutation sont évités par
+        ajout de termes consensus dans la table de Karnaugh.</li>
+    <li><strong>Propagation</strong> : chaque porte a un temps de propagation
+        (typiquement 1-10 ns), critique pour la fréquence d'horloge.</li>
+  </ul>
+</div>
+
+<h2>📚 Pour aller plus loin</h2>
+<ul>
+  <li>Les <strong>PLD</strong>, <strong>CPLD</strong>, <strong>FPGA</strong>
+      permettent de réaliser des circuits combinatoires reconfigurables.</li>
+  <li>Les langages <strong>VHDL</strong> et <strong>Verilog</strong> décrivent
+      les circuits numériques pour la synthèse.</li>
+  <li>La <strong>logique tri-state</strong> (3 états : 0, 1, haute impédance)
+      permet de partager un bus entre plusieurs émetteurs.</li>
+  <li>La <strong>logique dynamique</strong> (horlogée) est plus rapide mais
+      consomme plus en transition ; elle équipe les processeurs modernes.</li>
+  <li>Les <strong>VHDL-2008</strong> et <strong>SystemVerilog</strong>
+      modernisent la conception pour la vérification formelle.</li>
+</ul>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside style="position: sticky; top: calc(var(--header-height) + var(--space-4));">
+            <div class="card mb-6">
+              <h4 style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--bit-border);">
+                <svg width="18" height="18" style="vertical-align: middle; margin-right: 6px; color: #7E57C2" aria-hidden="true"><use href="#icon-list"/></svg>
+                Navigation
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                <a href="sujet.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Sujet</div><div class="list-item-meta">Énoncé original</div></div>
+                </a>
+                <a href="correction.html" class="list-item active" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Correction</div><div class="list-item-meta">Vous êtes ici</div></div>
+                </a>
+                <a href="index.html" class="list-item" style="padding: var(--space-3);">
+                  <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-info"/></svg></div>
+                  <div class="list-item-content"><div class="list-item-title" style="font-size: var(--fs-sm)">Aperçu</div><div class="list-item-meta">Page d'accueil</div></div>
+                </a>
+              </div>
+              <a href="../../cours/electronique-numerique/chapitre-04-logique-combinatoire.html" class="btn btn-secondary btn-sm btn-block" style="margin-top: var(--space-3)">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                Cours associé
+              </a>
+            </div>
+
+            <div class="card" style="background: var(--bit-accent-soft); border-color: var(--bit-accent);">
+              <div style="display: flex; gap: var(--space-3); align-items: start;">
+                <svg width="28" height="28" style="color: var(--bit-accent); flex-shrink: 0" aria-hidden="true"><use href="#icon-alert"/></svg>
+                <div>
+                  <h4 style="margin-bottom: var(--space-2); font-size: var(--fs-sm)">À vérifier</h4>
+                  <p class="text-muted" style="font-size: var(--fs-xs); margin-bottom: var(--space-3)">
+                    Si votre sujet diffère de la correction (variantes d'énoncé), confirmez avec votre
+                    enseignant ou un camarade avant l'examen.
+                  </p>
+                  <a href="../../../../contribution.html" class="btn btn-primary btn-sm btn-block">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-upload"/></svg>
+                    Proposer une amélioration
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 2px solid var(--bit-border); gap: var(--space-4);">
+          <a href="../examen-21-reseaux-routage/index.html" class="btn btn-secondary btn-sm">
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          <span style="display: flex; flex-direction: column; line-height: 1.2">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen précédent</small>
+            <span>Routage et protocoles</span>
+          </span>
+        </a>
+          <div style="font-size: var(--fs-sm); color: var(--bit-text-muted)">Examen 22 / 22</div>
+          <a href="../examen-23-electronique-analogique-transistors/index.html" class="btn btn-secondary btn-sm">
+          <span style="display: flex; flex-direction: column; line-height: 1.2; text-align: right">
+            <small style="font-size: var(--fs-xs); color: var(--bit-text-muted)">Examen suivant</small>
+            <span>Transistors et amplificateurs</span>
+          </span>
+          <svg width="14" height="14" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+        </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+    if (window.innerWidth <= 1024) {
+      document.querySelectorAll('aside').forEach(a => a.style.position = 'static');
+      document.querySelectorAll('.grid').forEach(g => g.style.gridTemplateColumns = '1fr');
+    }
+  </script>
+</body>
+</html>
