@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tous les sujets d'examens, devoirs et TP du BIT — CS. Visualisez les images directement dans le navigateur.">
+  <title>Examens — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="index.html">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <span>Examens</span>
+        </nav>
+        <h1 class="page-title">Sujets d'examens &amp; corrigés</h1>
+        <p class="page-subtitle">
+          Consultez les sujets d'examens, devoirs surveillés, TP et TD de la filière CS du BIT.
+          Visualisez les documents directement dans le navigateur avec notre visionneuse intégrée.
+        </p>
+
+        <div class="search-box" style="margin-top: var(--space-8); max-width: 100%;">
+          <svg class="search-icon" aria-hidden="true"><use href="#icon-search"/></svg>
+          <input type="search" class="search-input" id="exam-search" placeholder="Rechercher un examen par matière, titre, type…" aria-label="Recherche d'examens">
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Filtres -->
+        <div class="filters-bar">
+          <span class="filters-label">
+            <svg width="16" height="16" aria-hidden="true"><use href="#icon-filter"/></svg>
+            Filtrer :
+          </span>
+          <button class="chip active" data-semester="all">Tous semestres</button>
+          <button class="chip" data-semester="S1">S1</button>
+          <button class="chip" data-semester="S2">S2</button>
+          <div style="flex: 1"></div>
+          <button class="chip active" data-type="all">Tous types</button>
+          <button class="chip" data-type="Examen">Examens</button>
+          <button class="chip" data-type="Devoir Surveillé">Devoirs</button>
+          <button class="chip" data-type="TP">TP</button>
+          <button class="chip" data-type="QCM">QCM</button>
+          <div style="flex: 1"></div>
+          <button class="chip" data-toggle="verified" id="filter-verified">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+            Vérifiés seulement
+          </button>
+          <button class="chip" data-toggle="correction" id="filter-correction">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-check"/></svg>
+            Avec corrigé
+          </button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid" style="margin-bottom: var(--space-8)">
+          <div class="stat-card">
+            <div class="stat-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-exam"/></svg></div>
+            <div class="stat-value" id="total-exams">—</div>
+            <div class="stat-label">Sujets disponibles</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(0,200,83,0.12); color: var(--bit-success)"><svg width="24" height="24" aria-hidden="true"><use href="#icon-check"/></svg></div>
+            <div class="stat-value" id="total-corrections">—</div>
+            <div class="stat-label">Avec corrigé</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(233,30,99,0.12); color: var(--bit-accent)"><svg width="24" height="24" aria-hidden="true"><use href="#icon-shield"/></svg></div>
+            <div class="stat-value" id="total-verified">—</div>
+            <div class="stat-label">Vérifiés</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(25,118,210,0.12); color: var(--bit-info)"><svg width="24" height="24" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+            <div class="stat-value" id="total-views">—</div>
+            <div class="stat-label">Vues totales</div>
+          </div>
+        </div>
+
+        <!-- Grille des examens -->
+        <div class="grid grid-auto" id="exams-grid"></div>
+
+        <div class="empty-state hidden" id="no-results">
+          <svg class="empty-state-icon" aria-hidden="true"><use href="#icon-exam"/></svg>
+          <h3 class="empty-state-title">Aucun examen trouvé</h3>
+          <p class="empty-state-text">Essayez de modifier vos filtres ou votre recherche.</p>
+          <button class="btn btn-primary" onclick="resetFilters()">Réinitialiser</button>
+        </div>
+
+        <!-- Aucun examen sélectionné au chargement -->
+        <div id="exam-placeholder" class="card" style="margin-top: var(--space-8); text-align: center; padding: var(--space-12); display: none;">
+          <svg width="64" height="64" style="margin: 0 auto var(--space-4); color: var(--bit-text-muted); opacity: 0.5;" aria-hidden="true"><use href="#icon-eye"/></svg>
+          <h3 style="margin-bottom: var(--space-2)">Sélectionnez un examen pour le visualiser</h3>
+          <p class="text-muted">Cliquez sur n'importe quel sujet pour l'ouvrir dans la visionneuse.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL VISIONNEUSE -->
+  <div class="modal-overlay" id="exam-modal">
+    <div class="modal" style="max-width: 1100px; height: 95vh;">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" id="modal-title">Examen</div>
+          <div class="text-muted text-sm" id="modal-meta"></div>
+        </div>
+        <div style="display: flex; gap: var(--space-2);">
+          <button class="btn btn-ghost btn-icon" id="modal-prev" title="Examen précédent" aria-label="Précédent">
+            <svg width="20" height="20" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
+          </button>
+          <button class="btn btn-ghost btn-icon" id="modal-next" title="Examen suivant" aria-label="Suivant">
+            <svg width="20" height="20" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
+          </button>
+          <a href="#" class="btn btn-ghost btn-icon" id="modal-download" title="Télécharger" download aria-label="Télécharger">
+            <svg width="20" height="20" aria-hidden="true"><use href="#icon-download"/></svg>
+          </a>
+          <button class="modal-close" id="modal-close" aria-label="Fermer">
+            <svg width="20" height="20" aria-hidden="true"><use href="#icon-close"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="modal-body" style="padding: 0; background: var(--bit-bg);">
+        <div class="image-viewer">
+          <img id="modal-image" class="image-viewer-img" src="" alt="Sujet d'examen">
+        </div>
+        <div class="image-viewer-controls">
+          <div>
+            <span class="text-muted text-sm" id="modal-position">1 / 26</span>
+          </div>
+          <div style="display: flex; gap: var(--space-2); align-items: center;">
+            <button class="btn btn-ghost btn-sm" id="modal-zoom-out" aria-label="Dézoomer">
+              <svg width="16" height="16" aria-hidden="true"><use href="#icon-zoom-out"/></svg>
+            </button>
+            <span class="text-sm font-mono" id="modal-zoom-level">100%</span>
+            <button class="btn btn-ghost btn-sm" id="modal-zoom-in" aria-label="Zoomer">
+              <svg width="16" height="16" aria-hidden="true"><use href="#icon-zoom-in"/></svg>
+            </button>
+            <button class="btn btn-ghost btn-sm" id="modal-rotate" aria-label="Rotation">
+              <svg width="16" height="16" aria-hidden="true"><use href="#icon-rotate"/></svg>
+            </button>
+          </div>
+          <div>
+            <span class="badge badge-info" id="modal-type">Examen</span>
+            <span class="badge badge-neutral" id="modal-semester">S1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    BIT.init('examens', false);
+
+    let allExams = [];
+    let filteredExams = [];
+    let currentExamIndex = 0;
+    let zoomLevel = 100;
+    let rotation = 0;
+    let filters = {
+      semester: 'all',
+      type: 'all',
+      verified: false,
+      correction: false,
+      search: ''
+    };
+
+    async function loadExams() {
+      const data = await BIT.loadJSON('data/exams.json');
+      if (!data) return;
+      allExams = data.exams;
+
+      document.getElementById('total-exams').textContent = data.meta.total_exams;
+      document.getElementById('total-corrections').textContent = data.meta.with_correction;
+      document.getElementById('total-verified').textContent = data.meta.verified;
+      const totalViews = allExams.reduce((s, e) => s + (e.views || 0), 0);
+      document.getElementById('total-views').textContent = totalViews.toLocaleString();
+
+      renderExams();
+
+      // Pré-sélection via URL
+      const params = new URLSearchParams(window.location.search);
+      const examSlug = params.get('exam');
+      const matiere = params.get('matiere');
+      if (examSlug) {
+        const idx = allExams.findIndex(e => e.slug === examSlug);
+        if (idx >= 0) openExam(idx);
+      } else if (matiere) {
+        filters.search = matiere;
+        document.getElementById('exam-search').value = matiere;
+        renderExams();
+      }
+    }
+
+    function renderExams() {
+      filteredExams = allExams.filter(e => {
+        if (filters.semester !== 'all' && e.semester !== filters.semester) return false;
+        if (filters.type !== 'all' && e.type !== filters.type) return false;
+        if (filters.verified && !e.is_verified) return false;
+        if (filters.correction && !e.has_correction) return false;
+        if (filters.search) {
+          const q = filters.search.toLowerCase();
+          if (!e.titre.toLowerCase().includes(q) &&
+              !e.matiere.toLowerCase().includes(q) &&
+              !e.type.toLowerCase().includes(q)) return false;
+        }
+        return true;
+      });
+
+      const grid = document.getElementById('exams-grid');
+      const empty = document.getElementById('no-results');
+
+      if (filteredExams.length === 0) {
+        grid.innerHTML = '';
+        empty.classList.remove('hidden');
+        return;
+      }
+      empty.classList.add('hidden');
+
+      grid.innerHTML = filteredExams.map((e, i) => `
+        <a href="examens/${e.slug}/index.html" class="exam-card fade-in">
+          <div class="exam-card-thumb" onclick="event.preventDefault(); openExam(${i})">
+            <img src="${e.image.replace('../', '')}" alt="${BIT.escapeHTML(e.titre)}" loading="lazy">
+            <div class="exam-card-badges">
+              <span class="badge badge-neutral">${BIT.escapeHTML(e.type)}</span>
+              ${e.is_verified ? `<span class="badge badge-verified"><svg width="12" height="12" aria-hidden="true"><use href="#icon-check"/></svg> Vérifié</span>` : ''}
+              ${e.has_correction ? `<span class="badge badge-success">Corrigé</span>` : ''}
+            </div>
+          </div>
+          <div class="exam-card-body">
+            <h3 class="exam-card-title">${BIT.escapeHTML(e.titre)}</h3>
+            <div class="exam-card-meta">
+              <span>${BIT.escapeHTML(e.matiere)}</span>
+              <span>${e.semester}</span>
+              <span>${e.year}</span>
+            </div>
+            <div class="exam-card-stats">
+              <span>
+                <svg width="14" height="14" style="vertical-align: middle" aria-hidden="true"><use href="#icon-eye"/></svg>
+                ${e.views}
+              </span>
+              <span>
+                <svg width="14" height="14" style="vertical-align: middle" aria-hidden="true"><use href="#icon-download"/></svg>
+                ${e.downloads}
+              </span>
+              <span>
+                <svg width="14" height="14" style="vertical-align: middle" aria-hidden="true"><use href="#icon-user"/></svg>
+                ${BIT.escapeHTML(e.contributor)}
+              </span>
+            </div>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    function openExam(index) {
+      currentExamIndex = index;
+      const exam = filteredExams[index];
+      if (!exam) return;
+
+      const modal = document.getElementById('exam-modal');
+      const img = document.getElementById('modal-image');
+      const imageUrl = '../../' + exam.image.replace('../', '');
+      img.src = imageUrl;
+      img.style.transform = `rotate(${rotation}deg) scale(${zoomLevel / 100})`;
+
+      document.getElementById('modal-title').textContent = exam.titre;
+      document.getElementById('modal-meta').textContent = `${exam.matiere} · ${exam.semester} · ${exam.year} · Partagé par ${exam.contributor}`;
+      document.getElementById('modal-position').textContent = `${index + 1} / ${filteredExams.length}`;
+      document.getElementById('modal-type').textContent = exam.type;
+      document.getElementById('modal-semester').textContent = exam.semester;
+      document.getElementById('modal-download').href = imageUrl;
+      document.getElementById('modal-download').download = `${exam.slug}.jpeg`;
+
+      zoomLevel = 100;
+      rotation = 0;
+      document.getElementById('modal-zoom-level').textContent = '100%';
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Incrémenter les vues (visuel seulement)
+      exam.views++;
+      renderExams();
+    }
+
+    function closeModal() {
+      document.getElementById('exam-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function nextExam() {
+      if (currentExamIndex < filteredExams.length - 1) {
+        openExam(currentExamIndex + 1);
+      }
+    }
+
+    function prevExam() {
+      if (currentExamIndex > 0) {
+        openExam(currentExamIndex - 1);
+      }
+    }
+
+    function updateImageTransform() {
+      const img = document.getElementById('modal-image');
+      img.style.transform = `rotate(${rotation}deg) scale(${zoomLevel / 100})`;
+      document.getElementById('modal-zoom-level').textContent = `${zoomLevel}%`;
+    }
+
+    // Event listeners
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    document.getElementById('modal-next').addEventListener('click', nextExam);
+    document.getElementById('modal-prev').addEventListener('click', prevExam);
+    document.getElementById('modal-zoom-in').addEventListener('click', () => {
+      zoomLevel = Math.min(zoomLevel + 25, 300);
+      updateImageTransform();
+    });
+    document.getElementById('modal-zoom-out').addEventListener('click', () => {
+      zoomLevel = Math.max(zoomLevel - 25, 25);
+      updateImageTransform();
+    });
+    document.getElementById('modal-rotate').addEventListener('click', () => {
+      rotation = (rotation + 90) % 360;
+      updateImageTransform();
+    });
+    document.getElementById('exam-modal').addEventListener('click', e => {
+      if (e.target.id === 'exam-modal') closeModal();
+    });
+
+    // Clavier
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('exam-modal').classList.contains('active')) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight') nextExam();
+      if (e.key === 'ArrowLeft') prevExam();
+      if (e.key === '+' || e.key === '=') {
+        zoomLevel = Math.min(zoomLevel + 25, 300);
+        updateImageTransform();
+      }
+      if (e.key === '-') {
+        zoomLevel = Math.max(zoomLevel - 25, 25);
+        updateImageTransform();
+      }
+    });
+
+    // Filtres
+    document.querySelectorAll('[data-semester]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-semester]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filters.semester = btn.dataset.semester;
+        renderExams();
+      });
+    });
+    document.querySelectorAll('[data-type]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filters.type = btn.dataset.type;
+        renderExams();
+      });
+    });
+    document.getElementById('filter-verified').addEventListener('click', e => {
+      e.currentTarget.classList.toggle('active');
+      filters.verified = e.currentTarget.classList.contains('active');
+      renderExams();
+    });
+    document.getElementById('filter-correction').addEventListener('click', e => {
+      e.currentTarget.classList.toggle('active');
+      filters.correction = e.currentTarget.classList.contains('active');
+      renderExams();
+    });
+    document.getElementById('exam-search').addEventListener('input', BIT.debounce(e => {
+      filters.search = e.target.value;
+      renderExams();
+    }, 200));
+
+    function resetFilters() {
+      filters = { semester: 'all', type: 'all', verified: false, correction: false, search: '' };
+      document.getElementById('exam-search').value = '';
+      document.querySelectorAll('[data-semester]').forEach(b => b.classList.toggle('active', b.dataset.semester === 'all'));
+      document.querySelectorAll('[data-type]').forEach(b => b.classList.toggle('active', b.dataset.type === 'all'));
+      document.getElementById('filter-verified').classList.remove('active');
+      document.getElementById('filter-correction').classList.remove('active');
+      renderExams();
+    }
+
+    loadExams();
+  </script>
+</body>
+</html>
