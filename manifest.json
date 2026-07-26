@@ -1,0 +1,58 @@
+{
+  "name": "BIT Study HUB — Burkina Institute of Technology",
+  "short_name": "BIT Study HUB",
+  "description": "Plateforme collaborative des étudiants CS du BIT. Cours, examens, corrigés, flashcards.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1E252B",
+  "theme_color": "#1E252B",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["education", "productivity", "books"],
+  "icons": [
+    {
+      "src": "assets/img/bit-logo.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/img/bit-logo.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Cours",
+      "short_name": "Cours",
+      "description": "Accéder à la bibliothèque de cours",
+      "url": ".cours.html",
+      "icons": [{ "src": "assets/img/bit-logo.jpeg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Examens",
+      "short_name": "Examens",
+      "description": "Voir les sujets d'examens",
+      "url": ".examens.html",
+      "icons": [{ "src": "assets/img/bit-logo.jpeg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Flashcards",
+      "short_name": "Flashcards",
+      "description": "Réviser avec les flashcards",
+      "url": ".flashcards.html",
+      "icons": [{ "src": "assets/img/bit-logo.jpeg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Contribuer",
+      "short_name": "Contribuer",
+      "description": "Partager un document",
+      "url": ".contribution.html",
+      "icons": [{ "src": "assets/img/bit-logo.jpeg", "sizes": "96x96" }]
+    }
+  ]
+}
