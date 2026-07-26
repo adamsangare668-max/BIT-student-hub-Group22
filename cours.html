@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tous les cours de la filière Computer Science du BIT — Semestre 1 et 2. Résumés, exercices corrigés, fiches de synthèse.">
+  <title>Cours — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <section class="page-header">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="index.html">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <span>Cours</span>
+        </nav>
+        <h1 class="page-title">Bibliothèque de cours</h1>
+        <p class="page-subtitle">
+          Tous les modules de la filière Computer Science du BIT, classés par semestre et par catégorie.
+          Résumés synthétiques, exercices corrigés et fiches de révision pour chaque module.
+        </p>
+
+        <!-- Recherche -->
+        <div class="search-box" style="margin-top: var(--space-8); max-width: 100%;">
+          <svg class="search-icon" aria-hidden="true"><use href="#icon-search"/></svg>
+          <input type="search" class="search-input" id="course-search" placeholder="Filtrer les cours par titre, code ou mot-clé…" aria-label="Recherche de cours">
+          <div class="search-results" id="course-search-results"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Filtres -->
+        <div class="filters-bar">
+          <span class="filters-label">
+            <svg width="16" height="16" aria-hidden="true"><use href="#icon-filter"/></svg>
+            Filtrer :
+          </span>
+          <button class="chip active" data-filter="all">Tous les cours</button>
+          <button class="chip" data-filter="S1">Semestre 1</button>
+          <button class="chip" data-filter="S2">Semestre 2</button>
+          <div style="flex: 1"></div>
+          <button class="chip" data-category="all">Toutes catégories</button>
+          <button class="chip" data-category="math">Mathématiques</button>
+          <button class="chip" data-category="programmation">Programmation</button>
+          <button class="chip" data-category="systeme">Système</button>
+          <button class="chip" data-category="electronique">Électronique</button>
+          <button class="chip" data-category="physique">Physique</button>
+          <button class="chip" data-category="management">Management</button>
+          <button class="chip" data-category="langue">Langues</button>
+          <button class="chip" data-category="outil">Bureautique</button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid" style="margin-bottom: var(--space-8)">
+          <div class="stat-card">
+            <div class="stat-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-book"/></svg></div>
+            <div class="stat-value" id="total-courses">—</div>
+            <div class="stat-label">Modules disponibles</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-library"/></svg></div>
+            <div class="stat-value" id="total-chapters">—</div>
+            <div class="stat-label">Chapitres</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-clock"/></svg></div>
+            <div class="stat-value" id="total-hours">—</div>
+            <div class="stat-label">Heures de cours</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><svg width="24" height="24" aria-hidden="true"><use href="#icon-star"/></svg></div>
+            <div class="stat-value" id="total-credits">—</div>
+            <div class="stat-label">Crédits ECTS</div>
+          </div>
+        </div>
+
+        <!-- Grille des cours -->
+        <div class="grid grid-auto" id="courses-grid">
+          <!-- Rempli par JS -->
+        </div>
+
+        <!-- Empty state -->
+        <div class="empty-state hidden" id="no-results">
+          <svg class="empty-state-icon" aria-hidden="true"><use href="#icon-search"/></svg>
+          <h3 class="empty-state-title">Aucun cours trouvé</h3>
+          <p class="empty-state-text">Essayez de modifier vos filtres ou votre recherche.</p>
+          <button class="btn btn-primary" onclick="resetFilters()">Réinitialiser les filtres</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    BIT.init('cours', false);
+
+    let allCourses = [];
+    let currentFilter = 'all';
+    let currentCategory = 'all';
+    let currentSearch = '';
+
+    async function loadCourses() {
+      const data = await BIT.loadJSON('data/courses.json');
+      if (!data) return;
+      allCourses = data.courses;
+
+      // Stats
+      document.getElementById('total-courses').textContent = data.meta.total_courses;
+      document.getElementById('total-chapters').textContent = data.meta.total_chapters;
+      const totalHours = allCourses.reduce((s, c) => s + (c.hours || 0), 0);
+      const totalCredits = allCourses.reduce((s, c) => s + (c.credits || 0), 0);
+      document.getElementById('total-hours').textContent = totalHours + 'h';
+      document.getElementById('total-credits').textContent = totalCredits;
+
+      renderCourses();
+
+      // Pré-filtre via URL
+      const params = new URLSearchParams(window.location.search);
+      const sem = params.get('semester');
+      if (sem) {
+        currentFilter = sem;
+        document.querySelectorAll('[data-filter]').forEach(b => b.classList.toggle('active', b.dataset.filter === sem));
+        renderCourses();
+      }
+    }
+
+    function renderCourses() {
+      let filtered = allCourses;
+
+      if (currentFilter !== 'all') {
+        filtered = filtered.filter(c => c.semester === currentFilter || c.semester === 'S1+S2');
+      }
+      if (currentCategory !== 'all') {
+        filtered = filtered.filter(c => c.category === currentCategory);
+      }
+      if (currentSearch) {
+        const q = currentSearch.toLowerCase();
+        filtered = filtered.filter(c =>
+          c.title.toLowerCase().includes(q) ||
+          c.code.toLowerCase().includes(q) ||
+          (c.description && c.description.toLowerCase().includes(q))
+        );
+      }
+
+      const grid = document.getElementById('courses-grid');
+      const empty = document.getElementById('no-results');
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        empty.classList.remove('hidden');
+        return;
+      }
+      empty.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(c => `
+        <a href="cours/${c.slug}/index.html" class="course-card fade-in" style="--course-color: ${c.color}">
+          <div class="course-card-banner">
+            <span class="course-card-code">${c.code}</span>
+            <svg class="course-card-icon" aria-hidden="true"><use href="#icon-${c.icon || 'book'}"/></svg>
+          </div>
+          <div class="course-card-body">
+            <h3 class="course-card-title">${BIT.escapeHTML(c.title)}</h3>
+            <p class="course-card-desc">${BIT.escapeHTML(c.description)}</p>
+            <div class="course-card-meta">
+              <span class="course-card-meta-item">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-clock"/></svg>
+                ${c.hours}h
+              </span>
+              <span class="course-card-meta-item">
+                <svg width="14" height="14" aria-hidden="true"><use href="#icon-star"/></svg>
+                ${c.credits} cr
+              </span>
+              ${c.chapters && c.chapters.length > 0 ? `
+                <span class="course-card-meta-item">
+                  <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                  ${c.chapters.length} chap.
+                </span>
+              ` : ''}
+              ${c.teacher && c.teacher !== '—' ? `
+                <span class="course-card-meta-item">
+                  <svg width="14" height="14" aria-hidden="true"><use href="#icon-user"/></svg>
+                  ${BIT.escapeHTML(c.teacher)}
+                </span>
+              ` : ''}
+            </div>
+            <div class="course-card-footer">
+              <span class="badge-semester">${c.semester}</span>
+              ${c.content_available ? `
+                <span class="text-accent font-semibold text-sm">
+                  Explorer
+                  <svg width="14" height="14" style="vertical-align: middle" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+                </span>
+              ` : `
+                <span class="badge badge-warning">Bientôt disponible</span>
+              `}
+            </div>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    function resetFilters() {
+      currentFilter = 'all';
+      currentCategory = 'all';
+      currentSearch = '';
+      document.getElementById('course-search').value = '';
+      document.querySelectorAll('[data-filter]').forEach(b => b.classList.toggle('active', b.dataset.filter === 'all'));
+      document.querySelectorAll('[data-category]').forEach(b => b.classList.toggle('active', b.dataset.category === 'all'));
+      renderCourses();
+    }
+
+    // Filtres
+    document.querySelectorAll('[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderCourses();
+      });
+    });
+    document.querySelectorAll('[data-category]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-category]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCategory = btn.dataset.category;
+        renderCourses();
+      });
+    });
+
+    // Recherche locale
+    document.getElementById('course-search').addEventListener('input', BIT.debounce(e => {
+      currentSearch = e.target.value;
+      renderCourses();
+    }, 200));
+
+    loadCourses();
+  </script>
+</body>
+</html>
