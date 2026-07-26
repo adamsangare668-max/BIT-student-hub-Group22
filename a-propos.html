@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="À propos de BIT Study HUB — la plateforme collaborative des étudiants CS du Burkina Institute of Technology. Mission, équipe, technologies, roadmap.">
+  <title>À propos — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <!-- EN-TÊTE DE PAGE -->
+    <section class="page-header">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="index.html">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <span>À propos</span>
+        </nav>
+        <h1 class="page-title">À propos de BIT Study HUB</h1>
+        <p class="page-subtitle">
+          Une plateforme étudiante, collaborative et open-source, conçue pour centraliser
+          les ressources pédagogiques de la filière Computer Science du Burkina Institute
+          of Technology. Découvrez sa mission, son équipe et sa feuille de route.
+        </p>
+      </div>
+    </section>
+
+    <!-- NOTRE MISSION -->
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: center;">
+          <div>
+            <span class="section-eyebrow">Notre raison d'être</span>
+            <h2 class="section-title" style="text-align: left; margin-top: var(--space-2);">Notre mission</h2>
+            <p class="text-lg" style="margin-bottom: var(--space-4); line-height: 1.7;">
+              BIT Study HUB a pour vocation de <strong>démocratiser l'accès aux ressources pédagogiques</strong>
+              pour tous les étudiants en Computer Science de BIT. Trop souvent, examens, corrigés et fiches
+              de révision circulent en silo dans des groupes WhatsApp éphémères, finissant par se perdre.
+            </p>
+            <p class="text-muted" style="margin-bottom: var(--space-4); line-height: 1.7;">
+              Notre objectif : centraliser, structurer et préserver ces ressources dans une plateforme
+              durable, accessible même hors-ligne, et propice à la réussite collective. Chaque étudiant
+              peut consulter, contribuer et progresser à son rythme.
+            </p>
+            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: var(--space-3);">
+              <li style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                <span style="color: var(--bit-accent); margin-top: 2px;"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></span>
+                <span><strong>Centraliser</strong> les cours, examens et corrigés du programme CS.</span>
+              </li>
+              <li style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                <span style="color: var(--bit-accent); margin-top: 2px;"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></span>
+                <span><strong>Faciliter</strong> les révisions avec des flashcards et un moteur de recherche puissant.</span>
+              </li>
+              <li style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                <span style="color: var(--bit-accent); margin-top: 2px;"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></span>
+                <span><strong>Valoriser</strong> l'entraide par la gamification et la reconnaissance des contributeurs.</span>
+              </li>
+              <li style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                <span style="color: var(--bit-accent); margin-top: 2px;"><svg width="20" height="20" aria-hidden="true"><use href="#icon-check-circle"/></svg></span>
+                <span><strong>Pérenniser</strong> le savoir d'une promotion à l'autre, sans perte d'information.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card card-body text-center" style="background: linear-gradient(135deg, var(--bit-primary) 0%, var(--bit-primary-light) 100%); color: white; padding: var(--space-12);">
+            <svg width="80" height="80" style="margin: 0 auto var(--space-6); color: var(--bit-accent);" aria-hidden="true"><use href="#icon-graduation"/></svg>
+            <blockquote style="font-size: var(--fs-xl); font-family: var(--font-heading); font-weight: 600; line-height: 1.4; margin-bottom: var(--space-4);">
+              « Réussir ensemble, sans laisser personne sur le bord du chemin. »
+            </blockquote>
+            <p style="color: rgba(255,255,255,0.7); font-size: var(--fs-sm);">— La devise de BIT Study HUB</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LE PROJET -->
+    <section class="section" style="background: var(--bit-bg-alt);">
+      <div class="container">
+        <div class="section-header section-header-left reveal">
+          <span class="section-eyebrow">Origines</span>
+          <h2 class="section-title">Le projet</h2>
+        </div>
+        <div class="grid grid-3">
+          <div class="card card-body">
+            <div class="stat-icon" style="margin-bottom: var(--space-4);"><svg width="24" height="24" aria-hidden="true"><use href="#icon-users"/></svg></div>
+            <h3 style="margin-bottom: var(--space-2);">5 développeurs étudiants</h3>
+            <p class="text-muted text-sm">Une équipe pluridisciplinaire d'étudiants CS du BIT, répartis entre UI/UX, backend, storage, modération et PWA.</p>
+          </div>
+          <div class="card card-body">
+            <div class="stat-icon" style="margin-bottom: var(--space-4);"><svg width="24" height="24" aria-hidden="true"><use href="#icon-library"/></svg></div>
+            <h3 style="margin-bottom: var(--space-2);">30 modules couverts</h3>
+            <p class="text-muted text-sm">L'ensemble du programme S1 + S2 de la filière Computer Science, des mathématiques à l'électronique numérique.</p>
+          </div>
+          <div class="card card-body">
+            <div class="stat-icon" style="margin-bottom: var(--space-4);"><svg width="24" height="24" aria-hidden="true"><use href="#icon-file"/></svg></div>
+            <h3 style="margin-bottom: var(--space-2);">Un cahier des charges</h3>
+            <p class="text-muted text-sm">Le projet initial prévoyait Next.js + Supabase ; nous avons opté pour une stack vanilla plus légère, maintenable et déployable sans infrastructure.</p>
+          </div>
+        </div>
+        <p class="text-muted" style="max-width: 65ch; margin: var(--space-8) auto 0; text-align: center; line-height: 1.7;">
+          Né pendant l'année académique 2025–2026, BIT Study HUB répond à un constat partagé :
+          les ressources existent, mais elles sont éparpillées. La plateforme se veut un bien
+          commun de la communauté étudiante, gratuit, open-source et durable.
+        </p>
+      </div>
+    </section>
+
+    <!-- FONCTIONNALITÉS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header section-header-left reveal">
+          <span class="section-eyebrow">Ce que vous pouvez faire</span>
+          <h2 class="section-title">Fonctionnalités</h2>
+          <p class="section-subtitle">Tout ce dont un étudiant CS a besoin pour réussir ses semestres, au même endroit.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)"><svg width="24" height="24" aria-hidden="true"><use href="#icon-search"/></svg></div>
+            <h3 style="margin-bottom: var(--space-3)">Recherche multi-critères</h3>
+            <p class="text-muted text-sm">Filtrez par matière, semestre, type de document ou mot-clé. Autocomplétion instantanée sur l'ensemble du catalogue.</p>
+          </div>
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)"><svg width="24" height="24" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+            <h3 style="margin-bottom: var(--space-3)">Visualiseur intégré</h3>
+            <p class="text-muted text-sm">Consultez les PDF et images d'examens directement dans le navigateur, avec zoom et mode plein écran.</p>
+          </div>
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)"><svg width="24" height="24" aria-hidden="true"><use href="#icon-upload"/></svg></div>
+            <h3 style="margin-bottom: var(--space-3)">Contribution collaborative</h3>
+            <p class="text-muted text-sm">Formulaire multi-étapes avec upload drag-and-drop, validation par modérateur et workflow de publication transparent.</p>
+          </div>
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)"><svg width="24" height="24" aria-hidden="true"><use href="#icon-trophy"/></svg></div>
+            <h3 style="margin-bottom: var(--space-3)">Gamification</h3>
+            <p class="text-muted text-sm">Points (50 par soumission, 100 par corrigé vérifié), 5 badges, 6 niveaux et un classement mensuel.</p>
+          </div>
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)"><svg width="24" height="24" aria-hidden="true"><use href="#icon-offline"/></svg></div>
+            <h3 style="margin-bottom: var(--space-3)">PWA installable</h3>
+            <p class="text-muted text-sm">Installez le site comme application native sur votre téléphone ou ordinateur, avec mise en cache hors-ligne.</p>
+          </div>
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)"><svg width="24" height="24" aria-hidden="true"><use href="#icon-moon"/></svg></div>
+            <h3 style="margin-bottom: var(--space-3)">Mode sombre / clair</h3>
+            <p class="text-muted text-sm">Thème clair, sombre ou automatique selon vos préférences système, pour réviser confortablement à toute heure.</p>
+          </div>
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)"><svg width="24" height="24" aria-hidden="true"><use href="#icon-cards"/></svg></div>
+            <h3 style="margin-bottom: var(--space-3)">Flashcards interactives</h3>
+            <p class="text-muted text-sm">Cartes mémoire cliquables, auto-évaluation (maîtrisé / à revoir) et progression sauvegardée localement.</p>
+          </div>
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)"><svg width="24" height="24" aria-hidden="true"><use href="#icon-trending"/></svg></div>
+            <h3 style="margin-bottom: var(--space-3)">Classement des contributeurs</h3>
+            <p class="text-muted text-sm">Podium mensuel, filtres par niveau et spécialité, légende des badges et barre de progression vers le niveau suivant.</p>
+          </div>
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)"><svg width="24" height="24" aria-hidden="true"><use href="#icon-shield"/></svg></div>
+            <h3 style="margin-bottom: var(--space-3)">Modération vérifiée</h3>
+            <p class="text-muted text-sm">Chaque contribution est relue par un étudiant modérateur. Le badge « Corrigé Vérifié » garantit la qualité.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGIES -->
+    <section class="section" style="background: var(--bit-bg-alt);">
+      <div class="container">
+        <div class="section-header section-header-left reveal">
+          <span class="section-eyebrow">Stack technique</span>
+          <h2 class="section-title">Technologies</h2>
+          <p class="section-subtitle">Une stack volontairement simple, légère et sans dépendance backend — déployable sur n'importe quel hébergement statique.</p>
+        </div>
+        <div class="grid grid-4">
+          <div class="card card-body text-center">
+            <svg width="40" height="40" style="margin: 0 auto var(--space-3); color: #E34F26;" aria-hidden="true"><use href="#icon-code"/></svg>
+            <h3 style="font-size: var(--fs-base);">HTML5</h3>
+            <p class="text-muted text-xs">Structure sémantique accessible</p>
+          </div>
+          <div class="card card-body text-center">
+            <svg width="40" height="40" style="margin: 0 auto var(--space-3); color: #264DE4;" aria-hidden="true"><use href="#icon-settings"/></svg>
+            <h3 style="font-size: var(--fs-base);">CSS3</h3>
+            <p class="text-muted text-xs">Design system, variables CSS, dark mode</p>
+          </div>
+          <div class="card card-body text-center">
+            <svg width="40" height="40" style="margin: 0 auto var(--space-3); color: #F7DF1E;" aria-hidden="true"><use href="#icon-lightning"/></svg>
+            <h3 style="font-size: var(--fs-base);">JavaScript vanilla</h3>
+            <p class="text-muted text-xs">Aucun framework, modules ES natifs</p>
+          </div>
+          <div class="card card-body text-center">
+            <svg width="40" height="40" style="margin: 0 auto var(--space-3); color: #000;" aria-hidden="true"><use href="#icon-file"/></svg>
+            <h3 style="font-size: var(--fs-base);">JSON</h3>
+            <p class="text-muted text-xs">Sources de données éditables</p>
+          </div>
+          <div class="card card-body text-center">
+            <svg width="40" height="40" style="margin: 0 auto var(--space-3); color: #5A0FC8;" aria-hidden="true"><use href="#icon-offline"/></svg>
+            <h3 style="font-size: var(--fs-base);">PWA</h3>
+            <p class="text-muted text-xs">Manifest + Service Worker</p>
+          </div>
+          <div class="card card-body text-center">
+            <svg width="40" height="40" style="margin: 0 auto var(--space-3); color: var(--bit-accent);" aria-hidden="true"><use href="#icon-cpu"/></svg>
+            <h3 style="font-size: var(--fs-base);">Service Worker</h3>
+            <p class="text-muted text-xs">Cache offline des assets</p>
+          </div>
+          <div class="card card-body text-center">
+            <svg width="40" height="40" style="margin: 0 auto var(--space-3); color: #1976D2;" aria-hidden="true"><use href="#icon-github"/></svg>
+            <h3 style="font-size: var(--fs-base);">Git / GitHub</h3>
+            <p class="text-muted text-xs">Versionnement collaboratif</p>
+          </div>
+          <div class="card card-body text-center">
+            <svg width="40" height="40" style="margin: 0 auto var(--space-3); color: var(--bit-success);" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+            <h3 style="font-size: var(--fs-base);">100% statique</h3>
+            <p class="text-muted text-xs">Aucun serveur, aucune base de données</p>
+          </div>
+        </div>
+        <div class="card" style="margin-top: var(--space-8); background: rgba(233,30,99,0.06); border-color: var(--bit-accent-soft); padding: var(--space-6);">
+          <p style="margin: 0; display: flex; gap: var(--space-3); align-items: flex-start;">
+            <svg width="24" height="24" style="color: var(--bit-accent); flex-shrink: 0;" aria-hidden="true"><use href="#icon-info"/></svg>
+            <span>
+              <strong>Note sur le cahier des charges initial :</strong> le projet prévoyait à l'origine
+              une stack <em>Next.js + Supabase + Prisma</em>. Nous avons fait le choix d'une implémentation
+              <strong>100 % vanilla</strong> (HTML/CSS/JS + JSON) pour garantir la maintenabilité par
+              des promotions futures d'étudiants, sans dépendance à un backend ou à un fournisseur cloud.
+            </span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMENT CONTRIBUER -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header section-header-left reveal">
+          <span class="section-eyebrow">Mode d'emploi</span>
+          <h2 class="section-title">Comment contribuer</h2>
+          <p class="section-subtitle">Trois étapes seulement séparent votre ressource de la communauté.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card card-body">
+            <div style="font-family: var(--font-heading); font-size: var(--fs-4xl); font-weight: 800; color: var(--bit-accent); opacity: 0.3; margin-bottom: var(--space-2);">01</div>
+            <h3 style="margin-bottom: var(--space-3);">Soumettre</h3>
+            <p class="text-muted text-sm">Remplissez le formulaire de contribution avec les informations du document (titre, type, module), téléversez le fichier et indiquez vos coordonnées.</p>
+          </div>
+          <div class="card card-body">
+            <div style="font-family: var(--font-heading); font-size: var(--fs-4xl); font-weight: 800; color: var(--bit-accent); opacity: 0.3; margin-bottom: var(--space-2);">02</div>
+            <h3 style="margin-bottom: var(--space-3);">Modération</h3>
+            <p class="text-muted text-sm">Un modérateur étudiant vérifie la conformité (module, qualité, originalité) sous 48h. Un échange par email peut avoir lieu si nécessaire.</p>
+          </div>
+          <div class="card card-body">
+            <div style="font-family: var(--font-heading); font-size: var(--fs-4xl); font-weight: 800; color: var(--bit-accent); opacity: 0.3; margin-bottom: var(--space-2);">03</div>
+            <h3 style="margin-bottom: var(--space-3);">Publication</h3>
+            <p class="text-muted text-sm">La ressource est mise en ligne avec son badge. Vous recevez 50 points (ou 100 si corrigé vérifié) et progressez dans le classement.</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: var(--space-8);">
+          <a href="contribution.html" class="btn btn-primary btn-lg">
+            <svg width="18" height="18" aria-hidden="true"><use href="#icon-upload"/></svg>
+            Commencer une contribution
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RÈGLES DE LA COMMUNAUTÉ -->
+    <section class="section" style="background: var(--bit-bg-alt);">
+      <div class="container">
+        <div class="section-header section-header-left reveal">
+          <span class="section-eyebrow">Charte</span>
+          <h2 class="section-title">Règles de la communauté</h2>
+          <p class="section-subtitle">Quatre principes fondamentaux pour une plateforme saine et utile à tous.</p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card card-body">
+            <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+              <div class="stat-icon" style="flex-shrink: 0;"><svg width="24" height="24" aria-hidden="true"><use href="#icon-heart"/></svg></div>
+              <div>
+                <h3 style="margin-bottom: var(--space-2);">Respect</h3>
+                <p class="text-muted text-sm">Aucun propos discriminant, insultant ou diffamatoire. La communauté est mixte, multiculturelle et bienveillante.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card card-body">
+            <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+              <div class="stat-icon" style="flex-shrink: 0;"><svg width="24" height="24" aria-hidden="true"><use href="#icon-star"/></svg></div>
+              <div>
+                <h3 style="margin-bottom: var(--space-2);">Qualité</h3>
+                <p class="text-muted text-sm">Privilégiez des documents lisibles, correctement nommés et correctement classés. Les scans flous seront refusés.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card card-body">
+            <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+              <div class="stat-icon" style="flex-shrink: 0;"><svg width="24" height="24" aria-hidden="true"><use href="#icon-lightbulb"/></svg></div>
+              <div>
+                <h3 style="margin-bottom: var(--space-2);">Originalité</h3>
+                <p class="text-muted text-sm">Indiquez vos sources. Les fiches de révision personnelles sont encouragées, les recopies intégrales non sourcées refusées.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card card-body">
+            <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+              <div class="stat-icon" style="flex-shrink: 0; background: rgba(255,23,68,0.12); color: var(--bit-danger);"><svg width="24" height="24" aria-hidden="true"><use href="#icon-lock"/></svg></div>
+              <div>
+                <h3 style="margin-bottom: var(--space-2);">Non-plagiat</h3>
+                <p class="text-muted text-sm">Le plagiat entraîne le retrait immédiat de la ressource et une suspension temporaire du compte contributeur.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header section-header-left reveal">
+          <span class="section-eyebrow">Ce qui arrive</span>
+          <h2 class="section-title">Roadmap</h2>
+          <p class="section-subtitle">Les prochaines fonctionnalités prévues pour les versions 2 et 3 de la plateforme.</p>
+        </div>
+        <div class="grid grid-auto">
+          <div class="card card-body">
+            <span class="badge badge-accent" style="margin-bottom: var(--space-3);">V2.0 · Q1 2027</span>
+            <h3 style="margin-bottom: var(--space-3); display: flex; align-items: center; gap: var(--space-2);">
+              <svg width="20" height="20" style="color: var(--bit-accent)" aria-hidden="true"><use href="#icon-lock"/></svg>
+              Authentification
+            </h3>
+            <p class="text-muted text-sm">Comptes étudiants avec email @bit.bf, profils personnalisés et historique de consultation.</p>
+          </div>
+          <div class="card card-body">
+            <span class="badge badge-accent" style="margin-bottom: var(--space-3);">V2.1 · Q2 2027</span>
+            <h3 style="margin-bottom: var(--space-3); display: flex; align-items: center; gap: var(--space-2);">
+              <svg width="20" height="20" style="color: var(--bit-accent)" aria-hidden="true"><use href="#icon-message"/></svg>
+              Commentaires & notes
+            </h3>
+            <p class="text-muted text-sm">Système de discussion sous chaque ressource, notation 1 à 5 étoiles et signalement de contenu.</p>
+          </div>
+          <div class="card card-body">
+            <span class="badge badge-accent" style="margin-bottom: var(--space-3);">V2.2 · Q3 2027</span>
+            <h3 style="margin-bottom: var(--space-3); display: flex; align-items: center; gap: var(--space-2);">
+              <svg width="20" height="20" style="color: var(--bit-accent)" aria-hidden="true"><use href="#icon-offline"/></svg>
+              Mode offline étendu
+            </h3>
+            <p class="text-muted text-sm">Téléchargement automatique des fiches de cours et flashcards pour révision complète sans connexion.</p>
+          </div>
+          <div class="card card-body">
+            <span class="badge badge-accent" style="margin-bottom: var(--space-3);">V3.0 · Q4 2027</span>
+            <h3 style="margin-bottom: var(--space-3); display: flex; align-items: center; gap: var(--space-2);">
+              <svg width="20" height="20" style="color: var(--bit-accent)" aria-hidden="true"><use href="#icon-graduation"/></svg>
+              Application mobile native
+            </h3>
+            <p class="text-muted text-sm">App Android (et éventuellement iOS) avec notifications push, mode hors-ligne natif et widget d'écran d'accueil.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÉQUIPE -->
+    <section class="section section-dark" id="team">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-eyebrow" style="color: var(--bit-accent-light);">Les visages du projet</span>
+          <h2 class="section-title" style="color: var(--bit-white);">Les cinq brillants étudiants fondateurs</h2>
+          <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">Cinq étudiants CS du BIT à l'origine de l'idée, cinq rôles complémentaires pour faire vivre la plateforme au quotidien.</p>
+        </div>
+        <div class="grid grid-3" id="team-grid">
+          <!-- Rempli par JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: center;">
+          <div>
+            <span class="section-eyebrow">Restons en contact</span>
+            <h2 class="section-title" style="text-align: left; margin-top: var(--space-2);">Contact</h2>
+            <p class="text-lg" style="margin-bottom: var(--space-6); line-height: 1.7;">
+              Une question, une suggestion, un bug à signaler ? L'équipe du BIT Study HUB est à votre écoute.
+              Réponse garantie sous 72h ouvrées.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+              <a href="mailto:bitstudyhub@bit.bf" class="card card-body" style="display: flex; align-items: center; gap: var(--space-4); text-decoration: none; color: inherit;">
+                <div class="stat-icon" style="flex-shrink: 0;"><svg width="22" height="22" aria-hidden="true"><use href="#icon-mail"/></svg></div>
+                <div>
+                  <div style="font-weight: 600;">bitstudyhub@bit.bf</div>
+                  <div class="text-muted text-sm">Email officiel de la plateforme</div>
+                </div>
+              </a>
+              <a href="#" class="card card-body" style="display: flex; align-items: center; gap: var(--space-4); text-decoration: none; color: inherit;">
+                <div class="stat-icon" style="flex-shrink: 0;"><svg width="22" height="22" aria-hidden="true"><use href="#icon-map-pin"/></svg></div>
+                <div>
+                  <div style="font-weight: 600;">Burkina Institute of Technology</div>
+                  <div class="text-muted text-sm">Koudougou, Burkina Faso</div>
+                </div>
+              </a>
+            </div>
+            <div style="margin-top: var(--space-6);">
+              <p class="text-sm text-muted" style="margin-bottom: var(--space-3);">Suivez-nous sur les réseaux :</p>
+              <div style="display: flex; gap: var(--space-3);">
+                <a href="#" aria-label="Facebook" class="btn btn-secondary btn-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-facebook"/></svg></a>
+                <a href="#" aria-label="Twitter" class="btn btn-secondary btn-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                <a href="#" aria-label="Telegram" class="btn btn-secondary btn-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-telegram"/></svg></a>
+                <a href="#" aria-label="WhatsApp" class="btn btn-secondary btn-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-whatsapp"/></svg></a>
+                <a href="#" aria-label="GitHub" class="btn btn-secondary btn-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-github"/></svg></a>
+              </div>
+            </div>
+          </div>
+          <div class="card card-body" style="background: var(--bit-bg-alt);">
+            <h3 style="margin-bottom: var(--space-4);">Envoyer un message</h3>
+            <form id="contact-form" novalidate>
+              <div class="field">
+                <label class="label" for="contact-name">Votre nom <span class="required">*</span></label>
+                <input class="input" type="text" id="contact-name" required>
+              </div>
+              <div class="field">
+                <label class="label" for="contact-email">Email <span class="required">*</span></label>
+                <input class="input" type="email" id="contact-email" required>
+              </div>
+              <div class="field">
+                <label class="label" for="contact-msg">Message <span class="required">*</span></label>
+                <textarea class="textarea" id="contact-msg" required placeholder="Décrivez votre demande…"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-send"/></svg>
+                Envoyer
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REMERCIEMENTS -->
+    <section class="section" style="background: var(--bit-bg-alt);">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-eyebrow">Merci !</span>
+          <h2 class="section-title">Remerciements</h2>
+          <p class="section-subtitle">Ce projet n'existerait pas sans la générosité de toute une communauté.</p>
+        </div>
+        <div class="card card-body text-center" style="max-width: 800px; margin: 0 auto;">
+          <svg width="56" height="56" style="margin: 0 auto var(--space-4); color: var(--bit-accent);" aria-hidden="true"><use href="#icon-heart"/></svg>
+          <p style="font-size: var(--fs-lg); line-height: 1.7; margin-bottom: var(--space-4);">
+            Nous remercions chaleureusement <strong>les 12 contributeurs</strong> qui ont partagé leurs ressources,
+            <strong>les modérateurs</strong> qui veillent au grain, <strong>les enseignants de BIT</strong> qui soutiennent
+            l'initiative, et <strong>tous les étudiants</strong> qui consultent, partagent et font vivre la plateforme au quotidien.
+          </p>
+          <p class="text-muted" style="margin: 0;">
+            Merci enfin à <strong>l'administration du Burkina Institute of Technology</strong> pour son appui institutionnel
+            et à toutes celles et ceux qui ont cru en ce projet depuis ses premières lignes de code.
+          </p>
+        </div>
+        <div style="text-align: center; margin-top: var(--space-8);">
+          <a href="leaderboard.html" class="btn btn-primary btn-lg">
+            <svg width="18" height="18" aria-hidden="true"><use href="#icon-trophy"/></svg>
+            Découvrir les contributeurs
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    BIT.init('a-propos', false);
+
+    // ============== ÉQUIPE — Les 5 brillants étudiants fondateurs ==============
+    const team = [
+      { name: 'SEDOGO Yasminatou', role: 'Lead Design & UX', initials: 'SY', color: '#E91E63', promo: 'CS25', bio: "Architecte de l'identité visuelle de la plateforme. Veille à la cohérence du design system, à l'accessibilité et au confort de lecture sur l'ensemble des pages." },
+      { name: 'SANGARE S P Adam', role: 'Logique & Moteur applicatif', initials: 'SA', color: '#1976D2', promo: 'CS25', bio: "Conçoit la logique JavaScript vanilla du hub : moteur de recherche multi-critères, filtres dynamiques et orchestration des données JSON." },
+      { name: 'SOUGOTI Johan', role: 'Contenu & Pédagogie', initials: 'SJ', color: '#7E57C2', promo: 'CS25', bio: "Coordonne la collecte et la structuration des cours, examens et corrigés. Garant de la qualité pédagogique et de l'organisation par semestres." },
+      { name: 'BATIONO Ephraïm', role: 'Data & Workflow', initials: 'BE', color: '#00897B', promo: 'CS25', bio: "Conçoit les schémas de données JSON, le workflow de modération et la gestion des contributeurs. Veille à la scalabilité du catalogue." },
+      { name: 'KIENDREBEOGO Nina', role: 'PWA & Performance', initials: 'KN', color: '#FF7043', promo: 'CS25', bio: "Implémente la PWA (manifest + service worker), le mode hors-ligne et l'optimisation du cache. Garantit des performances fluides sur mobile." },
+    ];
+
+    document.getElementById('team-grid').innerHTML = team.map(m => `
+      <div class="card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: var(--space-8); text-align: center;">
+        <div style="width: 96px; height: 96px; border-radius: 50%; background: ${m.color}; margin: 0 auto var(--space-4); display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: var(--fs-3xl); font-family: var(--font-heading); box-shadow: 0 12px 32px ${m.color}40;">${m.initials}</div>
+        <h3 style="color: white; margin-bottom: var(--space-1);">${BIT.escapeHTML(m.name)}</h3>
+        <p style="color: ${m.color}; font-weight: 600; font-size: var(--fs-sm); margin-bottom: var(--space-1);">${BIT.escapeHTML(m.role)}</p>
+        <p style="color: rgba(255,255,255,0.5); font-size: var(--fs-xs); margin-bottom: var(--space-3);">Promo ${m.promo}</p>
+        <p style="color: rgba(255,255,255,0.75); font-size: var(--fs-sm); line-height: 1.6;">${BIT.escapeHTML(m.bio)}</p>
+      </div>
+    `).join('');
+
+    // ============== FORMULAIRE CONTACT ==============
+    document.getElementById('contact-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const msg = document.getElementById('contact-msg').value.trim();
+      if (!name || !email || !msg) {
+        BIT.showToast('Champs manquants', 'Merci de remplir tous les champs.', 'error');
+        return;
+      }
+      BIT.showToast('Message envoyé !', 'Nous vous répondrons sous 72h à ' + email, 'success', 5000);
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
