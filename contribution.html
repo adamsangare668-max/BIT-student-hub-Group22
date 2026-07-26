@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contribuez au BIT Study HUB — partagez vos examens, corrigés, fiches et ressources. Système de points, badges et classement des contributeurs.">
+  <title>Contribuer — BIT Study HUB</title>
+  <link rel="icon" type="image/jpeg" href="assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <!-- EN-TÊTE DE PAGE -->
+    <section class="page-header">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="index.html">Accueil</a>
+          <span class="breadcrumb-separator">/</span>
+          <span>Contribuer</span>
+        </nav>
+        <h1 class="page-title">Partagez vos ressources</h1>
+        <p class="page-subtitle">
+          Aidez la communauté du BIT en partageant vos examens, corrigés, fiches de révision
+          et supports de cours. Chaque contribution est validée par un modérateur puis publiée,
+          et vous rapporte des points pour grimper au classement.
+        </p>
+      </div>
+    </section>
+
+    <!-- WORKFLOW VISUALISATION -->
+    <section class="section-sm" style="background: var(--bit-bg-alt);">
+      <div class="container">
+        <div class="section-header section-header-left">
+          <span class="section-eyebrow">Comment ça marche</span>
+          <h2 class="section-title" style="font-size: var(--fs-2xl)">Le parcours de votre contribution</h2>
+        </div>
+        <div class="grid grid-3">
+          <div class="card card-hover text-center">
+            <div class="stat-icon" style="margin: 0 auto var(--space-4); background: var(--bit-accent-soft); color: var(--bit-accent);">
+              <svg width="24" height="24" aria-hidden="true"><use href="#icon-upload"/></svg>
+            </div>
+            <span class="badge badge-accent" style="margin-bottom: var(--space-3)">Étape 1</span>
+            <h3 style="margin-bottom: var(--space-2)">Soumission</h3>
+            <p class="text-muted text-sm">Vous remplissez le formulaire ci-dessous, joignez votre fichier (PDF ou image) et validez. La ressource entre dans la file d'attente de modération.</p>
+          </div>
+          <div class="card card-hover text-center">
+            <div class="stat-icon" style="margin: 0 auto var(--space-4); background: rgba(25,118,210,0.12); color: var(--bit-info);">
+              <svg width="24" height="24" aria-hidden="true"><use href="#icon-eye"/></svg>
+            </div>
+            <span class="badge badge-info" style="margin-bottom: var(--space-3)">Étape 2</span>
+            <h3 style="margin-bottom: var(--space-2)">Relecture</h3>
+            <p class="text-muted text-sm">Un modérateur étudiant vérifie la qualité, la conformité au module et l'absence de plagiat. Un échange par email peut avoir lieu si nécessaire.</p>
+          </div>
+          <div class="card card-hover text-center">
+            <div class="stat-icon" style="margin: 0 auto var(--space-4); background: rgba(0,200,83,0.12); color: var(--bit-success);">
+              <svg width="24" height="24" aria-hidden="true"><use href="#icon-check-circle"/></svg>
+            </div>
+            <span class="badge badge-success" style="margin-bottom: var(--space-3)">Étape 3</span>
+            <h3 style="margin-bottom: var(--space-2)">Publication</h3>
+            <p class="text-muted text-sm">La ressource est mise en ligne avec le badge <strong>« Corrigé Vérifié »</strong> si elle est validée. Vous recevez vos points et éventuellement un nouveau badge.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULAIRE MULTI-ÉTAPES -->
+    <section class="section">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 2fr 1fr; gap: var(--space-8); align-items: start;" id="contrib-layout">
+
+          <!-- FORMULAIRE -->
+          <div class="card card-body">
+            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6);">
+              <div class="stat-icon" style="width: 44px; height: 44px;">
+                <svg width="22" height="22" aria-hidden="true"><use href="#icon-upload"/></svg>
+              </div>
+              <div>
+                <h2 style="margin: 0; font-size: var(--fs-xl)">Nouvelle contribution</h2>
+                <p class="text-muted text-sm" style="margin: 0">Les champs marqués d'un <span class="text-accent">*</span> sont obligatoires.</p>
+              </div>
+            </div>
+
+            <!-- Indicateur d'étapes -->
+            <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-8);" id="step-indicator">
+              <div class="chip active" data-step-indicator="1">1 · Document</div>
+              <div class="chip" data-step-indicator="2">2 · Classification</div>
+              <div class="chip" data-step-indicator="3">3 · Fichier</div>
+              <div class="chip" data-step-indicator="4">4 · Contributeur</div>
+            </div>
+
+            <form id="contribution-form" novalidate>
+              <!-- ÉTAPE 1 : Document -->
+              <fieldset data-step="1" class="form-step">
+                <legend style="font-family: var(--font-heading); font-weight: 700; font-size: var(--fs-lg); margin-bottom: var(--space-4); padding: 0;">
+                  <svg width="20" height="20" style="vertical-align: middle; color: var(--bit-accent)" aria-hidden="true"><use href="#icon-file"/></svg>
+                  Informations du document
+                </legend>
+                <div class="field">
+                  <label class="label" for="doc-title">Titre <span class="required">*</span></label>
+                  <input class="input" type="text" id="doc-title" name="title" required placeholder="Ex: Examen final Python — S1 2024/2025" maxlength="120">
+                  <p class="help-text">Un titre clair et descriptif aide les autres étudiants à trouver votre ressource.</p>
+                </div>
+                <div class="field">
+                  <label class="label" for="doc-type">Type de document <span class="required">*</span></label>
+                  <select class="select" id="doc-type" name="type" required>
+                    <option value="">— Choisir un type —</option>
+                    <option value="Examen">Examen</option>
+                    <option value="Devoir">Devoir surveillé</option>
+                    <option value="TP">Travaux pratiques (TP)</option>
+                    <option value="TD">Travaux dirigés (TD)</option>
+                    <option value="Corrigé">Corrigé</option>
+                    <option value="Fiche">Fiche de révision</option>
+                    <option value="Cours">Support de cours</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="label" for="doc-description">Description <span class="required">*</span></label>
+                  <textarea class="textarea" id="doc-description" name="description" required placeholder="Décrivez brièvement le contenu : chapitres couverts, exercices, niveau de difficulté…"></textarea>
+                </div>
+                <div style="display: flex; justify-content: flex-end; margin-top: var(--space-6);">
+                  <button type="button" class="btn btn-primary" data-next="2">
+                    Étape suivante
+                    <svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+                  </button>
+                </div>
+              </fieldset>
+
+              <!-- ÉTAPE 2 : Classification -->
+              <fieldset data-step="2" class="form-step" hidden>
+                <legend style="font-family: var(--font-heading); font-weight: 700; font-size: var(--fs-lg); margin-bottom: var(--space-4); padding: 0;">
+                  <svg width="20" height="20" style="vertical-align: middle; color: var(--bit-accent)" aria-hidden="true"><use href="#icon-filter"/></svg>
+                  Classification
+                </legend>
+                <div class="field">
+                  <label class="label" for="doc-module">Module <span class="required">*</span></label>
+                  <select class="select" id="doc-module" name="module" required>
+                    <option value="">— Choisir un module —</option>
+                  </select>
+                  <p class="help-text">Sélectionnez le module auquel se rattache la ressource.</p>
+                </div>
+                <div class="grid grid-2">
+                  <div class="field">
+                    <label class="label" for="doc-semester">Semestre <span class="required">*</span></label>
+                    <select class="select" id="doc-semester" name="semester" required>
+                      <option value="">—</option>
+                      <option value="S1">Semestre 1</option>
+                      <option value="S2">Semestre 2</option>
+                      <option value="S1+S2">S1 + S2</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label class="label" for="doc-year">Année académique <span class="required">*</span></label>
+                    <input class="input" type="text" id="doc-year" name="year" required placeholder="2024/2025" pattern="\d{4}/\d{4}">
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="label" style="display: flex; align-items: center; gap: var(--space-3); cursor: pointer;">
+                    <input type="checkbox" id="doc-correction" name="hasCorrection" style="width: 18px; height: 18px; accent-color: var(--bit-accent);">
+                    <span>Cette ressource contient un corrigé (badge « Corrigé Vérifié » à la clé)</span>
+                  </label>
+                  <p class="help-text">Cochez si vous joignez également la correction. Les corrigés vérifiés rapportent <strong>100 points</strong> au lieu de 50.</p>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: var(--space-6);">
+                  <button type="button" class="btn btn-secondary" data-prev="1">
+                    <svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                    Précédent
+                  </button>
+                  <button type="button" class="btn btn-primary" data-next="3">
+                    Étape suivante
+                    <svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+                  </button>
+                </div>
+              </fieldset>
+
+              <!-- ÉTAPE 3 : Upload -->
+              <fieldset data-step="3" class="form-step" hidden>
+                <legend style="font-family: var(--font-heading); font-weight: 700; font-size: var(--fs-lg); margin-bottom: var(--space-4); padding: 0;">
+                  <svg width="20" height="20" style="vertical-align: middle; color: var(--bit-accent)" aria-hidden="true"><use href="#icon-upload"/></svg>
+                  Téléversement du fichier
+                </legend>
+                <div class="upload-zone" id="upload-zone" tabindex="0" role="button" aria-label="Zone de dépôt de fichier">
+                  <svg class="upload-zone-icon" aria-hidden="true"><use href="#icon-upload"/></svg>
+                  <div class="upload-zone-title">Glissez votre fichier ici</div>
+                  <div class="upload-zone-text">
+                    ou <span class="accent">cliquez pour parcourir</span> · PDF, PNG, JPEG · 10 Mo max
+                  </div>
+                  <input type="file" id="doc-file" name="file" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg" hidden>
+                </div>
+                <div id="file-info" class="card" style="margin-top: var(--space-4); display: none;">
+                  <div style="display: flex; align-items: center; gap: var(--space-3);">
+                    <div class="list-item-icon">
+                      <svg width="20" height="20" aria-hidden="true"><use href="#icon-file"/></svg>
+                    </div>
+                    <div style="flex: 1;">
+                      <div id="file-name" style="font-weight: 600;"></div>
+                      <div id="file-size" class="text-muted text-xs"></div>
+                    </div>
+                    <button type="button" class="btn btn-ghost btn-sm" id="file-remove" aria-label="Retirer le fichier">
+                      <svg width="16" height="16" aria-hidden="true"><use href="#icon-trash"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <p class="help-text" style="margin-top: var(--space-4);">
+                  <svg width="14" height="14" style="vertical-align: middle" aria-hidden="true"><use href="#icon-info"/></svg>
+                  Veillez à ce que le document soit lisible et dépersonnalisé (pas de noms d'étudiants).
+                </p>
+                <div style="display: flex; justify-content: space-between; margin-top: var(--space-6);">
+                  <button type="button" class="btn btn-secondary" data-prev="2">
+                    <svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                    Précédent
+                  </button>
+                  <button type="button" class="btn btn-primary" data-next="4">
+                    Étape suivante
+                    <svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+                  </button>
+                </div>
+              </fieldset>
+
+              <!-- ÉTAPE 4 : Contributeur -->
+              <fieldset data-step="4" class="form-step" hidden>
+                <legend style="font-family: var(--font-heading); font-weight: 700; font-size: var(--fs-lg); margin-bottom: var(--space-4); padding: 0;">
+                  <svg width="20" height="20" style="vertical-align: middle; color: var(--bit-accent)" aria-hidden="true"><use href="#icon-user"/></svg>
+                  Vos informations
+                </legend>
+                <div class="grid grid-2">
+                  <div class="field">
+                    <label class="label" for="contrib-name">Nom complet <span class="required">*</span></label>
+                    <input class="input" type="text" id="contrib-name" name="name" required placeholder="Prénom Nom">
+                  </div>
+                  <div class="field">
+                    <label class="label" for="contrib-email">Email <span class="required">*</span></label>
+                    <input class="input" type="email" id="contrib-email" name="email" required placeholder="prenom.nom@bit.bf">
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="label" for="contrib-promo">Promo <span class="required">*</span></label>
+                  <select class="select" id="contrib-promo" name="promo" required>
+                    <option value="">— Choisir votre promo —</option>
+                    <option value="CS25">CS25 (L1, 2025–2026)</option>
+                    <option value="CS26">CS26 (L2, 2025–2026)</option>
+                    <option value="CS27">CS27 (L1, 2026–2027)</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="label" style="display: flex; align-items: flex-start; gap: var(--space-3); cursor: pointer;">
+                    <input type="checkbox" id="contrib-consent" name="consent" required style="width: 18px; height: 18px; margin-top: 2px; accent-color: var(--bit-accent);">
+                    <span>J'atteste que ce document est mon œuvre originale ou une ressource libre de droits, et j'accepte les <a href="#" class="text-accent">règles de la communauté</a>. <span class="required">*</span></span>
+                  </label>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: var(--space-6);">
+                  <button type="button" class="btn btn-secondary" data-prev="3">
+                    <svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+                    Précédent
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    <svg width="16" height="16" aria-hidden="true"><use href="#icon-send"/></svg>
+                    Soumettre ma contribution
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+
+          <!-- SIDEBAR : GAMIFICATION -->
+          <aside class="card card-body" style="position: sticky; top: var(--space-6);">
+            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6);">
+              <div class="stat-icon" style="width: 44px; height: 44px;">
+                <svg width="22" height="22" aria-hidden="true"><use href="#icon-trophy"/></svg>
+              </div>
+              <div>
+                <h2 style="margin: 0; font-size: var(--fs-lg)">Gagnez des points</h2>
+                <p class="text-muted text-xs" style="margin: 0">Cumulez des points et badges</p>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <div style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); background: var(--bit-bg-alt); border-radius: var(--radius-md);">
+                <div style="width: 40px; height: 40px; border-radius: var(--radius-full); background: var(--bit-accent-soft); color: var(--bit-accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-family: var(--font-heading);">50</div>
+                <div>
+                  <div style="font-weight: 600;">Soumission validée</div>
+                  <div class="text-muted text-xs">Pour chaque ressource publiée</div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); background: var(--bit-bg-alt); border-radius: var(--radius-md);">
+                <div style="width: 40px; height: 40px; border-radius: var(--radius-full); background: rgba(0,200,83,0.12); color: var(--bit-success); display: flex; align-items: center; justify-content: center; font-weight: 800; font-family: var(--font-heading);">100</div>
+                <div>
+                  <div style="font-weight: 600;">Corrigé vérifié</div>
+                  <div class="text-muted text-xs">Bonus pour les corrigés sans erreur</div>
+                </div>
+              </div>
+            </div>
+
+            <h3 style="margin: var(--space-6) 0 var(--space-3); font-size: var(--fs-base);">Badges à débloquer</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--space-3);">
+              <div style="padding: var(--space-3); border: 1px solid var(--bit-border); border-radius: var(--radius-md); text-align: center;">
+                <div style="color: #FFD700; margin-bottom: 4px;"><svg width="24" height="24" aria-hidden="true"><use href="#icon-crown"/></svg></div>
+                <div style="font-size: var(--fs-xs); font-weight: 600;">Master Contributor</div>
+              </div>
+              <div style="padding: var(--space-3); border: 1px solid var(--bit-border); border-radius: var(--radius-md); text-align: center;">
+                <div style="color: #1976D2; margin-bottom: 4px;"><svg width="24" height="24" aria-hidden="true"><use href="#icon-eye"/></svg></div>
+                <div style="font-size: var(--fs-xs); font-weight: 600;">Eagle Eye</div>
+              </div>
+              <div style="padding: var(--space-3); border: 1px solid var(--bit-border); border-radius: var(--radius-md); text-align: center;">
+                <div style="color: var(--bit-accent); margin-bottom: 4px;"><svg width="24" height="24" aria-hidden="true"><use href="#icon-shield"/></svg></div>
+                <div style="font-size: var(--fs-xs); font-weight: 600;">Hero du S1</div>
+              </div>
+              <div style="padding: var(--space-3); border: 1px solid var(--bit-border); border-radius: var(--radius-md); text-align: center;">
+                <div style="color: var(--bit-success); margin-bottom: 4px;"><svg width="24" height="24" aria-hidden="true"><use href="#icon-check-circle"/></svg></div>
+                <div style="font-size: var(--fs-xs); font-weight: 600;">Corrigé Vérifié</div>
+              </div>
+              <div style="padding: var(--space-3); border: 1px solid var(--bit-border); border-radius: var(--radius-md); text-align: center;">
+                <div style="color: #FF6B6B; margin-bottom: 4px;"><svg width="24" height="24" aria-hidden="true"><use href="#icon-heart"/></svg></div>
+                <div style="font-size: var(--fs-xs); font-weight: 600;">Mentor</div>
+              </div>
+            </div>
+
+            <a href="leaderboard.html" class="btn btn-secondary btn-block" style="margin-top: var(--space-6);">
+              <svg width="16" height="16" aria-hidden="true"><use href="#icon-trophy"/></svg>
+              Voir le classement
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTRIBUTIONS RÉCENTES -->
+    <section class="section" style="background: var(--bit-bg-alt);">
+      <div class="container">
+        <div class="section-header section-header-left">
+          <span class="section-eyebrow">Activité de la communauté</span>
+          <h2 class="section-title">Contributions récentes</h2>
+          <p class="section-subtitle">Les dernières ressources partagées par les étudiants du BIT, en attente ou récemment publiées.</p>
+        </div>
+        <div class="card">
+          <div id="recent-contributions">
+            <!-- Rempli par JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    BIT.init('contribution', false);
+
+    // ============== CHARGEMENT DES MODULES ==============
+    (async () => {
+      const coursesData = await BIT.loadJSON('data/courses.json');
+      if (coursesData) {
+        const select = document.getElementById('doc-module');
+        coursesData.courses.forEach(c => {
+          const opt = document.createElement('option');
+          opt.value = c.slug;
+          opt.textContent = `${c.code} — ${c.title} (${c.semester})`;
+          select.appendChild(opt);
+        });
+      }
+    })();
+
+    // ============== NAVIGATION MULTI-ÉTAPES ==============
+    function showStep(n) {
+      document.querySelectorAll('.form-step').forEach(fs => fs.hidden = fs.dataset.step !== String(n));
+      document.querySelectorAll('[data-step-indicator]').forEach(chip => {
+        chip.classList.toggle('active', chip.dataset.stepIndicator === String(n));
+      });
+      window.scrollTo({ top: document.getElementById('contrib-layout').offsetTop - 80, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('[data-next]').forEach(btn => {
+      btn.addEventListener('click', () => showStep(btn.dataset.next));
+    });
+    document.querySelectorAll('[data-prev]').forEach(btn => {
+      btn.addEventListener('click', () => showStep(btn.dataset.prev));
+    });
+    document.querySelectorAll('[data-step-indicator]').forEach(chip => {
+      chip.addEventListener('click', () => showStep(chip.dataset.stepIndicator));
+    });
+
+    // ============== UPLOAD ZONE ==============
+    const uploadZone = document.getElementById('upload-zone');
+    const fileInput = document.getElementById('doc-file');
+    const fileInfo = document.getElementById('file-info');
+    const fileName = document.getElementById('file-name');
+    const fileSize = document.getElementById('file-size');
+    const fileRemove = document.getElementById('file-remove');
+    const MAX_SIZE = 10 * 1024 * 1024; // 10 Mo
+    const ACCEPTED = ['application/pdf', 'image/png', 'image/jpeg'];
+
+    function displayFile(file) {
+      if (!file) return;
+      if (!ACCEPTED.includes(file.type)) {
+        BIT.showToast('Format refusé', 'Seuls les PDF, PNG et JPEG sont acceptés.', 'error');
+        fileInput.value = '';
+        return;
+      }
+      if (file.size > MAX_SIZE) {
+        BIT.showToast('Fichier trop volumineux', 'La taille maximale est de 10 Mo.', 'error');
+        fileInput.value = '';
+        return;
+      }
+      fileName.textContent = file.name;
+      fileSize.textContent = (file.size / 1024 / 1024).toFixed(2) + ' Mo · ' + (file.type.split('/')[1] || '').toUpperCase();
+      fileInfo.style.display = 'block';
+      uploadZone.style.opacity = '0.5';
+    }
+
+    uploadZone.addEventListener('click', () => fileInput.click());
+    uploadZone.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); } });
+    fileInput.addEventListener('change', e => displayFile(e.target.files[0]));
+    ['dragenter', 'dragover'].forEach(ev => uploadZone.addEventListener(ev, e => { e.preventDefault(); uploadZone.classList.add('dragover'); }));
+    ['dragleave', 'drop'].forEach(ev => uploadZone.addEventListener(ev, e => { e.preventDefault(); uploadZone.classList.remove('dragover'); }));
+    uploadZone.addEventListener('drop', e => {
+      const file = e.dataTransfer.files[0];
+      if (file) {
+        fileInput.files = e.dataTransfer.files;
+        displayFile(file);
+      }
+    });
+    fileRemove.addEventListener('click', () => {
+      fileInput.value = '';
+      fileInfo.style.display = 'none';
+      uploadZone.style.opacity = '1';
+    });
+
+    // ============== SOUMISSION DU FORMULAIRE ==============
+    document.getElementById('contribution-form').addEventListener('submit', e => {
+      e.preventDefault();
+      // Validation simple des champs requis visibles
+      const requiredFields = document.querySelectorAll('#contribution-form [required]');
+      let firstMissing = null;
+      requiredFields.forEach(f => {
+        const isCheckbox = f.type === 'checkbox';
+        const empty = isCheckbox ? !f.checked : !f.value.trim();
+        if (empty && !firstMissing) firstMissing = f;
+      });
+      if (firstMissing) {
+        const step = firstMissing.closest('.form-step')?.dataset.step;
+        if (step) showStep(step);
+        firstMissing.focus();
+        BIT.showToast('Champ manquant', 'Merci de remplir tous les champs obligatoires.', 'error');
+        return;
+      }
+      if (!fileInput.files[0]) {
+        showStep('3');
+        BIT.showToast('Fichier manquant', 'Veuillez joindre un fichier PDF, PNG ou JPEG.', 'error');
+        return;
+      }
+      // Succès — toast + reset
+      BIT.showToast('Merci !', 'Votre contribution a été soumise. Elle sera examinée sous 48h.', 'success', 6000);
+      e.target.reset();
+      fileInfo.style.display = 'none';
+      uploadZone.style.opacity = '1';
+      showStep(1);
+      // Prépendre dans la liste des contributions récentes
+      prependRecent();
+    });
+
+    // ============== CONTRIBUTIONS RÉCENTES (mock) ==============
+    const mockContributions = [
+      { title: 'Examen final — Algorithmique S1', type: 'Examen', module: 'CS201 Algorithmique', author: 'Fatou Bamba', status: 'Publié', icon: 'exam' },
+      { title: 'TP n°3 — Listes chaînées en C', type: 'TP', module: 'CS102 Langage C', author: 'Ibrahim Sanou', status: 'En relecture', icon: 'code' },
+      { title: 'Fiche de révision — Suites numériques', type: 'Fiche', module: 'CS201 Mathématiques', author: 'Awa Konaté', status: 'Publié', icon: 'book' },
+      { title: 'Corrigé — Devoir sur les pointeurs', type: 'Corrigé', module: 'CS102 Langage C', author: 'Ibrahim Sanou', status: 'Publié', icon: 'check-circle' },
+      { title: 'TD n°2 — Modèle OSI', type: 'TD', module: 'CS221 Réseaux', author: 'Kouassi N\'Guessan', status: 'En relecture', icon: 'network' },
+    ];
+
+    function renderRecent() {
+      document.getElementById('recent-contributions').innerHTML = mockContributions.map(c => {
+        const statusBadge = c.status === 'Publié'
+          ? '<span class="badge badge-success">Publié</span>'
+          : '<span class="badge badge-warning">En relecture</span>';
+        return `
+        <div class="list-item">
+          <div class="list-item-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-${c.icon}"/></svg></div>
+          <div class="list-item-content">
+            <div class="list-item-title">${BIT.escapeHTML(c.title)}</div>
+            <div class="list-item-meta">${BIT.escapeHTML(c.type)} · ${BIT.escapeHTML(c.module)} · par ${BIT.escapeHTML(c.author)}</div>
+          </div>
+          ${statusBadge}
+        </div>`;
+      }).join('');
+    }
+
+    function prependRecent() {
+      const title = document.getElementById('doc-title').value || 'Nouvelle contribution';
+      const type = document.getElementById('doc-type').value || 'Document';
+      const modSelect = document.getElementById('doc-module');
+      const moduleLabel = modSelect.options[modSelect.selectedIndex]?.text || '—';
+      const author = document.getElementById('contrib-name').value || 'Vous';
+      mockContributions.unshift({ title, type, module: moduleLabel, author, status: 'En relecture', icon: 'upload' });
+      if (mockContributions.length > 8) mockContributions.pop();
+      renderRecent();
+    }
+
+    renderRecent();
+  </script>
+</body>
+</html>
