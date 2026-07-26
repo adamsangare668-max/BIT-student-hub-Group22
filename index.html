@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BIT Study HUB — La plateforme collaborative des étudiants CS du Burkina Institute of Technology. Cours, examens, corrigés, flashcards.">
+  <meta name="theme-color" content="#1E252B">
+  <title>BIT Study HUB — Burkina Institute of Technology</title>
+  <link rel="icon" type="image/jpeg" href="assets/img/bit-logo.jpeg">
+  <link rel="apple-touch-icon" href="assets/img/bit-logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner fade-in">
+          <span class="hero-eyebrow">
+            <svg width="14" height="14" aria-hidden="true"><use href="#icon-graduation"/></svg>
+            Burkina Institute of Technology · CS
+          </span>
+          <h1 class="hero-title">
+            Réussir ensemble au <span class="accent">BIT</span>.<br>
+            Toutes vos ressources, <span class="accent">un seul hub.</span>
+          </h1>
+          <p class="hero-subtitle">
+            La plateforme collaborative des étudiants en Computer Science du BIT.
+            Cours, examens, corrigés, flashcards — centralisés, structurés et accessibles
+            à toute la communauté.
+          </p>
+
+          <!-- RECHERCHE GLOBALE -->
+          <div class="search-box" style="margin: 0 auto var(--space-8); max-width: 640px;">
+            <svg class="search-icon" aria-hidden="true"><use href="#icon-search"/></svg>
+            <input type="search" class="search-input" placeholder="Rechercher un cours, un examen, un chapitre…" aria-label="Recherche globale">
+            <div class="search-results"></div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="cours.html" class="btn btn-primary btn-lg">
+              <svg width="18" height="18" aria-hidden="true"><use href="#icon-book"/></svg>
+              Explorer les cours
+            </a>
+            <a href="examens.html" class="btn btn-secondary btn-lg">
+              <svg width="18" height="18" aria-hidden="true"><use href="#icon-exam"/></svg>
+              Voir les examens
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-value" data-target="14">14</div>
+              <div class="hero-stat-label">Cours disponibles</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value" data-target="26">26</div>
+              <div class="hero-stat-label">Sujets d'examens</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value" data-target="12">12</div>
+              <div class="hero-stat-label">Contributeurs</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value" data-target="20">20</div>
+              <div class="hero-stat-label">Flashcards</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Pourquoi BIT Study HUB ?</span>
+          <h2 class="section-title">Une plateforme pensée pour les étudiants, par les étudiants</h2>
+          <p class="section-subtitle">
+            Toutes les fonctionnalités dont vous avez besoin pour réussir vos semestres,
+            réunies dans une interface moderne, rapide et collaborative.
+          </p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)">
+              <svg width="24" height="24" aria-hidden="true"><use href="#icon-search"/></svg>
+            </div>
+            <h3 style="margin-bottom: var(--space-3)">Recherche intelligente</h3>
+            <p class="text-muted">Trouvez instantanément n'importe quel cours, examen ou chapitre grâce à notre moteur de recherche multi-critères. Filtrage par matière, semestre, type et année.</p>
+          </div>
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)">
+              <svg width="24" height="24" aria-hidden="true"><use href="#icon-eye"/></svg>
+            </div>
+            <h3 style="margin-bottom: var(--space-3)">Visualiseur intégré</h3>
+            <p class="text-muted">Consultez les PDF et images d'examens directement dans le navigateur, sans téléchargement. Mode plein écran, zoom et navigation entre les pages.</p>
+          </div>
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)">
+              <svg width="24" height="24" aria-hidden="true"><use href="#icon-upload"/></svg>
+            </div>
+            <h3 style="margin-bottom: var(--space-3)">Contribution collaborative</h3>
+            <p class="text-muted">Partagez vos documents (PDF, images) pour aider la communauté. Workflow de modération rigoureux et système de validation par les majors.</p>
+          </div>
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)">
+              <svg width="24" height="24" aria-hidden="true"><use href="#icon-trophy"/></svg>
+            </div>
+            <h3 style="margin-bottom: var(--space-3)">Gamification</h3>
+            <p class="text-muted">Gagnez des points et badges pour chaque contribution validée. Grimpez au classement et devenez un Master Contributor reconnu par vos pairs.</p>
+          </div>
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)">
+              <svg width="24" height="24" aria-hidden="true"><use href="#icon-offline"/></svg>
+            </div>
+            <h3 style="margin-bottom: var(--space-3)">Mode hors-ligne (PWA)</h3>
+            <p class="text-muted">Installez le site comme application et accédez aux fiches de cours même sans connexion. Idéal pour les révisions en mobilité, même avec une connexion faible.</p>
+          </div>
+          <div class="card card-hover">
+            <div class="stat-icon" style="margin-bottom: var(--space-4)">
+              <svg width="24" height="24" aria-hidden="true"><use href="#icon-cards"/></svg>
+            </div>
+            <h3 style="margin-bottom: var(--space-3)">Flashcards interactives</h3>
+            <p class="text-muted">Révisez efficacement avec des cartes mémoire interactives par module. Auto-évaluation ludique avec questions et réponses flash sur tous les concepts clés.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VUE SEMESTRES — Bandeau panoramique -->
+    <section class="section">
+      <div class="container">
+        <div class="card" style="background: var(--bit-accent-gradient); color: white; padding: var(--space-12); border: none; position: relative; overflow: hidden;">
+          <div style="position: absolute; top: -120px; right: -120px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 60%); border-radius: 50%; pointer-events: none;"></div>
+          <div style="position: absolute; bottom: -100px; left: -100px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(255,255,255,0.12), transparent 60%); border-radius: 50%; pointer-events: none;"></div>
+          <div style="position: relative; z-index: 1; display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-8); align-items: center;">
+            <div>
+              <span class="section-eyebrow" style="color: rgba(255,255,255,0.9); padding-left: 0;">
+                <span style="display: inline-block; width: 18px; height: 2px; background: rgba(255,255,255,0.8); border-radius: var(--radius-full); margin-right: var(--space-2); vertical-align: middle;"></span>
+                Nouveau · Vue panoramique
+              </span>
+              <h2 style="color: white; font-size: var(--fs-4xl); margin: var(--space-3) 0 var(--space-4); line-height: 1.15;">
+                Visualisez vos deux semestres d'un coup d'œil
+              </h2>
+              <p style="font-size: var(--fs-lg); color: rgba(255,255,255,0.92); margin-bottom: var(--space-6); line-height: 1.7; max-width: 540px;">
+                Toutes les matières, tous les crédits ECTS, toutes les ressources
+                disponibles — réunis dans une page unique pour planifier votre réussite
+                académique du S1 au S2.
+              </p>
+              <a href="semestres.html" class="btn btn-dark btn-lg">
+                <svg width="18" height="18" aria-hidden="true"><use href="#icon-graduation"/></svg>
+                Découvrir la vue semestres
+              </a>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+              <div style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: var(--radius-lg); padding: var(--space-5); text-align: center; backdrop-filter: blur(10px);">
+                <div style="font-family: var(--font-heading); font-size: var(--fs-5xl); font-weight: 800; color: white; line-height: 1;">2</div>
+                <div style="font-size: var(--fs-sm); color: rgba(255,255,255,0.85); margin-top: var(--space-2); font-weight: 600;">Semestres</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: var(--radius-lg); padding: var(--space-5); text-align: center; backdrop-filter: blur(10px);">
+                <div style="font-family: var(--font-heading); font-size: var(--fs-5xl); font-weight: 800; color: white; line-height: 1;">29</div>
+                <div style="font-size: var(--fs-sm); color: rgba(255,255,255,0.85); margin-top: var(--space-2); font-weight: 600;">Matières</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: var(--radius-lg); padding: var(--space-5); text-align: center; backdrop-filter: blur(10px);">
+                <div style="font-family: var(--font-heading); font-size: var(--fs-5xl); font-weight: 800; color: white; line-height: 1;">60</div>
+                <div style="font-size: var(--fs-sm); color: rgba(255,255,255,0.85); margin-top: var(--space-2); font-weight: 600;">Crédits ECTS</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: var(--radius-lg); padding: var(--space-5); text-align: center; backdrop-filter: blur(10px);">
+                <div style="font-family: var(--font-heading); font-size: var(--fs-5xl); font-weight: 800; color: white; line-height: 1;">8</div>
+                <div style="font-size: var(--fs-sm); color: rgba(255,255,255,0.85); margin-top: var(--space-2); font-weight: 600;">Conseils clés</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURS POPULAIRES -->
+    <section class="section" style="background: var(--bit-bg-alt);">
+      <div class="container">
+        <div class="section-header section-header-left">
+          <span class="section-eyebrow">Ressources populaires</span>
+          <h2 class="section-title">Cours les plus consultés</h2>
+          <p class="section-subtitle">Accédez aux résumés et exercices corrigés des modules phares du programme CS.</p>
+        </div>
+        <div class="grid grid-auto" id="popular-courses">
+          <!-- Rempli par JS -->
+        </div>
+        <div style="text-align: center; margin-top: var(--space-10)">
+          <a href="cours.html" class="btn btn-secondary btn-lg">
+            Voir tous les cours
+            <svg width="18" height="18" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXAMENS RÉCENTS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header section-header-left">
+          <span class="section-eyebrow">Sujets récents</span>
+          <h2 class="section-title">Derniers examens ajoutés</h2>
+          <p class="section-subtitle">Consultez les derniers sujets d'examens et devoirs partagés par la communauté.</p>
+        </div>
+        <div class="grid grid-auto" id="recent-exams">
+          <!-- Rempli par JS -->
+        </div>
+        <div style="text-align: center; margin-top: var(--space-10)">
+          <a href="examens.html" class="btn btn-secondary btn-lg">
+            Tous les examens
+            <svg width="18" height="18" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTRIBUTEURS -->
+    <section class="section" style="background: var(--bit-primary); color: var(--bit-white);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow" style="color: var(--bit-accent-light)">Communauté</span>
+          <h2 class="section-title" style="color: var(--bit-white)">Top contributeurs du mois</h2>
+          <p class="section-subtitle" style="color: rgba(255,255,255,0.7)">
+            Ces étudiants font vivre la plateforme en partageant régulièrement leurs ressources.
+            Merci à eux pour leur engagement envers la communauté du BIT.
+          </p>
+        </div>
+        <div class="grid grid-3" id="top-contributors">
+          <!-- Rempli par JS -->
+        </div>
+        <div style="text-align: center; margin-top: var(--space-10)">
+          <a href="leaderboard.html" class="btn btn-primary btn-lg">
+            <svg width="18" height="18" aria-hidden="true"><use href="#icon-trophy"/></svg>
+            Voir le classement complet
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTRIBUER CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="card" style="background: linear-gradient(135deg, var(--bit-accent) 0%, var(--bit-accent-dark) 100%); color: white; padding: var(--space-16); text-align: center; border: none;">
+          <div style="max-width: 700px; margin: 0 auto;">
+            <svg width="64" height="64" style="margin: 0 auto var(--space-6); opacity: 0.9;" aria-hidden="true"><use href="#icon-upload"/></svg>
+            <h2 style="color: white; font-size: var(--fs-4xl); margin-bottom: var(--space-4)">
+              Vous avez des ressources à partager ?
+            </h2>
+            <p style="font-size: var(--fs-lg); color: rgba(255,255,255,0.9); margin-bottom: var(--space-8); line-height: 1.6">
+              Aidez vos camarades en partageant vos résumés, sujets d'examens, corrigés et fiches de révision.
+              Chaque contribution est valorisée et vous rapproche du statut de Master Contributor.
+            </p>
+            <div class="hero-actions">
+              <a href="contribution.html" class="btn btn-dark btn-lg">
+                <svg width="18" height="18" aria-hidden="true"><use href="#icon-upload"/></svg>
+                Contribuer maintenant
+              </a>
+              <a href="a-propos.html" class="btn btn-lg" style="background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3);">
+                En savoir plus
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    BIT.init('home', false);
+
+    // Charger et afficher les cours populaires
+    async function loadHome() {
+      const [coursesData, examsData, contributorsData] = await Promise.all([
+        BIT.loadJSON('data/courses.json'),
+        BIT.loadJSON('data/exams.json'),
+        BIT.loadJSON('data/contributors.json'),
+      ]);
+
+      // Cours populaires: 6 cours avec le plus de contenu
+      if (coursesData) {
+        const courses = coursesData.courses
+          .filter(c => c.content_available)
+          .slice(0, 6);
+        document.getElementById('popular-courses').innerHTML = courses.map(c => `
+          <a href="cours/${c.slug}/index.html" class="course-card" style="--course-color: ${c.color}">
+            <div class="course-card-banner">
+              <span class="course-card-code">${c.code}</span>
+              <svg class="course-card-icon" aria-hidden="true"><use href="#icon-${c.icon || 'book'}"/></svg>
+            </div>
+            <div class="course-card-body">
+              <h3 class="course-card-title">${BIT.escapeHTML(c.title)}</h3>
+              <p class="course-card-desc">${BIT.escapeHTML(c.description)}</p>
+              <div class="course-card-meta">
+                <span class="course-card-meta-item">
+                  <svg width="14" height="14" aria-hidden="true"><use href="#icon-clock"/></svg>
+                  ${c.hours}h
+                </span>
+                <span class="course-card-meta-item">
+                  <svg width="14" height="14" aria-hidden="true"><use href="#icon-star"/></svg>
+                  ${c.credits} crédits
+                </span>
+                ${c.chapters && c.chapters.length > 0 ? `
+                  <span class="course-card-meta-item">
+                    <svg width="14" height="14" aria-hidden="true"><use href="#icon-book"/></svg>
+                    ${c.chapters.length} chap.
+                  </span>
+                ` : ''}
+              </div>
+              <div class="course-card-footer">
+                <span class="badge-semester">${c.semester}</span>
+                <span class="text-accent font-semibold text-sm">
+                  Explorer
+                  <svg width="14" height="14" style="vertical-align: middle" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        `).join('');
+      }
+
+      // Examens récents
+      if (examsData) {
+        const exams = examsData.exams.slice(-6).reverse();
+        document.getElementById('recent-exams').innerHTML = exams.map(e => `
+          <a href="examens/${e.slug}/index.html" class="exam-card">
+            <div class="exam-card-thumb">
+              <img src="${e.image.replace('../', '')}" alt="${BIT.escapeHTML(e.titre)}" loading="lazy">
+              <div class="exam-card-badges">
+                <span class="badge badge-neutral">${e.type}</span>
+                ${e.is_verified ? `<span class="badge badge-verified">Vérifié</span>` : ''}
+                ${e.has_correction ? `<span class="badge badge-success">Corrigé</span>` : ''}
+              </div>
+            </div>
+            <div class="exam-card-body">
+              <h3 class="exam-card-title">${BIT.escapeHTML(e.titre)}</h3>
+              <div class="exam-card-meta">
+                <span>${BIT.escapeHTML(e.matiere)}</span>
+                <span>${e.semester}</span>
+                <span>${e.year}</span>
+              </div>
+              <div class="exam-card-stats">
+                <span>
+                  <svg width="14" height="14" style="vertical-align: middle" aria-hidden="true"><use href="#icon-eye"/></svg>
+                  ${e.views}
+                </span>
+                <span>
+                  <svg width="14" height="14" style="vertical-align: middle" aria-hidden="true"><use href="#icon-download"/></svg>
+                  ${e.downloads}
+                </span>
+              </div>
+            </div>
+          </a>
+        `).join('');
+      }
+
+      // Top contributeurs (3 premiers)
+      if (contributorsData) {
+        const top3 = contributorsData.leaderboard.slice(0, 3);
+        const medals = ['🥇', '🥈', '🥉'];
+        document.getElementById('top-contributors').innerHTML = top3.map((c, i) => {
+          const level = contributorsData.levels.find(l => l.id === c.level.toLowerCase()) || { color: '#9E9E9E' };
+          return `
+          <div class="card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: var(--space-2)">${medals[i]}</div>
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: ${c.color}; margin: 0 auto var(--space-4); display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: var(--fs-2xl); font-family: var(--font-heading);">${c.avatar}</div>
+            <h3 style="color: white; margin-bottom: var(--space-1)">${BIT.escapeHTML(c.name)}</h3>
+            <p style="color: rgba(255,255,255,0.7); font-size: var(--fs-sm); margin-bottom: var(--space-3)">${BIT.escapeHTML(c.specialty)} · ${c.promo}</p>
+            <div style="display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap; margin-bottom: var(--space-4)">
+              ${c.badges.slice(0, 4).map(b => {
+                const badge = contributorsData.badges.find(x => x.id === b);
+                return badge ? `<span class="badge" style="background: ${badge.color}25; color: ${badge.color}">${BIT.escapeHTML(badge.label)}</span>` : '';
+              }).join('')}
+            </div>
+            <div style="display: flex; justify-content: space-around; padding-top: var(--space-4); border-top: 1px solid rgba(255,255,255,0.1)">
+              <div>
+                <div style="font-size: var(--fs-2xl); font-weight: 800; color: var(--bit-accent); font-family: var(--font-heading)">${c.points}</div>
+                <div style="font-size: var(--fs-xs); color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.05em">Points</div>
+              </div>
+              <div>
+                <div style="font-size: var(--fs-2xl); font-weight: 800; color: white; font-family: var(--font-heading)">${c.contributions}</div>
+                <div style="font-size: var(--fs-xs); color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.05em">Contribs</div>
+              </div>
+            </div>
+          </div>`;
+        }).join('');
+      }
+    }
+
+    loadHome();
+
+    // Animation des compteurs
+    function animateCounters() {
+      document.querySelectorAll('[data-target]').forEach(el => {
+        const target = parseInt(el.dataset.target);
+        let current = 0;
+        const step = Math.ceil(target / 30);
+        const interval = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(interval);
+          }
+          el.textContent = current;
+        }, 30);
+      });
+    }
+    setTimeout(animateCounters, 300);
+  </script>
+</body>
+</html>
