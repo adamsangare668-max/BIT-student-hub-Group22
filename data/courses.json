@@ -1,0 +1,1050 @@
+{
+  "meta": {
+    "total_courses": 14,
+    "total_chapters": 90,
+    "available_courses": 14,
+    "generated_at": "2026-07-25",
+    "institution": "Burkina Institute of Technology",
+    "filiere": "Computer Science",
+    "location": "Koudougou, Burkina Faso"
+  },
+  "categories": [
+    {
+      "id": "math",
+      "label": "Mathématiques",
+      "color": "#1976D2",
+      "icon": "math"
+    },
+    {
+      "id": "programmation",
+      "label": "Programmation",
+      "color": "#3776AB",
+      "icon": "code"
+    },
+    {
+      "id": "systeme",
+      "label": "Système & Réseaux",
+      "color": "#FF7043",
+      "icon": "cpu"
+    },
+    {
+      "id": "electronique",
+      "label": "Électronique",
+      "color": "#7E57C2",
+      "icon": "chip"
+    },
+    {
+      "id": "physique",
+      "label": "Physique",
+      "color": "#F4511E",
+      "icon": "optics"
+    },
+    {
+      "id": "management",
+      "label": "Management",
+      "color": "#5D4037",
+      "icon": "project"
+    },
+    {
+      "id": "langue",
+      "label": "Langues",
+      "color": "#1565C0",
+      "icon": "english"
+    },
+    {
+      "id": "outil",
+      "label": "Outils Bureautiques",
+      "color": "#EC407A",
+      "icon": "office"
+    }
+  ],
+  "courses": [
+    {
+      "id": "programmation-python",
+      "slug": "programmation-python",
+      "title": "Programmation Python",
+      "code": "CS101",
+      "semester": "S1",
+      "category": "programmation",
+      "credits": 4,
+      "hours": 60,
+      "description": "Introduction à la programmation en Python: syntaxe, types, structures de contrôle, fonctions, POO, projets pratiques.",
+      "teacher": "Kweyakie Afi Blebo",
+      "color": "#3776AB",
+      "icon": "python",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "Introduction",
+          "slug": "chapitre-01-introduction",
+          "has_math": false,
+          "size": 385,
+          "url": "cours/programmation-python/chapitre-01-introduction.html"
+        },
+        {
+          "num": 2,
+          "title": "📘 Résumé du cours",
+          "slug": "chapitre-02-resume-du-cours",
+          "has_math": false,
+          "size": 2632,
+          "url": "cours/programmation-python/chapitre-02-resume-du-cours.html"
+        },
+        {
+          "num": 3,
+          "title": "📝 Exercices corrigés",
+          "slug": "chapitre-03-exercices-corriges",
+          "has_math": false,
+          "size": 3935,
+          "url": "cours/programmation-python/chapitre-03-exercices-corriges.html"
+        }
+      ],
+      "content_available": true,
+      "folder_path": "cours/programmation-python/",
+      "index_url": "cours/programmation-python/index.html"
+    },
+    {
+      "id": "langage-c",
+      "slug": "langage-c",
+      "title": "Programmation en Langage C",
+      "code": "CS102",
+      "semester": "S1",
+      "category": "programmation",
+      "credits": 4,
+      "hours": 60,
+      "description": "Bases du langage C: types, pointeurs, allocation dynamique, structures, fichiers, compilation séparée.",
+      "teacher": "—",
+      "color": "#5C6BC0",
+      "icon": "c",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "Introduction",
+          "slug": "chapitre-01-introduction",
+          "has_math": true,
+          "size": 215,
+          "url": "cours/langage-c/chapitre-01-introduction.html"
+        },
+        {
+          "num": 2,
+          "title": "📑 Table des matières",
+          "slug": "chapitre-02-table-des-matieres",
+          "has_math": true,
+          "size": 810,
+          "url": "cours/langage-c/chapitre-02-table-des-matieres.html"
+        },
+        {
+          "num": 3,
+          "title": "1. Introduction &amp; structure",
+          "slug": "chapitre-03-1-introduction-amp-structure",
+          "has_math": true,
+          "size": 846,
+          "url": "cours/langage-c/chapitre-03-1-introduction-amp-structure.html"
+        },
+        {
+          "num": 4,
+          "title": "2. Types, variables, entrées/sorties",
+          "slug": "chapitre-04-2-types-variables-entrees-sorties",
+          "has_math": true,
+          "size": 1090,
+          "url": "cours/langage-c/chapitre-04-2-types-variables-entrees-sorties.html"
+        },
+        {
+          "num": 5,
+          "title": "3. Opérateurs &amp; conversions",
+          "slug": "chapitre-05-3-operateurs-amp-conversions",
+          "has_math": true,
+          "size": 680,
+          "url": "cours/langage-c/chapitre-05-3-operateurs-amp-conversions.html"
+        },
+        {
+          "num": 6,
+          "title": "4. Structures de contrôle",
+          "slug": "chapitre-06-4-structures-de-controle",
+          "has_math": true,
+          "size": 1011,
+          "url": "cours/langage-c/chapitre-06-4-structures-de-controle.html"
+        },
+        {
+          "num": 7,
+          "title": "5. Tableaux &amp; fonctions",
+          "slug": "chapitre-07-5-tableaux-amp-fonctions",
+          "has_math": true,
+          "size": 963,
+          "url": "cours/langage-c/chapitre-07-5-tableaux-amp-fonctions.html"
+        },
+        {
+          "num": 8,
+          "title": "6. Pointeurs &amp; allocation dynamique",
+          "slug": "chapitre-08-6-pointeurs-amp-allocation-dynamique",
+          "has_math": true,
+          "size": 955,
+          "url": "cours/langage-c/chapitre-08-6-pointeurs-amp-allocation-dynamique.html"
+        },
+        {
+          "num": 9,
+          "title": "7. Chaînes de caractères",
+          "slug": "chapitre-09-7-chaines-de-caracteres",
+          "has_math": true,
+          "size": 645,
+          "url": "cours/langage-c/chapitre-09-7-chaines-de-caracteres.html"
+        },
+        {
+          "num": 10,
+          "title": "8. Structures &amp; listes chaînées",
+          "slug": "chapitre-10-8-structures-amp-listes-chainees",
+          "has_math": true,
+          "size": 716,
+          "url": "cours/langage-c/chapitre-10-8-structures-amp-listes-chainees.html"
+        },
+        {
+          "num": 11,
+          "title": "9. Fichiers &amp; compilation séparée",
+          "slug": "chapitre-11-9-fichiers-amp-compilation-separee",
+          "has_math": true,
+          "size": 931,
+          "url": "cours/langage-c/chapitre-11-9-fichiers-amp-compilation-separee.html"
+        },
+        {
+          "num": 12,
+          "title": "📌 TPs corrigés",
+          "slug": "chapitre-12-tps-corriges",
+          "has_math": true,
+          "size": 9399,
+          "url": "cours/langage-c/chapitre-12-tps-corriges.html"
+        }
+      ],
+      "content_available": true,
+      "folder_path": "cours/langage-c/",
+      "index_url": "cours/langage-c/index.html"
+    },
+    {
+      "id": "vba",
+      "slug": "vba",
+      "title": "Programmation VBA",
+      "code": "CS103",
+      "semester": "S2",
+      "category": "programmation",
+      "credits": 3,
+      "hours": 45,
+      "description": "Visual Basic for Applications: macros Excel, automatisation, programmation évènementielle.",
+      "teacher": "—",
+      "color": "#4CAF50",
+      "icon": "vba",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "Introduction",
+          "slug": "chapitre-01-introduction",
+          "has_math": false,
+          "size": 536,
+          "url": "cours/vba/chapitre-01-introduction.html"
+        },
+        {
+          "num": 2,
+          "title": "📘 Résumé du cours",
+          "slug": "chapitre-02-resume-du-cours",
+          "has_math": false,
+          "size": 4025,
+          "url": "cours/vba/chapitre-02-resume-du-cours.html"
+        },
+        {
+          "num": 3,
+          "title": "📝 Exercices corrigés",
+          "slug": "chapitre-03-exercices-corriges",
+          "has_math": false,
+          "size": 10626,
+          "url": "cours/vba/chapitre-03-exercices-corriges.html"
+        }
+      ],
+      "content_available": true,
+      "folder_path": "cours/vba/",
+      "index_url": "cours/vba/index.html"
+    },
+    {
+      "id": "architecture-ordinateurs",
+      "slug": "architecture-ordinateurs",
+      "title": "Architecture des Ordinateurs",
+      "code": "CS104",
+      "semester": "S1",
+      "category": "systeme",
+      "credits": 3,
+      "hours": 45,
+      "description": "Architecture matérielle: processeur, mémoire, bus, jeux d'instructions, pipeline.",
+      "teacher": "—",
+      "color": "#FF7043",
+      "icon": "cpu",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "Introduction",
+          "slug": "chapitre-01-introduction",
+          "has_math": false,
+          "size": 464,
+          "url": "cours/architecture-ordinateurs/chapitre-01-introduction.html"
+        },
+        {
+          "num": 2,
+          "title": "📘 Résumé du cours",
+          "slug": "chapitre-02-resume-du-cours",
+          "has_math": false,
+          "size": 3132,
+          "url": "cours/architecture-ordinateurs/chapitre-02-resume-du-cours.html"
+        },
+        {
+          "num": 3,
+          "title": "📝 Exercices corrigés",
+          "slug": "chapitre-03-exercices-corriges",
+          "has_math": false,
+          "size": 7851,
+          "url": "cours/architecture-ordinateurs/chapitre-03-exercices-corriges.html"
+        }
+      ],
+      "content_available": true,
+      "folder_path": "cours/architecture-ordinateurs/",
+      "index_url": "cours/architecture-ordinateurs/index.html"
+    },
+    {
+      "id": "reseaux-informatiques",
+      "slug": "reseaux-informatiques",
+      "title": "Réseaux Informatiques",
+      "code": "CS105",
+      "semester": "S2",
+      "category": "systeme",
+      "credits": 4,
+      "hours": 60,
+      "description": "Fondamentaux des réseaux: modèle OSI, TCP/IP, adressage, routage, protocoles.",
+      "teacher": "—",
+      "color": "#26A69A",
+      "icon": "network",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "Introduction",
+          "slug": "chapitre-01-introduction",
+          "has_math": false,
+          "size": 411,
+          "url": "cours/reseaux-informatiques/chapitre-01-introduction.html"
+        },
+        {
+          "num": 2,
+          "title": "📘 Résumé du cours",
+          "slug": "chapitre-02-resume-du-cours",
+          "has_math": false,
+          "size": 3024,
+          "url": "cours/reseaux-informatiques/chapitre-02-resume-du-cours.html"
+        },
+        {
+          "num": 3,
+          "title": "📝 Exercices corrigés",
+          "slug": "chapitre-03-exercices-corriges",
+          "has_math": false,
+          "size": 4491,
+          "url": "cours/reseaux-informatiques/chapitre-03-exercices-corriges.html"
+        }
+      ],
+      "content_available": true,
+      "folder_path": "cours/reseaux-informatiques/",
+      "index_url": "cours/reseaux-informatiques/index.html"
+    },
+    {
+      "id": "outils-bureautiques",
+      "slug": "outils-bureautiques",
+      "title": "Outils Bureautiques",
+      "code": "CS106",
+      "semester": "S1",
+      "category": "outil",
+      "credits": 2,
+      "hours": 30,
+      "description": "Maîtrise de la suite Office: Word, Excel, PowerPoint avancés, bonnes pratiques.",
+      "teacher": "—",
+      "color": "#EC407A",
+      "icon": "office",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "Introduction",
+          "slug": "chapitre-01-introduction",
+          "has_math": false,
+          "size": 247,
+          "url": "cours/outils-bureautiques/chapitre-01-introduction.html"
+        },
+        {
+          "num": 2,
+          "title": "📑 Table des matières",
+          "slug": "chapitre-02-table-des-matieres",
+          "has_math": false,
+          "size": 691,
+          "url": "cours/outils-bureautiques/chapitre-02-table-des-matieres.html"
+        },
+        {
+          "num": 3,
+          "title": "1. Systèmes d'exploitation",
+          "slug": "chapitre-03-1-systemes-d-exploitation",
+          "has_math": false,
+          "size": 1166,
+          "url": "cours/outils-bureautiques/chapitre-03-1-systemes-d-exploitation.html"
+        },
+        {
+          "num": 4,
+          "title": "1.1 Rôles, exemples, interface",
+          "slug": "chapitre-04-1-1-roles-exemples-interface",
+          "has_math": false,
+          "size": 889,
+          "url": "cours/outils-bureautiques/chapitre-04-1-1-roles-exemples-interface.html"
+        },
+        {
+          "num": 5,
+          "title": "1.2 Commandes et supports",
+          "slug": "chapitre-05-1-2-commandes-et-supports",
+          "has_math": false,
+          "size": 1218,
+          "url": "cours/outils-bureautiques/chapitre-05-1-2-commandes-et-supports.html"
+        },
+        {
+          "num": 6,
+          "title": "1.3 Démarrage, sécurité, raccourcis",
+          "slug": "chapitre-06-1-3-demarrage-securite-raccourcis",
+          "has_math": false,
+          "size": 956,
+          "url": "cours/outils-bureautiques/chapitre-06-1-3-demarrage-securite-raccourcis.html"
+        },
+        {
+          "num": 7,
+          "title": "2. Outils bureautiques",
+          "slug": "chapitre-07-2-outils-bureautiques",
+          "has_math": false,
+          "size": 789,
+          "url": "cours/outils-bureautiques/chapitre-07-2-outils-bureautiques.html"
+        },
+        {
+          "num": 8,
+          "title": "2.1 Word – éléments et mise en forme",
+          "slug": "chapitre-08-2-1-word-elements-et-mise-en-forme",
+          "has_math": false,
+          "size": 1274,
+          "url": "cours/outils-bureautiques/chapitre-08-2-1-word-elements-et-mise-en-forme.html"
+        },
+        {
+          "num": 9,
+          "title": "2.2 Tableaux, styles, mise en page",
+          "slug": "chapitre-09-2-2-tableaux-styles-mise-en-page",
+          "has_math": false,
+          "size": 1265,
+          "url": "cours/outils-bureautiques/chapitre-09-2-2-tableaux-styles-mise-en-page.html"
+        },
+        {
+          "num": 10,
+          "title": "📌 Exercice Word corrigé",
+          "slug": "chapitre-10-exercice-word-corrige",
+          "has_math": false,
+          "size": 3364,
+          "url": "cours/outils-bureautiques/chapitre-10-exercice-word-corrige.html"
+        }
+      ],
+      "content_available": true,
+      "folder_path": "cours/outils-bureautiques/",
+      "index_url": "cours/outils-bureautiques/index.html"
+    },
+    {
+      "id": "electronique-analogique",
+      "slug": "electronique-analogique",
+      "title": "Électronique Analogique",
+      "code": "CS108",
+      "semester": "S1",
+      "category": "electronique",
+      "credits": 3,
+      "hours": 45,
+      "description": "Composants analogiques: diodes, transistors, amplificateurs opérationnels, filtres.",
+      "teacher": "—",
+      "color": "#AB47BC",
+      "icon": "wave",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "Introduction",
+          "slug": "chapitre-01-introduction",
+          "has_math": false,
+          "size": 428,
+          "url": "cours/electronique-analogique/chapitre-01-introduction.html"
+        },
+        {
+          "num": 2,
+          "title": "📘 Résumé du cours",
+          "slug": "chapitre-02-resume-du-cours",
+          "has_math": false,
+          "size": 3050,
+          "url": "cours/electronique-analogique/chapitre-02-resume-du-cours.html"
+        },
+        {
+          "num": 3,
+          "title": "📝 Exercices corrigés",
+          "slug": "chapitre-03-exercices-corriges",
+          "has_math": false,
+          "size": 4440,
+          "url": "cours/electronique-analogique/chapitre-03-exercices-corriges.html"
+        }
+      ],
+      "content_available": true,
+      "folder_path": "cours/electronique-analogique/",
+      "index_url": "cours/electronique-analogique/index.html"
+    },
+    {
+      "id": "gestion-de-projet",
+      "slug": "gestion-de-projet",
+      "title": "Gestion de Projet",
+      "code": "MG101",
+      "semester": "S2",
+      "category": "management",
+      "credits": 3,
+      "hours": 45,
+      "description": "Méthodologies de gestion de projet: cycle de vie, PMBOK, Agile, Scrum, planification.",
+      "teacher": "—",
+      "color": "#5D4037",
+      "icon": "project",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "Introduction",
+          "slug": "chapitre-01-introduction",
+          "has_math": false,
+          "size": 383,
+          "url": "cours/gestion-de-projet/chapitre-01-introduction.html"
+        },
+        {
+          "num": 2,
+          "title": "📘 Résumé du cours",
+          "slug": "chapitre-02-resume-du-cours",
+          "has_math": false,
+          "size": 3280,
+          "url": "cours/gestion-de-projet/chapitre-02-resume-du-cours.html"
+        },
+        {
+          "num": 3,
+          "title": "📝 Exercices corrigés (TP)",
+          "slug": "chapitre-03-exercices-corriges-tp",
+          "has_math": false,
+          "size": 4414,
+          "url": "cours/gestion-de-projet/chapitre-03-exercices-corriges-tp.html"
+        }
+      ],
+      "content_available": true,
+      "folder_path": "cours/gestion-de-projet/",
+      "index_url": "cours/gestion-de-projet/index.html"
+    },
+    {
+      "id": "management-financier",
+      "slug": "management-financier",
+      "title": "Management Financier",
+      "code": "MG102",
+      "semester": "S2",
+      "category": "management",
+      "credits": 3,
+      "hours": 45,
+      "description": "Principes financiers: comptabilité, analyse financière, budget, investissement, ROI.",
+      "teacher": "—",
+      "color": "#2E7D32",
+      "icon": "finance",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "Introduction",
+          "slug": "chapitre-01-introduction",
+          "has_math": true,
+          "size": 222,
+          "url": "cours/management-financier/chapitre-01-introduction.html"
+        },
+        {
+          "num": 2,
+          "title": "📑 Table des matières",
+          "slug": "chapitre-02-table-des-matieres",
+          "has_math": true,
+          "size": 693,
+          "url": "cours/management-financier/chapitre-02-table-des-matieres.html"
+        },
+        {
+          "num": 3,
+          "title": "1. Généralités sur la gestion financière",
+          "slug": "chapitre-03-1-generalites-sur-la-gestion-financiere",
+          "has_math": true,
+          "size": 1112,
+          "url": "cours/management-financier/chapitre-03-1-generalites-sur-la-gestion-financiere.html"
+        },
+        {
+          "num": 4,
+          "title": "2. Politique d'approvisionnement",
+          "slug": "chapitre-04-2-politique-d-approvisionnement",
+          "has_math": true,
+          "size": 926,
+          "url": "cours/management-financier/chapitre-04-2-politique-d-approvisionnement.html"
+        },
+        {
+          "num": 5,
+          "title": "3. Calcul des coûts",
+          "slug": "chapitre-05-3-calcul-des-couts",
+          "has_math": true,
+          "size": 568,
+          "url": "cours/management-financier/chapitre-05-3-calcul-des-couts.html"
+        },
+        {
+          "num": 6,
+          "title": "4. Répartition des charges indirectes",
+          "slug": "chapitre-06-4-repartition-des-charges-indirectes",
+          "has_math": true,
+          "size": 359,
+          "url": "cours/management-financier/chapitre-06-4-repartition-des-charges-indirectes.html"
+        },
+        {
+          "num": 7,
+          "title": "5. Intérêts simple et composé",
+          "slug": "chapitre-07-5-interets-simple-et-compose",
+          "has_math": true,
+          "size": 444,
+          "url": "cours/management-financier/chapitre-07-5-interets-simple-et-compose.html"
+        },
+        {
+          "num": 8,
+          "title": "6. Actualisation et investissement",
+          "slug": "chapitre-08-6-actualisation-et-investissement",
+          "has_math": true,
+          "size": 421,
+          "url": "cours/management-financier/chapitre-08-6-actualisation-et-investissement.html"
+        },
+        {
+          "num": 9,
+          "title": "7. VAN, TRI, ratios",
+          "slug": "chapitre-09-7-van-tri-ratios",
+          "has_math": true,
+          "size": 812,
+          "url": "cours/management-financier/chapitre-09-7-van-tri-ratios.html"
+        },
+        {
+          "num": 10,
+          "title": "8. Gestion de trésorerie",
+          "slug": "chapitre-10-8-gestion-de-tresorerie",
+          "has_math": true,
+          "size": 426,
+          "url": "cours/management-financier/chapitre-10-8-gestion-de-tresorerie.html"
+        },
+        {
+          "num": 11,
+          "title": "📌 Exercices corrigés",
+          "slug": "chapitre-11-exercices-corriges",
+          "has_math": true,
+          "size": 9712,
+          "url": "cours/management-financier/chapitre-11-exercices-corriges.html"
+        }
+      ],
+      "content_available": true,
+      "folder_path": "cours/management-financier/",
+      "index_url": "cours/management-financier/index.html"
+    },
+    {
+      "id": "anglais-technique",
+      "slug": "anglais-technique",
+      "title": "Anglais Technique",
+      "code": "EN101",
+      "semester": "S1",
+      "category": "langue",
+      "credits": 2,
+      "hours": 30,
+      "description": "Vocabulaire et grammaire technique en informatique: documentation, présentations, emails.",
+      "teacher": "—",
+      "color": "#1565C0",
+      "icon": "english",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "Introduction",
+          "slug": "chapitre-01-introduction",
+          "has_math": false,
+          "size": 297,
+          "url": "cours/anglais-technique/chapitre-01-introduction.html"
+        },
+        {
+          "num": 2,
+          "title": "📑 Table des matières",
+          "slug": "chapitre-02-table-des-matieres",
+          "has_math": false,
+          "size": 1430,
+          "url": "cours/anglais-technique/chapitre-02-table-des-matieres.html"
+        },
+        {
+          "num": 3,
+          "title": "1. Introduction à l'ordinateur",
+          "slug": "chapitre-03-1-introduction-a-l-ordinateur",
+          "has_math": false,
+          "size": 1971,
+          "url": "cours/anglais-technique/chapitre-03-1-introduction-a-l-ordinateur.html"
+        },
+        {
+          "num": 4,
+          "title": "2. Types de systèmes informatiques",
+          "slug": "chapitre-04-2-types-de-systemes-informatiques",
+          "has_math": false,
+          "size": 1611,
+          "url": "cours/anglais-technique/chapitre-04-2-types-de-systemes-informatiques.html"
+        },
+        {
+          "num": 5,
+          "title": "3. Périphériques d'entrée",
+          "slug": "chapitre-05-3-peripheriques-d-entree",
+          "has_math": false,
+          "size": 1375,
+          "url": "cours/anglais-technique/chapitre-05-3-peripheriques-d-entree.html"
+        },
+        {
+          "num": 6,
+          "title": "4. Périphériques de sortie",
+          "slug": "chapitre-06-4-peripheriques-de-sortie",
+          "has_math": false,
+          "size": 1381,
+          "url": "cours/anglais-technique/chapitre-06-4-peripheriques-de-sortie.html"
+        },
+        {
+          "num": 7,
+          "title": "5. Unité de traitement et mémoire",
+          "slug": "chapitre-07-5-unite-de-traitement-et-memoire",
+          "has_math": false,
+          "size": 1842,
+          "url": "cours/anglais-technique/chapitre-07-5-unite-de-traitement-et-memoire.html"
+        },
+        {
+          "num": 8,
+          "title": "6. Disques et lecteurs de stockage",
+          "slug": "chapitre-08-6-disques-et-lecteurs-de-stockage",
+          "has_math": false,
+          "size": 1932,
+          "url": "cours/anglais-technique/chapitre-08-6-disques-et-lecteurs-de-stockage.html"
+        },
+        {
+          "num": 9,
+          "title": "7. Systèmes d'exploitation et interface graphique",
+          "slug": "chapitre-09-7-systemes-d-exploitation-et-interface-graphique",
+          "has_math": false,
+          "size": 1286,
+          "url": "cours/anglais-technique/chapitre-09-7-systemes-d-exploitation-et-interface-graphique.html"
+        },
+        {
+          "num": 10,
+          "title": "8. Fonctionnalités des logiciels de traitement de texte",
+          "slug": "chapitre-10-8-fonctionnalites-des-logiciels-de-traitement-de-texte",
+          "has_math": false,
+          "size": 1847,
+          "url": "cours/anglais-technique/chapitre-10-8-fonctionnalites-des-logiciels-de-traitement-de-texte.html"
+        },
+        {
+          "num": 11,
+          "title": "9. Tableurs et bases de données",
+          "slug": "chapitre-11-9-tableurs-et-bases-de-donnees",
+          "has_math": false,
+          "size": 867,
+          "url": "cours/anglais-technique/chapitre-11-9-tableurs-et-bases-de-donnees.html"
+        },
+        {
+          "num": 12,
+          "title": "10. Multimédia",
+          "slug": "chapitre-12-10-multimedia",
+          "has_math": false,
+          "size": 986,
+          "url": "cours/anglais-technique/chapitre-12-10-multimedia.html"
+        },
+        {
+          "num": 13,
+          "title": "11. Programmation informatique",
+          "slug": "chapitre-13-11-programmation-informatique",
+          "has_math": false,
+          "size": 1268,
+          "url": "cours/anglais-technique/chapitre-13-11-programmation-informatique.html"
+        },
+        {
+          "num": 14,
+          "title": "12. Informatique et emploi",
+          "slug": "chapitre-14-12-informatique-et-emploi",
+          "has_math": false,
+          "size": 658,
+          "url": "cours/anglais-technique/chapitre-14-12-informatique-et-emploi.html"
+        },
+        {
+          "num": 15,
+          "title": "13. Réseaux informatiques",
+          "slug": "chapitre-15-13-reseaux-informatiques",
+          "has_math": false,
+          "size": 850,
+          "url": "cours/anglais-technique/chapitre-15-13-reseaux-informatiques.html"
+        },
+        {
+          "num": 16,
+          "title": "14. Internet",
+          "slug": "chapitre-16-14-internet",
+          "has_math": false,
+          "size": 1127,
+          "url": "cours/anglais-technique/chapitre-16-14-internet.html"
+        },
+        {
+          "num": 17,
+          "title": "15. Sécurité sur Internet",
+          "slug": "chapitre-17-15-securite-sur-internet",
+          "has_math": false,
+          "size": 1657,
+          "url": "cours/anglais-technique/chapitre-17-15-securite-sur-internet.html"
+        },
+        {
+          "num": 18,
+          "title": "16. Acronymes courants en informatique",
+          "slug": "chapitre-18-16-acronymes-courants-en-informatique",
+          "has_math": false,
+          "size": 1951,
+          "url": "cours/anglais-technique/chapitre-18-16-acronymes-courants-en-informatique.html"
+        },
+        {
+          "num": 19,
+          "title": "17. Glossaire des termes liés à l'intelligence artificielle",
+          "slug": "chapitre-19-17-glossaire-des-termes-lies-a-l-intelligence-artificielle",
+          "has_math": false,
+          "size": 6130,
+          "url": "cours/anglais-technique/chapitre-19-17-glossaire-des-termes-lies-a-l-intelligence-artificielle.html"
+        },
+        {
+          "num": 20,
+          "title": "18. Exercices d'écriture (correction)",
+          "slug": "chapitre-20-18-exercices-d-ecriture-correction",
+          "has_math": false,
+          "size": 14244,
+          "url": "cours/anglais-technique/chapitre-20-18-exercices-d-ecriture-correction.html"
+        }
+      ],
+      "content_available": true,
+      "folder_path": "cours/anglais-technique/",
+      "index_url": "cours/anglais-technique/index.html"
+    },
+    {
+      "id": "algorithmique-dynamique",
+      "slug": "algorithmique-dynamique",
+      "title": "Algorithmique Dynamique",
+      "code": "CS109",
+      "semester": "S2",
+      "category": "programmation",
+      "credits": 4,
+      "hours": 60,
+      "description": "Structures de données dynamiques: listes chaînées, piles, files, arbres, graphes, algorithmes de tri.",
+      "teacher": "—",
+      "color": "#00897B",
+      "icon": "algorithm",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "Chapitre 1 : Allocation des données en C",
+          "slug": "chapitre-01-chapitre-1-allocation-des-donnees-en-c",
+          "has_math": false,
+          "size": 12391,
+          "url": "cours/algorithmique-dynamique/chapitre-01-chapitre-1-allocation-des-donnees-en-c.html"
+        },
+        {
+          "num": 2,
+          "title": "Chapitre 3 : Les files (Queues)",
+          "slug": "chapitre-02-chapitre-3-les-files-queues",
+          "has_math": false,
+          "size": 13484,
+          "url": "cours/algorithmique-dynamique/chapitre-02-chapitre-3-les-files-queues.html"
+        },
+        {
+          "num": 3,
+          "title": "Chapitre 3 : Les files (Queues)",
+          "slug": "chapitre-03-chapitre-3-les-files-queues",
+          "has_math": false,
+          "size": 13484,
+          "url": "cours/algorithmique-dynamique/chapitre-03-chapitre-3-les-files-queues.html"
+        }
+      ],
+      "content_available": true,
+      "folder_path": "cours/algorithmique-dynamique/",
+      "index_url": "cours/algorithmique-dynamique/index.html"
+    },
+    {
+      "id": "geometrie-optique",
+      "slug": "geometrie-optique",
+      "title": "Géométrie Optique",
+      "code": "PH101",
+      "semester": "S1",
+      "category": "physique",
+      "credits": 3,
+      "hours": 45,
+      "description": "Optique géométrique: réflexion, réfraction, lentilles, miroirs, instruments d'optique.",
+      "teacher": "—",
+      "color": "#F4511E",
+      "icon": "optics",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "🔬 Fondamentaux de l'Optique",
+          "slug": "chapitre-01-fondamentaux-de-l-optique",
+          "has_math": true,
+          "size": 15544,
+          "url": "cours/geometrie-optique/chapitre-01-fondamentaux-de-l-optique.html"
+        },
+        {
+          "num": 2,
+          "title": "🪞 Miroir et Dioptre Plan",
+          "slug": "chapitre-02-miroir-et-dioptre-plan",
+          "has_math": true,
+          "size": 16277,
+          "url": "cours/geometrie-optique/chapitre-02-miroir-et-dioptre-plan.html"
+        },
+        {
+          "num": 3,
+          "title": "🔦 Miroirs Sphériques",
+          "slug": "chapitre-03-miroirs-spheriques",
+          "has_math": true,
+          "size": 14078,
+          "url": "cours/geometrie-optique/chapitre-03-miroirs-spheriques.html"
+        },
+        {
+          "num": 4,
+          "title": "🔬 Optique Géométrique",
+          "slug": "chapitre-04-optique-geometrique",
+          "has_math": true,
+          "size": 7941,
+          "url": "cours/geometrie-optique/chapitre-04-optique-geometrique.html"
+        }
+      ],
+      "content_available": true,
+      "folder_path": "cours/geometrie-optique/",
+      "index_url": "cours/geometrie-optique/index.html"
+    },
+    {
+      "id": "mathematiques",
+      "slug": "mathematiques",
+      "title": "Mathématiques",
+      "code": "MA",
+      "semester": "S1+S2",
+      "category": "math",
+      "credits": 6,
+      "hours": 90,
+      "description": "Ensemble des cours de mathématiques: analyse, algèbre, probabilités, statistiques, calcul scientifique.",
+      "teacher": "—",
+      "color": "#1976D2",
+      "icon": "math",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "📐 Analyse I",
+          "slug": "chapitre-01-analyse-i",
+          "has_math": true,
+          "size": 20419,
+          "url": "cours/mathematiques/chapitre-01-analyse-i.html"
+        },
+        {
+          "num": 2,
+          "title": "📈 Analyse II",
+          "slug": "chapitre-02-analyse-ii",
+          "has_math": true,
+          "size": 26741,
+          "url": "cours/mathematiques/chapitre-02-analyse-ii.html"
+        },
+        {
+          "num": 3,
+          "title": "🧮 Algèbre Générale",
+          "slug": "chapitre-03-algebre-generale",
+          "has_math": true,
+          "size": 24843,
+          "url": "cours/mathematiques/chapitre-03-algebre-generale.html"
+        },
+        {
+          "num": 4,
+          "title": "🧮 Algèbre linéaire L1",
+          "slug": "chapitre-04-algebre-lineaire-l1",
+          "has_math": true,
+          "size": 27507,
+          "url": "cours/mathematiques/chapitre-04-algebre-lineaire-l1.html"
+        },
+        {
+          "num": 5,
+          "title": "📊 Probabilités &amp; Statistiques",
+          "slug": "chapitre-05-probabilites-amp-statistiques",
+          "has_math": true,
+          "size": 31351,
+          "url": "cours/mathematiques/chapitre-05-probabilites-amp-statistiques.html"
+        },
+        {
+          "num": 6,
+          "title": "💻 Calcul Scientifique",
+          "slug": "chapitre-06-calcul-scientifique",
+          "has_math": true,
+          "size": 18911,
+          "url": "cours/mathematiques/chapitre-06-calcul-scientifique.html"
+        }
+      ],
+      "content_available": true,
+      "folder_path": "cours/mathematiques/",
+      "index_url": "cours/mathematiques/index.html"
+    },
+    {
+      "id": "electronique-numerique",
+      "slug": "electronique-numerique",
+      "title": "Électronique Numérique",
+      "code": "CS107",
+      "semester": "S1",
+      "category": "electronique",
+      "color": "#7E57C2",
+      "icon": "chip",
+      "teacher": "—",
+      "credits": 3,
+      "hours": 45,
+      "description": "Logique combinatoire et séquentielle: portes logiques, bascules, compteurs, registres.",
+      "chapters": [
+        {
+          "num": 1,
+          "title": "Systèmes de numération",
+          "slug": "chapitre-01-systemes-de-numeration",
+          "has_math": false,
+          "size": 8000,
+          "url": "cours/electronique-numerique/chapitre-01-systemes-de-numeration.html"
+        },
+        {
+          "num": 2,
+          "title": "Algèbre de Boole",
+          "slug": "chapitre-02-algebre-de-boole",
+          "has_math": false,
+          "size": 9500,
+          "url": "cours/electronique-numerique/chapitre-02-algebre-de-boole.html"
+        },
+        {
+          "num": 3,
+          "title": "Portes logiques",
+          "slug": "chapitre-03-portes-logiques",
+          "has_math": false,
+          "size": 9000,
+          "url": "cours/electronique-numerique/chapitre-03-portes-logiques.html"
+        },
+        {
+          "num": 4,
+          "title": "Logique combinatoire",
+          "slug": "chapitre-04-logique-combinatoire",
+          "has_math": false,
+          "size": 8500,
+          "url": "cours/electronique-numerique/chapitre-04-logique-combinatoire.html"
+        },
+        {
+          "num": 5,
+          "title": "Logique séquentielle",
+          "slug": "chapitre-05-logique-sequentielle",
+          "has_math": false,
+          "size": 8200,
+          "url": "cours/electronique-numerique/chapitre-05-logique-sequentielle.html"
+        },
+        {
+          "num": 6,
+          "title": "Compteurs et registres",
+          "slug": "chapitre-06-compteurs-registres",
+          "has_math": false,
+          "size": 10000,
+          "url": "cours/electronique-numerique/chapitre-06-compteurs-registres.html"
+        }
+      ],
+      "content_available": true,
+      "source_folder": "electronique-numerique",
+      "folder_path": "cours/electronique-numerique/",
+      "index_url": "cours/electronique-numerique/index.html"
+    }
+  ]
+}

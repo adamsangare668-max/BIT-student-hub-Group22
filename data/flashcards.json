@@ -1,0 +1,719 @@
+{
+  "meta": {
+    "total_cards": 58,
+    "by_difficulty": {
+      "facile": 24,
+      "moyen": 26,
+      "difficile": 8
+    },
+    "by_category": {
+      "math": 8,
+      "programmation": 20,
+      "systeme": 9,
+      "electronique": 8,
+      "physique": 3,
+      "management": 4,
+      "langue": 3,
+      "outil": 3
+    },
+    "generated_at": "2026-07-25"
+  },
+  "cards": [
+    {
+      "id": "py-001",
+      "course": "programmation-python",
+      "category": "programmation",
+      "front": "Comment déclare-t-on une variable en Python ?",
+      "back": "Pas de mot-clé spécifique : nom = valeur. Ex: age = 18. Le type est inféré automatiquement (entier, flottant, chaîne...).",
+      "difficulty": "facile",
+      "tags": [
+        "python",
+        "variables"
+      ]
+    },
+    {
+      "id": "py-002",
+      "course": "programmation-python",
+      "category": "programmation",
+      "front": "Quelle est la différence entre == et is ?",
+      "back": "== compare les valeurs, is compare les identités (adresses mémoire). is renvoie True si deux variables référencent le même objet en mémoire.",
+      "difficulty": "moyen",
+      "tags": [
+        "python",
+        "opérateurs"
+      ]
+    },
+    {
+      "id": "py-003",
+      "course": "programmation-python",
+      "category": "programmation",
+      "front": "Qu'est-ce qu'une liste en compréhension ?",
+      "back": "Syntaxe concise: [expr for item in iterable if condition]. Ex: [x**2 for x in range(10) if x % 2 == 0] génère les carrés pairs.",
+      "difficulty": "moyen",
+      "tags": [
+        "python",
+        "listes"
+      ]
+    },
+    {
+      "id": "py-004",
+      "course": "programmation-python",
+      "category": "programmation",
+      "front": "Définir une fonction lambda",
+      "back": "Fonction anonyme: lambda args: expr. Ex: carre = lambda x: x**2. Utile pour les opérations courtes et les fonctions callback.",
+      "difficulty": "facile",
+      "tags": [
+        "python",
+        "fonctions"
+      ]
+    },
+    {
+      "id": "py-005",
+      "course": "programmation-python",
+      "category": "programmation",
+      "front": "Différence entre liste, tuple et dictionnaire",
+      "back": "Liste [1,2,3] : mutable, ordonnée. Tuple (1,2,3) : immuable, ordonné. Dictionnaire {'k': v} : mutable, clé-valeur, non ordonné (avant 3.7).",
+      "difficulty": "facile",
+      "tags": [
+        "python",
+        "structures"
+      ]
+    },
+    {
+      "id": "py-006",
+      "course": "programmation-python",
+      "category": "programmation",
+      "front": "Qu'est-ce que self dans une classe Python ?",
+      "back": "Référence à l'instance courante de l'objet. Premier paramètre des méthodes d'instance. Permet d'accéder aux attributs: self.nom, self.age.",
+      "difficulty": "moyen",
+      "tags": [
+        "python",
+        "poo"
+      ]
+    },
+    {
+      "id": "c-001",
+      "course": "langage-c",
+      "category": "programmation",
+      "front": "Qu'est-ce qu'un pointeur en C ?",
+      "back": "Variable qui stocke l'adresse mémoire d'une autre variable. Déclaration: int *p; Affectation: p = &x; Déréférencement: *p donne la valeur pointée.",
+      "difficulty": "moyen",
+      "tags": [
+        "c",
+        "pointeurs"
+      ]
+    },
+    {
+      "id": "c-002",
+      "course": "langage-c",
+      "category": "programmation",
+      "front": "Différence entre malloc et calloc ?",
+      "back": "malloc(size) alloue sans initialiser (contenu indéterminé). calloc(n, size) alloue ET initialise à 0. Les deux retournent void* et nécessitent free().",
+      "difficulty": "moyen",
+      "tags": [
+        "c",
+        "mémoire"
+      ]
+    },
+    {
+      "id": "c-003",
+      "course": "langage-c",
+      "category": "programmation",
+      "front": "Comment parcourir un tableau en C ?",
+      "back": "for(int i=0; i<n; i++) { printf(\"%d\", tab[i]); }. Le nom du tableau est un pointeur vers le 1er élément: tab == &tab[0].",
+      "difficulty": "facile",
+      "tags": [
+        "c",
+        "tableaux"
+      ]
+    },
+    {
+      "id": "c-004",
+      "course": "langage-c",
+      "category": "programmation",
+      "front": "Que fait l'opérateur & en C ?",
+      "back": "Deux usages: 1) opérateur d'adresse: &var donne l'adresse de var; 2) opérateur bitwise AND: a & b fait un ET bit à bit.",
+      "difficulty": "moyen",
+      "tags": [
+        "c",
+        "opérateurs"
+      ]
+    },
+    {
+      "id": "c-005",
+      "course": "langage-c",
+      "category": "programmation",
+      "front": "Différence entre passage par valeur et par adresse ?",
+      "back": "Par valeur: copie de la variable (modifications non visibles à l'appelant). Par adresse: passage du pointeur (modifications visibles). Permet de modifier plusieurs valeurs.",
+      "difficulty": "moyen",
+      "tags": [
+        "c",
+        "fonctions"
+      ]
+    },
+    {
+      "id": "c-006",
+      "course": "langage-c",
+      "category": "programmation",
+      "front": "Qu'est-ce qu'une structure en C ?",
+      "back": "Type composé regroupant des variables de types différents sous un nom. struct Personne { char nom[50]; int age; }; Accès: p.nom, p->nom si pointeur.",
+      "difficulty": "facile",
+      "tags": [
+        "c",
+        "structures"
+      ]
+    },
+    {
+      "id": "algo-001",
+      "course": "algorithmique-dynamique",
+      "category": "programmation",
+      "front": "Qu'est-ce qu'une liste chaînée ?",
+      "back": "Structure de données où chaque nœud contient une valeur et un pointeur vers le nœud suivant. Permet insertion/suppression efficaces en O(1) mais accès séquentiel O(n).",
+      "difficulty": "moyen",
+      "tags": [
+        "algo",
+        "structures"
+      ]
+    },
+    {
+      "id": "algo-002",
+      "course": "algorithmique-dynamique",
+      "category": "programmation",
+      "front": "Complexité du tri rapide (quicksort) ?",
+      "back": "O(n log n) en moyenne, O(n²) dans le pire des cas (rare avec bon pivot). En place, non stable. Le pivot central est crucial pour la performance.",
+      "difficulty": "difficile",
+      "tags": [
+        "algo",
+        "tri"
+      ]
+    },
+    {
+      "id": "algo-003",
+      "course": "algorithmique-dynamique",
+      "category": "programmation",
+      "front": "Différence entre pile (stack) et file (queue) ?",
+      "back": "Pile: LIFO (Last In First Out) — push/pop. File: FIFO (First In First Out) — enqueue/dequeue. Pile pour récursivité, file pour parcours BFS.",
+      "difficulty": "facile",
+      "tags": [
+        "algo",
+        "structures"
+      ]
+    },
+    {
+      "id": "algo-004",
+      "course": "algorithmique-dynamique",
+      "category": "programmation",
+      "front": "Qu'est-ce qu'un arbre binaire de recherche ?",
+      "back": "Arbre où chaque nœud a au plus 2 enfants. Pour tout nœud: valeur(gauche) < valeur(nœud) < valeur(droite). Recherche/insertion en O(log n) si équilibré.",
+      "difficulty": "difficile",
+      "tags": [
+        "algo",
+        "arbres"
+      ]
+    },
+    {
+      "id": "algo-005",
+      "course": "algorithmique-dynamique",
+      "category": "programmation",
+      "front": "Différence BFS et DFS ?",
+      "back": "BFS (Breadth-First Search): parcours niveau par niveau, utilise une file. DFS (Depth-First Search): va au fond d'abord, utilise une pile ou récursivité.",
+      "difficulty": "moyen",
+      "tags": [
+        "algo",
+        "graphes"
+      ]
+    },
+    {
+      "id": "math-001",
+      "course": "mathematiques",
+      "category": "math",
+      "front": "Définition d'une borne supérieure",
+      "back": "s = sup(A) est le plus petit majorant de A. Caractérisation: ∀ε>0, ∃a∈A, a > s-ε. Toute partie non vide majorée de ℝ admet une borne sup.",
+      "difficulty": "difficile",
+      "tags": [
+        "analyse",
+        "réels"
+      ]
+    },
+    {
+      "id": "math-002",
+      "course": "mathematiques",
+      "category": "math",
+      "front": "Critère de Cauchy pour les suites",
+      "back": "Une suite (u_n) converge ssi ∀ε>0, ∃N, ∀n,m≥N, |u_n - u_m| < ε. Permet de prouver la convergence sans connaître la limite.",
+      "difficulty": "difficile",
+      "tags": [
+        "analyse",
+        "suites"
+      ]
+    },
+    {
+      "id": "math-003",
+      "course": "mathematiques",
+      "category": "math",
+      "front": "Théorème des accroissements finis",
+      "back": "Si f continue sur [a,b] et dérivable sur ]a,b[, alors ∃c∈]a,b[ tel que f'(c) = (f(b)-f(a))/(b-a). Géométriquement: tangente parallèle à la corde.",
+      "difficulty": "moyen",
+      "tags": [
+        "analyse",
+        "dérivation"
+      ]
+    },
+    {
+      "id": "math-004",
+      "course": "mathematiques",
+      "category": "math",
+      "front": "Qu'est-ce qu'une matrice inversible ?",
+      "back": "Matrice carrée dont le déterminant est non nul. Il existe A^(-1) telle que A × A^(-1) = I. L'inverse est unique et (AB)^(-1) = B^(-1)A^(-1).",
+      "difficulty": "moyen",
+      "tags": [
+        "algèbre",
+        "matrices"
+      ]
+    },
+    {
+      "id": "math-005",
+      "course": "mathematiques",
+      "category": "math",
+      "front": "Loi normale: formule de la densité",
+      "back": "f(x) = (1/(σ√(2π))) × exp(-(x-μ)²/(2σ²)). μ = espérance, σ = écart-type. Loi N(0,1) = loi normale centrée réduite (Z-score).",
+      "difficulty": "difficile",
+      "tags": [
+        "probabilités",
+        "loi"
+      ]
+    },
+    {
+      "id": "math-006",
+      "course": "mathematiques",
+      "category": "math",
+      "front": "Théorème des valeurs intermédiaires",
+      "back": "Si f continue sur [a,b] et f(a) < y < f(b), alors ∃c∈]a,b[ tel que f(c) = y. Conséquence: l'image d'un intervalle est un intervalle.",
+      "difficulty": "moyen",
+      "tags": [
+        "analyse",
+        "continuité"
+      ]
+    },
+    {
+      "id": "math-007",
+      "course": "mathematiques",
+      "category": "math",
+      "front": "Qu'est-ce qu'un groupe en algèbre ?",
+      "back": "Ensemble G muni d'une loi * interne: (1) associative, (2) élément neutre e, (3) tout élément a un inverse. Abélien si * commutative.",
+      "difficulty": "moyen",
+      "tags": [
+        "algèbre",
+        "structures"
+      ]
+    },
+    {
+      "id": "math-008",
+      "course": "mathematiques",
+      "category": "math",
+      "front": "Formule de Taylor-Young à l'ordre n",
+      "back": "f(a+h) = Σ(k=0 à n) (h^k/k!) f^(k)(a) + o(h^n). Approximation polynomiale locale. Cas n=2: f(a) + hf'(a) + (h²/2)f''(a).",
+      "difficulty": "difficile",
+      "tags": [
+        "analyse",
+        "développement"
+      ]
+    },
+    {
+      "id": "net-001",
+      "course": "reseaux-informatiques",
+      "category": "systeme",
+      "front": "Combien de couches a le modèle OSI ?",
+      "back": "7 couches: 1.Physique, 2.Liaison, 3.Réseau, 4.Transport, 5.Session, 6.Présentation, 7.Application. Acronyme: Pour Le Réseau Tout Se Passe Automatiquement.",
+      "difficulty": "facile",
+      "tags": [
+        "réseaux",
+        "OSI"
+      ]
+    },
+    {
+      "id": "net-002",
+      "course": "reseaux-informatiques",
+      "category": "systeme",
+      "front": "Différence TCP et UDP ?",
+      "back": "TCP: orienté connexion, fiable, ordonné, contrôle de flux (3-way handshake). UDP: sans connexion, non fiable, plus rapide. TCP pour HTTP/SMTP, UDP pour streaming/jeux.",
+      "difficulty": "moyen",
+      "tags": [
+        "réseaux",
+        "protocoles"
+      ]
+    },
+    {
+      "id": "net-003",
+      "course": "reseaux-informatiques",
+      "category": "systeme",
+      "front": "Qu'est-ce qu'une adresse IP v4 ?",
+      "back": "Adresse 32 bits notée en 4 octets décimaux: 192.168.1.1. Divisée en réseau + hôte via masque (ex /24 = 255.255.255.0). Classes A, B, C, D, E.",
+      "difficulty": "facile",
+      "tags": [
+        "réseaux",
+        "adressage"
+      ]
+    },
+    {
+      "id": "net-004",
+      "course": "reseaux-informatiques",
+      "category": "systeme",
+      "front": "Rôle d'un routeur ?",
+      "back": "Équipement de couche 3 (Réseau) qui relie plusieurs réseaux et choisit le meilleur chemin pour les paquets IP. Utilise des tables de routage et des protocoles (RIP, OSPF, BGP).",
+      "difficulty": "moyen",
+      "tags": [
+        "réseaux",
+        "routage"
+      ]
+    },
+    {
+      "id": "net-005",
+      "course": "reseaux-informatiques",
+      "category": "systeme",
+      "front": "Différence entre hub, switch et routeur ?",
+      "back": "Hub: couche 1, diffuse tout. Switch: couche 2, utilise adresses MAC, intelligent. Routeur: couche 3, utilise IP, relie réseaux différents.",
+      "difficulty": "moyen",
+      "tags": [
+        "réseaux",
+        "équipements"
+      ]
+    },
+    {
+      "id": "arch-001",
+      "course": "architecture-ordinateurs",
+      "category": "systeme",
+      "front": "Rôle du CPU",
+      "back": "Le CPU (Central Processing Unit) exécute les instructions: UAL (calculs), unité de contrôle (orchestration), registres (stockage rapide). Cycle: Fetch → Decode → Execute.",
+      "difficulty": "facile",
+      "tags": [
+        "architecture",
+        "cpu"
+      ]
+    },
+    {
+      "id": "arch-002",
+      "course": "architecture-ordinateurs",
+      "category": "systeme",
+      "front": "Différence RAM et ROM ?",
+      "back": "RAM: volatile, lecture/écriture rapide, perd les données à l'extinction. ROM: non volatile, lecture seule (généralement), stocke le BIOS/firmware.",
+      "difficulty": "facile",
+      "tags": [
+        "architecture",
+        "mémoire"
+      ]
+    },
+    {
+      "id": "arch-003",
+      "course": "architecture-ordinateurs",
+      "category": "systeme",
+      "front": "Qu'est-ce que le pipeline d'instructions ?",
+      "back": "Technique qui chevauche l'exécution d'instructions: pendant que l'instruction n est en Execute, n+1 est en Decode, n+2 en Fetch. Améliore le débit.",
+      "difficulty": "difficile",
+      "tags": [
+        "architecture",
+        "pipeline"
+      ]
+    },
+    {
+      "id": "arch-004",
+      "course": "architecture-ordinateurs",
+      "category": "systeme",
+      "front": "Citation: loi de Moore",
+      "back": "Le nombre de transistors sur une puce double environ tous les 18-24 mois. Énoncée par Gordon Moore (Intel) en 1965. A tenu jusqu'à récemment.",
+      "difficulty": "facile",
+      "tags": [
+        "architecture",
+        "histoire"
+      ]
+    },
+    {
+      "id": "elec-num-001",
+      "course": "electronique-numerique",
+      "category": "electronique",
+      "front": "Table de vérité de la porte NAND",
+      "back": "NAND(A,B) = NOT(A AND B). 0,0→1; 0,1→1; 1,0→1; 1,1→0. Porte universelle: toute fonction logique peut être réalisée avec uniquement des NAND.",
+      "difficulty": "facile",
+      "tags": [
+        "électronique",
+        "logique"
+      ]
+    },
+    {
+      "id": "elec-num-002",
+      "course": "electronique-numerique",
+      "category": "electronique",
+      "front": "Convertir 1011 (binaire) en décimal",
+      "back": "1×2³ + 0×2² + 1×2¹ + 1×2⁰ = 8 + 0 + 2 + 1 = 11. Méthode: poids de chaque bit = 2^position (en partant de 0 à droite).",
+      "difficulty": "facile",
+      "tags": [
+        "électronique",
+        "numération"
+      ]
+    },
+    {
+      "id": "elec-num-003",
+      "course": "electronique-numerique",
+      "category": "electronique",
+      "front": "Qu'est-ce qu'une bascule JK ?",
+      "back": "Bascule synchrone: J=0,K=0 garde état; J=0,K=1 reset; J=1,K=0 set; J=1,K=1 bascule (toggle). Supprime la condition interdite de la RS.",
+      "difficulty": "moyen",
+      "tags": [
+        "électronique",
+        "séquentiel"
+      ]
+    },
+    {
+      "id": "elec-num-004",
+      "course": "electronique-numerique",
+      "category": "electronique",
+      "front": "Théorèmes de De Morgan",
+      "back": "NOT(A AND B) = (NOT A) OR (NOT B). NOT(A OR B) = (NOT A) AND (NOT B). Permet de transformer expressions logiques et simplifier circuits.",
+      "difficulty": "moyen",
+      "tags": [
+        "électronique",
+        "booléen"
+      ]
+    },
+    {
+      "id": "elec-num-005",
+      "course": "electronique-numerique",
+      "category": "electronique",
+      "front": "Qu'est-ce qu'un compteur modulo N ?",
+      "back": "Compteur qui compte de 0 à N-1 puis revient à 0. Modulo 10 = décimal (0-9). Modulo 16 = hexadécimal. Utilise N bascules pour N bits.",
+      "difficulty": "moyen",
+      "tags": [
+        "électronique",
+        "compteurs"
+      ]
+    },
+    {
+      "id": "elec-ana-001",
+      "course": "electronique-analogique",
+      "category": "electronique",
+      "front": "Qu'est-ce qu'une diode ?",
+      "back": "Composant non-linéaire qui laisse passer le courant dans un sens (forward: anode→cathode) et bloque dans l'autre. Seuil ~0.7V pour le silicium.",
+      "difficulty": "facile",
+      "tags": [
+        "électronique",
+        "diode"
+      ]
+    },
+    {
+      "id": "elec-ana-002",
+      "course": "electronique-analogique",
+      "category": "electronique",
+      "front": "Différence transistor NPN et PNP ?",
+      "back": "NPN: courant va du collecteur à l'émetteur, base commandée par courant positif. PNP: inverse, courant de l'émetteur vers le collecteur, base négative.",
+      "difficulty": "moyen",
+      "tags": [
+        "électronique",
+        "transistor"
+      ]
+    },
+    {
+      "id": "elec-ana-003",
+      "course": "electronique-analogique",
+      "category": "electronique",
+      "front": "Que fait un amplificateur opérationnel (AOP) ?",
+      "back": "Amplifie la différence entre deux entrées V+ et V-: Vout = A(V+ - V-), A très grand (~10^5). Idéal: impédance infinie en entrée, nulle en sortie.",
+      "difficulty": "moyen",
+      "tags": [
+        "électronique",
+        "AOP"
+      ]
+    },
+    {
+      "id": "phy-001",
+      "course": "geometrie-optique",
+      "category": "physique",
+      "front": "Loi de Snell-Descartes (réfraction)",
+      "back": "n1 × sin(θ1) = n2 × sin(θ2). n = indice de réfraction du milieu, θ = angle par rapport à la normale. Décrit la déviation de la lumière entre milieux.",
+      "difficulty": "moyen",
+      "tags": [
+        "optique",
+        "réfraction"
+      ]
+    },
+    {
+      "id": "phy-002",
+      "course": "geometrie-optique",
+      "category": "physique",
+      "front": "Formule de conjugaison des lentilles minces",
+      "back": "1/OA' - 1/OA = 1/OF' = 1/f'. O = centre optique, A = objet, A' = image, F' = foyer image, f' = distance focale. Vergence V = 1/f' (en dioptries δ).",
+      "difficulty": "difficile",
+      "tags": [
+        "optique",
+        "lentilles"
+      ]
+    },
+    {
+      "id": "phy-003",
+      "course": "geometrie-optique",
+      "category": "physique",
+      "front": "Différence lentille convergente et divergente ?",
+      "back": "Convergente (f'>0): bombe au centre, fait converger les rayons parallèles en F'. Divergente (f'<0): creuse au centre, les rayons semblent venir de F'.",
+      "difficulty": "facile",
+      "tags": [
+        "optique",
+        "lentilles"
+      ]
+    },
+    {
+      "id": "mg-001",
+      "course": "gestion-de-projet",
+      "category": "management",
+      "front": "Qu'est-ce que la méthode Scrum ?",
+      "back": "Méthode Agile itérative: sprints (2-4 semaines), Product Owner, Scrum Master, équipe auto-organisée. Cérémonies: Daily, Sprint Planning, Review, Retrospective.",
+      "difficulty": "moyen",
+      "tags": [
+        "management",
+        "agile"
+      ]
+    },
+    {
+      "id": "mg-002",
+      "course": "gestion-de-projet",
+      "category": "management",
+      "front": "Triangle de gestion de projet (triple contrainte)",
+      "back": "3 contraintes interdépendantes: Coût, Délai, Qualité/Périmètre. Modifier l'une impacte les autres. Le centre = satisfaction client.",
+      "difficulty": "facile",
+      "tags": [
+        "management",
+        "projet"
+      ]
+    },
+    {
+      "id": "mg-003",
+      "course": "gestion-de-projet",
+      "category": "management",
+      "front": "Différence Agile et Waterfall ?",
+      "back": "Waterfall (cascade): phases séquentielles, planification complète upfront. Agile: itératif, incrémental, adaptation continue, feedback client régulier.",
+      "difficulty": "facile",
+      "tags": [
+        "management",
+        "méthodes"
+      ]
+    },
+    {
+      "id": "mg-004",
+      "course": "management-financier",
+      "category": "management",
+      "front": "Qu'est-ce que le bilan comptable ?",
+      "back": "État financier qui présente à une date donnée: ACTIF (ce que l'entreprise possède) = PASSIF (ce qu'elle doit) + CAPITAUX PROPRES. Photographie patrimoniale.",
+      "difficulty": "moyen",
+      "tags": [
+        "management",
+        "comptabilité"
+      ]
+    },
+    {
+      "id": "vba-001",
+      "course": "vba",
+      "category": "programmation",
+      "front": "Que signifie VBA ?",
+      "back": "Visual Basic for Applications. Langage de programmation intégré à Microsoft Office pour automatiser des tâches (macros) dans Excel, Word, Access, PowerPoint.",
+      "difficulty": "facile",
+      "tags": [
+        "vba",
+        "définition"
+      ]
+    },
+    {
+      "id": "vba-002",
+      "course": "vba",
+      "category": "programmation",
+      "front": "Comment déclarer une variable en VBA ?",
+      "back": "Dim nomVariable As Type. Ex: Dim age As Integer, Dim nom As String, Dim prix As Double. Option Explicit force la déclaration (recommandé).",
+      "difficulty": "facile",
+      "tags": [
+        "vba",
+        "variables"
+      ]
+    },
+    {
+      "id": "vba-003",
+      "course": "vba",
+      "category": "programmation",
+      "front": "Qu'est-ce qu'une macro Excel ?",
+      "back": "Séquence d'instructions VBA enregistrées ou écrites, exécutées pour automatiser une tâche. Stockée dans des modules. Déclenchée par bouton, raccourci ou événement.",
+      "difficulty": "facile",
+      "tags": [
+        "vba",
+        "macros"
+      ]
+    },
+    {
+      "id": "office-001",
+      "course": "outils-bureautiques",
+      "category": "outil",
+      "front": "Qu'est-ce qu'une formule VLOOKUP (RECHERCHEV) ?",
+      "back": "Fonction Excel: =VLOOKUP(valeur_cherchée; tableau; n°_colonne; FAUX). Cherche une valeur dans la 1ère colonne d'un tableau et renvoie la valeur d'une autre colonne. FAUX = correspondance exacte.",
+      "difficulty": "moyen",
+      "tags": [
+        "excel",
+        "formules"
+      ]
+    },
+    {
+      "id": "office-002",
+      "course": "outils-bureautiques",
+      "category": "outil",
+      "front": "Différence Excel: référence relative vs absolue ?",
+      "back": "Relative (A1): s'ajuste quand on copie. Absolue ($A$1): reste fixe. Mixte ($A1 ou A$1): fixe en ligne OU colonne. Touche F4 pour basculer.",
+      "difficulty": "facile",
+      "tags": [
+        "excel",
+        "références"
+      ]
+    },
+    {
+      "id": "office-003",
+      "course": "outils-bureautiques",
+      "category": "outil",
+      "front": "Qu'est-ce qu'un tableau croisé dynamique ?",
+      "back": "Outil Excel pour résumer, analyser et explorer de grandes quantités de données. Permet regroupements, calculs (somme, moyenne), filtres dynamiques sans formules.",
+      "difficulty": "moyen",
+      "tags": [
+        "excel",
+        "analyse"
+      ]
+    },
+    {
+      "id": "eng-001",
+      "course": "anglais-technique",
+      "category": "langue",
+      "front": "Traduire: 'compiler'",
+      "back": "To compile (verbe). Compilation (nom). Le compilateur = the compiler. Ex: 'The code is being compiled' = Le code est en cours de compilation.",
+      "difficulty": "facile",
+      "tags": [
+        "anglais",
+        "vocabulaire"
+      ]
+    },
+    {
+      "id": "eng-002",
+      "course": "anglais-technique",
+      "category": "langue",
+      "front": "Différence entre 'debug' et 'debugger' ?",
+      "back": "Debug (verbe) = déboguer, chercher et corriger les bugs. Debugger (nom) = l'outil qui permet de déboguer. À ne pas confondre.",
+      "difficulty": "facile",
+      "tags": [
+        "anglais",
+        "vocabulaire"
+      ]
+    },
+    {
+      "id": "eng-003",
+      "course": "anglais-technique",
+      "category": "langue",
+      "front": "Que signifie 'deploy to production' ?",
+      "back": "Déployer en production: mettre une application en ligne pour les utilisateurs réels, après les phases de développement et test. Souvent abrégé 'go-live'.",
+      "difficulty": "facile",
+      "tags": [
+        "anglais",
+        "déploiement"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "name": "BIT Study HUB",
+  "fullName": "BIT Study HUB — Burkina Institute of Technology",
+  "tagline": "La plateforme collaborative des étudiants CS du BIT",
+  "description": "Centralise et démocratise l'accès aux ressources d'apprentissage: devoirs, examens, corrigés, fiches de synthèse et résumés de cours des modules CS S1 et S2.",
+  "institution": "Burkina Institute of Technology",
+  "filiere": "Computer Science",
+  "version": "2.0.0",
+  "year": "2026",
+  "logo": "assets/img/bit-logo.jpeg",
+  "location": "Koudougou, Burkina Faso",
+  "colors": {
+    "primary": "#1E252B",
+    "primaryLight": "#2D3640",
+    "accent": "#E91E63",
+    "accentDark": "#C2185B",
+    "accentLight": "#F8BBD0",
+    "background": "#FAFAFA",
+    "surface": "#FFFFFF",
+    "text": "#1E252B",
+    "textMuted": "#6B7280",
+    "border": "#E5E7EB",
+    "success": "#00C853",
+    "warning": "#FFB300",
+    "danger": "#FF1744",
+    "info": "#1976D2"
+  },
+  "darkColors": {
+    "primary": "#0F1419",
+    "primaryLight": "#1A1F26",
+    "accent": "#EC407A",
+    "background": "#0A0E13",
+    "surface": "#141A22",
+    "text": "#E8EAED",
+    "textMuted": "#9CA3AF",
+    "border": "#2A323D"
+  },
+  "typography": {
+    "heading": "Montserrat, 'Segoe UI', sans-serif",
+    "body": "Inter, 'Segoe UI', system-ui, sans-serif",
+    "mono": "'JetBrains Mono', 'Fira Code', Consolas, monospace"
+  },
+  "nav": [
+    {
+      "label": "Accueil",
+      "href": "index.html",
+      "icon": "home"
+    },
+    {
+      "label": "Cours",
+      "href": "cours.html",
+      "icon": "book"
+    },
+    {
+      "label": "Examens",
+      "href": "examens.html",
+      "icon": "exam"
+    },
+    {
+      "label": "Flashcards",
+      "href": "flashcards.html",
+      "icon": "cards"
+    },
+    {
+      "label": "Classement",
+      "href": "leaderboard.html",
+      "icon": "trophy"
+    },
+    {
+      "label": "Contribuer",
+      "href": "contribution.html",
+      "icon": "upload",
+      "primary": true
+    },
+    {
+      "label": "À propos",
+      "href": "a-propos.html",
+      "icon": "info"
+    }
+  ],
+  "features": [
+    {
+      "id": "search",
+      "label": "Recherche intelligente",
+      "icon": "search",
+      "description": "Trouvez instantanément cours, examens et corrigés par mots-clés."
+    },
+    {
+      "id": "viewer",
+      "label": "Visualiseur intégré",
+      "icon": "eye",
+      "description": "Consultez les PDF et images directement dans le navigateur."
+    },
+    {
+      "id": "contribute",
+      "label": "Contribution collaborative",
+      "icon": "users",
+      "description": "Partagez vos documents pour aider la communauté."
+    },
+    {
+      "id": "gamification",
+      "label": "Gamification",
+      "icon": "trophy",
+      "description": "Gagnez des points, badges et grimpez au classement."
+    },
+    {
+      "id": "offline",
+      "label": "Mode hors-ligne (PWA)",
+      "icon": "offline",
+      "description": "Accédez aux fiches même sans connexion Internet."
+    },
+    {
+      "id": "darkmode",
+      "label": "Mode sombre",
+      "icon": "moon",
+      "description": "Interface adaptative selon vos préférences système."
+    }
+  ],
+  "stats": {
+    "courses": 14,
+    "chapters": 90,
+    "exams": 26,
+    "contributors": 20,
+    "flashcards": 58
+  },
+  "social": {
+    "facebook": "#",
+    "twitter": "#",
+    "telegram": "#",
+    "whatsapp": "#",
+    "github": "#"
+  },
+  "contact": {
+    "email": "bitstudyhub@bit.bf",
+    "address": "Burkina Institute of Technology, Koudougou, Burkina Faso"
+  }
+}

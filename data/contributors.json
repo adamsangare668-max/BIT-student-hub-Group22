@@ -1,0 +1,480 @@
+{
+  "meta": {
+    "total_contributors": 20,
+    "total_contributions": 304,
+    "total_points": 18740,
+    "badges_awarded": 23,
+    "active_contributors": 12,
+    "generated_at": "2026-07-25",
+    "location": "Koudougou, Burkina Faso"
+  },
+  "levels": [
+    {
+      "id": "novice",
+      "label": "Novice",
+      "min": 0,
+      "max": 199,
+      "color": "#9E9E9E",
+      "description": "Premiers pas sur la plateforme. Bienvenue !"
+    },
+    {
+      "id": "contributeur",
+      "label": "Contributeur",
+      "min": 200,
+      "max": 599,
+      "color": "#7E57C2",
+      "description": "Premières contributions validées."
+    },
+    {
+      "id": "habitué",
+      "label": "Habitué",
+      "min": 600,
+      "max": 1199,
+      "color": "#1976D2",
+      "description": "Membre régulier de la communauté."
+    },
+    {
+      "id": "confirmé",
+      "label": "Confirmé",
+      "min": 1200,
+      "max": 1799,
+      "color": "#00897B",
+      "description": "Contributeur expérimenté et fiable."
+    },
+    {
+      "id": "expert",
+      "label": "Expert",
+      "min": 1800,
+      "max": 2499,
+      "color": "#FF7043",
+      "description": "Référence sur la plateforme."
+    },
+    {
+      "id": "légende",
+      "label": "Légende",
+      "min": 2500,
+      "max": 99999,
+      "color": "#E91E63",
+      "description": "Statut ultime réservé aux piliers historiques."
+    }
+  ],
+  "badges": [
+    {
+      "id": "master",
+      "label": "Master Contributor",
+      "description": "Plus de 30 contributions validées. Statut prestigieux réservé aux piliers de la communauté.",
+      "icon": "crown",
+      "color": "#FFD700",
+      "threshold": 30
+    },
+    {
+      "id": "eagle",
+      "label": "Eagle Eye",
+      "description": "5 corrigés vérifiés sans erreur. Œil de lynx pour la qualité scientifique.",
+      "icon": "eye",
+      "color": "#1976D2",
+      "threshold": 5
+    },
+    {
+      "id": "hero_s1",
+      "label": "Hero du S1",
+      "description": "Couverture complète d'un module S1. A contribué sur l'ensemble d'un cours du semestre 1.",
+      "icon": "shield",
+      "color": "#E91E63",
+      "threshold": 10
+    },
+    {
+      "id": "verified",
+      "label": "Corrigé Vérifié",
+      "description": "Au moins une contribution vérifiée et publiée par un modérateur.",
+      "icon": "check-circle",
+      "color": "#00C853",
+      "threshold": 1
+    },
+    {
+      "id": "mentor",
+      "label": "Mentor",
+      "description": "A aidé 5+ étudiants via commentaires et réponses. Pédagogue reconnu.",
+      "icon": "heart",
+      "color": "#FF6B6B",
+      "threshold": 5
+    }
+  ],
+  "leaderboard": [
+    {
+      "name": "SEDOGO Yasminatou",
+      "avatar": "SY",
+      "color": "#E91E63",
+      "points": 2840,
+      "level": "Légende",
+      "contributions": 47,
+      "badges": [
+        "master",
+        "eagle",
+        "hero_s1",
+        "verified",
+        "mentor"
+      ],
+      "specialty": "Design & UX",
+      "promo": "CS25"
+    },
+    {
+      "name": "SANGARE S P Adam",
+      "avatar": "SA",
+      "color": "#1976D2",
+      "points": 2410,
+      "level": "Expert",
+      "contributions": 39,
+      "badges": [
+        "master",
+        "hero_s1",
+        "verified",
+        "mentor"
+      ],
+      "specialty": "Logique & Moteur applicatif",
+      "promo": "CS25"
+    },
+    {
+      "name": "SOUGOTI Johan",
+      "avatar": "SJ",
+      "color": "#7E57C2",
+      "points": 2180,
+      "level": "Expert",
+      "contributions": 35,
+      "badges": [
+        "master",
+        "eagle",
+        "verified"
+      ],
+      "specialty": "Contenu & Pédagogie",
+      "promo": "CS25"
+    },
+    {
+      "name": "BATIONO Ephraïm",
+      "avatar": "BE",
+      "color": "#00897B",
+      "points": 1920,
+      "level": "Confirmé",
+      "contributions": 31,
+      "badges": [
+        "hero_s1",
+        "verified",
+        "mentor"
+      ],
+      "specialty": "Data & Workflow",
+      "promo": "CS25"
+    },
+    {
+      "name": "KIENDREBEOGO Nina",
+      "avatar": "KN",
+      "color": "#FF7043",
+      "points": 1750,
+      "level": "Confirmé",
+      "contributions": 28,
+      "badges": [
+        "eagle",
+        "verified"
+      ],
+      "specialty": "PWA & Performance",
+      "promo": "CS25"
+    },
+    {
+      "name": "Aïcha Ouédraogo",
+      "avatar": "AO",
+      "color": "#EC407A",
+      "points": 1540,
+      "level": "Confirmé",
+      "contributions": 25,
+      "badges": [
+        "hero_s1",
+        "verified"
+      ],
+      "specialty": "Architecture",
+      "promo": "CS26"
+    },
+    {
+      "name": "Boubakary Savadogo",
+      "avatar": "BS",
+      "color": "#5D4037",
+      "points": 1320,
+      "level": "Habitué",
+      "contributions": 22,
+      "badges": [
+        "verified",
+        "mentor"
+      ],
+      "specialty": "Électronique",
+      "promo": "CS26"
+    },
+    {
+      "name": "Mariam Diallo",
+      "avatar": "MD",
+      "color": "#26A69A",
+      "points": 1180,
+      "level": "Habitué",
+      "contributions": 19,
+      "badges": [
+        "verified"
+      ],
+      "specialty": "Management",
+      "promo": "CS27"
+    },
+    {
+      "name": "Yacouba Zongo",
+      "avatar": "YZ",
+      "color": "#F4511E",
+      "points": 980,
+      "level": "Habitué",
+      "contributions": 16,
+      "badges": [
+        "eagle"
+      ],
+      "specialty": "Physique",
+      "promo": "CS27"
+    },
+    {
+      "name": "Nadia Compaoré",
+      "avatar": "NC",
+      "color": "#1565C0",
+      "points": 760,
+      "level": "Contributeur",
+      "contributions": 13,
+      "badges": [],
+      "specialty": "Anglais",
+      "promo": "CS27"
+    },
+    {
+      "name": "Salif Kaboré",
+      "avatar": "SK",
+      "color": "#4CAF50",
+      "points": 540,
+      "level": "Contributeur",
+      "contributions": 9,
+      "badges": [],
+      "specialty": "VBA",
+      "promo": "CS27"
+    },
+    {
+      "name": "Rim Kafando",
+      "avatar": "RK",
+      "color": "#AB47BC",
+      "points": 320,
+      "level": "Novice",
+      "contributions": 5,
+      "badges": [],
+      "specialty": "Outils Office",
+      "promo": "CS27"
+    },
+    {
+      "name": "Adama Sawadogo",
+      "avatar": "AS",
+      "color": "#FFB300",
+      "points": 280,
+      "level": "Novice",
+      "contributions": 4,
+      "badges": [],
+      "specialty": "Algorithmique",
+      "promo": "CS27"
+    },
+    {
+      "name": "Bintou Zerbo",
+      "avatar": "BZ",
+      "color": "#3949AB",
+      "points": 220,
+      "level": "Novice",
+      "contributions": 3,
+      "badges": [],
+      "specialty": "Mathématiques",
+      "promo": "CS27"
+    },
+    {
+      "name": "Cheikh Sankara",
+      "avatar": "CS",
+      "color": "#00897B",
+      "points": 180,
+      "level": "Novice",
+      "contributions": 2,
+      "badges": [],
+      "specialty": "Réseaux",
+      "promo": "CS27"
+    },
+    {
+      "name": "Dénéba Yaméogo",
+      "avatar": "DY",
+      "color": "#D81B60",
+      "points": 120,
+      "level": "Novice",
+      "contributions": 2,
+      "badges": [],
+      "specialty": "Management",
+      "promo": "CS27"
+    },
+    {
+      "name": "Emmanuel Nikiéma",
+      "avatar": "EN",
+      "color": "#455A64",
+      "points": 80,
+      "level": "Novice",
+      "contributions": 1,
+      "badges": [],
+      "specialty": "Programmation Python",
+      "promo": "CS27"
+    },
+    {
+      "name": "Fati Tapsoba",
+      "avatar": "FT",
+      "color": "#F4511E",
+      "points": 60,
+      "level": "Novice",
+      "contributions": 1,
+      "badges": [],
+      "specialty": "Électronique",
+      "promo": "CS27"
+    },
+    {
+      "name": "Gilbert Ouédraogo",
+      "avatar": "GO",
+      "color": "#5C6BC0",
+      "points": 40,
+      "level": "Novice",
+      "contributions": 1,
+      "badges": [],
+      "specialty": "Langage C",
+      "promo": "CS27"
+    },
+    {
+      "name": "Hadiatou Sirima",
+      "avatar": "HS",
+      "color": "#26A69A",
+      "points": 20,
+      "level": "Novice",
+      "contributions": 1,
+      "badges": [],
+      "specialty": "Architecture",
+      "promo": "CS27"
+    }
+  ],
+  "monthly_top": [
+    {
+      "name": "Awa Konaté",
+      "avatar": "AK",
+      "color": "#E91E63",
+      "points": 2840,
+      "level": "Légende",
+      "contributions": 47,
+      "badges": [
+        "master",
+        "eagle",
+        "hero_s1",
+        "verified",
+        "mentor"
+      ],
+      "specialty": "Mathématiques",
+      "promo": "CS25"
+    },
+    {
+      "name": "Moussa Traoré",
+      "avatar": "MT",
+      "color": "#1976D2",
+      "points": 2410,
+      "level": "Expert",
+      "contributions": 39,
+      "badges": [
+        "master",
+        "hero_s1",
+        "verified",
+        "mentor"
+      ],
+      "specialty": "Programmation Python",
+      "promo": "CS25"
+    },
+    {
+      "name": "Ibrahim Sanou",
+      "avatar": "IS",
+      "color": "#00897B",
+      "points": 2180,
+      "level": "Expert",
+      "contributions": 35,
+      "badges": [
+        "master",
+        "eagle",
+        "verified"
+      ],
+      "specialty": "Langage C",
+      "promo": "CS26"
+    },
+    {
+      "name": "Fatou Bamba",
+      "avatar": "FB",
+      "color": "#7E57C2",
+      "points": 1920,
+      "level": "Confirmé",
+      "contributions": 31,
+      "badges": [
+        "hero_s1",
+        "verified",
+        "mentor"
+      ],
+      "specialty": "Algorithmique",
+      "promo": "CS26"
+    },
+    {
+      "name": "Kouassi N'Guessan",
+      "avatar": "KN",
+      "color": "#FF7043",
+      "points": 1750,
+      "level": "Confirmé",
+      "contributions": 28,
+      "badges": [
+        "eagle",
+        "verified"
+      ],
+      "specialty": "Réseaux",
+      "promo": "CS26"
+    }
+  ],
+  "recent_activity": [
+    {
+      "contributor": "Awa Konaté",
+      "action": "a partagé un corrigé",
+      "resource": "DS Analyse I — Sujet 8",
+      "time": "il y a 2 heures"
+    },
+    {
+      "contributor": "Moussa Traoré",
+      "action": "a publié",
+      "resource": "TP Python — Student Record",
+      "time": "il y a 5 heures"
+    },
+    {
+      "contributor": "Ibrahim Sanou",
+      "action": "a validé un corrigé",
+      "resource": "Pointeurs en C — Sujet 15",
+      "time": "il y a 1 jour"
+    },
+    {
+      "contributor": "Fatou Bamba",
+      "action": "a gagné le badge",
+      "resource": "Mentor",
+      "time": "il y a 2 jours"
+    },
+    {
+      "contributor": "Kouassi N'Guessan",
+      "action": "a commenté",
+      "resource": "Réseaux — OSI",
+      "time": "il y a 3 jours"
+    },
+    {
+      "contributor": "Aïcha Ouédraogo",
+      "action": "a partagé",
+      "resource": "Architecture — Processeur",
+      "time": "il y a 4 jours"
+    },
+    {
+      "contributor": "Boubakary Savadogo",
+      "action": "a publié",
+      "resource": "Électronique Analogique",
+      "time": "il y a 5 jours"
+    }
+  ]
+}
